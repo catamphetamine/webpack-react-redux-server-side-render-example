@@ -30,7 +30,7 @@ In summer 2015 I wrote [`webpack-isomorphic-tools`](https://github.com/halt-hamm
 
 The goal was met and many people started using it to implement isomorphic (universal) rendering in their apps.
 
-Half a year passed and then I decided to give a try to the obscure enough [`target: 'node'`](https://github.com/webpack/react-starter) Webpack option which is the officially recommended way of setting up isomorphic (universal) rendering when building apps with Webpack. I used [sokra](https://github.com/sokra)'s [`react-starter`](https://github.com/webpack/react-starter) as a reference with a goal of making it much easier to use and much more developer-friendly.
+Half a year passed and then I decided to give a try to the obscure enough [`target: 'node'`](http://stackoverflow.com/questions/26063480/how-to-simultaneously-create-both-web-and-node-versions-of-a-bundle-with-web) Webpack option which is the officially recommended way of setting up isomorphic (universal) rendering when building apps with Webpack. I used [sokra](https://github.com/sokra)'s [`react-starter`](https://github.com/webpack/react-starter) as a reference with a goal of making it much easier to use and much more developer-friendly.
 
 Status
 ======
