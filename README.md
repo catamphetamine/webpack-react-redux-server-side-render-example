@@ -42,13 +42,11 @@ If you have any issues running this code you can report them the issue tracker.
 To do
 ==========
 
- * Maybe fix [hot module reloading](https://webpack.github.io/docs/hot-module-replacement.html) for '../model' inside Redux store (hot reload Redux stores)
+ * Maybe fix [hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html) for `../model` inside Redux store (hot reload Redux stores)
 
  * Move "webpack-react-isomorphic-render" to a separate npm package
 
  * Maybe fix the "Clean webpack did not delete path: ...\webpack-react-redux-isomorphic-render-example\build\assets" error
-
- * Remove obsolete commented code
 
  * Maybe make server side rendering Webpack code source maps work for exception stack traces. Currently Node.js [doesn't support source maps](https://github.com/nodejs/node-v0.x-archive/issues/3712).
 
