@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": ".",
+			"file_exclude_patterns": ["npm-debug.log", "webpack-assets.json", "webpack-stats.debug.json"],
+			"folder_exclude_patterns": ["node_modules", "log"]
+		}
+	]
+}

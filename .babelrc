@@ -1,0 +1,16 @@
+{
+	"stage"    : 0,
+	"optional" : ["runtime"],
+	"loose"    : "all",
+	"plugins":
+	[
+		"typecheck"
+	],
+	"env":
+	{
+		"production":
+		{
+			"optional": ["optimisation.react.inlineElements", "optimisation.react.constantElements"]
+		}
+	}
+}
