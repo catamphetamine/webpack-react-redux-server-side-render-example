@@ -14,6 +14,11 @@ export default class http_client
 			clone_request = undefined
 		}
 
+		if (clone_request)
+		{
+			this.server = true
+		}
+		
 		this.host = host || 'localhost'
 		this.port = port || 80
 		this.prefix = prefix || ''
@@ -63,7 +68,9 @@ export default class http_client
 						}
 					}
 
-					if (_server_)
+					// server side only
+					// (copies user authentication cookies to retain session specific data)
+					if (clone_request)
 					{
 						if (clone_request.get('cookie'))
 						{
@@ -97,7 +104,7 @@ export default class http_client
 		// add slash in the beginning
 		let normalized_path = path[0] !== '/' ? '/' + path : path
 
-		if (_server_)
+		if (this.server)
 		{
 			// Prepend host and port of the API server to the path.
 			return `http://${this.host}:${this.port}${this.prefix}${normalized_path}`

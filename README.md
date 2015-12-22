@@ -2,12 +2,13 @@ This sample project is a proof-of-concept for isomorphic (universal) Webpack ren
 
 Features
 
-* React (+ hot reload for React components and Redux reducers in development mode)
+* React (+ hot reload for React components in development mode)
 * React-router
 * Redux as Flux
 * Isomorphic (universal) rendering
 * Webpack
 * Koa
+* Nodemon (with hot reload on server side)
 
 Quick Start
 ===========
@@ -35,16 +36,27 @@ Half a year passed and then I decided to give a try to the obscure enough [`targ
 Status
 ======
 
-Seems to work. An `npm` module library will be released once this code is tested enough.
+Seems to work. An `npm` module library will be released once I get enough feedback from users (`code/react-isomorphic-render`).
 
 If you have any issues running this code you can report them the issue tracker.
+
+Brief explanation
+=================
+
+It runs two Webpack compilers in parallel: one for client and one for server.
+
+Client code is compiled into `build/assets/` with the `main.[hash].js` entry point (compiled from `code/client/application.js`).
+
+Server code is compiled into `build/assets/webpage_rendering_server.js` (compiled from `code/page-server/web server.js`).
+
+Each React page component has a `preload` method which is executed before the page is rendered.
 
 To do
 ==========
 
- * Maybe fix [hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html) for `../model` inside Redux store (hot reload Redux stores)
+ * Maybe fix [hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html) for `../model` Redux reducers in development mode (hot reload Redux reducers)
 
- * Move "webpack-react-isomorphic-render" to a separate npm package
+ * Move "react-isomorphic-render" to a separate npm package
 
  * Maybe fix the "Clean webpack did not delete path: ...\webpack-react-redux-isomorphic-render-example\build\assets" error
 

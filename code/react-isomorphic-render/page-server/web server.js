@@ -5,10 +5,7 @@ import koa from 'koa'
 
 import render from './render'
 
-global._server_ = true
-global._client_ = false
-
-export default function start_web_server({ host, port, log, disable_server_side_rendering, server_side_rendering_path, create_store, routes, markup_wrapper, head, body, styles })
+export default function start_web_server({ development, development_tools, webpack_assets_path, host, port, log, disable_server_side_rendering, create_store, markup_wrapper, head, body, styles })
 {
 	log = log || console
 
@@ -42,6 +39,10 @@ export default function start_web_server({ host, port, log, disable_server_side_
 		// they can be modified to work with Express app if needed.
 		yield render
 		({
+			development,
+			development_tools,
+			webpack_assets_path,
+
 			request : this.request, 
 			respond : ({ markup, status }) =>
 			{
@@ -57,11 +58,14 @@ export default function start_web_server({ host, port, log, disable_server_side_
 				this.throw(error)
 			}, 
 			redirect : to => this.redirect(to),
+
 			disable_server_side_rendering : disable_server_side_rendering,
 			log,
+
 			create_store,
-			routes,
+
 			markup_wrapper,
+
 			head,
 			body,
 			styles

@@ -16,8 +16,6 @@ const configuration = Object.clone(base_configuration)
 // const server_output_path = path.resolve(configuration.output.path, '../server')
 
 configuration.devtool = 'inline-source-map'
-// configuration.devtool = 'eval-source-map'
-// configuration.devtool = 'eval-cheap-module-source-map'
 
 configuration.plugins = configuration.plugins.concat
 (
@@ -34,7 +32,7 @@ configuration.plugins = configuration.plugins.concat
 		_server_            : false,
 		_production_        : false,
 		_development_       : true,
-		_development_tools_ : false  // <-------- DISABLE redux-devtools HERE
+		_development_tools_ : false  // enable/disable redux-devtools
 	}),
 
 	// faster code reload on changes

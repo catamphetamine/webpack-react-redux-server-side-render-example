@@ -5,7 +5,7 @@ import webpack from 'webpack'
 
 function generate(base_configuration, options = {})
 {
-	const { development, publicPath, webpage_rendering_server } = options
+	const { development, development_tools, publicPath, webpage_rendering_server } = options
 
 	const configuration = clone(base_configuration)
 
@@ -71,14 +71,15 @@ function generate(base_configuration, options = {})
 				NODE_ENV: JSON.stringify(development ? 'development' : 'production') // 'development' to see non-minified React errors
 			},
 
+			_client_            : false,
 			_server_            : true,
 
 			_development_       : development,
 			_production_        : !development,
 
-			_webpack_assets_path_: JSON.stringify(webpack_assets_path),
+			_development_tools_ : development_tools, // enable/disable Redux dev-tools
 
-			_development_tools_ : false  // <-------- DISABLE redux-devtools HERE
+			_webpack_assets_path_: JSON.stringify(webpack_assets_path)
 		}),
 
 		// // PrefetchPlugin is said to prefetch the specified ".js" files in the background.

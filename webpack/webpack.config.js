@@ -1,10 +1,15 @@
+// This is the base Webpack configuration file
+
 var path         = require('path')
 var webpack      = require('webpack')
 
+// project folder
 var root_folder = path.resolve(__dirname, '..')
 
+// where all the (source) assets reside
 var assets_source_folder = path.resolve(root_folder, 'assets')
 
+// regular expressions for module.loaders
 var regular_expressions =
 {
 	javascript : /\.js$/,
@@ -47,21 +52,13 @@ var configuration =
 			},
 			{
 				test    : regular_expressions.javascript,
-				// include :
-				// [
-				// 	path.resolve(root_folder, 'code/client'),
-				// 	path.resolve(root_folder, 'code/react-isomorphic-render'),
-				// 	path.resolve(root_folder, 'code/common/language.js'),
-				// 	path.resolve(root_folder, 'code/common/log levels.js')
-				// ],
-				include: [path.resolve(root_folder, 'code')],
+				// include: [path.resolve(root_folder, 'code')],
 				// exclude: path.resolve(root_folder, 'node_modules'),
-				// exclude: /node_modules/,
+				exclude: /node_modules/,
 				loader: 'babel-loader'
 			},
 			{
 				test    : regular_expressions.styles,
-				// include : assets_source_folder,
 				loaders : 
 				[
 					'style-loader',
@@ -72,7 +69,6 @@ var configuration =
 			},
 			{
 				test    : /\.(jpg|png)$/,
-				// include : assets_source_folder,
 				loaders : 
 				[
 					'url-loader?limit=10000' // Any png-image or woff-font below or equal to 10K will be converted to inline base64 instead

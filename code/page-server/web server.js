@@ -1,7 +1,6 @@
 import React from 'react'
 
 import create_store   from '../client/redux/store'
-import routes         from '../client/routes'
 import markup_wrapper from '../client/markup wrapper'
 
 import webpage_server from '../react-isomorphic-render/page-server/web server'
@@ -10,18 +9,40 @@ import log from '../common/log'
 
 export default function()
 {
+	// starts webpage rendering server
 	webpage_server
 	({
+		// enable/disable development mode
+		development: _development_,
+
+		// enable/disable Redux dev-tools
+		development_tools: _development_tools_,
+
+		// path to `webpack-assets.json` (which is output by client side Webpack build)
+		webpack_assets_path: _webpack_assets_path_,
+
+		// on which Http host and port to start the webpage rendering server
+		// host: optional
 		port: configuration.webpage_server.http.port,
-		server_side_rendering_path: require('path').resolve(Root_folder, 'build/assets/server_side_rendering'),
+
+		// your custom bunyan log, if any (will default to `console` if none)
 		log: log('webpage renderer'),
+		
+		// a function to create Redux store
 		create_store,
-		routes,
+		
+		// wraps React page component into arbitrary markup (e.g. Redux Provider)
 		markup_wrapper,
+
+		// will be inserted into server rendered webpage <head/>
+		// (use `key`s to prevent React warning)
 		head:
 		[
-			<link rel="shortcut icon" href={require('../../assets/images/icon/cat_64x64.png')}/>
+			<link rel="shortcut icon" href={require('../../assets/images/icon/cat_64x64.png')} key="1"/>
 		],
+
+		// this CSS will be inserted into server rendered webpage <head/> <style/> tag 
+		// (when in development mode only - removes rendering flicker)
 		styles: require('../../assets/styles/style.scss').toString()
 	})
 }

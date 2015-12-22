@@ -34,7 +34,7 @@ configuration.plugins = configuration.plugins.concat
 		_server_            : false,
 		_development_       : false,
 		_production_        : true,
-		_development_tools_ : false  // <-------- DISABLE redux-devtools HERE
+		_development_tools_ : false  // enable/disable redux-devtools
 	}),
 
 	// css files from the extract-text-plugin loader

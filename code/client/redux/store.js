@@ -1,17 +1,36 @@
 import store from '../../react-isomorphic-render/redux/store'
 
-import routes from '../routes'
+import create_routes from '../routes'
 
-export default function(data, http_request)
+export default function(data, { development, development_tools, server, http_request })
 {
-	return store
-	({
+	const options =
+	{
+		development       : development,
+		development_tools : development_tools,
+
 		get_reducers() { return require('../model') },
-		reducers_path: '../model', // <-- somehow fix Redux reducer module hot reloading here
+
+		// Somehow fix Redux reducer module hot reloading here.
+		// I suppose this should be a relative path 
+		// from 'react-isomorphic-render/redux/store' to that 'model.js' file
+		reducers_path: '../../client/model',
+
 		data,
-		routes,
-		http_request, // will use all the cookies from it, etc
-		host: _server_ ? configuration.web_server.http.host : undefined,
-		port: _server_ ? configuration.web_server.http.port : undefined
-	})
+		create_routes
+	}
+
+	if (server)
+	{
+		options.server = true
+
+		// authentication cookie will be copied from this Http request
+		options.http_request = http_request
+
+		// Http host and port for data fetching when `preload`ing pages on the server
+		options.host = configuration.web_server.http.host
+		options.port = configuration.web_server.http.port
+	}
+
+	return store(options)
 }

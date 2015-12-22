@@ -71,22 +71,22 @@ function makeHooksSafe(routes, store)
 	return routes
 }
 
-function makeRouteHooksSafe(_getRoutes)
+function makeRouteHooksSafe(create_routes)
 {
-	return store => makeHooksSafe(createRoutes(_getRoutes(store)), store)
+	return store => makeHooksSafe(createRoutes(create_routes(store)), store)
 }
 
-export default function({ get_reducers, reducers_path, data, routes, http_request, host, port }) 
+export default function({ development, development_tools, server, get_reducers, reducers_path, data, create_routes, http_request, host, port }) 
 {
-	const getRoutes = _server_ ? routes : makeRouteHooksSafe(routes)
-	const reduxReactRouter = _server_ ? reduxReactRouter_server : reduxReactRouter_client
-	const createHistory = _server_ ? createHistory_server : use_scroll(createHistory_client)
+	create_routes          = server ? create_routes : makeRouteHooksSafe(create_routes)
+	const reduxReactRouter = server ? reduxReactRouter_server : reduxReactRouter_client
+	const createHistory    = server ? createHistory_server : use_scroll(createHistory_client)
 
-	const middleware = [asynchronous_middleware(new http_client({ host, port, clone_request: http_request })), transition_middleware]
+	const middleware = [asynchronous_middleware(new http_client({ host, port, clone_request: http_request })), transition_middleware(server)]
 	
 	let create_store
 
-	if (_development_ && _client_ && _development_tools_)
+	if (development && !server && development_tools)
 	{
 		const { persistState } = require('redux-devtools')
 
@@ -106,13 +106,11 @@ export default function({ get_reducers, reducers_path, data, routes, http_reques
 	}
 
 	// keeps react-router state in Redux
-	create_store = reduxReactRouter({ getRoutes, createHistory })(create_store)
+	create_store = reduxReactRouter({ getRoutes: create_routes, createHistory })(create_store)
 
+	// adds redux-router reducers to the list of all reducers
 	const overall_reducer = () =>
 	{
-		// can't simply "require(reducers_path)" 
-		// because Webpack needs a constant string path.
-		// https://github.com/webpack/docs/wiki/context
 		const model = get_reducers()
 		model.router = routerStateReducer
 		return combineReducers(model)
@@ -120,7 +118,8 @@ export default function({ get_reducers, reducers_path, data, routes, http_reques
 
 	const store = create_store(overall_reducer(), data)
 	
-	if (_development_ && module.hot)
+	// client side hot module reload for Redux reducers
+	if (development && module.hot)
 	{
 		module.hot.accept(reducers_path, () =>
 		{

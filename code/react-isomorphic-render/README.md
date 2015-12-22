@@ -1,1 +1,1 @@
-This code will be moved to a separate npm package when the project is 100% complete and tested.
+This code will be moved to a separate npm package when the project is complete and I get enough feedback from users.

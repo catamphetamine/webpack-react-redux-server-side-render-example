@@ -1,5 +1,3 @@
-import fs from 'fs-extra'
-
 import React, { Component, PropTypes } from 'react'
 import ReactDOMServer from 'react-dom/server'
 
@@ -18,23 +16,18 @@ export default class Html extends Component
 {
 	static propTypes =
 	{
-		component : PropTypes.node,
-		store     : PropTypes.object.isRequired,
-		head      : PropTypes.array,
-		body      : PropTypes.array,
-		styles    : PropTypes.string
+		development : PropTypes.bool,
+		assets      : PropTypes.object.isRequired,
+		component   : PropTypes.node,
+		store       : PropTypes.object.isRequired,
+		head        : PropTypes.array,
+		body        : PropTypes.array,
+		styles      : PropTypes.string
 	}
 
 	render()
 	{
-		// require() cache will be flushed for Webpack stats
-		// on every webpage refresh
-
-		const assets = JSON.parse(fs.readFileSync(_webpack_assets_path_))
-
-		// render the webpage
-
-		const { component, store, head, body, styles } = this.props
+		const { development, assets, component, store, head, body, styles } = this.props
 
 		// when server-side rendering is disabled, component will be undefined
 		// (but server-side rendering is always enabled so this "if" condition may be removed)
@@ -72,7 +65,7 @@ export default class Html extends Component
 					    (caused by Webpack style-loader mounting CSS styles 
 					     through javascript after page load)
 					    by mounting the entire CSS stylesheet in a <style/> tag */}
-					{ _development_ && styles ? <style dangerouslySetInnerHTML={{__html: styles}} charSet="UTF-8"/> : null }
+					{ development && styles ? <style dangerouslySetInnerHTML={{__html: styles}} charSet="UTF-8"/> : null }
 
 					{ head ? head : null }
 				</head>

@@ -1,4 +1,4 @@
-import { client as default_client_render, server as default_server_render } from '../index'
+import { client as default_client_render, server as default_server_render } from '../render'
 
 import { match } from 'redux-router/server'
 import { ReduxRouter } from 'redux-router'
@@ -18,7 +18,7 @@ export function client({ development, wrap_component, routes, to })
 }
 
 // returns a Promise resolving to Html code.
-export function server({ disable_server_side_rendering, wrap_component, html, url, store }) // , routes, preload
+export function server({ disable_server_side_rendering, wrap_component, html, url, store })
 {
 	if (disable_server_side_rendering)
 	{
