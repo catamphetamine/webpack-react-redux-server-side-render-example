@@ -118,15 +118,21 @@ export default function({ development, development_tools, server, get_reducers, 
 
 	const store = create_store(overall_reducer(), data)
 	
-	// client side hot module reload for Redux reducers
-	if (development && module.hot)
-	{
-		module.hot.accept(reducers_path, () =>
-		{
-			// check if this works (maybe place require(...) here otherwise)
-			store.replaceReducer(overall_reducer())
-		})
-	}
+	// // client side hot module reload for Redux reducers
+	// // (currently not working)
+	// // https://github.com/webpack/webpack/issues/1790
+	// if (development && module.hot)
+	// {
+	// 	module.hot.accept(reducers_path, () =>
+	// 	{
+	// 		if (!server)
+	// 		{
+	// 			alert('Hot module replacement works for Redux')
+	// 		}
+	//
+	// 		store.replaceReducer(overall_reducer())
+	// 	})
+	// }
 
-	return store
+	return { store, reload: () => store.replaceReducer(overall_reducer()) }
 }

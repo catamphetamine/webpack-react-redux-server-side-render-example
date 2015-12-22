@@ -4,7 +4,7 @@ import dev_tools from './dev tools'
 export default function({ development, development_tools, to, create_store, create_routes, markup_wrapper })
 {
 	// create Redux store
-	const store = create_store(window._flux_store_data, development, development_tools)
+	const store = create_store(window._flux_store_data, { development, development_tools })
 	delete window._flux_store_data
 
 	client

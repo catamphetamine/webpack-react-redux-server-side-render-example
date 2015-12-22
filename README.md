@@ -2,13 +2,13 @@ This sample project is a proof-of-concept for isomorphic (universal) Webpack ren
 
 Features
 
-* React (+ hot reload for React components in development mode)
+* React
 * React-router
 * Redux as Flux
 * Isomorphic (universal) rendering
 * Webpack
 * Koa
-* Nodemon (with hot reload on server side)
+* Development mode: hot reload for React components, hot reload for Redux reducers
 
 Quick Start
 ===========
@@ -54,7 +54,7 @@ Each React page component has a `preload` method which is executed before the pa
 To do
 ==========
 
- * Maybe fix [hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html) for `../model` Redux reducers in development mode (hot reload Redux reducers)
+ * Maybe fix [hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html) for Redux reducers in `react-isomorphic-render/redux/store.js`
 
  * Move "react-isomorphic-render" to a separate npm package
 

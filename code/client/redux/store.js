@@ -1,4 +1,4 @@
-import store from '../../react-isomorphic-render/redux/store'
+import create_store from '../../react-isomorphic-render/redux/store'
 
 import create_routes from '../routes'
 
@@ -11,10 +11,11 @@ export default function(data, { development, development_tools, server, http_req
 
 		get_reducers() { return require('../model') },
 
-		// Somehow fix Redux reducer module hot reloading here.
-		// I suppose this should be a relative path 
-		// from 'react-isomorphic-render/redux/store' to that 'model.js' file
-		reducers_path: '../../client/model',
+		// // Somehow fix Redux reducer module hot reloading here.
+		// // I suppose this should be a relative path 
+		// // from 'react-isomorphic-render/redux/store' to that 'model/index.js' file.
+		// // https://github.com/webpack/webpack/issues/1790
+		// reducers_path: '../../client/model',
 
 		data,
 		create_routes
@@ -32,5 +33,17 @@ export default function(data, { development, development_tools, server, http_req
 		options.port = configuration.web_server.http.port
 	}
 
-	return store(options)
+	const { store, reload } = create_store(options)
+
+	// client side hot module reload for Redux reducers
+	// (should be moved to react-isomoprhic-render/redux/store.js)
+	if (development && module.hot)
+	{
+		module.hot.accept('../model', () =>
+		{
+			reload()
+		})
+	}
+
+	return store
 }

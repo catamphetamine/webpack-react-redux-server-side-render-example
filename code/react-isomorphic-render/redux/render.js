@@ -3,9 +3,8 @@ import { client as default_client_render, server as default_server_render } from
 import { match } from 'redux-router/server'
 import { ReduxRouter } from 'redux-router'
 
-// fixes "ReferenceError: React is not defined"
-import React from 'react'
-import ReactDOMServer        from 'react-dom/server'
+import React          from 'react'
+import ReactDOMServer from 'react-dom/server'
 
 // returns nothing.
 // renders directly to the "to" DOM element.
