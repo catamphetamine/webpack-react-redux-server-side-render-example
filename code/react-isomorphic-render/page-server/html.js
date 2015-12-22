@@ -65,16 +65,16 @@ export default class Html extends Component
 					    (caused by Webpack style-loader mounting CSS styles 
 					     through javascript after page load)
 					    by mounting the entire CSS stylesheet in a <style/> tag */}
-					{ development && styles ? <style dangerouslySetInnerHTML={{__html: styles}} charSet="UTF-8"/> : null }
+					{ development && styles ? <style dangerouslySetInnerHTML={{__html: styles()}} charSet="UTF-8"/> : null }
 
-					{ head ? head : null }
+					{ head ? head() : null }
 				</head>
 
 				<body>
 					{/* rendered React page */}
 					<div id="react_markup" dangerouslySetInnerHTML={{__html: content}}/>
 
-					{ body ? body : null }
+					{ body ? body() : null }
 
 					{/* Flux store data will be reloaded into the store on the client */}
 					<script dangerouslySetInnerHTML={{__html: `window._flux_store_data=${JSON.stringify(store.getState())}`}} charSet="UTF-8"/>

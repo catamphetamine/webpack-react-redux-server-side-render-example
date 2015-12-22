@@ -76,7 +76,7 @@ function makeRouteHooksSafe(create_routes)
 	return store => makeHooksSafe(createRoutes(create_routes(store)), store)
 }
 
-export default function({ development, development_tools, server, get_reducers, reducers_path, data, create_routes, http_request, host, port }) 
+export default function({ development, development_tools, server, get_reducers, data, create_routes, http_request, host, port }) 
 {
 	create_routes          = server ? create_routes : makeRouteHooksSafe(create_routes)
 	const reduxReactRouter = server ? reduxReactRouter_server : reduxReactRouter_client
@@ -100,7 +100,7 @@ export default function({ development, development_tools, server, get_reducers, 
 		)
 		(createStore)
 	} 
-	else 
+	else
 	{
 		create_store = applyMiddleware(...middleware)(createStore)
 	}
@@ -118,18 +118,13 @@ export default function({ development, development_tools, server, get_reducers, 
 
 	const store = create_store(overall_reducer(), data)
 	
-	// // client side hot module reload for Redux reducers
-	// // (currently not working)
+	// // client side hot module reload for Redux reducers attempt
+	// // (won't work because it's not a parent module for the reducers)
 	// // https://github.com/webpack/webpack/issues/1790
 	// if (development && module.hot)
 	// {
 	// 	module.hot.accept(reducers_path, () =>
 	// 	{
-	// 		if (!server)
-	// 		{
-	// 			alert('Hot module replacement works for Redux')
-	// 		}
-	//
 	// 		store.replaceReducer(overall_reducer())
 	// 	})
 	// }

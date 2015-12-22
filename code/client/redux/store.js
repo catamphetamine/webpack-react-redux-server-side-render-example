@@ -11,12 +11,6 @@ export default function(data, { development, development_tools, server, http_req
 
 		get_reducers() { return require('../model') },
 
-		// // Somehow fix Redux reducer module hot reloading here.
-		// // I suppose this should be a relative path 
-		// // from 'react-isomorphic-render/redux/store' to that 'model/index.js' file.
-		// // https://github.com/webpack/webpack/issues/1790
-		// reducers_path: '../../client/model',
-
 		data,
 		create_routes
 	}
@@ -36,13 +30,11 @@ export default function(data, { development, development_tools, server, http_req
 	const { store, reload } = create_store(options)
 
 	// client side hot module reload for Redux reducers
-	// (should be moved to react-isomoprhic-render/redux/store.js)
+	// http://webpack.github.io/docs/hot-module-replacement.html#accept
 	if (development && module.hot)
 	{
-		module.hot.accept('../model', () =>
-		{
-			reload()
-		})
+		// this path must be equal to the path in `get_reducers` function above
+		module.hot.accept('../model', reload)
 	}
 
 	return store

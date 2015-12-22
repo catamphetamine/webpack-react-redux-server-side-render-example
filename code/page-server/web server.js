@@ -36,13 +36,25 @@ export default function()
 
 		// will be inserted into server rendered webpage <head/>
 		// (use `key`s to prevent React warning)
-		head:
-		[
-			<link rel="shortcut icon" href={require('../../assets/images/icon/cat_64x64.png')} key="1"/>
-		],
+		head: () =>
+		{
+			// clear require() cache for hot reload in development mode
+			delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
+
+			return 
+			[
+				<link rel="shortcut icon" href={require('../../assets/images/icon/cat_64x64.png')} key="1"/>
+			]
+		},
 
 		// this CSS will be inserted into server rendered webpage <head/> <style/> tag 
 		// (when in development mode only - removes rendering flicker)
-		styles: require('../../assets/styles/style.scss').toString()
+		styles: () =>
+		{
+			// clear require() cache for hot reload in development mode
+			delete require.cache[require.resolve('../../assets/styles/style.scss')]
+
+			return require('../../assets/styles/style.scss').toString()
+		}
 	})
 }
