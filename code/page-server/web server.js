@@ -39,7 +39,10 @@ export default function()
 		head: () =>
 		{
 			// clear require() cache for hot reload in development mode
-			delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
+			if (_development_)
+			{
+				delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
+			}
 
 			return 
 			[
@@ -52,7 +55,10 @@ export default function()
 		styles: () =>
 		{
 			// clear require() cache for hot reload in development mode
-			delete require.cache[require.resolve('../../assets/styles/style.scss')]
+			if (_development_)
+			{
+				delete require.cache[require.resolve('../../assets/styles/style.scss')]
+			}
 
 			return require('../../assets/styles/style.scss').toString()
 		}
