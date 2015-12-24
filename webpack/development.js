@@ -7,7 +7,7 @@ import path from 'path'
 import webpack                         from 'webpack'
 import base_configuration              from './webpack.config'
 
-import react_isomorphic_render_plugin from '../code/react-isomorphic-render/webpack/plugin'
+import { plugin as react_isomorphic_render_plugin } from 'react-isomorphic-render/webpack'
 
 import application_configuration from '../code/common/configuration'
 

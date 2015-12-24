@@ -5,7 +5,7 @@ import language       from '../common/language'
 import React          from 'react'
 import ReactDOM       from 'react-dom'
 
-import render         from '../react-isomorphic-render/redux/client'
+import { render } from 'react-isomorphic-render/redux'
 
 import markup_wrapper from './markup wrapper'
 import create_store   from './redux/store'

@@ -6,9 +6,9 @@ import base_configuration  from './webpack.config'
 import clean_plugin        from 'clean-webpack-plugin'
 import extract_text_plugin from 'extract-text-webpack-plugin'
 
-import react_isomorphic_render_plugin from '../code/react-isomorphic-render/webpack/plugin'
+import { plugin as react_isomorphic_render_plugin } from 'react-isomorphic-render/webpack'
 
-import server from '../code/react-isomorphic-render/webpack/build server'
+import { build_server as server } from 'react-isomorphic-render/webpack'
 
 const configuration = Object.clone(base_configuration)
 

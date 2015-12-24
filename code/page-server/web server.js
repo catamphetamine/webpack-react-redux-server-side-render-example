@@ -3,7 +3,8 @@ import React from 'react'
 import create_store   from '../client/redux/store'
 import markup_wrapper from '../client/markup wrapper'
 
-import webpage_server from '../react-isomorphic-render/page-server/web server'
+import webpage_server from 'react-isomorphic-render/page-server'
+import { assets } from 'react-isomorphic-render/webpack'
 
 import log from '../common/log'
 
@@ -19,7 +20,7 @@ export default function()
 		development_tools: _development_tools_,
 
 		// path to `webpack-assets.json` (which is output by client side Webpack build)
-		webpack_assets_path: _webpack_assets_path_,
+		assets: assets(_webpack_assets_path_, _development_),
 
 		// on which Http host and port to start the webpage rendering server
 		// host: optional

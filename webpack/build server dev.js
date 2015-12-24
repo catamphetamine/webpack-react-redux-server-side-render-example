@@ -1,4 +1,4 @@
-// this babel register call may be removed later when the sources are be moved to an npm module
+// this babel register call is used when require()ing configuration
 require('babel-core/register')
 
 // base Webpack configuration
@@ -8,7 +8,7 @@ const base_configuration = require('./webpack.config')
 const application_configuration = require('../code/common/configuration')
 
 // server-side Webpack build configuration generator
-const build_server = require('../code/react-isomorphic-render/webpack/build server')
+const build_server = require('react-isomorphic-render/webpack').build_server
 
 // the URL at which the assets reside
 const publicPath = 'http://' + application_configuration.development.webpack.development_server.host + ':' + application_configuration.development.webpack.development_server.port + base_configuration.output.publicPath

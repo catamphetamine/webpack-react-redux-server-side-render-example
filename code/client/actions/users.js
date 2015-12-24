@@ -12,7 +12,7 @@ export function get()
 				})
 			})
 		},
-		types: ['retrieving users', 'users retrieved', 'users retrieval failed']
+		events: ['retrieving users', 'users retrieved', 'users retrieval failed']
 	}
 
 	return action
@@ -25,7 +25,7 @@ export function add(info)
 	const action =
 	{
 		promise: http => http.post(`/api/example/users`, info),
-		types: ['adding user', 'user added', 'adding user failed']
+		events: ['adding user', 'user added', 'adding user failed']
 	}
 
 	return action
@@ -36,7 +36,7 @@ export function remove(id)
 	const action =
 	{
 		promise: http => http.delete(`/api/example/users/${id}`),
-		types: ['deleting user', 'user deleted', 'deleting user failed']
+		events: ['deleting user', 'user deleted', 'deleting user failed']
 	}
 
 	return action

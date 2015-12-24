@@ -1,5 +1,5 @@
 import path from 'path'
-import wait_for_file from '../react-isomorphic-render/webpack/wait for file'
+import { wait_for_file } from 'react-isomorphic-render/webpack'
 
 // path to `webpage_rendering_server.js`
 // (which is the entry point for Webpack server-side build)

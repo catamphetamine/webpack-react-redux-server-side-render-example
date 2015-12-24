@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react'
 // testing `flat` styler
 import styler from 'react-styling/flat'
 
-import { webpage_head } from '../../react-isomorphic-render/webpage head'
+import { head } from 'react-isomorphic-render'
 
 import Menu from '../components/menu'
 
@@ -44,7 +44,7 @@ export default class Layout extends Component
 		const markup = 
 		(
 			<div className="content">
-				{webpage_head(title, description, meta)}
+				{head(title, description, meta)}
 
 				{/* header */}
 				<header>

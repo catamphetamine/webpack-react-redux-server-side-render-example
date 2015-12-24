@@ -36,7 +36,7 @@ Half a year passed and then I decided to give a try to the obscure enough [`targ
 Status
 ======
 
-Seems to work. An `npm` module library will be released once I get enough feedback from users (`code/react-isomorphic-render`).
+Seems to work.
 
 If you have any issues running this code you can report them the issue tracker.
 
@@ -53,10 +53,6 @@ Each React page component has a `preload` method which is executed before the pa
 
 To do
 ==========
-
- * Maybe fix [hot module replacement](https://webpack.github.io/docs/hot-module-replacement.html) for Redux reducers in `react-isomorphic-render/redux/store.js`
-
- * Move "react-isomorphic-render" to a separate npm package
 
  * Maybe fix the "Clean webpack did not delete path: ...\webpack-react-redux-isomorphic-render-example\build\assets" error
 
