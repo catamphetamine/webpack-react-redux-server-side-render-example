@@ -16,15 +16,19 @@ export default function()
 		// enable/disable development mode
 		development: _development_,
 
-		// enable/disable Redux dev-tools
-		development_tools: _development_tools_,
-
 		// path to `webpack-assets.json` (which is output by client side Webpack build)
 		assets: assets(_webpack_assets_path_, _development_),
 
 		// on which Http host and port to start the webpage rendering server
 		// host: optional
 		port: configuration.webpage_server.http.port,
+
+		// Http host and port for executing all client-side ajax requests on server-side
+		web_server:
+		{
+			host: configuration.web_server.http.host,
+			port: configuration.web_server.http.port
+		},
 
 		// your custom bunyan log, if any (will default to `console` if none)
 		log: log('webpage renderer'),
@@ -45,10 +49,12 @@ export default function()
 				delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
 			}
 
-			return 
+			const head = 
 			[
 				<link rel="shortcut icon" href={require('../../assets/images/icon/cat_64x64.png')} key="1"/>
 			]
+
+			return head
 		},
 
 		// this CSS will be inserted into server rendered webpage <head/> <style/> tag 

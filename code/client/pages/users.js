@@ -13,6 +13,7 @@ import { preload } from 'react-isomorphic-render/redux'
 (
 	function(get_state, dispatch)
 	{
+		// return Promise.all([dispatch(get_users()), ...])
 		return dispatch(get_users())
 	}
 )
