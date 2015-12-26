@@ -1,6 +1,7 @@
 import React from 'react'
 
 import create_store   from '../client/redux/store'
+import create_routes  from '../client/routes'
 import markup_wrapper from '../client/markup wrapper'
 
 import webpage_server from 'react-isomorphic-render/page-server'
@@ -35,6 +36,9 @@ export default function()
 		
 		// a function to create Redux store
 		create_store,
+
+		// creates React-router routes
+		create_routes,
 		
 		// wraps React page component into arbitrary markup (e.g. Redux Provider)
 		markup_wrapper,

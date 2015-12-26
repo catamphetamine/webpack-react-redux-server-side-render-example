@@ -37,7 +37,7 @@ export default class Page extends Component
 		get_users     : PropTypes.func.isRequired,
 		add_user      : PropTypes.func.isRequired,
 		delete_user   : PropTypes.func.isRequired,
-		users         : PropTypes.array,
+		users         : PropTypes.array.isRequired,
 		loading       : PropTypes.bool,
 		loaded        : PropTypes.bool,
 		stale         : PropTypes.bool,

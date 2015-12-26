@@ -50,7 +50,7 @@
     "react": "^0.14.0",
     "react-document-meta": "^2.0.0",
     "react-dom": "^0.14.0",
-    "react-isomorphic-render": "^1.0.2",
+    "react-isomorphic-render": "^1.1.0",
     "react-redux": "^4.0.0",
     "react-relay": "^0.4.0",
     "react-router": "^1.0.0",
