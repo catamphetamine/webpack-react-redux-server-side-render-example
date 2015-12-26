@@ -11,14 +11,39 @@ import log from '../common/log'
 
 export default function()
 {
+	// returns a function which retrieves assets from `webpack-assets.json` 
+	// (which is output by client side Webpack build)
+	const get_assets = assets(_webpack_assets_path_, _development_)
+
 	// starts webpage rendering server
 	webpage_server
 	({
 		// enable/disable development mode
 		development: _development_,
 
-		// path to `webpack-assets.json` (which is output by client side Webpack build)
-		assets: assets(_webpack_assets_path_, _development_),
+		// Http Urls to javascripts and (optionally) CSS styles 
+		// which will be insterted into the <head/> element of the resulting Html webpage
+		// (as <script src="..."/> and <link rel="style" href="..."/> respectively)
+		//
+		// Also a website "favicon".
+		//
+		assets: () =>
+		{
+			// get Webpack client-side build assets
+			const result = get_assets()
+
+			// clear Webpack require() cache for hot reload in development mode
+			if (_development_)
+			{
+				delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
+			}
+
+			// add "favicon"
+			result.icon = require('../../assets/images/icon/cat_64x64.png')
+
+			// return assets
+			return result
+		},
 
 		// on which Http host and port to start the webpage rendering server
 		// host: optional
@@ -45,25 +70,16 @@ export default function()
 
 		// will be inserted into server rendered webpage <head/>
 		// (use `key`s to prevent React warning)
-		head: () =>
-		{
-			// clear require() cache for hot reload in development mode
-			if (_development_)
-			{
-				delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
-			}
+		// (optional)
+		// head: () => [...]
 
-			const head = 
-			[
-				<link rel="shortcut icon" href={require('../../assets/images/icon/cat_64x64.png')} key="1"/>
-			]
-
-			return head
-		},
+		// extra <body/> content
+		// (optional)
+		// body: () => ...
 
 		// this CSS will be inserted into server rendered webpage <head/> <style/> tag 
 		// (when in development mode only - removes rendering flicker)
-		styles: () =>
+		style: () =>
 		{
 			// clear require() cache for hot reload in development mode
 			if (_development_)

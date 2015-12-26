@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import styler from 'react-styling'
 
-import { title } from 'react-isomorphic-render'
+import { connect } from 'react-redux'
+import styler      from 'react-styling'
+import { title }   from 'react-isomorphic-render'
 
 export default class Page extends Component
 {

@@ -1,22 +1,15 @@
 import React, { Component, PropTypes } from 'react'
-import styler from 'react-styling'
+import styler      from 'react-styling'
 import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
 
 import { get as get_users, add as add_user, remove as delete_user, dismiss_adding_error } from '../actions/users'
 import Button from '../components/button'
 
-import { title } from 'react-isomorphic-render'
+import { title }   from 'react-isomorphic-render'
 import { preload } from 'react-isomorphic-render/redux'
 
-@preload
-(
-	function(get_state, dispatch)
-	{
-		// return Promise.all([dispatch(get_users()), ...])
-		return dispatch(get_users())
-	}
-)
+@preload((dispatch, get_state) => dispatch(get_users()))
 @connect
 (
 	store => 

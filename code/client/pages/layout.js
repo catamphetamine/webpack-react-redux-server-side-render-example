@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
 // testing `flat` styler
-import styler from 'react-styling/flat'
+import styler   from 'react-styling/flat'
 
 import { head } from 'react-isomorphic-render'
 
