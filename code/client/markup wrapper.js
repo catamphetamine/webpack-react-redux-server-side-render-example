@@ -1,17 +1,27 @@
-import React            from 'react'
-import { Provider }     from 'react-redux'
+import React, { Component, PropTypes } from 'react'
+import { Provider }                    from 'react-redux'
 
-export default function markup_wrapper(component, { store })
+export default class Wrapper extends Component
 {
+	static propTypes = 
+	{
+		store     : React.PropTypes.object.isRequired
+	}
+
 	// all React "prop"erty providers go here.
 	// e.g. redux Provider, react-intl IntlProvider.
+	//
+	render()
+	{
+		const { store } = this.props
 
-	const markup = 
-	(
-		<Provider store={store} key="provider">
-			{component}
-		</Provider>
-	)
+		const markup = 
+		(
+			<Provider store={store} key="provider">
+				{this.props.children}
+			</Provider>
+		)
 
-	return markup
+		return markup
+	}
 }
