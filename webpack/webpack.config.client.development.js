@@ -20,8 +20,6 @@ configuration.plugins = configuration.plugins.concat
 			BABEL_ENV: JSON.stringify('development/client')
 		},
 
-		_client_            : true,
-		_server_            : false,
 		_production_        : false,
 		_development_       : true,
 		_development_tools_ : false  // enable/disable redux-devtools

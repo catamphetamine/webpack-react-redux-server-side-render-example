@@ -61,7 +61,7 @@
     "scroll-behavior": "^0.3.0",
     "source-map-support": "^0.4.0",
     "superagent": "^1.2.0",
-    "universal-webpack": "^0.1.0",
+    "universal-webpack": "^0.1.1",
     "warning": "^2.1.0",
     "webpack": "^1.13.1"
   },

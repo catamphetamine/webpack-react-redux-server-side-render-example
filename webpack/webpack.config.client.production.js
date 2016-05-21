@@ -26,8 +26,6 @@ configuration.plugins = configuration.plugins.concat
 			NODE_ENV: JSON.stringify('production') // 'development' to see non-minified React errors
 		},
 
-		_client_            : true,
-		_server_            : false,
 		_development_       : false,
 		_production_        : true,
 		_development_tools_ : false  // enable/disable redux-devtools
