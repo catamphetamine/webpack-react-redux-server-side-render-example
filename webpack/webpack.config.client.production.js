@@ -15,7 +15,7 @@ configuration.devtool = 'source-map'
 configuration.plugins = configuration.plugins.concat
 (
 	// clears the output folder
-	new clean_plugin([path.relative(__dirname, configuration.output.path)]),
+	new clean_plugin([path.relative(configuration.context, configuration.output.path)], { root: configuration.context }),
 
 	// environment variables
 	new webpack.DefinePlugin

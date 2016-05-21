@@ -61,7 +61,7 @@
     "scroll-behavior": "^0.3.0",
     "source-map-support": "^0.4.0",
     "superagent": "^1.2.0",
-    "universal-webpack": "^0.1.1",
+    "universal-webpack": "^0.1.2",
     "warning": "^2.1.0",
     "webpack": "^1.13.1"
   },
@@ -99,7 +99,9 @@
     "webpack-hot-middleware": "^2.5.1"
   },
   "scripts": {
-    "dev": "npm-run-all --parallel development-build-client development-build-server development-server",
+    "dev": "npm-run-all development-prepare-server-build development",
+    "development": "npm-run-all --parallel development-build-client development-build-server development-server",
+    "development-prepare-server-build": "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
     "development-build-client": "node ./webpack/webpack-dev-server.entry.js",
     "development-build-server": "webpack --config ./webpack/webpack.config.server.development.entry.js --watch --colors --display-error-details",
     "development-api-server": "nodemon ./code/api-server/entry.js --watch ./code/api-server --watch ./code/common",
