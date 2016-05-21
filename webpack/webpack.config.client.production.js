@@ -2,13 +2,9 @@ import language from '../code/common/language'
 import path     from 'path'
 
 import webpack             from 'webpack'
-import base_configuration  from './webpack.config'
+import base_configuration  from './webpack.config.client'
 import clean_plugin        from 'clean-webpack-plugin'
 import extract_text_plugin from 'extract-text-webpack-plugin'
-
-import { plugin as react_isomorphic_render_plugin } from 'react-isomorphic-render/webpack'
-
-import { build_server as server } from 'react-isomorphic-render/webpack'
 
 const configuration = Object.clone(base_configuration)
 
@@ -63,9 +59,7 @@ configuration.plugins = configuration.plugins.concat
 		{
 			warnings: false
 		}
-	}),
-
-	new react_isomorphic_render_plugin()
+	})
 )
 
 // // don't know why they write it like this
@@ -96,5 +90,4 @@ delete scss_loader.loaders
 
 // done: set extract text plugin as a Css loader
 
-const webpage_rendering_server = './code/page-server/web server.js'
-export default [configuration, server(base_configuration , { webpage_rendering_server })] // { output_path: server_output_path })]
+export default configuration

@@ -5,16 +5,11 @@ import create_routes  from '../client/routes'
 import markup_wrapper from '../client/markup wrapper'
 
 import webpage_server from 'react-isomorphic-render/page-server'
-import { assets } from 'react-isomorphic-render/webpack'
 
 import log from '../common/log'
 
-export default function()
+export default function(parameters)
 {
-	// returns a function which retrieves assets from `webpack-assets.json` 
-	// (which is output by client side Webpack build)
-	const get_assets = assets(_webpack_assets_path_, _development_)
-
 	// starts webpage rendering server
 	webpage_server
 	({
@@ -29,8 +24,9 @@ export default function()
 		//
 		assets: () =>
 		{
-			// get Webpack client-side build assets
-			const result = get_assets()
+			// retrieves asset chunk file names
+			// (which is output by client side Webpack build)
+			const result = clone(parameters.chunks())
 
 			// clear Webpack require() cache for hot reload in development mode
 			if (_development_)

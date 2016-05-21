@@ -1,21 +1,13 @@
 import language from '../code/common/language'
 
-import express from 'express'
-
-import path from 'path'
-
 import webpack                         from 'webpack'
-import base_configuration              from './webpack.config'
-
-import { plugin as react_isomorphic_render_plugin } from 'react-isomorphic-render/webpack'
+import base_configuration              from './webpack.config.client'
 
 import application_configuration from '../code/common/configuration'
 
 const configuration = Object.clone(base_configuration)
 
-// const server_output_path = path.resolve(configuration.output.path, '../server')
-
-configuration.devtool = 'inline-source-map'
+configuration.devtool = 'inline-eval-cheap-source-map'
 
 configuration.plugins = configuration.plugins.concat
 (
@@ -39,9 +31,7 @@ configuration.plugins = configuration.plugins.concat
 	new webpack.HotModuleReplacementPlugin(),
 
 	// // extracts common javascript into a separate file (works)
-	// new webpack.optimize.CommonsChunkPlugin('common', 'common.[hash].js'),
-
-	new react_isomorphic_render_plugin()
+	// new webpack.optimize.CommonsChunkPlugin('common', 'common.[hash].js')
 )
 
 // enable webpack development server
@@ -104,40 +94,4 @@ extend(javascript_loader.query,
 	}
 })
 
-// http://webpack.github.io/docs/webpack-dev-server.html
-const development_server_options = 
-{
-	quiet       : true, // don’t output anything to the console
-	noInfo      : true, // suppress boring information
-	hot         : true, // adds the HotModuleReplacementPlugin and switch the server to hot mode. Note: make sure you don’t add HotModuleReplacementPlugin twice
-	inline      : true, // also adds the webpack/hot/dev-server entry
-
-	// You can use it in two modes:
-	// watch mode (default): The compiler recompiles on file change.
-	// lazy mode: The compiler compiles on every request to the entry point.
-	lazy        : false, 
-
-	// network path for static files: fetch all statics from webpack development server
-	publicPath  : configuration.output.publicPath,
-
-	headers     : { "Access-Control-Allow-Origin": "*" },
-	stats       : { colors: true }
-}
-
-const compiler = webpack(configuration)
-
-const development_server = new express()
-
-development_server.use(require('webpack-dev-middleware')(compiler, development_server_options))
-development_server.use(require('webpack-hot-middleware')(compiler))
-
-development_server.listen(application_configuration.development.webpack.development_server.port, (error) =>
-{
-	if (error) 
-	{
-		console.error(error.stack || error)
-		throw error
-	}
-
-	console.log('[webpack-dev-server] Running')
-})
+export default configuration
