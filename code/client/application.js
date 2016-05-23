@@ -11,8 +11,7 @@ import markup_wrapper from './markup wrapper'
 import create_store   from './redux/store'
 import create_routes  from './routes'
 
-// styles need to be included on the client side
-require.include('../../assets/styles/style.scss')
+require('../../assets/styles/style.scss')
 
 // renders the webpage on the client side
 render
