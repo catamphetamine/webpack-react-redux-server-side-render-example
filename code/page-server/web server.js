@@ -85,7 +85,6 @@ export default function(parameters)
 
 			// The `.source[0][1]` in the end is caused by `fake-style-loader`.
 			// https://github.com/dferber90/fake-style-loader/issues/1
-			console.log(require('../../assets/styles/style.scss'))
 			return require('../../assets/styles/style.scss').source[0][1]
 		}
 	})
