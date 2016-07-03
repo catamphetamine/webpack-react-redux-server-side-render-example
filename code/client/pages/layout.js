@@ -22,15 +22,18 @@ export default class Layout extends Component
 		const description = 'A generic web application boilerplate'
 
 		const meta =
-		{
-			charSet: 'utf-8',
-			property:
-			{
-				'og:site_name': title,
-				'og:title': title,
-				'og:description': description
-			}
-		}
+		[
+			// <meta charset="utf-8"/>
+			{ charset: 'utf-8' },
+
+			// <meta name="..." content="..."/>
+			{ name: 'viewport', content: 'width=device-width, initial-scale=1.0, user-scalable=no' },
+
+			// <meta property="..." content="..."/>
+			{ property: 'og:title',       content: 'International Bodybuilders Club' },
+			{ property: 'og:description', content: 'Do some push ups' },
+			{ property: 'og:locale',      content: 'ru-RU' }
+		]
 
 		const menu_items =
 		[{
@@ -44,7 +47,7 @@ export default class Layout extends Component
 		const markup = 
 		(
 			<div className="content">
-				{head(title, description, meta)}
+				{head(title, meta)}
 
 				{/* header */}
 				<header>
