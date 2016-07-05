@@ -7,9 +7,7 @@ import ReactDOM       from 'react-dom'
 
 import { render } from 'react-isomorphic-render/redux'
 
-import markup_wrapper from './markup wrapper'
-import create_store   from './redux/store'
-import create_routes  from './routes'
+import common from './react-isomorphic-render'
 
 require('../../assets/styles/style.scss')
 
@@ -20,14 +18,6 @@ render
 	development: _development_,
 
 	// enable/disable Redux dev-tools
-	development_tools: _development_tools_,
-
-	// creates Redux store
-	create_store,
-
-	// creates React-router routes
-	create_routes,
-
-	// wraps React page component into arbitrary markup (e.g. Redux Provider)
-	markup_wrapper
-})
+	development_tools: true
+},
+common)

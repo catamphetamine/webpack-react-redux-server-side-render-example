@@ -1,16 +1,16 @@
 {
-	"stage"    : 0,
-	"optional" : ["runtime"],
-	"loose"    : "all",
+	"presets":
+	[
+		"react", 
+		"es2015", 
+		"stage-0"
+	],
+
 	"plugins":
 	[
-		"typecheck"
-	],
-	"env":
-	{
-		"production":
-		{
-			"optional": ["optimisation.react.inlineElements", "optimisation.react.constantElements"]
-		}
-	}
+		"transform-runtime",
+		"add-module-exports",
+		"transform-decorators-legacy",
+		"transform-react-display-name"
+	]
 }

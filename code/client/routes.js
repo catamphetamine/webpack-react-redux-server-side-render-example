@@ -7,7 +7,7 @@ import Not_found        from './pages/not found'
 import Users            from './pages/users'
 import Home             from './pages/home'
 
-export default function(store)
+export default function() // ({ store })
 {
 	const routes =
 	(

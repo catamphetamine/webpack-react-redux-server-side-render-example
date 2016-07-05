@@ -5,7 +5,7 @@ export default class Wrapper extends Component
 {
 	static propTypes = 
 	{
-		store     : React.PropTypes.object.isRequired
+		store : React.PropTypes.object.isRequired
 	}
 
 	// all React "prop"erty providers go here.
@@ -17,7 +17,7 @@ export default class Wrapper extends Component
 
 		const markup = 
 		(
-			<Provider store={store} key="provider">
+			<Provider store={store}>
 				{this.props.children}
 			</Provider>
 		)

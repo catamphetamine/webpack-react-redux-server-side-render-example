@@ -52,44 +52,22 @@ const javascript_loader = configuration.module.loaders.filter(loader =>
 javascript_loader.query = javascript_loader.query || {}
 
 javascript_loader.query.plugins = javascript_loader.query.plugins || []
-javascript_loader.query.plugins.push('react-transform')
 
-extend(javascript_loader.query,
-{
-	extra:
+javascript_loader.query.plugins = javascript_loader.query.plugins.concat
+([[
+	'react-transform',
 	{
-		'react-transform':
+		transforms: 
+		[{
+			transform : 'react-transform-catch-errors',
+			imports   : ['react', 'redbox-react']
+		},
 		{
-			transforms:
-			[{
-				transform : 'react-transform-hmr',
-				imports   : ['react'],
-				locals    : ['module']
-			},
-			{
-				"transform": "react-transform-catch-errors",
-				
-				"imports":
-				[
-					// the first import is your React distribution
-					// (if you use React Native, pass "react-native" instead)
-
-					"react",
-
-					// the second import is the React component to render error
-					// (it can be a local path too, like "./src/ErrorReporter")
-
-					"redbox-react",
-
-					// the third import is OPTIONAL!
-					// when specified, its export is used as options to the reporter.
-					// see specific reporter's docs for the options it needs.
-
-					// "./src/reporterOptions"
-				]
-			}]
-		}
+			transform : 'react-transform-hmr',
+			imports   : ['react'],
+			locals    : ['module']
+		}]
 	}
-})
+]])
 
 export default configuration

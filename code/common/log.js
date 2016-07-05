@@ -7,8 +7,6 @@ import moment        from 'moment'
 import Error_printer from 'pretty-error'
 import levels        from './log levels'
 
-import { client as tcp_client } from './tcp'
-
 const error_printer = new Error_printer()
 
 function print_error(error)
