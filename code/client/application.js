@@ -18,6 +18,6 @@ render
 	development: _development_,
 
 	// enable/disable Redux dev-tools
-	development_tools: true
+	development_tools: _development_tools_
 },
 common)
