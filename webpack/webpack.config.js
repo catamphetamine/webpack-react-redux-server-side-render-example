@@ -3,6 +3,8 @@
 var path         = require('path')
 var webpack      = require('webpack')
 
+var autoprefixer  = require('autoprefixer')
+
 // project folder
 var root_folder = path.resolve(__dirname, '..')
 
@@ -63,7 +65,7 @@ var configuration =
 				[
 					'style-loader',
 					'css-loader?importLoaders=2&sourceMap',
-					'autoprefixer-loader?browsers=last 2 version',
+					'postcss-loader',
 					'sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true'
 				]
 			},
@@ -79,6 +81,8 @@ var configuration =
 
 	// maybe some kind of a progress bar during compilation
 	progress: true,
+
+	postcss: () => [autoprefixer({ browsers: 'last 2 version' })],
 
 	resolve:
 	{

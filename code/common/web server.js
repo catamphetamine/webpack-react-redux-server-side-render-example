@@ -6,9 +6,7 @@ import koa_router   from 'koa-router'
 import koa_logger   from 'koa-bunyan'
 import compress     from 'koa-compress'
 import statics      from 'koa-static'
-import koa_locale   from 'koa-locale'
-import koa_proxy    from 'koa-proxy'
-import busboy       from 'co-busboy'
+import http_proxy   from 'http-proxy'
 
 import path from 'path'
 import fs   from 'fs-extra'
@@ -22,9 +20,6 @@ import https from 'https'
 //
 // compress            - tar/gz response data
 //
-// extract_locale      - extracts locale from Http Request headers 
-//                       and places it into this.locale
-//
 // session             - tracks user session
 //
 // parse_post_requests - parse Http Post requests body
@@ -34,14 +29,7 @@ import https from 'https'
 //
 // log                 - bunyan log instance
 //
-// csrf                - enables protection against Cross Site Request Forgery attacks
-//                       (pending)
-//
 // returns an object with properties:
-//
-//   shut_down()   - gracefully shuts down the server (pending)
-//
-//   connections() - returns currently open connections count (not tested)
 //
 //   errors        - a set of common Http errors
 //
@@ -49,19 +37,6 @@ import https from 'https'
 //     Access_denied
 //     Not_found
 //     Input_missing
-//
-//   file_upload() - enables file upload functionality
-//
-//     parameters:
-//
-//       path           - the URL path to mount this middleware at (defaults to /)
-//
-//       output_folder  - where to write the files
-//
-//       root_folder    - Http response will contain file_name (or file_names) 
-//                        relative to this folder
-//
-//       multiple_files - set this flag to true in case of multiple file upload
 //
 //   serve_static_files() - enables serving static files
 //
@@ -111,6 +86,7 @@ export default function web_server(options = {})
 		web.use(compress())
 	}
 
+	// Can output incoming HTTP requests to `log`
 	if (options.log)
 	{
 		web.use(koa_logger(log,
@@ -124,19 +100,6 @@ export default function web_server(options = {})
 		}))
 	}
 
-	if (options.extract_locale)
-	{
-		// get locale from http headers
-		koa_locale(web, 'locale')
-
-		// usage:
-		//
-		// .use(function*()
-		// {
-		// 	const preferred_locale = this.getLocaleFromQuery() || this.getLocaleFromCookie() || this.getLocaleFromHeader() || 'en'
-		// })
-	}
-
 	// Set up session middleware
 	web.keys = configuration.session_secret_keys
 
@@ -145,6 +108,7 @@ export default function web_server(options = {})
 		web.use(session(web))
 	}
 
+	// `body_parser` should not be enabled for file upload (with `co-busboy`)
 	if (options.parse_post_requests)
 	{
 		// Set up http post request handling.
@@ -152,55 +116,20 @@ export default function web_server(options = {})
 		web.use(body_parser({ formLimit: '100mb' }))
 	}
 
-	if (options.csrf)
-	{
-		// Cross Site Request Forgery protection
-		//
-		// также: в api client'е при любом запросе выставлять заголовок X-Csrf-Token = csrf token cookie.
-		//
-		// // Cross Site Request Forgery token check
-		// web.use(function* (next)
-		// {
-		// 	// on login:
-		// 	import crypto from 'crypto'
-		// 	const hmac = crypto.createHmac('sha1', configuration.session_secret_keys.first())
-		// 	hmac.update(this.session)
-		// 	this.cookies.set('csrf-token', hmac.digest('hex'))
-		//
-		// 	// else, if logged in
-		// 	if (this.get('X-Csrf-Token') !== this.cookies.get('csrf-token'))
-		// 	{
-		// 			throw new Errors.Access_denied(`Cross Site Request Forgery token mismatch. Expected "csrf-token" cookie value ${this.cookies.get('csrf-token')} to equal "X-Csrf-Token" header value ${this.get('X-Csrf-Token')}`)
-		// 	}
-		// })
-	}
-
 	if (options.routing)
 	{
 		const router = koa_router()
 
-		// supports routing
+		// REST routing
 		//
 		// usage: web.get('/path', parameters => 'Echo')
 		for (let method of ['get', 'put', 'patch', 'post', 'delete'])
 		{
-			// if (web[method])
-			// {
-			// 	throw new Error(`Method web.${method}() already exists in this Koa application instance. Cannot override.`)
-			// }
-
 			result[method] = function(path, action)
 			{
 				router[method](path, function*(next)
 				{
 					const result = action({ ...this.request.body, ...this.query, ...this.params })
-
-					// http://habrahabr.ru/company/yandex/blog/265569/
-					switch (method)
-					{
-						case 'delete':
-							this.status = 204 // nothing to be returned
-					}
 
 					if (result instanceof Promise)
 					{
@@ -241,57 +170,6 @@ export default function web_server(options = {})
 		}
 	})
 
-	// server shutting down flag
-	let shut_down = false
-
-	// in case of maintenance
-	web.use(function*(next)
-	{
-		if (shut_down)
-		{
-			this.status = 503
-			this.message = 'The server is shutting down for maintenance'
-		}
-		else
-		{
-			yield next
-		}
-	})
-
-	result.shut_down = function()
-	{
-		shut_down = true
-	}
-
-	let connections = 0
-
-	result.connections = function()
-	{
-		return connections
-	}
-
-	// // log all errors
-	// web.on('error', function(error, context)
-	// {
-	// 	log.error(error, context)
-	// })
-
-	// if (web.file_upload)
-	// {
-	// 	throw new Error(`Method web.file_upload() already exists in this Koa application instance. Cannot override.`)
-	// }
-	
-	// can handle file uploads
-	result.file_upload = function({ path = '/', output_folder, root_folder, multiple_files = false })
-	{
-		web.use(mount(path, file_upload_middleware(output_folder, root_folder, multiple_files, options.log)))
-	}
-
-	// if (web.errors)
-	// {
-	// 	throw new Error(`Variable web.errors already exists in this Koa application instance. Cannot override.`)
-	// }
-
 	// standard Http errors
 	result.errors = 
 	{
@@ -311,7 +189,7 @@ export default function web_server(options = {})
 		})))
 	}
 
-	// runs http server
+	// Runs the HTTP server
 	result.listen = (port, host = '0.0.0.0') =>
 	{
 		return new Promise((resolve, reject) =>
@@ -323,6 +201,8 @@ export default function web_server(options = {})
 				this.status = 404
 				this.message = `The requested resource not found: ${this.method} ${this.url}`
 				
+				// Reduces noise in the `log` in case of errors
+				// (browsers query '/favicon.ico' automatically)
 				if (this.path !== '/favicon.ico')
 				{
 					log.error(this.message)
@@ -359,8 +239,6 @@ export default function web_server(options = {})
 
 				resolve()
 			})
-			.on('connection', () => connections++)
-			.on('close', () => connections--)
 		})
 	}
 
@@ -376,96 +254,63 @@ export default function web_server(options = {})
 	// can proxy http requests
 	result.proxy = (from, to) =>
 	{
-		if (exists(to))
+		if (!exists(to))
 		{
-			web.use(mount(from, koa_proxy({ host: to })))
+			to = from
+			from = undefined
+		}
+
+		const proxy = http_proxy.createProxyServer({})
+
+		function proxy_middleware(to)
+		{
+			return function*()
+			{
+				const promise = new Promise((resolve, reject) =>
+				{
+					this.res.on('close', () =>
+					{
+						reject(new Error(`Http response closed while proxying ${this.url} to ${to}`))
+					})
+
+					this.res.on('finish', () =>
+					{
+						resolve()
+					})
+
+					// proxy.webAsync() won't work here,
+					// because the last parameter is not a "callback",
+					// it's just an error handler.
+					// https://github.com/nodejitsu/node-http-proxy/issues/951
+					proxy.web(this.req, this.res, { target: to }, error =>
+					{
+						// usually errors with "Parse error" which is useless
+
+						// error.proxy_error = true
+						// error.proxy_to = to
+
+						console.error('Proxying failed')
+						reject(error)
+
+						// response.writeHead(502)
+						// response.end("There was an error proxying your request")
+					})
+				})
+
+				yield promise
+			}
+		}
+
+		if (from)
+		{
+			web.use(mount(from, proxy_middleware(to)))
 		}
 		else
 		{
-			to = from
-			web.use(koa_proxy({ host: to }))
+			web.use(proxy_middleware(to))
 		}
 	}
 
 	// done
 	return result
-}
-
-// handles file upload
-function file_upload_middleware(output_folder, root_folder, multiple_files, log)
-{
-	return function*(next)
-	{
-		if (!this.is('multipart/form-data'))
-		{
-			const error = new Error(`This is supposed to be a "multipart/form-data" http request`)
-			error.code = 404
-			throw error
-		}
-
-		function generate_unique_filename(folder)
-		{
-			return new Promise((resolve, reject) =>
-			{
-				const file_name = Math.random().toString().slice(2)
-
-				fs.existsAsync(path.join(folder, file_name)).then(exists =>
-				{
-					resolve(file_name)
-				},
-				error =>
-				{
-					reject(error)
-				})
-			})
-		}
-
-		const files = busboy(this)
-
-		const file_names = []
-
-		let file
-
-		while (file = yield files)
-		{
-			if (log)
-			{
-				log.debug(`Uploading: ${file.filename}`)
-			}
-
-			if (!multiple_files && file_names.not_empty())
-			{
-				throw new Error(`Multiple files are being uploaded to a single file upload endpoint`)
-			}
-				
-			const file_name = yield generate_unique_filename(output_folder)
-			const output_file = path.join(output_folder, file_name)
-
-			yield new Promise((resolve, reject) =>
-			{
-				const stream = fs.createOutputStream(output_file)
-				file.pipe(stream).on('finish', function()
-				{
-					resolve(path.relative(root_folder, output_file))
-				})
-				.on('error', function(error)
-				{
-					reject(error)
-				})
-			})
-			.then(path =>
-			{
-				file_names.push(file_name)
-			})
-		}
-
-		if (multiple_files)
-		{
-			return this.body = { file_names: file_names }
-		}
-		else
-		{
-			return this.body = { file_name: file_names[0] }
-		}
-	}
 }
