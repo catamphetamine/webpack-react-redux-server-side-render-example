@@ -1,8 +1,8 @@
-import path          from 'path'
+import path from 'path'
 
-import web_server from '../common/web server'
+import web_service from 'web-service'
 
-const web = web_server()
+const web = web_service({ log })
 
 // serve static files
 web.serve_static_files('/assets', path.join(Root_folder, 'build', 'assets'))

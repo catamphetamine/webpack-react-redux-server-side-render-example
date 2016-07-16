@@ -3,74 +3,79 @@
 // For debugging you can use "Advanced REST Client" for Google Chrome:
 // https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo
 
+import { errors } from 'web-service'
+
 const users = new Map()
 let id_counter = 0
 
-api.get('/example/users', function()
+export default function(api)
 {
-	return Array.from(users.keys())
-})
-
-api.get('/example/users/:id', function({ id })
-{
-	if (!users.has(id))
+	api.get('/example/users', function()
 	{
-		throw new Errors.Not_found(`User ${id} not found`)
-	}
-	
-	return { ...users.get(id), id: id }
-})
+		return Array.from(users.keys())
+	})
 
-api.post('/example/users', function({ name })
-{
-	if (!exists(name))
+	api.get('/example/users/:id', function({ id })
 	{
-		throw new Errors.Input_missing(`"name" not specified`)
-	}
+		if (!users.has(id))
+		{
+			throw new errors.Not_found(`User ${id} not found`)
+		}
+		
+		return { ...users.get(id), id: id }
+	})
 
-	id_counter++
-	const id = String(id_counter)
-
-	users.set(id, { name: name })
-
-	return id
-})
-
-api.patch('/example/users/:id', function({ id, name })
-{
-	// throw new Error(123)
-
-	if (!users.has(id))
+	api.post('/example/users', function({ name })
 	{
-		throw new Errors.Not_found(`User ${id} not found`)
-	}
+		if (!exists(name))
+		{
+			throw new errors.Input_missing(`"name" not specified`)
+		}
 
-	users.get(id).name = name
-})
+		id_counter++
+		const id = String(id_counter)
 
-api.delete('/example/users/:id', function({ id })
-{
-	// throw new Error(123)
+		users.set(id, { name: name })
 
-	if (!users.has(id))
+		return id
+	})
+
+	api.patch('/example/users/:id', function({ id, name })
 	{
-		throw new Errors.Not_found(`User ${id} not found`)
-	}
-	
-	users.delete(id)
-})
+		// throw new Error(123)
 
-api.post('/example/users/:id/picture', function({ id, file_name })
-{
-	// testing uploading image spinner
-	// return new Promise((resolve) => setTimeout(resolve, 3000))
+		if (!users.has(id))
+		{
+			throw new errors.Not_found(`User ${id} not found`)
+		}
 
-	// throw new Error(123)
+		users.get(id).name = name
+	})
 
-	if (!users.has(id))
+	api.delete('/example/users/:id', function({ id })
 	{
-		throw new Errors.Not_found(`User ${id} not found`)
-	}
+		// throw new Error(123)
 
-	users.get(id).picture = file_name
-})
+		if (!users.has(id))
+		{
+			throw new errors.Not_found(`User ${id} not found`)
+		}
+		
+		users.delete(id)
+	})
+
+	api.post('/example/users/:id/picture', function({ id, file_name })
+	{
+		// testing uploading image spinner
+		// return new Promise((resolve) => setTimeout(resolve, 3000))
+
+		// throw new Error(123)
+
+		if (!users.has(id))
+		{
+			throw new errors.Not_found(`User ${id} not found`)
+		}
+
+		users.get(id).picture = file_name
+	})
+}
