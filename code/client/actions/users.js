@@ -2,15 +2,10 @@ export function get()
 {
 	const action =
 	{
-		promise: http =>
+		promise: async http =>
 		{
-			return http.get('/api/example/users').then(ids =>
-			{
-				return Promise.map(ids, id =>
-				{
-					return http.get(`/api/example/users/${id}`)
-				})
-			})
+			const user_ids = await http.get('/api/example/users')
+			return Promise.all(user_ids.map(id => http.get(`/api/example/users/${id}`)))
 		},
 		events: ['retrieving users', 'users retrieved', 'users retrieval failed']
 	}
