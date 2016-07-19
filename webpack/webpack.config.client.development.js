@@ -1,15 +1,15 @@
 import language from '../code/common/language'
 
-import webpack                         from 'webpack'
-import base_configuration              from './webpack.config.client'
+import webpack from 'webpack'
+import base_configuration from './webpack.config.client'
 
 import application_configuration from '../code/common/configuration'
 
-const configuration = Object.clone(base_configuration)
+const configuration = base_configuration({ development: true })
 
 configuration.devtool = 'inline-eval-cheap-source-map'
 
-configuration.plugins = configuration.plugins.concat
+configuration.plugins.push
 (
 	// environment variables
 	new webpack.DefinePlugin
