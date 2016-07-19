@@ -6,7 +6,7 @@ import base_configuration  from './webpack.config.client'
 import clean_plugin        from 'clean-webpack-plugin'
 import extract_text_plugin from 'extract-text-webpack-plugin'
 
-const configuration = base_configuration({ development: false })
+const configuration = base_configuration()
 
 // const server_output_path = path.resolve(configuration.output.path, '../server')
 

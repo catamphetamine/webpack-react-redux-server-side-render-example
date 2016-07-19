@@ -79,14 +79,14 @@ export default function(parameters)
 
 						if (stylesheets.length > 1)
 						{
-							// Waits a "magic" time amount of 3 seconds
+							// Waits a "magic" time amount of 2 seconds
 							// for the dynamically added stylesheets
 							// to be parsed and applied to the page.
 							setTimeout(function()
 							{
 								stylesheets[0].parentNode.removeChild(stylesheets[0])
 							},
-							3000)
+							2000)
 						}
 						else
 						{

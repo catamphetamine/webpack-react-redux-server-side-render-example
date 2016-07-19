@@ -5,7 +5,7 @@ import base_configuration from './webpack.config.client'
 
 import application_configuration from '../code/common/configuration'
 
-const configuration = base_configuration({ development: true })
+const configuration = base_configuration({ development: true, css_bundle: true })
 
 configuration.devtool = 'inline-eval-cheap-source-map'
 
