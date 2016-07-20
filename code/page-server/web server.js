@@ -11,9 +11,6 @@ export default function(parameters)
 	// starts webpage rendering server
 	const server = webpage_server
 	({
-		// enable/disable development mode
-		development: _development_,
-
 		// Http Urls to javascripts and (optionally) CSS styles 
 		// which will be insterted into the <head/> element of the resulting Html webpage
 		// (as <script src="..."/> and <link rel="style" href="..."/> respectively)

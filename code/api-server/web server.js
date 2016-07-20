@@ -7,7 +7,6 @@ const api_service = api
 ({
 	name : 'Example API service',
 	api  : [require('./api/example')],
-	development: _development_,
 	log
 })
 
