@@ -48,7 +48,7 @@
     "sass-loader": "^3.1.2",
     "source-map-support": "^0.4.0",
     "style-loader": "^0.12.4",
-    "universal-webpack": "^0.1.28",
+    "universal-webpack": "^0.1.30",
     "url-loader": "^0.5.5",
     "web-service": "^0.1.3",
     "webpack": "^1.13.1"
