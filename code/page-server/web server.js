@@ -18,25 +18,26 @@ export default function(parameters)
 		//
 		// Also a website "favicon".
 		//
-		assets: () =>
+		assets: (url) =>
 		{
-			// retrieves asset chunk file names
-			// (which is output by client side Webpack build)
+			// Retrieve asset chunk file names
+			// (which are output by client side Webpack build)
 			const result = clone(parameters.chunks())
 
-			// Webpack entry point (code splitting)
+			// Webpack entry point (can be used for code splitting)
 			result.entry = 'main'
 
-			// clear Webpack require() cache for hot reload in development mode
+			// Clear Webpack require() cache for hot reload in development mode
+			// (this is not necessary)
 			if (_development_)
 			{
 				delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
 			}
 
-			// add "favicon"
+			// Add "favicon"
 			result.icon = require('../../assets/images/icon/cat_64x64.png')
 
-			// return assets
+			// Return assets
 			return result
 		},
 
@@ -50,13 +51,14 @@ export default function(parameters)
 		// Will be inserted into server rendered webpage <head/>
 		// (this `head()` function is optional and is not required)
 		// (its gonna work with or without this `head()` parameter)
-		head: () =>
+		head: (url) =>
 		{
 			if (_development_)
 			{
 				// `devtools` just tampers with CSS styles a bit.
 				// It's not required for operation and can be omitted.
-				return <script dangerouslySetInnerHTML={{ __html: devtools }}/>
+				const script = devtools({ ...parameters, entry: 'main' })
+				return <script dangerouslySetInnerHTML={{ __html: script }}/>
 			}
 		}
 	},

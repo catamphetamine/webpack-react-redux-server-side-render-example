@@ -40,7 +40,7 @@
     "pretty-error": "^1.1.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-isomorphic-render": "^4.0.1",
+    "react-isomorphic-render": "^4.0.12",
     "react-redux": "^4.0.0",
     "react-router": "^2.4.1",
     "react-styling": "^1.3.0",
@@ -48,7 +48,7 @@
     "sass-loader": "^3.1.2",
     "source-map-support": "^0.4.0",
     "style-loader": "^0.12.4",
-    "universal-webpack": "^0.1.30",
+    "universal-webpack": "^0.1.31",
     "url-loader": "^0.5.5",
     "web-service": "^0.1.3",
     "webpack": "^1.13.1"

@@ -42,7 +42,8 @@ configuration.entry.main =
 // network path for static files: fetch all statics from webpack development server
 configuration.output.publicPath = `http://${application_configuration.development.webpack.development_server.host}:${application_configuration.development.webpack.development_server.port}${configuration.output.publicPath}`
 
-// add react-hot-loader to react components' loaders
+// Add React Hot Module Replacement plugin to `babel-loader`
+
 const javascript_loader = configuration.module.loaders.filter(loader =>
 {
 	return loader.test.toString() === configuration.regular_expressions.javascript.toString()
