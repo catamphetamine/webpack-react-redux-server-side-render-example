@@ -8,7 +8,7 @@ const log = Log('webpage renderer')
 
 export default function(parameters)
 {
-	// starts webpage rendering server
+	// Starts webpage rendering server
 	const server = webpage_server
 	({
 		// Http Urls to javascripts and (optionally) CSS styles 
@@ -46,11 +46,17 @@ export default function(parameters)
 			port: configuration.web_server.http.port
 		},
 
-		// will be inserted into server rendered webpage <head/>
-		// (use `key`s to prevent React warning)
-		// (optional)
+		// Will be inserted into server rendered webpage <head/>
+		// (this `head()` function is optional and is not required)
+		// (its gonna work with or without this `head()` parameter)
 		head: () =>
 		{
+			// The following code is an advanced topic
+			// and can be skipped safely.
+			// This code is not required
+			// for the whole thing to work.
+			// It's gonna work fine without this code.
+			//
 			// (in development mode)
 			//
 			// Removing the now unnecessary `<link rel="stylesheet"/>` tag,
@@ -74,6 +80,10 @@ export default function(parameters)
 					{
 						const stylesheets = document.querySelectorAll('head link[rel="stylesheet"]')
 
+						// If `style-loader` has already added <link/>s 
+						// to its dynamic hot-reloadable styles,
+						// then remove the <link/> to the static CSS bundle
+						// inserted during server side page rendering.
 						if (stylesheets.length > 1)
 						{
 							// Waits a "magic" time amount of 2 seconds
@@ -95,10 +105,6 @@ export default function(parameters)
 				return <script dangerouslySetInnerHTML={{ __html: script }}/>
 			}
 		}
-
-		// extra <body/> content
-		// (optional)
-		// body: () => ...
 	},
 	common)
 
