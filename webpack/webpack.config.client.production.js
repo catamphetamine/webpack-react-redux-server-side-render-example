@@ -4,26 +4,14 @@ import path     from 'path'
 import webpack             from 'webpack'
 import base_configuration  from './webpack.config.client'
 import clean_plugin        from 'clean-webpack-plugin'
-import extract_text_plugin from 'extract-text-webpack-plugin'
 
-const configuration = base_configuration()
-
-// const server_output_path = path.resolve(configuration.output.path, '../server')
+// With `development: false` all CSS will be extracted into a file
+// named '[name]-[contenthash].css' using `extract-text-webpack-plugin`
+// (this behaviour can be disabled with `css_bundle: false`)
+// (the filename can be customized with `css_bundle: "filename.css"`)
+const configuration = base_configuration({ development: false })
 
 configuration.devtool = 'source-map'
-
-// Extracts CSS into a separate file.
-//
-// It moves every require("style.css") in entry chunks into a separate css output file. 
-// So your styles are no longer inlined into the javascript, but separate 
-// in a css bundle file (styles.css). If your total stylesheet volume is big, 
-// it will be faster because the stylesheet bundle is loaded in parallel to the javascript bundle.
-// (but it also disables hot module reload)
-//
-// "allChunks: true" option means that the styles from all chunks
-// (think "entry points") will be extracted into a single big CSS file.
-//
-const extract_css = new extract_text_plugin('[name]-[contenthash].css', { allChunks: true })
 
 configuration.plugins = configuration.plugins.concat
 (
@@ -43,9 +31,6 @@ configuration.plugins = configuration.plugins.concat
 		_production_        : true,
 		_development_tools_ : false  // enable/disable redux-devtools
 	}),
-
-	// Extract all CSS into a file
-	extract_css,
 
 	// Omit duplicate modules
 	new webpack.optimize.DedupePlugin(),
@@ -67,33 +52,5 @@ configuration.plugins = configuration.plugins.concat
 		}
 	})
 )
-
-// // don't know why they write it like this
-// configuration.output.filename = '[name]-[chunkhash].js'
-
-// begin: set extract text plugin as a Css loader
-
-// find the styles loader
-const scss_loader = configuration.module.loaders.filter(loader =>
-{
-	return loader.test.toString() === configuration.regular_expressions.styles.toString()
-})
-.first()
-
-// https://github.com/webpack/extract-text-webpack-plugin
-//
-// It moves every require("style.css") in entry chunks into a separate css output file. 
-// So your styles are no longer inlined into the javascript, but separate 
-// in a css bundle file (styles.css). If your total stylesheet volume is big, 
-// it will be faster because the stylesheet bundle is loaded in parallel to the javascript bundle.
-// (but it also disables hot module reload)
-//
-// the first argument to the .extract() function is the name of the loader 
-// ("style-loader" in this case) to be applied to non-top-level-chunks in case of "allChunks: false" option.
-// since in this configuration "allChunks: true" option is used, this first argument is irrelevant.
-scss_loader.loader = extract_css.extract(scss_loader.loaders.shift(), scss_loader.loaders)
-delete scss_loader.loaders
-
-// done: set extract text plugin as a Css loader
 
 export default configuration
