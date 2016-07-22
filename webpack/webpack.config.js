@@ -1,9 +1,8 @@
 // This is the base Webpack configuration file
 
-var path         = require('path')
-var webpack      = require('webpack')
-
-var autoprefixer  = require('autoprefixer')
+var path = require('path')
+var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
 
 // project folder
 var root_folder = path.resolve(__dirname, '..')
