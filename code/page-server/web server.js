@@ -1,5 +1,5 @@
 import React from 'react'
-import webpage_server from 'react-isomorphic-render/page-server'
+import webpage_server from 'react-isomorphic-render/server'
 import { devtools } from 'universal-webpack'
 
 import common from '../client/react-isomorphic-render'
@@ -48,17 +48,20 @@ export default function(parameters)
 			port: configuration.web_server.http.port
 		},
 
-		// Will be inserted into server rendered webpage <head/>
-		// (this `head()` function is optional and is not required)
-		// (its gonna work with or without this `head()` parameter)
-		head: (url) =>
+		html:
 		{
-			if (_development_)
+			// Will be inserted into server rendered webpage <head/>
+			// (this `head()` function is optional and is not required)
+			// (its gonna work with or without this `head()` parameter)
+			head: (url) =>
 			{
-				// `devtools` just tampers with CSS styles a bit.
-				// It's not required for operation and can be omitted.
-				const script = devtools({ ...parameters, entry: 'main' })
-				return <script dangerouslySetInnerHTML={{ __html: script }}/>
+				if (_development_)
+				{
+					// `devtools` just tampers with CSS styles a bit.
+					// It's not required for operation and can be omitted.
+					const script = devtools({ ...parameters, entry: 'main' })
+					return <script dangerouslySetInnerHTML={{ __html: script }}/>
+				}
 			}
 		}
 	},
