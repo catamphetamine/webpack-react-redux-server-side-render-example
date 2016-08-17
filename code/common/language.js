@@ -343,56 +343,6 @@ Object.defineProperty(Function.prototype, 'periodical',
 	}
 })
 
-// временная заглушка для переводов на языки
-// global._ = (key) -> key
-
-global.custom_error = function(name, { code, message })
-{
-	class Custom_error extends Error
-	{
-		constructor(argument)
-		{
-			super()
-
-			if (exists(code))
-			{
-				this.code = code
-			}
-
-			if (exists(message))
-			{
-				this.message = message
-			}
-
-			if (exists(argument))
-			{
-				if (exists(argument.code))
-				{
-					this.code = argument.code
-				}
-				
-				if (exists(argument.message))
-				{
-					this.message = argument.message
-				}
-
-				this.message = this.message || argument
-			}
-
-			this.name = name
-
-			if (Error.captureStackTrace)
-			{
-				Error.captureStackTrace(this, Custom_error)
-			}
-		}
-	}
-
-	// Custom_error.is_custom_error = true
-
-	return Custom_error
-}
-
 global.get_language_from_locale = function(locale)
 {
 	const dash_index = locale.indexOf('-')
