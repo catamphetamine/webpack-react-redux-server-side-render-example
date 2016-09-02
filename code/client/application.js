@@ -20,6 +20,6 @@ render
 	development: _development_,
 
 	// enable/disable Redux dev-tools
-	development_tools: true ? require('./devtools') : undefined
+	development_tools: true ? require('./devtools') : false
 },
 common)
