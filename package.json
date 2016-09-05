@@ -68,6 +68,7 @@
     "webpack-hot-middleware": "^2.5.1"
   },
   "scripts": {
+    "start": "npm run dev",
     "dev": "npm-run-all development-prepare-server-build development",
     "development": "npm-run-all --parallel development-build-client development-build-server development-server",
     "development-prepare-server-build": "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
