@@ -9,7 +9,7 @@ import Button from '../components/button'
 import { title }   from 'react-isomorphic-render'
 import { preload } from 'react-isomorphic-render/redux'
 
-@preload((dispatch, get_state) => dispatch(get_users()))
+@preload(({ dispatch, getState }) => dispatch(get_users()))
 @connect
 (
 	store => 
