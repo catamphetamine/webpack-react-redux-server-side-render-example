@@ -2,10 +2,10 @@
 // (including generators, which means async/await)
 import 'babel-polyfill'
 
-import language       from '../common/language'
+import language from '../common/language'
 
-import React          from 'react'
-import ReactDOM       from 'react-dom'
+import React    from 'react'
+import ReactDOM from 'react-dom'
 
 import { render } from 'react-isomorphic-render/redux'
 
@@ -20,6 +20,6 @@ render
 	development: _development_,
 
 	// enable/disable Redux dev-tools
-	development_tools: _development_tools_ ? require('./devtools') : false
+	devtools: _development_tools_ ? require('./devtools') : undefined
 },
 common)
