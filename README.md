@@ -9,6 +9,8 @@ Features
 * Webpack
 * Development mode: hot reload for React components, hot reload for Redux reducers
 
+*Small Advertisement:* 📞 if you're looking for a React phone number component check out [`react-phone-number-input`](http://halt-hammerzeit.github.io/react-phone-number-input/)
+
 Quick Start
 ===========
 
