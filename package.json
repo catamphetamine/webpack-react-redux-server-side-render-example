@@ -38,6 +38,7 @@
     "npm-run-all": "^1.2.13",
     "postcss-loader": "^0.9.1",
     "pretty-error": "^1.1.2",
+    "print-error": "^0.1.8",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-isomorphic-render": "^6.0.1",
