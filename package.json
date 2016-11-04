@@ -41,7 +41,7 @@
     "print-error": "^0.1.8",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-isomorphic-render": "^6.0.1",
+    "react-isomorphic-render": "^7.1.2",
     "react-redux": "^4.0.0",
     "react-router": "^2.4.1",
     "react-styling": "^1.3.0",
