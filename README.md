@@ -1,10 +1,10 @@
-This sample project is a proof-of-concept for isomorphic (universal) Webpack rendering using React.
+This sample project illustrates isomorphic (universal) Webpack rendering using React.
 
 Features
 
 * React
 * React-router
-* Redux as Flux
+* Redux
 * Isomorphic (universal) rendering
 * Webpack
 * Development mode: hot reload for React components, hot reload for Redux reducers
@@ -34,11 +34,48 @@ The goal was met and many people started using it to implement isomorphic (unive
 
 Still it lacked some funky Webpack features like variuos Webpack plugins and other edge cases.
 
-So I did some research on Webpack builds for Node.js and came up with a proof-of-concept solution which I now decided to publish as a library called [universal-webpack](https://github.com/halt-hammerzeit/universal-webpack).
+So I did some research on Webpack builds for Node.js and came up with a proof-of-concept solution which I now decided to publish as a library called [universal-webpack](https://github.com/halt-hammerzeit/universal-webpack). This sample project is a demonstration of using `universal-webpack`.
 
-Status
-======
+Webpack 2 (beta)
+================
 
-Seems to work.
+This project installs Webpack v1 by default. And it also works with the latest beta of Webpack 2 (`25` at the time of writing).
 
-If you have any issues running this code you can report them the issue tracker.
+The only change required is to remove `postcss` from the configuration and add `LoaderOptionsPlugin` instead:
+
+```js
+configuration.plugins.push
+(
+	new webpack.LoaderOptionsPlugin
+	({
+		test: /\.scss$/,
+		options:
+		{
+			// A temporary workaround for `scss-loader`
+			// https://github.com/jtangelder/sass-loader/issues/298
+			output:
+			{
+				path: configuration.output.path
+			},
+
+			postcss: [autoprefixer({ browsers: 'last 2 version' })],
+
+			// A temporary workaround for `css-loader`.
+			// Can also supply `query.context` parameter.
+			context: configuration.context
+		}
+	})
+)
+```
+
+`LoaderOptionsPlugin` seems to have additional options that might be configured possibly by adding a second instance of the same plugin:
+
+```js
+// For production mode
+// https://moduscreate.com/webpack-2-tree-shaking-configuration/
+new webpack.LoaderOptionsPlugin
+({
+	minimize: true,
+	debug: false
+})
+```

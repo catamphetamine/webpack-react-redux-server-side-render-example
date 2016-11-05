@@ -52,7 +52,7 @@
     "universal-webpack": "^0.1.31",
     "url-loader": "^0.5.5",
     "web-service": "^0.2.0",
-    "webpack": "^1.13.1"
+    "webpack": "^1.13.3"
   },
   "devDependencies": {
     "babel-plugin-react-intl": "^2.1.1",

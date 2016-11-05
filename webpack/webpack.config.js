@@ -10,13 +10,6 @@ var root_folder = path.resolve(__dirname, '..')
 // where all the (source) assets reside
 var assets_source_folder = path.resolve(root_folder, 'assets')
 
-// regular expressions for module.loaders
-var regular_expressions =
-{
-	javascript : /\.js$/,
-	styles     : /\.scss$/
-}
-
 var configuration =
 {
 	// resolve all relative paths from the project root folder
@@ -52,14 +45,14 @@ var configuration =
 				loader : 'json-loader'
 			},
 			{
-				test    : regular_expressions.javascript,
+				test    : /\.js$/,
 				// include: [path.resolve(root_folder, 'code')],
 				// exclude: path.resolve(root_folder, 'node_modules'),
 				exclude: /node_modules/,
 				loader: 'babel-loader'
 			},
 			{
-				test    : regular_expressions.styles,
+				test    : /\.scss$/,
 				loaders : 
 				[
 					'style-loader',
@@ -78,21 +71,9 @@ var configuration =
 		]
 	},
 
-	// maybe some kind of a progress bar during compilation
-	progress: true,
-
 	postcss: () => [autoprefixer({ browsers: 'last 2 version' })],
-
-	resolve:
-	{
-		// you can now require('file') instead of require('file.[extension]')
-		extensions: ['', '.json', '.js']
-	},
 
 	plugins: []
 }
 
 module.exports = configuration
-
-// will be used in development and production configurations
-configuration.regular_expressions = regular_expressions
