@@ -59,8 +59,9 @@ export default function(parameters)
 				{
 					// `devtools` just tampers with CSS styles a bit.
 					// It's not required for operation and can be omitted.
+					// It just removes the "flash of unstyled content" in development mode.
 					const script = devtools({ ...parameters, entry: 'main' })
-					return <script dangerouslySetInnerHTML={{ __html: script }}/>
+					return `<script>${script}</script>`
 				}
 			}
 		}
