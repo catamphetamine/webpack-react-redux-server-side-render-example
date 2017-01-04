@@ -45,4 +45,8 @@ This project requires Webpack 2
 npm install webpack@2.2.0-rc.3
 ```
 
-I've been using Webpack 1 for a long time here while Webpack 2 was in beta. Now the time has come to move to Webpack 2 since it's almost ready for release. See older versions of this repo for Webpack 1 compatibility.
+I've been using Webpack 1 for a long time here while Webpack 2 was in beta. Now the time has come to move to Webpack 2 since it's [almost ready to be released](https://github.com/webpack/webpack/milestone/10).
+
+See [Webpack 1 to 2 migration notes](https://webpack.js.org/guides/migrating/)
+
+See older versions of this repo for Webpack 1 compatibility.
