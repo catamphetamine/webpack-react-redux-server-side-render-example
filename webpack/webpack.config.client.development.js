@@ -44,21 +44,29 @@ configuration.output.publicPath = `http://${application_configuration.developmen
 
 // Add React Hot Module Replacement plugin to `babel-loader`
 
-const javascript_loader = configuration.module.loaders.filter(loader =>
+const javascript_loader = configuration.module.rules.filter(loader =>
 {
 	return loader.test.toString() === /\.js$/.toString()
 })
 .first()
 
-javascript_loader.query = javascript_loader.query || {}
+const babel_loader = javascript_loader.use.filter(loader => loader.loader === 'babel-loader')[0]
 
-javascript_loader.query.plugins = javascript_loader.query.plugins || []
+if (!babel_loader.options)
+{
+	babel_loader.options = {}
+}
 
-javascript_loader.query.plugins = javascript_loader.query.plugins.concat
+if (!babel_loader.options.plugins)
+{
+	babel_loader.options.plugins = []
+}
+
+babel_loader.options.plugins = babel_loader.options.plugins.concat
 ([[
 	'react-transform',
 	{
-		transforms: 
+		transforms:
 		[{
 			transform : 'react-transform-catch-errors',
 			imports   : ['react', 'redbox-react']
@@ -70,5 +78,8 @@ javascript_loader.query.plugins = javascript_loader.query.plugins.concat
 		}]
 	}
 ]])
+
+// https://github.com/webpack/webpack/issues/3486
+configuration.performance = { hints: false }
 
 export default configuration

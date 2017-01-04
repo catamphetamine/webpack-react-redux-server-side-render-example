@@ -35,14 +35,14 @@ configuration.plugins = configuration.plugins.concat
 	// Omit duplicate modules
 	new webpack.optimize.DedupePlugin(),
 
-	// Assign the module and chunk ids by occurrence count. 
-	// Ids that are used often get lower (shorter) ids. 
-	// This make ids predictable, reduces to total file size and is recommended.
-	new webpack.optimize.OccurenceOrderPlugin(),
-
-	// // extracts common javascript into a separate file (works)
-	// new webpack.optimize.CommonsChunkPlugin('common', 'common.[hash].js'),
-
+	// For production mode
+	// https://moduscreate.com/webpack-2-tree-shaking-configuration/
+	new webpack.LoaderOptionsPlugin
+	({
+		minimize: true,
+		debug: false
+	}),
+	
 	// Compresses javascript files
 	new webpack.optimize.UglifyJsPlugin
 	({
