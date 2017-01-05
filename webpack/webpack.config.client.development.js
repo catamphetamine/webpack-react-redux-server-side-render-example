@@ -7,7 +7,7 @@ import application_configuration from '../code/common/configuration'
 
 const configuration = base_configuration({ development: true, css_bundle: true })
 
-configuration.devtool = 'inline-eval-cheap-source-map'
+// configuration.devtool = 'inline-eval-cheap-source-map'
 
 configuration.plugins.push
 (
@@ -19,9 +19,6 @@ configuration.plugins.push
 			NODE_ENV: JSON.stringify('development'),
 			BABEL_ENV: JSON.stringify('development/client')
 		},
-
-		_production_        : false,
-		_development_       : true,
 		_development_tools_ : false  // enable/disable redux-devtools
 	}),
 

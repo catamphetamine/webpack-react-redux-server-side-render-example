@@ -144,7 +144,7 @@ export default function create(name, options = {})
 		}
 	}
 
-	const log_configuration = (_production_ || process.env.NODE_ENV === 'production') ? production_log : development_log
+	const log_configuration = process.env.NODE_ENV === 'production' ? production_log : development_log
 
 	return bunyan.createLogger(extend({ name: name }, log_configuration))
 }

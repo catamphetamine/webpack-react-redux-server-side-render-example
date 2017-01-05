@@ -29,7 +29,7 @@ export default function(parameters)
 
 			// Clear Webpack require() cache for hot reload in development mode
 			// (this is not necessary)
-			if (_development_)
+			if (process.env.NODE_ENV !== 'production')
 			{
 				delete require.cache[require.resolve('../../assets/images/icon/cat_64x64.png')]
 			}
@@ -55,7 +55,7 @@ export default function(parameters)
 			// (its gonna work with or without this `head()` parameter)
 			head: (url) =>
 			{
-				if (_development_)
+				if (process.env.NODE_ENV !== 'production')
 				{
 					// `devtools` just tampers with CSS styles a bit.
 					// It's not required for operation and can be omitted.

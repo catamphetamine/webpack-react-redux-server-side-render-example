@@ -17,7 +17,7 @@ require('../../assets/styles/style.scss')
 render
 ({
 	// enable/disable development mode
-	development: _development_,
+	development: process.env.NODE_ENV !== 'production',
 
 	// enable/disable Redux dev-tools
 	devtools: _development_tools_ ? require('./devtools') : undefined

@@ -27,13 +27,9 @@ configuration.plugins = configuration.plugins.concat
 			NODE_ENV: JSON.stringify('production') // 'development' to see non-minified React errors
 		},
 
-		_development_       : false,
-		_production_        : true,
-		_development_tools_ : false  // enable/disable redux-devtools
+		// Just so that it doesn't throw "_development_tools_ is not defined"
+		_development_tools_: false
 	}),
-
-	// Omit duplicate modules
-	new webpack.optimize.DedupePlugin(),
 
 	// For production mode
 	// https://moduscreate.com/webpack-2-tree-shaking-configuration/

@@ -22,6 +22,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.7.2",
     "babel-runtime": "^6.6.1",
+    "better-npm-run": "0.0.13",
     "bluebird": "^2.10.0",
     "bunyan": "^1.3.5",
     "clean-webpack-plugin": "^0.1.3",
@@ -32,7 +33,6 @@
     "fs-extra": "^0.24.0",
     "http-proxy": "^1.11.1",
     "json-loader": "^0.5.2",
-    "minimist": "^1.1.1",
     "moment": "^2.10.6",
     "node-sass": "^3.4.2",
     "npm-run-all": "^1.2.13",
@@ -49,7 +49,7 @@
     "sass-loader": "^4.1.1",
     "source-map-support": "^0.4.0",
     "style-loader": "^0.12.4",
-    "universal-webpack": "^0.2.0",
+    "universal-webpack": "^0.2.1",
     "url-loader": "^0.5.5",
     "web-service": "^0.2.0",
     "webpack": "^2.2.0-rc.3",
@@ -75,7 +75,7 @@
     "development": "npm-run-all --parallel development-build-client development-build-server development-server",
     "development-prepare-server-build": "universal-webpack --settings ./webpack/universal-webpack-settings.js prepare",
     "development-build-client": "node ./webpack/webpack-dev-server.entry.js",
-    "development-build-server": "webpack --config ./webpack/webpack.config.server.development.entry.js --watch --colors --display-error-details",
+    "development-build-server": "webpack --config ./webpack/webpack.config.server.development.babel.js --watch --colors --display-error-details",
     "development-api-server": "nodemon ./code/api-server/entry.js --watch ./code/api-server --watch ./code/common",
     "development-page-server": "nodemon ./code/page-server/entry.js --watch ./code/page-server --watch ./code/common --watch ./build/server",
     "development-page-server-delayed": "npm-run-all delay development-page-server",
@@ -84,12 +84,32 @@
     "development-server": "npm-run-all --parallel development-api-server development-page-server-delayed development-web-server-delayed",
     "delay": "node ./code/sleep 500",
     "production": "npm-run-all production-build-client production-build-server production-server",
-    "production-build-client": "webpack --colors --display-error-details --config ./webpack/webpack.config.client.production.entry.js",
-    "production-build-server": "webpack --colors --display-error-details --config ./webpack/webpack.config.server.production.entry.js",
-    "production-api-server": "node ./code/api-server/entry.js --production",
-    "production-page-server": "node ./code/page-server/entry.js",
-    "production-web-server": "node ./code/web-server/entry.js --production",
+    "production-build-client": "webpack --colors --display-error-details --config ./webpack/webpack.config.client.production.babel.js",
+    "production-build-server": "webpack --colors --display-error-details --config ./webpack/webpack.config.server.production.babel.js",
+    "production-api-server": "better-npm-run production-api-server",
+    "production-page-server": "better-npm-run production-page-server",
+    "production-web-server": "better-npm-run production-web-server",
     "production-server": "npm-run-all --parallel production-api-server production-page-server production-web-server"
+  },
+  "betterScripts": {
+    "production-api-server": {
+      "command": "node ./code/api-server/entry.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "production-page-server": {
+      "command": "node ./code/page-server/entry.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "production-web-server": {
+      "command": "node ./code/web-server/entry.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
   },
   "author": "Halt Hammerzeit",
   "license": "MIT",
