@@ -1,14 +1,9 @@
 // The polyfill will emulate a full ES6 environment (for old browsers)
 // (including generators, which means async/await)
 import 'babel-polyfill'
-
-import language from '../common/language'
-
-import React    from 'react'
-import ReactDOM from 'react-dom'
-
 import { render } from 'react-isomorphic-render/redux'
 
+import language from '../common/language'
 import common from './react-isomorphic-render'
 
 require('../../assets/styles/style.scss')
