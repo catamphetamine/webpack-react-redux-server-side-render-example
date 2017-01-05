@@ -52,7 +52,7 @@ var configuration =
 			},
 			{
 				test    : /\.scss$/,
-				loaders : 
+				use : 
 				[
 					'style-loader',
 					'css-loader?importLoaders=2&sourceMap',
@@ -62,7 +62,7 @@ var configuration =
 			},
 			{
 				test    : /\.(jpg|png)$/,
-				loaders : 
+				use : 
 				[
 					'url-loader?limit=10000' // Any png-image or woff-font below or equal to 10K will be converted to inline base64 instead
 				]

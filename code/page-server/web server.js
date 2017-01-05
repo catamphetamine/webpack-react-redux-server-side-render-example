@@ -18,7 +18,7 @@ export default function(parameters)
 		//
 		// Also a website "favicon".
 		//
-		assets: (url) =>
+		assets(url)
 		{
 			// Retrieve asset chunk file names
 			// (which are output by client side Webpack build)
@@ -53,7 +53,7 @@ export default function(parameters)
 			// Will be inserted into server rendered webpage <head/>
 			// (this `head()` function is optional and is not required)
 			// (its gonna work with or without this `head()` parameter)
-			head: (url) =>
+			head(url)
 			{
 				if (process.env.NODE_ENV !== 'production')
 				{

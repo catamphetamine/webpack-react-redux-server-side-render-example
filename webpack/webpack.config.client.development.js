@@ -45,7 +45,7 @@ const javascript_loader = configuration.module.rules.filter(loader =>
 {
 	return loader.test.toString() === /\.js$/.toString()
 })
-.first()
+[0]
 
 const babel_loader = javascript_loader.use.filter(loader => loader.loader === 'babel-loader')[0]
 
