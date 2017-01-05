@@ -50,5 +50,5 @@ require('./language')
 
 require('bluebird').promisifyAll(require('fs-extra'))
 
-global.configuration = require('./configuration')
+global.configuration = require('./configuration').default
 // console.log('Configuration:', configuration)
