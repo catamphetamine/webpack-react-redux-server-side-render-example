@@ -6,6 +6,7 @@ import { render } from 'react-isomorphic-render/redux'
 import language from '../common/language'
 import common from './react-isomorphic-render'
 
+require('react-responsive-ui/styles/react-responsive-ui.css')
 require('../../assets/styles/style.scss')
 
 // renders the webpage on the client side

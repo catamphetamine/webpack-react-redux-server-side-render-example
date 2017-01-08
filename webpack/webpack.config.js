@@ -61,6 +61,15 @@ var configuration =
 				]
 			},
 			{
+				test    : /\.css$/,
+				use : 
+				[
+					'style-loader',
+					'css-loader?importLoaders=2&sourceMap',
+					'postcss-loader'
+				]
+			},
+			{
 				test    : /\.(jpg|png)$/,
 				use : 
 				[
@@ -77,7 +86,7 @@ configuration.plugins.push
 (
 	new webpack.LoaderOptionsPlugin
 	({
-		test: /\.scss$/,
+		test: /\.(scss|css)$/,
 		debug: true,
 		options:
 		{

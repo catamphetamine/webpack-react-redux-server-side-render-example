@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
 
 import { get as get_users, add as add_user, remove as delete_user, dismiss_adding_error } from '../actions/users'
-import Button from '../components/button'
+import { Button } from 'react-responsive-ui'
 
 import { title }   from 'react-isomorphic-render'
 import { preload } from 'react-isomorphic-render/redux'
@@ -110,16 +110,17 @@ export default class Page extends Component
 			return <div style={style.users}>Loading users</div>
 		}
 
+		const add_user_button = <Button action={this.add_user} style={style.users.add}>Add user</Button>
+		const refresh_users_button = <Button action={this.refresh} style={style.users.refresh}>Refresh</Button>
+
 		if (users.is_empty())
 		{
 			const markup = 
 			(
 				<div style={style.users}>
 					No users
-
-					<button onClick={this.add_user} style={style.users.add}>Add user</button>
-
-					<button onClick={this.refresh} style={style.users.refresh}>Refresh</button>
+					{add_user_button}
+					{refresh_users_button}
 				</div>
 			)
 
@@ -130,10 +131,8 @@ export default class Page extends Component
 		(
 			<div style={style.users}>
 				<span style={style.users.list.title}>Users</span>
-
-				<button onClick={this.add_user} style={style.users.add}>Add user</button>
-				
-				<button onClick={this.refresh} style={style.users.refresh}>Refresh</button>
+				{add_user_button}
+				{refresh_users_button}
 
 				<div>
 					<ul style={style.users.list}>
@@ -146,9 +145,10 @@ export default class Page extends Component
 
 								<Button
 									busy={this.props.deleting}
-									on_click={event => this.delete_user(user.id)}
-									text="delete user"
-									style={style.users.delete}/>
+									action={() => this.delete_user(user.id)}
+									style={style.users.delete}>
+									delete user
+								</Button>
 							</li>
 						})}
 					</ul>
