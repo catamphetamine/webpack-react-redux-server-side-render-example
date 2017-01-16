@@ -1,0 +1,160 @@
+@import "constants.scss";
+
+*,
+*:after,
+*:before
+{
+	box-sizing: border-box;
+}
+
+html, body, #react
+{
+	height: 100%;
+}
+
+body
+{
+	margin: 0;
+	overflow-y: scroll;
+}
+
+body, button, input, textarea, select
+{
+	// font-family : 'PT Sans';
+	font-family : Arial, Sans, Helvetica;
+}
+
+// stretches .page to 100% of html
+footer
+{
+	height: 1px;
+}
+
+img
+{
+	max-width: 100%;
+    height: auto;
+}
+
+a:active
+{
+	color: $active-darker-color;
+}
+
+button
+{
+	background : none;
+	border     : none;
+	outline    : none;
+	padding    : 0;
+
+	font-weight : bold;
+	color       : $active-color;
+
+	transition: all 30ms ease-out;
+
+	&:active
+	{
+		color: $active-lighter-color;
+	}
+}
+
+nav
+{
+	padding-top:    0.4em;
+	padding-bottom: 0.5em;
+}
+
+h1
+{
+
+}
+
+a
+{
+	color: inherit;
+}
+
+body, button, input, textarea, select
+{
+	font-size   : 20pt;
+}
+
+body
+{
+	margin-top    : 0.5em;
+	margin-bottom : 1em;
+}
+
+section
+{
+	margin-top    : 0.5em;
+	margin-bottom : 1em;
+
+	padding-left  : 1.8em;
+	padding-right : 1.8em;
+}
+
+.menu
+{
+	margin-left    : 0.5em;
+	margin-bottom : -0.15em !important;
+}
+
+.menu-item
+{
+	margin-left    : 0.4em;
+	margin-right   : 0.4em;
+
+	padding-bottom : 0em;
+
+	border-bottom-width : 0.12em;
+	border-bottom-color : transparent;
+	border-bottom-style : solid;
+}
+
+.menu-item-selected
+{
+	border-bottom-color : $active-color;
+}
+
+header
+{
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+
+	padding-left: 1.0em;
+	padding-right: 1.0em;
+}
+
+.preloading
+{
+	position: fixed;
+	top    : 0;
+	left   : 0;
+	right  : 0;
+	bottom : 0;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.2);
+	display: none;
+}
+
+.preloading--shown
+{
+	display: block;
+	cursor: wait;
+
+	.rrui__activity-indicator
+	{
+		position: absolute;
+		left: calc(50% - 2rem);
+		top: calc(50% - 2rem);
+		width: 4rem;
+		height: 4rem;
+
+		circle
+		{
+			stroke: #ffffff;
+		}
+	}
+}

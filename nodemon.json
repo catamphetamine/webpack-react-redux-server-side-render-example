@@ -1,13 +1,14 @@
 {
-	"ignore":
-	[
+	"ignore": [
 		".git",
 		"node_modules/**/*"
 	],
-	"env":
-	{
+	"env": {
 		"NODE_ENV": "development"
 	},
 	"legacyWatch": false,
-	"verbose": true
+	"verbose": true,
+	"execMap": {
+		"js": "babel-node"
+	}
 }
