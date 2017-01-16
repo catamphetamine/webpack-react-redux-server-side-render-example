@@ -11,8 +11,3 @@ Quick Start
 * wait a bit for Webpack to finish the build (green stats will appear in the terminal, plus some `node.js` server running commands)
 * go to `http://localhost:3000`
 * interact with the production version of the web application
-
-Configuration
-=============
-
-Depending on the value of `NODE_ENV` a configuration is chosen. If `NODE_ENV` is set to `production` then `configuration.production.js` is used (any settings can be overridden in `configuration.production.custom.js` which isn't tracked by git). Otherwise `configuration.development.js` is used (any settings can be overridden in `configuration.development.custom.js` which isn't tracked by git).
