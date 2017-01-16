@@ -29,6 +29,7 @@ export const add_user = action
   event: 'ADD_USER',
   action: async (user, http) =>
   {
+    await delay(1000)
     await http.post(`/api/example/users`, user)
   }
 },
@@ -40,6 +41,7 @@ export const delete_user = action
   event: 'DELETE_USER',
   action: async (id, http) =>
   {
+    await delay(1000)
     await http.delete(`/api/example/users/${id}`)
   }
 },

@@ -1,0 +1,21 @@
+.menu
+{
+	margin-left : 0;
+}
+
+.menu-item
+{
+	margin-left    : calc(var(--unit) * 6);
+	margin-right   : calc(var(--unit) * 6);
+
+	padding-bottom : 0em;
+
+	border-bottom-width : 0.12em;
+	border-bottom-color : transparent;
+	border-bottom-style : solid;
+}
+
+.menu-item-selected
+{
+	border-bottom-color : var(--base-color);
+}

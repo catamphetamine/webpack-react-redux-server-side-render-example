@@ -1,4 +1,10 @@
-// theming
-$active-color: #29ADFF;
-$active-darker-color: #0076BF;
-$active-lighter-color: #73C9FF;
+:root
+{
+	--base-color        : #29ADFF;
+	--base-color-darker : #0076BF;
+	--base-color-ligher : #73C9FF;
+
+	--unit              : 0.15rem;
+
+	--font-size         : 20pt;
+}

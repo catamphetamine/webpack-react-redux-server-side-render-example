@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import Layout    from './pages/layout'
-import Not_found from './pages/not found'
-import Users     from './pages/users'
-import Home      from './pages/home'
+import Layout    from './pages/Layout'
+import Not_found from './pages/Not found'
+import Users     from './pages/Users'
+import Home      from './pages/Home'
 
 const routes =
 (

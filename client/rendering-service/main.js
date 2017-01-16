@@ -60,6 +60,16 @@ export default function(parameters) {
           // It just removes the "flash of unstyled content" in development mode.
           return `<script>${devtools({ ...parameters, entry: 'main' })}</script>`
         }
+      },
+
+      // Isomorphic CSS flag
+      bodyStart(path) {
+        return `
+          <script>
+            // This line is just for CSS
+            document.body.classList.add('javascript-is-enabled');
+          </script>
+        `;
       }
     }
   })

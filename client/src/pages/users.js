@@ -50,8 +50,42 @@ export default class Users_page extends Component
 		{
 			users,
 			getUsersPending,
+			addUserPending
+		}
+		= this.props
+
+		return (
+			<div style={ style.users }>
+				{ users.length === 0 ? 'No users' : 'Users' }
+
+				<Button
+					busy={ addUserPending }
+					action={ this.add_user }
+					style={ style.button }>
+					Add user
+				</Button>
+
+				<Button
+					busy={ getUsersPending }
+					action={ this.refresh }
+					style={ style.button }>
+					Refresh
+				</Button>
+
+				<div style={ style.users }>
+					{ this.render_user_list() }
+				</div>
+			</div>
+		)
+	}
+
+	render_user_list()
+	{
+		const
+		{
+			users,
+			getUsersPending,
 			getUsersError,
-			addUserPending,
 			addUserError,
 			deleteUserPending,
 			deleteUserError
@@ -60,60 +94,37 @@ export default class Users_page extends Component
 
 		if (getUsersPending)
 		{
-			return (
-				<div style={ style.users }>
-					Loading users...
-				</div>
-			)
+			return 'Loading users...'
 		}
 
 		if (getUsersError)
 		{
-			return (
-				<div style={ style.users }>
-					Failed to load the list of users
-				</div>
-			)
+			return 'Failed to load the list of users'
+		}
+
+		if (users.length === 0)
+		{
+			return 'No users'
 		}
 
 		return (
-			<div style={ style.users }>
-				{ users.length === 0 ? 'No users' : 'Users' }
+			<ul style={ style.list }>
+				{ users.map((user) => {
+					return (
+							<li key={ user.id }>
+							<span style={ style.id }>{ user.id }</span>
+							<span style={ style.name }>{ user.name }</span>
 
-				<Button
-					action={ this.add_user }
-					style={ style.button }>
-					Add user
-				</Button>
-
-				<Button
-					action={ this.refresh }
-					style={ style.button }>
-					Refresh
-				</Button>
-
-				{ users.length > 0 &&
-					<div>
-						<ul style={ style.list }>
-							{ users.map((user) => {
-								return (
-										<li key={ user.id }>
-										<span style={ style.id }>{ user.id }</span>
-										<span style={ style.name }>{ user.name }</span>
-
-										<Button
-											busy={ deleteUserPending }
-											action={ () => this.delete_user(user.id) }
-											style={ style.button }>
-											delete user
-										</Button>
-									</li>
-								)
-							}) }
-						</ul>
-					</div>
-				}
-			</div>
+							<Button
+								busy={ deleteUserPending }
+								action={ () => this.delete_user(user.id) }
+								style={ style.button }>
+								delete user
+							</Button>
+						</li>
+					)
+				}) }
+			</ul>
 		)
 	}
 
@@ -145,12 +156,13 @@ export default class Users_page extends Component
 const style = styler
 `
 	users
-		margin-top : 2em
+		margin-top   : 2em
 
 	list
 		display         : inline-block
 		list-style-type : none
-		padding-left    : 1em
+		margin          : 0
+		padding-left    : 0
 
 	button
 		margin-left : 1em

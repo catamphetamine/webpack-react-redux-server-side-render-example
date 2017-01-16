@@ -7,5 +7,6 @@
 			"file_exclude_patterns": ["npm-debug.log", "*.js.map"],
 			"folder_exclude_patterns": ["node_modules", "log", "build"]
 		}
-	]
+	],
+	"trim_trailing_white_space_on_save": true
 }
