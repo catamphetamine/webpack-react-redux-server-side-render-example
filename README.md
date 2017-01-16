@@ -1,3 +1,14 @@
+This sample project illustrates isomorphic (universal) rendering using React and Webpack.
+
+Features
+
+* React
+* React-router
+* Redux
+* Isomorphic (universal) rendering
+* Webpack 2
+* Development mode: hot reload for React components, hot reload for Redux reducers and actions
+
 Quick Start
 ===========
 
@@ -11,3 +22,10 @@ Quick Start
 * wait a bit for Webpack to finish the build (green stats will appear in the terminal, plus some `node.js` server running commands)
 * go to `http://localhost:3000`
 * interact with the production version of the web application
+
+Small Advertisement
+===================
+
+* 📞 if you're looking for a React phone number component check out [`react-phone-number-input`](http://halt-hammerzeit.github.io/react-phone-number-input/)
+
+* Also you might check out [`simpler-redux-form`](https://github.com/halt-hammerzeit/simpler-redux-form) and [`react-responsive-ui`](https://github.com/halt-hammerzeit/react-responsive-ui) and [`react-time-ago`](https://github.com/halt-hammerzeit/react-time-ago)
