@@ -14,10 +14,10 @@
     "development:client:rendering-service:build:prepare": "universal-webpack --settings ./client/webpack/universal-webpack-settings.js --config ./client/webpack/webpack.config.js prepare",
     "development:client:build": "babel-node ./client/webpack/webpack-dev-server.js",
     "development:client:rendering-service:build": "webpack --config ./client/webpack/webpack.config.server.development.babel.js --watch --colors --display-error-details",
-    "development:api": "nodemon ./api/api.js --watch ./api",
+    "development:api": "nodemon ./api/entry.js --watch ./api",
     "development:client:rendering-service": "nodemon ./client/rendering-service/entry.js --watch ./client/rendering-service --watch ./client/build/server",
     "development:client:rendering-service:delayed": "npm-run-all delay development:client:rendering-service",
-    "development:webserver": "nodemon ./webserver/webserver.js --watch ./webserver",
+    "development:webserver": "nodemon ./webserver/entry.js --watch ./webserver",
     "development:webserver:delayed": "npm-run-all delay delay development:webserver",
     "development:services": "npm-run-all --parallel development:api development:client:rendering-service:delayed development:webserver:delayed",
     "delay": "node ./sleep 500",
@@ -37,13 +37,13 @@
       }
     },
     "production:api": {
-      "command": "node ./api/api.js",
+      "command": "node ./api/entry.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "production:webserver": {
-      "command": "node ./webserver/webserver.js",
+      "command": "node ./webserver/entry.js",
       "env": {
         "NODE_ENV": "production"
       }

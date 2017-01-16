@@ -7,8 +7,5 @@
 		"NODE_ENV": "development"
 	},
 	"legacyWatch": false,
-	"verbose": true,
-	"execMap": {
-		"js": "babel-node"
-	}
+	"verbose": true
 }

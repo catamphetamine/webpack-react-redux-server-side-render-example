@@ -5,5 +5,8 @@
 		"stage-2"
 	],
 
-	"plugins": []
+	"plugins":
+	[
+		"transform-runtime"
+	]
 }
