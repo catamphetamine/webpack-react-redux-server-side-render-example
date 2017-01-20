@@ -1,24 +1,24 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import styler      from 'react-styling'
-import { title }   from 'react-isomorphic-render'
+import styler from 'react-styling'
+import { title } from 'react-isomorphic-render'
+
+import husky from '../../assets/images/husky.jpg'
 
 export default class Page extends Component
 {
 	render()
 	{
-		const husky = require('../../assets/images/husky.jpg')
-
 		const markup = 
 		(
 			<section className="content">
 				{ title("Home") }
 
-				<h1 style={ style.header }>
+				<h1 style={ styles.header }>
 					Husky
 				</h1>
 
-				<img src={ husky } style={ style.image }/>
+				<img src={ husky } style={ styles.image }/>
 			</section>
 		)
 
@@ -26,7 +26,7 @@ export default class Page extends Component
 	}
 }
 
-const style = styler
+const styles = styler
 `
 	header
 		text-align: center

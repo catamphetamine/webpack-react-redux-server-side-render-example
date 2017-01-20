@@ -38,7 +38,7 @@ export default class Users_page extends Component
 				<div>
 					<p>This is an example of isomorphic REST API data querying</p>
 
-					<div style={ style.users }>
+					<div style={ styles.users }>
 						{ this.render_users() }
 					</div>
 				</div>
@@ -60,7 +60,7 @@ export default class Users_page extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
-			<div style={ style.users }>
+			<div style={ styles.users }>
 
 				<Button
 					busy={ addUserPending }
@@ -73,11 +73,11 @@ export default class Users_page extends Component
 					busy={ getUsersPending }
 					disabled={ disableButtons }
 					action={ this.refresh }
-					style={ style.refresh }>
+					style={ styles.refresh }>
 					Refresh
 				</Button>
 
-				<div style={ style.users }>
+				<div style={ styles.users }>
 					{ this.render_user_list() }
 				</div>
 			</div>
@@ -118,18 +118,18 @@ export default class Users_page extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 		
 		return (
-			<ul style={ style.list }>
+			<ul style={ styles.list }>
 				{ users.map((user) => {
 					return (
 							<li key={ user.id }>
-							<span style={ style.id }>{ user.id }</span>
-							<span style={ style.name }>{ user.name }</span>
+							<span style={ styles.id }>{ user.id }</span>
+							<span style={ styles.name }>{ user.name }</span>
 
 							<Button
 								busy={ userBeingDeleted === user.id }
 								disabled={ disableButtons }
 								action={ () => this.delete_user(user.id) }
-								style={ style.delete }>
+								style={ styles.delete }>
 								delete user
 							</Button>
 						</li>
@@ -166,7 +166,7 @@ export default class Users_page extends Component
 	}
 }
 
-const style = styler
+const styles = styler
 `
 	users
 		margin-top   : 2em
