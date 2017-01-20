@@ -36,7 +36,7 @@ export default class Users_page extends Component
 				{ title("Simple REST API example") }
 
 				<div>
-					<p>This is an example of isomorphic REST API data querying</p>
+					<p>This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)</p>
 
 					<div style={ styles.users }>
 						{ this.render_users() }
