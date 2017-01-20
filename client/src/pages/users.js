@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
 import { Button } from 'react-responsive-ui'
 import { title, preload }   from 'react-isomorphic-render'
-import styler      from 'react-styling'
+import styler from 'react-styling'
 
 import { connector, get_users, add_user, delete_user } from '../redux/users'
 
@@ -18,6 +18,8 @@ import { connector, get_users, add_user, delete_user } from '../redux/users'
 )
 export default class Users_page extends Component
 {
+	state = {}
+
 	constructor()
 	{
 		super()
@@ -50,25 +52,28 @@ export default class Users_page extends Component
 		{
 			users,
 			getUsersPending,
-			addUserPending
+			addUserPending,
+			deleteUserPending
 		}
 		= this.props
 
+		const disableButtons = getUsersPending || addUserPending || deleteUserPending
+
 		return (
 			<div style={ style.users }>
-				{ users.length === 0 ? 'No users' : 'Users' }
 
 				<Button
 					busy={ addUserPending }
-					action={ this.add_user }
-					style={ style.button }>
+					disabled={ disableButtons }
+					action={ this.add_user }>
 					Add user
 				</Button>
 
 				<Button
 					busy={ getUsersPending }
+					disabled={ disableButtons }
 					action={ this.refresh }
-					style={ style.button }>
+					style={ style.refresh }>
 					Refresh
 				</Button>
 
@@ -86,11 +91,14 @@ export default class Users_page extends Component
 			users,
 			getUsersPending,
 			getUsersError,
+			addUserPending,
 			addUserError,
 			deleteUserPending,
 			deleteUserError
 		}
 		= this.props
+
+		const { userBeingDeleted } = this.state
 
 		if (getUsersPending)
 		{
@@ -107,6 +115,8 @@ export default class Users_page extends Component
 			return 'No users'
 		}
 
+		const disableButtons = getUsersPending || addUserPending || deleteUserPending
+		
 		return (
 			<ul style={ style.list }>
 				{ users.map((user) => {
@@ -116,9 +126,10 @@ export default class Users_page extends Component
 							<span style={ style.name }>{ user.name }</span>
 
 							<Button
-								busy={ deleteUserPending }
+								busy={ userBeingDeleted === user.id }
+								disabled={ disableButtons }
 								action={ () => this.delete_user(user.id) }
-								style={ style.button }>
+								style={ style.delete }>
 								delete user
 							</Button>
 						</li>
@@ -148,7 +159,9 @@ export default class Users_page extends Component
 
 	async delete_user(id)
 	{
+		this.setState({ userBeingDeleted: id })
 		await this.props.delete_user(id)
+		this.setState({ userBeingDeleted: undefined })
 		this.refresh()
 	}
 }
@@ -164,7 +177,10 @@ const style = styler
 		margin          : 0
 		padding-left    : 0
 
-	button
+	refresh
+		margin-left : 1em
+
+	delete
 		margin-left : 1em
 
 	id
