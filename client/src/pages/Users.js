@@ -34,7 +34,9 @@ export default class Users_page extends Component
 
 	refresh()
 	{
-		return this.props.get_users()
+		const { get_users } = this.props
+
+		return get_users()
 	}
 
 	show_add_user_form()
@@ -49,8 +51,10 @@ export default class Users_page extends Component
 
 	async delete_user(id)
 	{
+		const { delete_user } = this.props
+		
 		this.setState({ userBeingDeleted: id })
-		await this.props.delete_user(id)
+		await delete_user(id)
 		this.setState({ userBeingDeleted: undefined })
 		this.refresh()
 	}
@@ -162,24 +166,26 @@ export default class Users_page extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 		
 		return (
-			<ul style={ styles.list }>
-				{ users.map((user) => {
-					return (
-							<li key={ user.id }>
-							<span style={ styles.id }>{ user.id }</span>
-							<span style={ styles.name }>{ user.name }</span>
-
-							<Button
-								busy={ userBeingDeleted === user.id }
-								disabled={ disableButtons }
-								action={ () => this.delete_user(user.id) }
-								style={ styles.delete }>
-								delete user
-							</Button>
-						</li>
-					)
-				}) }
-			</ul>
+			<table style={ styles.list }>
+				<tbody>
+					{ users.map((user) => {
+						return (
+							<tr key={ user.id }>
+								<td style={ styles.id }>{ user.id }</td>
+								<td style={ styles.name }>{ user.name }</td>
+								<td>
+									<Button
+										busy={ userBeingDeleted === user.id }
+										disabled={ disableButtons }
+										action={ () => this.delete_user(user.id) }>
+										delete
+									</Button>
+								</td>
+							</tr>
+						)
+					}) }
+				</tbody>
+			</table>
 		)
 	}
 }
@@ -250,14 +256,13 @@ const styles = styler
 	refresh
 		margin-left : 1em
 
-	delete
-		margin-left : 1em
-
 	id
-		color : #9f9f9f
+		color      : #9f9f9f
+		text-align : center
 
 	name
-		margin-left : 0.3em
+		padding-left  : 0.5em
+		padding-right : 0.5em
 
 	add_user_form_input
 		display        : inline-block
