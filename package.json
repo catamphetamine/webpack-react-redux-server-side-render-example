@@ -11,7 +11,7 @@
     "start": "npm run dev",
     "dev": "npm-run-all development:client:rendering-service:build:prepare development",
     "development": "npm-run-all --parallel development:client:build development:client:rendering-service:build development:services",
-    "development:client:rendering-service:build:prepare": "universal-webpack --settings ./client/webpack/universal-webpack-settings.js --config ./client/webpack/webpack.config.js prepare",
+    "development:client:rendering-service:build:prepare": "universal-webpack --settings ./client/webpack/universal-webpack-settings.json --config ./client/webpack/webpack.config.js prepare",
     "development:client:build": "babel-node ./client/webpack/webpack-dev-server.js",
     "development:client:rendering-service:build": "webpack --config ./client/webpack/webpack.config.server.development.babel.js --watch --colors --display-error-details",
     "development:api": "nodemon ./api/entry.js --watch ./api",
@@ -89,7 +89,7 @@
     "sass-loader": "^4.1.1",
     "simpler-redux-form": "^0.3.7",
     "style-loader": "^0.13.1",
-    "universal-webpack": "^0.2.2",
+    "universal-webpack": "^0.2.5",
     "url-loader": "^0.5.7",
     "web-service": "^0.4.6",
     "webpack": "^2.2.0-rc.6"
