@@ -29,7 +29,7 @@ export default function(api)
 	{
 		if (!name)
 		{
-			throw new errors.Input_missing(`"name" not specified`)
+			throw new errors.Input_rejected(`"name" is required`)
 		}
 
 		id_counter++

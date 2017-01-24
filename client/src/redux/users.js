@@ -29,7 +29,7 @@ export const add_user = action
   event: 'ADD_USER',
   action: async (user, http) =>
   {
-    await delay(1000)
+    await delay(3000)
     await http.post(`/api/example/users`, user)
   }
 },

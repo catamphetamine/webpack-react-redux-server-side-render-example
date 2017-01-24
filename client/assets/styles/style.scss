@@ -74,3 +74,26 @@ header
 	padding-left   : calc(var(--unit) * 8);
 	padding-right  : calc(var(--unit) * 8);
 }
+
+.rrui__button--border .rrui__button__button
+{
+	padding-top    : 0.5em !important;
+	padding-bottom : 0.3em !important;
+	font-weight    : normal;
+	font-size      : inherit;
+}
+
+.rrui__text-input__field
+{
+	padding-top    : 0.3em;
+	padding-bottom : 0.3em;
+	border-top-width   : 0;
+	border-left-width  : 0;
+	border-right-width : 0;
+	outline            : none;
+}
+
+.rrui__text-input label
+{
+	top: 0.4rem !important;
+}

@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
-import { Button } from 'react-responsive-ui'
+import { Modal, TextInput, Button } from 'react-responsive-ui'
+import Form, { Field, Submit } from 'simpler-redux-form'
 import { title, preload } from 'react-isomorphic-render'
 import styler from 'react-styling'
 
@@ -25,10 +26,10 @@ export default class Users_page extends Component
 		super()
 
 		this.refresh            = this.refresh.bind(this)
-		this.add_user           = this.add_user.bind(this)
 		this.show_add_user_form = this.show_add_user_form.bind(this)
 		this.hide_add_user_form = this.hide_add_user_form.bind(this)
 		this.delete_user        = this.delete_user.bind(this)
+		this.user_added         = this.user_added.bind(this)
 	}
 
 	refresh()
@@ -46,25 +47,17 @@ export default class Users_page extends Component
 		this.setState({ show_add_user_form: false })
 	}
 
-	async add_user()
-	{
-		const name = prompt(`Enter user's name`)
-		
-		if (!name)
-		{
-			return
-		}
-
-		await this.props.add_user({ name })
-		this.setState({ show_add_user_form: false })
-		this.refresh()
-	}
-
 	async delete_user(id)
 	{
 		this.setState({ userBeingDeleted: id })
 		await this.props.delete_user(id)
 		this.setState({ userBeingDeleted: undefined })
+		this.refresh()
+	}
+
+	user_added()
+	{
+		this.hide_add_user_form()
 		this.refresh()
 	}
 
@@ -96,13 +89,18 @@ export default class Users_page extends Component
 		}
 		= this.props
 
+		const
+		{
+			show_add_user_form
+		}
+		= this.state
+
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
 			<div style={ styles.users }>
 
 				<Button
-					busy={ addUserPending }
 					disabled={ disableButtons }
 					action={ this.show_add_user_form }>
 					Add user
@@ -121,9 +119,10 @@ export default class Users_page extends Component
 				</div>
 
 				<Modal
-					isShown={ show_add_user_form }
-					close={ this.hide_add_user_form }>
-					<Add_user_form/>
+					isOpen={ show_add_user_form }
+					close={ this.hide_add_user_form }
+					busy={ addUserPending }>
+					<Add_user_form onSubmitted={ this.user_added }/>
 				</Modal>
 			</div>
 		)
@@ -185,11 +184,56 @@ export default class Users_page extends Component
 	}
 }
 
-function Add_user_form({ submit, submitting })
+@Form
+@connect(state => ({}), { add_user })
+class Add_user_form extends Component
 {
-	return (
-		<form onSubmit={ submit(a)}
-	)
+	constructor()
+	{
+		super()
+
+		this.submit = this.submit.bind(this)
+	}
+
+	async submit(values)
+	{
+		const { add_user, onSubmitted } = this.props
+
+		await add_user(values)
+		onSubmitted()
+	}
+
+	validate_name(value)
+	{
+		if (!value)
+		{
+			return "Enter a name"
+		}
+	}
+
+	render()
+	{
+		const { submit, submitting } = this.props
+
+		return (
+			<form onSubmit={ submit(this.submit) }>
+				<Field
+					name="name"
+					label="Name"
+					validate={ this.validate_name }
+					component={ TextInput }
+					style={ styles.add_user_form_input }/>
+
+				<Submit
+					submit
+					component={ Button }
+					className="rrui__button--border"
+					style={ styles.add_user_form_submit_button }>
+					Add
+				</Submit>
+			</form>
+		)
+	}
 }
 
 const styles = styler
@@ -214,4 +258,16 @@ const styles = styler
 
 	name
 		margin-left : 0.3em
+
+	add_user_form_input
+		display        : inline-block
+		vertical-align : top
+		margin-right   : 0.6em
+		font-size      : 85%
+
+	add_user_form_submit_button
+		display        : inline-block
+		vertical-align : top
+		margin-top     : 0.3em
+		font-size      : 85%
 `
