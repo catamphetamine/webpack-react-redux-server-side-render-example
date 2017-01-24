@@ -1,5 +1,5 @@
 import routes  from './routes';
-import * as reducer from './reducer';
+import * as reducer from './redux/reducer';
 import wrapper from './wrapper';
 import asyncSettings from './react-isomorphic-render-async';
 

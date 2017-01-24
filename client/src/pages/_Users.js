@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
 import { Button } from 'react-responsive-ui'
-import { title, preload }   from 'react-isomorphic-render'
+import { title, preload } from 'react-isomorphic-render'
 import styler from 'react-styling'
 
 import { connector, get_users, add_user, delete_user } from '../redux/users'
@@ -24,9 +24,48 @@ export default class Users_page extends Component
 	{
 		super()
 
-		this.refresh     = this.refresh.bind(this)
-		this.add_user    = this.add_user.bind(this)
-		this.delete_user = this.delete_user.bind(this)
+		this.refresh            = this.refresh.bind(this)
+		this.add_user           = this.add_user.bind(this)
+		this.show_add_user_form = this.show_add_user_form.bind(this)
+		this.hide_add_user_form = this.hide_add_user_form.bind(this)
+		this.delete_user        = this.delete_user.bind(this)
+	}
+
+	refresh()
+	{
+		return this.props.get_users()
+	}
+
+	show_add_user_form()
+	{
+		this.setState({ show_add_user_form: true })
+	}
+
+	hide_add_user_form()
+	{
+		this.setState({ show_add_user_form: false })
+	}
+
+	async add_user()
+	{
+		const name = prompt(`Enter user's name`)
+		
+		if (!name)
+		{
+			return
+		}
+
+		await this.props.add_user({ name })
+		this.setState({ show_add_user_form: false })
+		this.refresh()
+	}
+
+	async delete_user(id)
+	{
+		this.setState({ userBeingDeleted: id })
+		await this.props.delete_user(id)
+		this.setState({ userBeingDeleted: undefined })
+		this.refresh()
 	}
 
 	render()
@@ -65,7 +104,7 @@ export default class Users_page extends Component
 				<Button
 					busy={ addUserPending }
 					disabled={ disableButtons }
-					action={ this.add_user }>
+					action={ this.show_add_user_form }>
 					Add user
 				</Button>
 
@@ -80,6 +119,12 @@ export default class Users_page extends Component
 				<div style={ styles.users }>
 					{ this.render_user_list() }
 				</div>
+
+				<Modal
+					isShown={ show_add_user_form }
+					close={ this.hide_add_user_form }>
+					<Add_user_form/>
+				</Modal>
 			</div>
 		)
 	}
@@ -138,32 +183,13 @@ export default class Users_page extends Component
 			</ul>
 		)
 	}
+}
 
-	refresh()
-	{
-		return this.props.get_users()
-	}
-
-	async add_user()
-	{
-		const name = prompt(`Enter user's name`)
-		
-		if (!name)
-		{
-			return
-		}
-
-		await this.props.add_user({ name })
-		this.refresh()
-	}
-
-	async delete_user(id)
-	{
-		this.setState({ userBeingDeleted: id })
-		await this.props.delete_user(id)
-		this.setState({ userBeingDeleted: undefined })
-		this.refresh()
-	}
+function Add_user_form({ submit, submitting })
+{
+	return (
+		<form onSubmit={ submit(a)}
+	)
 }
 
 const styles = styler
