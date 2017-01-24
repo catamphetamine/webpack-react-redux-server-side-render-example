@@ -67,23 +67,6 @@ export default class Users_page extends Component
 
 	render()
 	{
-		return (
-			<section>
-				{ title("Simple REST API example") }
-
-				<div>
-					<p>This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)</p>
-
-					<div style={ styles.users }>
-						{ this.render_users() }
-					</div>
-				</div>
-			</section>
-		)
-	}
-
-	render_users()
-	{
 		const
 		{
 			users,
@@ -102,37 +85,45 @@ export default class Users_page extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
-			<div style={ styles.users }>
+			<section>
+				{ title("Simple REST API example") }
 
-				<Button
-					disabled={ disableButtons }
-					action={ this.show_add_user_form }>
-					Add user
-				</Button>
+				<div>
+					<p>This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)</p>
 
-				<Button
-					busy={ getUsersPending }
-					disabled={ disableButtons }
-					action={ this.refresh }
-					style={ styles.refresh }>
-					Refresh
-				</Button>
+					<div style={ styles.users }>
 
-				<div style={ styles.users }>
-					{ this.render_user_list() }
+						<Button
+							disabled={ disableButtons }
+							action={ this.show_add_user_form }>
+							Add user
+						</Button>
+
+						<Button
+							busy={ getUsersPending }
+							disabled={ disableButtons }
+							action={ this.refresh }
+							style={ styles.refresh }>
+							Refresh
+						</Button>
+
+						<div style={ styles.users }>
+							{ this.render_users() }
+						</div>
+
+						<Modal
+							isOpen={ show_add_user_form }
+							close={ this.hide_add_user_form }
+							busy={ addUserPending }>
+							<Add_user_form onSubmitted={ this.user_added }/>
+						</Modal>
+					</div>
 				</div>
-
-				<Modal
-					isOpen={ show_add_user_form }
-					close={ this.hide_add_user_form }
-					busy={ addUserPending }>
-					<Add_user_form onSubmitted={ this.user_added }/>
-				</Modal>
-			</div>
+			</section>
 		)
 	}
 
-	render_user_list()
+	render_users()
 	{
 		const
 		{
@@ -245,7 +236,7 @@ class Add_user_form extends Component
 const styles = styler
 `
 	users
-		margin-top   : 2em
+		margin-top : 2em
 
 	refresh
 		margin-left : 1em
