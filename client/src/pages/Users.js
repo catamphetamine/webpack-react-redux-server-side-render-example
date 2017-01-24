@@ -166,7 +166,7 @@ export default class Users_page extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 		
 		return (
-			<table style={ styles.list }>
+			<table>
 				<tbody>
 					{ users.map((user) => {
 						return (
@@ -234,7 +234,7 @@ class Add_user_form extends Component
 					submit
 					component={ Button }
 					className="rrui__button--border"
-					style={ styles.add_user_form_submit_button }>
+					style={ styles.add_user_form_submit }>
 					Add
 				</Submit>
 			</form>
@@ -247,12 +247,6 @@ const styles = styler
 	users
 		margin-top   : 2em
 
-	list
-		display         : inline-block
-		list-style-type : none
-		margin          : 0
-		padding-left    : 0
-
 	refresh
 		margin-left : 1em
 
@@ -264,15 +258,14 @@ const styles = styler
 		padding-left  : 0.5em
 		padding-right : 0.5em
 
+	add_user_form_input, add_user_form_submit
+		display        : inline-block
+		vertical-align : top
+		font-size      : 85%
+		
 	add_user_form_input
-		display        : inline-block
-		vertical-align : top
 		margin-right   : 0.6em
-		font-size      : 85%
 
-	add_user_form_submit_button
-		display        : inline-block
-		vertical-align : top
+	add_user_form_submit
 		margin-top     : 0.3em
-		font-size      : 85%
 `
