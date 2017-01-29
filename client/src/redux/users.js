@@ -5,19 +5,19 @@ const handler = createHandler(settings);
 
 export const get_users = action
 ({
-  namespace: 'USERS',
-  event: 'GET_USERS',
-  action: async (http) =>
-  {
-    await delay(1000)
-    const user_ids = await http.get('/api/example/users')
-    return await Promise.all(user_ids.map(id => http.get(`/api/example/users/${id}`)))
-  },
-  result: (state, result) =>
-  ({
-    ...state,
-    users: result
-  })
+	namespace: 'USERS',
+	event: 'GET_USERS',
+	action: async (http) =>
+	{
+		await delay(1000)
+		const user_ids = await http.get('/api/example/users')
+		return await Promise.all(user_ids.map(id => http.get(`/api/example/users/${id}`)))
+	},
+	result: (state, result) =>
+	({
+		...state,
+		users: result
+	})
 },
 handler)
 
@@ -25,25 +25,25 @@ handler.addStateProperties('users')
 
 export const add_user = action
 ({
-  namespace: 'USERS',
-  event: 'ADD_USER',
-  action: async (user, http) =>
-  {
-    await delay(1500)
-    await http.post(`/api/example/users`, user)
-  }
+	namespace: 'USERS',
+	event: 'ADD_USER',
+	action: async (user, http) =>
+	{
+		await delay(1500)
+		await http.post(`/api/example/users`, user)
+	}
 },
 handler)
 
 export const delete_user = action
 ({
-  namespace: 'USERS',
-  event: 'DELETE_USER',
-  action: async (id, http) =>
-  {
-    await delay(1000)
-    await http.delete(`/api/example/users/${id}`)
-  }
+	namespace: 'USERS',
+	event: 'DELETE_USER',
+	action: async (id, http) =>
+	{
+		await delay(1000)
+		await http.delete(`/api/example/users/${id}`)
+	}
 },
 handler)
 
@@ -66,5 +66,5 @@ export default handler.reducer(initial_state)
 // "Sleep" using `Promise`
 function delay(delay)
 {
-  return new Promise(resolve => setTimeout(resolve, delay))
+	return new Promise(resolve => setTimeout(resolve, delay))
 }

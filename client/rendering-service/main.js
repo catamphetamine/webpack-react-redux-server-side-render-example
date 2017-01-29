@@ -3,7 +3,7 @@ import webpageServer from 'react-isomorphic-render/server'
 import { devtools } from 'universal-webpack'
 import path from 'path'
 
-import settings from '../src/react-isomorphic-render'
+import settings, { icon } from '../src/react-isomorphic-render'
 
 const WEB_SERVICE_PORT = 3000
 const PAGE_SERVICE_PORT = 3002
@@ -43,7 +43,7 @@ export default function(parameters) {
       // }
 
       // Add "favicon"
-      result.icon = require('../assets/images/icon.png')
+      result.icon = icon
 
       // Return assets
       return result
