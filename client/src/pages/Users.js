@@ -4,7 +4,7 @@ import { bindActionCreators as bind_action_creators } from 'redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
 import Form, { Field, Submit } from 'simpler-redux-form'
 import { title, preload } from 'react-isomorphic-render'
-import styler from 'react-styling'
+import { flat as style } from 'react-styling'
 
 import { connector, get_users, add_user, delete_user } from '../redux/users'
 
@@ -233,7 +233,7 @@ class Add_user_form extends Component
 	}
 }
 
-const styles = styler
+const styles = style
 `
 	users
 		margin-top : 2em

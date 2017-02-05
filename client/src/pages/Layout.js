@@ -1,8 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import styler from 'react-styling'
 import { head } from 'react-isomorphic-render'
 
-import Menu from '../components/Menu'
+import Menu       from '../components/Menu'
 import Preloading from '../components/Preloading'
 
 export default class Layout extends Component
