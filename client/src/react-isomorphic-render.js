@@ -37,6 +37,8 @@ export default
 			{
 				redirect('/error')
 			}
+
+			throw error
 		}
 	},
 
