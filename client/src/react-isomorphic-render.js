@@ -33,7 +33,10 @@ export default
 			// }
 
 			// Redirect to a generic error page
-			redirect('/error')
+			if (process.env.NODE_ENV === 'production')
+			{
+				redirect('/error')
+			}
 		}
 	},
 
