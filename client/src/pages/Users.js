@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
 import Form, { Field, Submit } from 'simpler-redux-form'
-import { title, preload } from 'react-isomorphic-render'
+import { Title, preload } from 'react-isomorphic-render'
 import { flat as style } from 'react-styling'
 
 import { connector, get_users, add_user, delete_user } from '../redux/users'
@@ -86,12 +86,12 @@ export default class Users_page extends Component
 
 		return (
 			<section>
-				{ title("Simple REST API example") }
+				<Title>Simple REST API example</Title>
 
 				<div>
 					<p>This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)</p>
 
-					<div style={ styles.users }>
+					<div style={ styles.container }>
 
 						<Button
 							disabled={ disableButtons }
@@ -213,7 +213,10 @@ class Add_user_form extends Component
 		const { submit, submitting } = this.props
 
 		return (
-			<form onSubmit={ submit(this.submit) }>
+			<form
+				onSubmit={ submit(this.submit) }
+				style={ styles.add_user_form }>
+
 				<Field
 					name="name"
 					label="Name"
@@ -235,19 +238,25 @@ class Add_user_form extends Component
 
 const styles = style
 `
+	container
+		margin-top : 2rem
+
 	users
-		margin-top : 2em
+		margin-top : 1.5rem
 
 	refresh
-		margin-left : 1em
+		margin-left : 2rem
 
 	id
 		color      : #9f9f9f
 		text-align : center
 
 	name
-		padding-left  : 0.5em
-		padding-right : 0.5em
+		padding-left  : 1em
+		padding-right : 1em
+
+	add_user_form
+		padding : 2rem
 
 	add_user_form_input, add_user_form_submit
 		display        : inline-block
@@ -255,8 +264,7 @@ const styles = style
 		font-size      : 85%
 		
 	add_user_form_input
-		margin-right   : 0.6em
+		margin-right   : 1rem
 
 	add_user_form_submit
-		margin-top     : 0.3em
 `

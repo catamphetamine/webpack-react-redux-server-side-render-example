@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { flat as style } from 'react-styling'
-import { title } from 'react-isomorphic-render'
+import { Title } from 'react-isomorphic-render'
 
 import husky from '../../assets/images/husky.jpg'
 
@@ -11,7 +11,7 @@ export default class Page extends Component
 		const markup = 
 		(
 			<section className="content">
-				{ title("Home") }
+				<Title>Home</Title>
 
 				<h1 style={ styles.header }>
 					Husky

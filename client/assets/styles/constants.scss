@@ -1,10 +1,15 @@
 :root
 {
-	--base-color        : #29ADFF;
-	--base-color-darker : #0076BF;
-	--base-color-ligher : #73C9FF;
+	--white-color        : #ffffff;
+	--black-color        : #000000;
+	
+	--gray-color         : #888C91;
 
-	--unit              : 0.15rem;
+	--base-color         : #00A6ED;
+	--base-color-darker  : #0084BD;
+	--base-color-lighter : #30CFFF;
 
-	--font-size         : 18pt;
+	--unit : 0.3rem;
+
+	--font-size : 18pt;
 }

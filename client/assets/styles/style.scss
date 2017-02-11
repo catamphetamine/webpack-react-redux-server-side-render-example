@@ -1,5 +1,4 @@
 @import "constants.scss";
-@import "isomorphic.scss";
 
 @import "../../src/components/Menu.scss";
 @import "../../src/components/Preloading.scss";
@@ -16,27 +15,24 @@ body
 	overflow-y : scroll;
 }
 
-body, button, input, textarea, select
+body, .button, input, textarea, select
 {
 	font-family : Arial, Helvetica, Sans;
 	font-size   : var(--font-size);
 }
 
-button
+.button
 {
 	background : none;
 	border     : none;
 	outline    : none;
 	padding    : 0;
 
-	font-weight : bold;
-	color       : var(--base-color);
-
 	transition: all 30ms ease-out;
 
 	&:active
 	{
-		color: var(--base-color-ligher);
+		color: var(--base-color-lighter);
 	}
 }
 
@@ -70,31 +66,70 @@ section
 
 header
 {
-	padding-top    : calc(var(--unit) * 10);
-	padding-bottom : calc(var(--unit) * 10);
-	padding-left   : calc(var(--unit) * 8);
-	padding-right  : calc(var(--unit) * 8);
+	padding-top    : calc(var(--unit) * 5);
+	padding-bottom : calc(var(--unit) * 5);
+	padding-left   : calc(var(--unit) * 4);
+	padding-right  : calc(var(--unit) * 4);
 }
 
-.rrui__button--border .rrui__button__button
+.rrui__input
 {
-	padding-top    : 0.5em !important;
-	padding-bottom : 0.3em !important;
-	font-weight    : normal;
-	font-size      : inherit;
+	height : calc(var(--unit) * 9);
 }
 
-.rrui__text-input__field
+.rrui__text-input__input:focus
 {
-	padding-top    : 0.3em;
-	padding-bottom : 0.3em;
+	border-color : var(--base-color);
+}
+
+.rrui__text-input__input:focus + .rrui__input-label
+{
+	color : var(--base-color);
+}
+
+.rrui__text-input__input--empty:focus + .rrui__input-label--floating
+{
+	color : var(--gray-color);
+}
+
+.rrui__button
+{
+	color : var(--base-color);
+
+	&:active
+	{
+		color : var(--base-color-lighter);
+	}
+}
+
+.rrui__button--border
+{
+	color         : var(--base-color);
+	border        : 0.15em solid var(--base-color);
+	border-radius : 0.4em;
+
+	&:active
+	{
+		color            : var(--white-color);
+		background-color : var(--base-color);
+	}
+
+	.rrui__button__button
+	{
+		padding-left  : calc(var(--unit) * 4);
+		padding-right : calc(var(--unit) * 4);
+	}
+}
+
+.rrui__text-input__input
+{
 	border-top-width   : 0;
 	border-left-width  : 0;
 	border-right-width : 0;
 	outline            : none;
 }
 
-.rrui__text-input label
+.rrui__input-error
 {
-	top: 0.4rem !important;
+	margin-top: calc(var(--unit) * 2);
 }

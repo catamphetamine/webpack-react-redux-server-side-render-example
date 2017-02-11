@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { title } from 'react-isomorphic-render'
+import { Title } from 'react-isomorphic-render'
 import { flat as style } from 'react-styling'
 
 export default class Not_found extends Component
@@ -9,7 +9,7 @@ export default class Not_found extends Component
 		const markup =
 		(
 			<div>
-				{ title("Page not found") }
+				<Title>Page not found</Title>
 
 				<h1 style={ styles.header }>
 					Page not found

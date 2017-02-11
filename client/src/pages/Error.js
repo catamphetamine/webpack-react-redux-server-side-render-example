@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { flat as style } from 'react-styling'
-import { title } from 'react-isomorphic-render'
+import { Title } from 'react-isomorphic-render'
 
 export default class Page extends Component
 {
@@ -9,7 +9,7 @@ export default class Page extends Component
 		const markup = 
 		(
 			<section className="content">
-				{ title("Error") }
+				<Title>Error</Title>
 
 				<h1 style={ styles.header }>
 					Some kind of an error happened

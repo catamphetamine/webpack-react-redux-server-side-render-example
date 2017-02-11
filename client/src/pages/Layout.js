@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { head } from 'react-isomorphic-render'
+import { Title, Meta } from 'react-isomorphic-render'
 
 import Menu       from '../components/Menu'
 import Preloading from '../components/Preloading'
@@ -46,7 +46,8 @@ export default class Layout extends Component
 		const markup = 
 		(
 			<div className="content">
-				{ head(title, meta) }
+				<Title>{ title }</Title>
+				<Meta>{ meta }</Meta>
 
 				<Preloading/>
 

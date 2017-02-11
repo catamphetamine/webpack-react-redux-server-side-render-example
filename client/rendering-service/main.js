@@ -77,10 +77,10 @@ export default function(parameters) {
   // Start webpage rendering server
   server.listen(PAGE_SERVICE_PORT, function(error) {
     if (error) {
-      console.error('Webpage rendering server shutdown due to an error')
+      console.error('Webpage rendering service was shut down due to an error')
       throw error
     }
 
-    console.log(`Webpage server is listening at http://localhost:${PAGE_SERVICE_PORT}`)
+    console.log(`Webpage rendering service is listening at port ${PAGE_SERVICE_PORT}`)
   })
 }
