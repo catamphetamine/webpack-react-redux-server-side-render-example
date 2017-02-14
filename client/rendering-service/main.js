@@ -34,7 +34,7 @@ export default function(parameters) {
       const result = { ...parameters.chunks() }
 
       // Webpack entry point (can be used for code splitting)
-      result.entry = 'main'
+      result.entries = ['main']
 
       // // Clear Webpack require() cache for hot reload in development mode
       // // (this is not necessary)

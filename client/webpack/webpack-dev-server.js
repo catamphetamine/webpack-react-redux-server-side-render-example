@@ -1,11 +1,12 @@
-import express from 'express';
-import webpack from 'webpack';
-import configuration from './webpack.config.client.development';
+import express from 'express'
+import webpack from 'webpack'
+import configuration from './webpack.config.client.development'
 
 const WEBPACK_DEV_SERVER_PORT = 3001
 
 // http://webpack.github.io/docs/webpack-dev-server.html
-const developmentServerOptions = {
+const developmentServerOptions =
+{
   quiet       : true, // don’t output anything to the console
   noInfo      : true, // suppress boring information
   hot         : true, // adds the HotModuleReplacementPlugin and switch the server to hot mode. Note: make sure you don’t add HotModuleReplacementPlugin twice
@@ -21,20 +22,22 @@ const developmentServerOptions = {
 
   headers     : { 'Access-Control-Allow-Origin': '*' },
   stats       : { colors: true }
-};
+}
 
-const compiler = webpack(configuration);
+const compiler = webpack(configuration)
 
-const developmentServer = new express();
+const developmentServer = new express()
 
-developmentServer.use(require('webpack-dev-middleware')(compiler, developmentServerOptions));
-developmentServer.use(require('webpack-hot-middleware')(compiler));
+developmentServer.use(require('webpack-dev-middleware')(compiler, developmentServerOptions))
+developmentServer.use(require('webpack-hot-middleware')(compiler))
 
-developmentServer.listen(WEBPACK_DEV_SERVER_PORT, (error) => {
-  if (error) {
-    console.error(error.stack || error);
-    throw error;
+developmentServer.listen(WEBPACK_DEV_SERVER_PORT, (error) =>
+{
+  if (error)
+  {
+    console.error(error.stack || error)
+    throw error
   }
 
-  console.log('[webpack-dev-server] Running');
-});
+  console.log('[webpack-dev-server] Running')
+})

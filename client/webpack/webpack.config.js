@@ -1,48 +1,59 @@
 // This is the base Webpack configuration file
 
-var path = require('path');
-var webpack = require('webpack');
-var autoprefixer = require('autoprefixer');
-var cssCustomProperties = require('postcss-custom-properties');
-var postcssCalc = require('postcss-calc');
+var path = require('path')
+var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
+var cssCustomProperties = require('postcss-custom-properties')
+var postcssCalc = require('postcss-calc')
 
 // project folder
-var rootFolder = path.resolve(__dirname, '..');
+var root_folder = path.resolve(__dirname, '..')
 
-var configuration = {
-  // resolve all relative paths from the project root folder
-  context: rootFolder,
+var configuration =
+{
+  // Resolve all relative paths from the project root folder
+  context: root_folder,
 
-  // https://webpack.github.io/docs/multiple-entry-points.html
-  entry: {
+  // Each "entry" can be divided into multiple chunks.
+  // Why multiple "entries" might be used?
+  // For example, for completely different website parts,
+  // like the public user-facing part and the private "admin" part.
+  entry:
+  {
+    // The "main" entry
     main: './src/application.entry.js'
   },
 
-  output: {
-    // filesystem path for static files
-    path: path.resolve(rootFolder, 'build/assets'),
+  output:
+  {
+    // Filesystem path for static files
+    path: path.resolve(root_folder, 'build/assets'),
 
-    // network path for static files
+    // Network path for static files
     publicPath: '/assets/',
 
-    // file name pattern for entry scripts
+    // Specifies the name of each output entry file
     filename: '[name].[hash].js',
 
-    // file name pattern for chunk scripts
+    // Specifies the name of each (non-entry) chunk file
     chunkFilename: '[name].[hash].js'
   },
 
-  module: {
-    rules: [{
+  module:
+  {
+    rules:
+    [{
       test: /\.js$/,
       exclude: /node_modules/,
-      use: [{
+      use:
+      [{
         loader: 'babel-loader'
       }]
     },
     {
       test: /\.(scss)$/,
-      use: [
+      use:
+      [
         'style-loader',
         'css-loader?importLoaders=2&sourceMap',
         'postcss-loader',
@@ -51,7 +62,8 @@ var configuration = {
     },
     {
       test: /\.(css)$/,
-      use: [
+      use:
+      [
         'style-loader',
         'css-loader?importLoaders=2&sourceMap',
         'postcss-loader'
@@ -59,33 +71,40 @@ var configuration = {
     },
     {
       test: /\.(jpg|png)$/,
-      use: [
+      use:
+      [
         'url-loader?limit=10000' // Any png-image or woff-font below or equal to 10K will be converted to inline base64 instead
       ]
     },
     {
       test: /\.(svg)$/,
-      use: [
+      use:
+      [
         'svg-react-loader'
       ]
     }]
   },
 
   plugins: []
-};
+}
 
-configuration.plugins.push(
-  new webpack.LoaderOptionsPlugin({
+configuration.plugins.push
+(
+  new webpack.LoaderOptionsPlugin
+  ({
     test: /\.(scss|css)$/,
     debug: true,
-    options: {
+    options:
+    {
       // A temporary workaround for `scss-loader`
       // https://github.com/jtangelder/sass-loader/issues/298
-      output: {
+      output:
+      {
         path: configuration.output.path
       },
 
-      postcss: [
+      postcss:
+      [
         autoprefixer({ browsers: 'last 2 version' }),
         cssCustomProperties(),
         postcssCalc()
@@ -96,6 +115,6 @@ configuration.plugins.push(
       context: configuration.context
     }
   })
-);
+)
 
-module.exports = configuration;
+module.exports = configuration
