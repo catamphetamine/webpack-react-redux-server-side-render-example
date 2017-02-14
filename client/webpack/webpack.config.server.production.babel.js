@@ -1,5 +1,6 @@
-import baseConfiguration from './webpack.config.server';
+import { cloneDeep } from 'lodash'
+import base_configuration from './webpack.config.server'
 
-// Nothing special to add here.
+const configuration = cloneDeep(base_configuration)
 
-export default baseConfiguration;
+export default configuration

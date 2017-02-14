@@ -2,6 +2,7 @@ import React from 'react'
 import webpageServer from 'react-isomorphic-render/server'
 import { devtools } from 'universal-webpack'
 import path from 'path'
+import fs from 'fs'
 
 import settings, { icon } from '../src/react-isomorphic-render'
 
@@ -9,6 +10,8 @@ const WEB_SERVICE_PORT = 3000
 const PAGE_SERVICE_PORT = 3002
 
 export default function(parameters) {
+  const chunk_manifest = fs.readFileSync(path.join(parameters.configuration.output.path, 'chunk-manifest.json'), 'utf8')
+
   // Starts webpage rendering server
   const server = webpageServer(settings, {
     // HTTP host and port for performing all AJAX requests
@@ -34,7 +37,7 @@ export default function(parameters) {
       const result = { ...parameters.chunks() }
 
       // Webpack entry point (can be used for code splitting)
-      result.entry = 'main'
+      result.entries = ['manifest', 'vendor', 'main']
 
       // // Clear Webpack require() cache for hot reload in development mode
       // // (this is not necessary)
@@ -51,25 +54,16 @@ export default function(parameters) {
 
     html: {
       // Will be inserted into server rendered webpage <head/>
-      // (this `head()` function is optional and is not required)
-      // (its gonna work with or without this `head()` parameter)
       head(path) {
-        if (process.env.NODE_ENV !== 'production') {
+        if (process.env.NODE_ENV === 'production') {
+          return `<script>window.webpack_chunk_manifest = ${chunk_manifest}</script>`
+        }
+        else {
           // `devtools` just tampers with CSS styles a bit.
           // It's not required for operation and can be omitted.
           // It just removes the "flash of unstyled content" in development mode.
           return `<script>${devtools({ ...parameters, entry: 'main' })}</script>`
         }
-      },
-
-      // Isomorphic CSS flag
-      bodyStart(path) {
-        return `
-          <script>
-            // This line is just for CSS
-            document.body.classList.add('javascript-is-enabled');
-          </script>
-        `;
       }
     }
   })
