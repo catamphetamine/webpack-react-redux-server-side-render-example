@@ -53,35 +53,65 @@ var configuration =
     {
       test: /\.(scss)$/,
       use:
-      [
-        'style-loader',
-        'css-loader?importLoaders=2&sourceMap',
-        'postcss-loader',
-        'sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true'
-      ]
+      [{
+        loader: 'style-loader'
+      },
+      {
+        loader : 'css-loader',
+        options:
+        {
+          importLoaders : 2,
+          sourceMap     : true
+        }
+      },
+      {
+        loader : 'postcss-loader'
+      },
+      {
+        loader : 'sass-loader',
+        options:
+        {
+          outputStyle       : 'expanded',
+          sourceMap         : true,
+          sourceMapContents : true
+        }
+      }]
     },
     {
       test: /\.(css)$/,
       use:
-      [
-        'style-loader',
-        'css-loader?importLoaders=2&sourceMap',
-        'postcss-loader'
-      ]
+      [{
+        loader: 'style-loader'
+      },
+      {
+        loader : 'css-loader',
+        options:
+        {
+          importLoaders : 2,
+          sourceMap     : true
+        }
+      },
+      {
+        loader : 'postcss-loader'
+      }]
     },
     {
       test: /\.(jpg|png)$/,
       use:
-      [
-        'url-loader?limit=10000' // Any png-image or woff-font below or equal to 10K will be converted to inline base64 instead
-      ]
+      [{
+        loader : 'url-loader',
+        options:
+        {
+          limit: 10240 // Any png-image or woff-font below or equal to 10K will be converted to inline base64 instead
+        }
+      }]
     },
     {
       test: /\.(svg)$/,
       use:
-      [
-        'svg-react-loader'
-      ]
+      [{
+        loader: 'svg-react-loader'
+      }]
     }]
   },
 
