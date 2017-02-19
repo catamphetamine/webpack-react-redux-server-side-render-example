@@ -4,9 +4,7 @@ import { devtools } from 'universal-webpack'
 import path from 'path'
 
 import settings, { icon } from '../src/react-isomorphic-render'
-
-const WEB_SERVICE_PORT = 3000
-const PAGE_SERVICE_PORT = 3002
+import configuration from '../../configuration'
 
 export default function(parameters) {
   // Starts webpage rendering server
@@ -18,7 +16,7 @@ export default function(parameters) {
     // Specify `secure: true` flag to use `https` protocol instead of `http`.
     application: {
       host: 'localhost',
-      port: WEB_SERVICE_PORT
+      port: configuration.web.port
       // secure: true
     },
 
@@ -75,12 +73,12 @@ export default function(parameters) {
   })
 
   // Start webpage rendering server
-  server.listen(PAGE_SERVICE_PORT, function(error) {
+  server.listen(configuration.services.rendering.port, function(error) {
     if (error) {
       console.error('Webpage rendering service was shut down due to an error')
       throw error
     }
 
-    console.log(`Webpage rendering service is listening at port ${PAGE_SERVICE_PORT}`)
+    console.log(`Webpage rendering service is listening at port ${configuration.services.rendering.port}`)
   })
 }

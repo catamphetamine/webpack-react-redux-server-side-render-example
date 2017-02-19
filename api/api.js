@@ -1,8 +1,7 @@
 import { api } from 'web-service'
 
 import example_api from './api/example'
-
-const API_SERVICE_PORT = 3003
+import configuration from '../configuration'
 
 const apiService = api
 ({
@@ -10,9 +9,9 @@ const apiService = api
 	api  : [example_api]
 })
 
-apiService.listen(API_SERVICE_PORT).then(() =>
+apiService.listen(configuration.services.api.port).then(() =>
 {
-	console.info(`Api server is listening at http://localhost:${API_SERVICE_PORT}`)
+	console.info(`Api server is listening at http://localhost:${configuration.services.api.port}`)
 },
 (error) =>
 {
