@@ -19,8 +19,8 @@ web.proxy(`http://localhost:${configuration.services.rendering.port}`, { name: '
 // Start web server
 web.listen(configuration.web.port).then(() =>
 {
-	log.info(`Web server is listening`)
-	log.info(`Now go to http://localhost:${configuration.web.port}`)
+	console.info(`Web server is listening`)
+	console.info(`Now go to http://localhost:${configuration.web.port}`)
 },
 (error) =>
 {
