@@ -51,9 +51,9 @@ export default class Layout extends Component
 
 				<Preloading/>
 
-				<header>
+				<nav className="main-header">
 					<Menu items={ menu_items }/>
-				</header>
+				</nav>
 
 				{ children }
 
