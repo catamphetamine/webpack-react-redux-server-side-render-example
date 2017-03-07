@@ -19,4 +19,5 @@ require('babel-register')
 
 require('bluebird').promisifyAll(require('fs-extra'))
 
+console.log(`Webpage rendering service is building...`)
 require('./start')
