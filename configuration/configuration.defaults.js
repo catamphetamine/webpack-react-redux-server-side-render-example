@@ -19,6 +19,7 @@ export default
 	{
 		devserver:
 		{
+			host: 'localhost',
 			port: 3001
 		}
 	}

@@ -52,6 +52,12 @@ a:active
 	color: var(--base-color-darker);
 }
 
+/* Internet Explorer adds borders around all images */
+img
+{
+	border: none;
+}
+
 body
 {
 	margin-top    : calc(var(--unit) * 1);
