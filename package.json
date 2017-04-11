@@ -8,7 +8,7 @@
   },
   "homepage": "https://github.com/halt-hammerzeit/webpack-react-redux-isomorphic-render-example",
   "scripts": {
-    "start": "npm run dev",
+    "start": "npm run production",
     "dev": "npm-run-all development:client:rendering-service:build:prepare development",
     "development": "npm-run-all --parallel development:client:build development:client:rendering-service:build development:services",
     "development:client:rendering-service:build:prepare": "universal-webpack --settings ./client/webpack/universal-webpack-settings.json --config ./client/webpack/webpack.config.js prepare",
@@ -93,7 +93,8 @@
     "universal-webpack": "^0.3.3",
     "url-loader": "^0.5.7",
     "web-service": "^0.4.6",
-    "webpack": "^2.3.3"
+    "webpack": "^2.3.3",
+    "webpack-visualizer-plugin": "^0.1.11"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

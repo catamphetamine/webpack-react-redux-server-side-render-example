@@ -3,6 +3,7 @@ import path from 'path'
 import webpack            from 'webpack'
 import baseConfiguration  from './webpack.config.client'
 import CleanPlugin        from 'clean-webpack-plugin'
+import Visualizer         from 'webpack-visualizer-plugin'
 
 // With `development: false` all CSS will be extracted into a file
 // named '[name]-[contenthash].css' using `extract-text-webpack-plugin`
@@ -39,7 +40,13 @@ configuration.plugins.push
   }),
 
   // Compresses javascript files
-  new webpack.optimize.UglifyJsPlugin()
+  new webpack.optimize.UglifyJsPlugin(),
+
+  new Visualizer
+  ({
+    // Relative to the output folder
+    filename: '../bundle-stats.html'
+  }),
 )
 
 export default configuration
