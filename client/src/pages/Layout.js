@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Title, Meta } from 'react-isomorphic-render'
 
 import Menu       from '../components/Menu'
@@ -20,34 +21,17 @@ export default class Layout extends Component
 		const title = 'WebApp'
 		const description = 'A generic web application boilerplate'
 
-		const meta =
-		[
-			// <meta charset="utf-8"/>
-			{ charset: 'utf-8' },
-
-			// <meta name="..." content="..."/>
-			{ name: 'viewport', content: 'width=device-width, initial-scale=1.0, user-scalable=no' },
-
-			// <meta property="..." content="..."/>
-			{ property: 'og:title',       content: 'International Bodybuilders Club' },
-			{ property: 'og:description', content: 'Do some push ups' },
-			{ property: 'og:locale',      content: 'ru-RU' }
-		]
-
-		const menu_items =
-		[{
-			name: 'Home',
-			link: '/'
-		}, {
-			name: 'Users',
-			link: '/users'
-		}]
-
 		const markup = 
 		(
 			<div className="content">
 				<Title>{ title }</Title>
-				<Meta>{ meta }</Meta>
+				<Meta>
+					<meta charset="utf-8"/>
+					<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+					<meta property="og:title" content={ title }/>
+					<meta property="og:description" content={ description }/>
+					<meta property="og:locale" content="ru-RU"/>
+				</Meta>
 
 				<Preloading/>
 
@@ -64,3 +48,12 @@ export default class Layout extends Component
 		return markup
 	}
 }
+
+const menu_items =
+[{
+	name: 'Home',
+	link: '/'
+}, {
+	name: 'Users',
+	link: '/users'
+}]

@@ -39,13 +39,7 @@ configuration.plugins.push
   }),
 
   // Compresses javascript files
-  new webpack.optimize.UglifyJsPlugin
-  ({
-    compress:
-    {
-      warnings: false
-    }
-  })
+  new webpack.optimize.UglifyJsPlugin()
 )
 
 export default configuration

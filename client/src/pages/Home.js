@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { flat as style } from 'react-styling'
 import { Title } from 'react-isomorphic-render'
 

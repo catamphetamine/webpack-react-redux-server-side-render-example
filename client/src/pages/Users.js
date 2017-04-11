@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
@@ -257,6 +257,9 @@ const styles = style
 
 	add_user_form
 		padding : 2rem
+
+	add_user_form_input
+		width : auto
 
 	add_user_form_input, add_user_form_submit
 		display        : inline-block
