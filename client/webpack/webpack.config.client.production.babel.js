@@ -42,6 +42,7 @@ configuration.plugins.push
   // Compresses javascript files
   new webpack.optimize.UglifyJsPlugin(),
 
+  // https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/
   new Visualizer
   ({
     // Relative to the output folder
