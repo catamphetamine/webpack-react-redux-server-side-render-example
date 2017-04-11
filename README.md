@@ -22,7 +22,7 @@ Quick Start
 * wait a bit for Webpack to finish the build (green stats will appear in the terminal, plus some `node.js` server running commands)
 * go to `http://localhost:3000`
 * interact with the production version of the web application
-* check out `./client/build/bundle-stats.html` for detailed info on which modules take up the most space in the output bundle
+* check out `./client/build/bundle-stats.html` for detailed info on which modules [take up the most space](https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/) in the output bundle
 
 Summary
 =======
