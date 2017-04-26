@@ -135,7 +135,7 @@ configuration.plugins.push
 
       postcss:
       [
-        autoprefixer({ browsers: 'last 2 version' }),
+        autoprefixer(),
         cssCustomProperties(),
         postcssCalc()
       ],
