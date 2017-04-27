@@ -69,7 +69,15 @@ export default function(parameters) {
           </script>
         `;
       }
-    }
+    },
+
+    // I prefer setting `render` flag to `false`
+    // because Server-Side React Rendering is slow
+    // (takes about 100 milliseconds for a complex page).
+    // Modern search engines know how to run javascript
+    // so there shouldn't be any issues.
+    // Read `react-isomorphic-render` docs for more info.
+    // render: false
   })
 
   // Start webpage rendering server
