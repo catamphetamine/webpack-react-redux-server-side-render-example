@@ -7,7 +7,7 @@ export default class Wrapper extends Component
 {
   static propTypes =
   {
-    store: React.PropTypes.object.isRequired
+    store: PropTypes.object.isRequired
   }
 
   render()
