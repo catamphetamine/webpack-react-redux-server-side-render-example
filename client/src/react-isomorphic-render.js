@@ -13,33 +13,30 @@ export default
 	routes,
 	wrapper,
 
-	preload:
+	catch(error, { path, url, redirect, dispatch, getState, server })
 	{
-		catch(error, { path, url, redirect, dispatch, getState, server })
+		console.error(`Error while preloading "${url}"`)
+		console.error(error)
+		
+		// // Not authenticated
+		// if (error.status === 401)
+		// {
+		// 	return redirect('/unauthenticated')
+		// }
+
+		// // Not authorized
+		// if (error.status === 403)
+		// {
+		// 	return redirect('/unauthorized')
+		// }
+
+		// Redirect to a generic error page
+		if (process.env.NODE_ENV === 'production')
 		{
-			console.error(`Error while preloading "${url}"`)
-			console.error(error)
-			
-			// // Not authenticated
-			// if (error.status === 401)
-			// {
-			// 	return redirect('/unauthenticated')
-			// }
-
-			// // Not authorized
-			// if (error.status === 403)
-			// {
-			// 	return redirect('/unauthorized')
-			// }
-
-			// Redirect to a generic error page
-			if (process.env.NODE_ENV === 'production')
-			{
-				redirect('/error')
-			}
-
-			throw error
+			redirect('/error')
 		}
+
+		throw error
 	},
 
 	...asyncSettings
