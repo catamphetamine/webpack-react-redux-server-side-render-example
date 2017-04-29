@@ -1,7 +1,7 @@
 'use strict'
 
-// use bluebird for Promises
-require('babel-runtime/core-js/promise').default = require('bluebird')
+// use `bluebird` for Promises
+require('../../bluebird')
 
 // Fixes "ReferenceError: regeneratorRuntime is not defined"
 require('babel-polyfill')
