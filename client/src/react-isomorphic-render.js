@@ -30,10 +30,16 @@ export default
 		// 	return redirect('/unauthorized')
 		// }
 
-		// Redirect to a generic error page
+		// Redirect to a generic error page in production
 		if (process.env.NODE_ENV === 'production')
 		{
-			return redirect('/error')
+			// Prevents infinite redirect to the error page
+			// in case of overall page rendering bugs, etc.
+			if (path !== '/error')
+			{
+				// Redirect to a generic error page
+				return redirect(add_redirect('/error', url))
+			}
 		}
 	},
 
