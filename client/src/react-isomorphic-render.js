@@ -13,7 +13,7 @@ export default
 	routes,
 	wrapper,
 
-	catch(error, { path, url, redirect, dispatch, getState, server })
+	error(error, { path, url, redirect, dispatch, getState, server })
 	{
 		console.error(`Error while preloading "${url}"`)
 		console.error(error)
@@ -33,10 +33,8 @@ export default
 		// Redirect to a generic error page
 		if (process.env.NODE_ENV === 'production')
 		{
-			redirect('/error')
+			return redirect('/error')
 		}
-
-		throw error
 	},
 
 	...asyncSettings

@@ -83,7 +83,7 @@
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.6",
-    "react-isomorphic-render": "^10.3.2",
+    "react-isomorphic-render": "^11.0.0",
     "react-redux": "^5.0.2",
     "react-responsive-ui": "^0.7.5",
     "react-router": "^3.0.0",
