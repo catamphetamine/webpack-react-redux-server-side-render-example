@@ -39,6 +39,11 @@ The "server side" consists of the "API service" (`./api`) and the "proxy service
 
 In development mode there's one more Node.js process running: it's `webpack-dev-server` running on port `3001` which serves the "assets" compiled by Webpack (live) via HTTP protocol. In production there's no `webpack-dev-server` and Webpack just outputs those compiled assets to the `./client/build` folder and the "proxy service" (`./webserver`) serves those "assets" from there. In a real production environment though this "hand made" sample proxy service should be dropped in favour of a proper proxy like NginX or HAProxy. Or a developer could rather use no proxy at all hosting everything completely separately in the cloud (the modern way). So this "proxied" setup is here just for simplicity and illustration purpose.
 
+Server Side Rendering
+=====================
+
+React Server Side Rendering is quite slow, so I prefer setting `render: false` flag to move all React rendering to the web browser. This approach has virtually no complications, but those who still want to prerender pages on the server may read the [guide on speeding up React Server Side Rendering](https://github.com/halt-hammerzeit/react-isomorphic-render/blob/master/PERFORMANCE.md).
+
 Small Advertisement
 ===================
 
