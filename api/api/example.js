@@ -10,12 +10,12 @@ let id_counter = 0
 
 export default function(api)
 {
-	api.get('/example/users', function()
+	api.get('/example/users', async () =>
 	{
 		return Array.from(users.keys())
 	})
 
-	api.get('/example/users/:id', function({ id })
+	api.get('/example/users/:id', async ({ id }) =>
 	{
 		if (!users.has(id))
 		{
@@ -25,7 +25,7 @@ export default function(api)
 		return { ...users.get(id), id: id }
 	})
 
-	api.post('/example/users', function({ name })
+	api.post('/example/users', async ({ name }) =>
 	{
 		if (!name)
 		{
@@ -40,7 +40,7 @@ export default function(api)
 		return id
 	})
 
-	api.patch('/example/users/:id', function({ id, name })
+	api.patch('/example/users/:id', async ({ id, name }) =>
 	{
 		if (!users.has(id))
 		{
@@ -50,7 +50,7 @@ export default function(api)
 		users.get(id).name = name
 	})
 
-	api.delete('/example/users/:id', function({ id })
+	api.delete('/example/users/:id', async ({ id }) =>
 	{
 		if (!users.has(id))
 		{
@@ -60,7 +60,7 @@ export default function(api)
 		users.delete(id)
 	})
 
-	api.post('/example/users/:id/picture', function({ id, file_name })
+	api.post('/example/users/:id/picture', async ({ id, file_name }) =>
 	{
 		if (!users.has(id))
 		{

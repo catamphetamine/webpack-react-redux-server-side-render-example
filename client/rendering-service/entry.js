@@ -1,10 +1,11 @@
 'use strict'
 
+// https://github.com/babel/babel/issues/5731
+require('babel-polyfill')
+
 // use `bluebird` for Promises
 require('../../bluebird')
-
-// Fixes "ReferenceError: regeneratorRuntime is not defined"
-require('babel-polyfill')
+require('bluebird').promisifyAll(require('fs-extra'))
 
 // Prevents Babel from transpiling server-side bundle
 // resulting in faster server-side hot-reload (startup) times.
@@ -16,7 +17,5 @@ require('babel-register')
 		require('../webpack/webpack.config')
 	)
 )
-
-require('bluebird').promisifyAll(require('fs-extra'))
 
 require('./start')

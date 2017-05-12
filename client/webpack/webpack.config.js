@@ -21,7 +21,11 @@ var configuration =
   entry:
   {
     // The "main" entry
-    main: './src/application.entry.js'
+    main:
+    [
+      'babel-polyfill',
+      './src/application.entry.js'
+    ]
   },
 
   output:

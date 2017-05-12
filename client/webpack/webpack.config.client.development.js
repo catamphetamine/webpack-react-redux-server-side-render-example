@@ -4,6 +4,8 @@ import application_configuration from '../../configuration'
 
 const configuration = base_configuration({ development: true, css_bundle: true })
 
+// The default `source-map` `devtool` gives better
+// source maps in Chrome (as per user reports in 2017).
 // configuration.devtool = 'inline-eval-cheap-source-map'
 
 configuration.plugins.push
@@ -30,11 +32,18 @@ configuration.plugins.push
 )
 
 // enable webpack development server
+
+if (configuration.entry.main.length !== 2 && configuration.entry.main[0] !== 'babel-polyfill')
+{
+	throw new Error('Unexpected `main` webpack entry point detected')
+}
+
 configuration.entry.main =
 [
 	`webpack-hot-middleware/client?path=http://${application_configuration.webpack.devserver.host}:${application_configuration.webpack.devserver.port}/__webpack_hmr`,
+	'babel-polyfill',
 	'react-hot-loader/patch',
-	configuration.entry.main
+	configuration.entry.main[1]
 ]
 
 // network path for static files: fetch all statics from webpack development server
