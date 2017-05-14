@@ -4,9 +4,10 @@ import application_configuration from '../../configuration'
 
 const configuration = base_configuration({ development: true, css_bundle: true })
 
+// https://webpack.js.org/guides/development/#source-maps
 // The default `source-map` `devtool` gives better
 // source maps in Chrome (as per user reports in 2017).
-// configuration.devtool = 'inline-eval-cheap-source-map'
+// configuration.devtool = 'cheap-eval-source-map'
 
 configuration.plugins.push
 (
