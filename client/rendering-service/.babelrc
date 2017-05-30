@@ -8,6 +8,7 @@
 
   "plugins":
   [
+    "transform-promise-to-bluebird",
     "transform-decorators-legacy",
     "transform-react-display-name"
   ]
