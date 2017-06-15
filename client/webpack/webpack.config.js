@@ -115,7 +115,7 @@ var configuration =
 			test: /\.(svg)$/,
 			use:
 			[{
-				loader: 'svg-react-loader'
+				loader: 'react-svg-loader'
 			}]
 		}]
 	},
