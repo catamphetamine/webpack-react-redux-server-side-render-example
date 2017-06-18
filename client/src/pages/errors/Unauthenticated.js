@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { Title } from 'react-isomorphic-render'
 
-export default class Not_found extends Component
+export default class Unauthenticated extends Component
 {
 	render()
 	{
 		const markup =
 		(
-			<div className="page-content">
-				<Title>Page not found</Title>
+			<section className="page-content">
+				<Title>Unauthenticated</Title>
 
 				<h1 className="page-header">
-					Page not found
+					You need to sign in to access this page
 				</h1>
-			</div>
+			</section>
 		)
 
 		return markup

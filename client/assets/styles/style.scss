@@ -8,8 +8,9 @@
 @import "../../src/components/Menu.scss";
 @import "../../src/components/Preloading.scss";
 
-@import "../../src/pages/Error.scss";
 @import "../../src/pages/Home.scss";
 @import "../../src/pages/Layout.scss";
-@import "../../src/pages/NotFound.scss";
 @import "../../src/pages/Users.scss";
+
+@import "../../src/pages/errors/Error.scss";
+@import "../../src/pages/errors/NotFound.scss";

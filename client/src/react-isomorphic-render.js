@@ -18,17 +18,17 @@ export default
 		console.error(`Error while preloading "${url}"`)
 		console.error(error)
 
-		// // Not authenticated
-		// if (error.status === 401)
-		// {
-		// 	return redirect('/unauthenticated')
-		// }
+		// Not authenticated
+		if (error.status === 401)
+		{
+			return redirect('/unauthenticated')
+		}
 
-		// // Not authorized
-		// if (error.status === 403)
-		// {
-		// 	return redirect('/unauthorized')
-		// }
+		// Not authorized
+		if (error.status === 403)
+		{
+			return redirect('/unauthorized')
+		}
 
 		// Redirect to a generic error page in production
 		if (process.env.NODE_ENV === 'production')
