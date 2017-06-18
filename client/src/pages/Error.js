@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import { flat as style } from 'react-styling'
 import { Title } from 'react-isomorphic-render'
 
 export default class Page extends Component
 {
 	render()
 	{
-		const markup = 
+		const markup =
 		(
-			<section className="content">
+			<section className="page-content">
 				<Title>Error</Title>
 
-				<h1 style={ styles.header }>
+				<h1 className="page-header">
 					Some kind of an error happened
 				</h1>
 			</section>
@@ -20,9 +19,3 @@ export default class Page extends Component
 		return markup
 	}
 }
-
-const styles = style
-`
-	header
-		text-align: center
-`

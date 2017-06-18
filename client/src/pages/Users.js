@@ -4,18 +4,21 @@ import { bindActionCreators as bind_action_creators } from 'redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
 import Form, { Field, Submit } from 'simpler-redux-form'
 import { Title, preload } from 'react-isomorphic-render'
-import { flat as style } from 'react-styling'
 
 import { connector, get_users, add_user, delete_user } from '../redux/users'
 
 @preload(({ dispatch, getState }) => dispatch(get_users()))
 @connect
 (
-	state => 
+	({ users }) =>
 	({
-		...connector(state.users)
+		...connector(users)
 	}),
-	{ get_users, add_user, delete_user }
+	{
+		get_users,
+		add_user,
+		delete_user
+	}
 )
 export default class Users_page extends Component
 {
@@ -52,7 +55,7 @@ export default class Users_page extends Component
 	async delete_user(id)
 	{
 		const { delete_user } = this.props
-		
+
 		this.setState({ userBeingDeleted: id })
 		await delete_user(id)
 		this.setState({ userBeingDeleted: undefined })
@@ -85,14 +88,15 @@ export default class Users_page extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
-			<section className="content">
+			<section className="page-content">
 				<Title>Simple REST API example</Title>
 
 				<div>
-					<p>This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)</p>
+					<p className="users__description">
+						This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)
+					</p>
 
-					<div style={ styles.container }>
-
+					<div>
 						<Button
 							disabled={ disableButtons }
 							action={ this.show_add_user_form }>
@@ -103,11 +107,11 @@ export default class Users_page extends Component
 							busy={ getUsersPending }
 							disabled={ disableButtons }
 							action={ this.refresh }
-							style={ styles.refresh }>
+							className="users__refresh">
 							Refresh
 						</Button>
 
-						<div style={ styles.users }>
+						<div className="users__list">
 							{ this.render_users() }
 						</div>
 
@@ -155,15 +159,19 @@ export default class Users_page extends Component
 		}
 
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
-		
+
 		return (
 			<table>
 				<tbody>
 					{ users.map((user) => {
 						return (
 							<tr key={ user.id }>
-								<td style={ styles.id }>{ user.id }</td>
-								<td style={ styles.name }>{ user.name }</td>
+								<td className="user__id">
+									{ user.id }
+								</td>
+								<td className="user__name">
+									{ user.name }
+								</td>
 								<td>
 									<Button
 										busy={ userBeingDeleted === user.id }
@@ -215,59 +223,22 @@ class Add_user_form extends Component
 		return (
 			<form
 				onSubmit={ submit(this.submit) }
-				style={ styles.add_user_form }>
+				className="add-user">
 
 				<Field
 					name="name"
 					label="Name"
 					validate={ this.validate_name }
 					component={ TextInput }
-					style={ styles.add_user_form_input }/>
+					className="add-user__name"/>
 
 				<Submit
 					submit
 					component={ Button }
-					className="rrui__button--border"
-					style={ styles.add_user_form_submit }>
+					className="rrui__button--border add-user__submit">
 					Add
 				</Submit>
 			</form>
 		)
 	}
 }
-
-const styles = style
-`
-	container
-		margin-top : 2rem
-
-	users
-		margin-top : 1.5rem
-
-	refresh
-		margin-left : 2rem
-
-	id
-		color      : #9f9f9f
-		text-align : center
-
-	name
-		padding-left  : 1em
-		padding-right : 1em
-
-	add_user_form
-		padding : 2rem
-
-	add_user_form_input
-		width : auto
-
-	add_user_form_input, add_user_form_submit
-		display        : inline-block
-		vertical-align : top
-		font-size      : 85%
-		
-	add_user_form_input
-		margin-right   : 1rem
-
-	add_user_form_submit
-`

@@ -13,8 +13,16 @@
 	}
 }
 
-.content
+.page-header
 {
-	padding-left  : calc(var(--unit) * 14);
-	padding-right : calc(var(--unit) * 14);
+	margin-top : 0;
+	text-align : center;
+}
+
+.page-content
+{
+	padding-top    : calc(var(--unit) * 8);
+	padding-bottom : calc(var(--unit) * 8);
+	padding-left   : calc(var(--unit) * 12);
+	padding-right  : calc(var(--unit) * 12);
 }

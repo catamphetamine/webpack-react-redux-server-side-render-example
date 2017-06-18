@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Title } from 'react-isomorphic-render'
-import { flat as style } from 'react-styling'
 
 export default class Not_found extends Component
 {
@@ -8,10 +7,10 @@ export default class Not_found extends Component
 	{
 		const markup =
 		(
-			<div>
+			<div className="page-content">
 				<Title>Page not found</Title>
 
-				<h1 style={ styles.header }>
+				<h1 className="page-header">
 					Page not found
 				</h1>
 			</div>
@@ -20,9 +19,3 @@ export default class Not_found extends Component
 		return markup
 	}
 }
-
-const styles = style
-`
-	header
-		text-align: center
-`

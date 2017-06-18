@@ -17,7 +17,7 @@ export default
 	{
 		console.error(`Error while preloading "${url}"`)
 		console.error(error)
-		
+
 		// // Not authenticated
 		// if (error.status === 401)
 		// {

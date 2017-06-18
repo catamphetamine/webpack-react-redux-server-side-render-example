@@ -6,8 +6,8 @@ import classNames from 'classnames'
 
 @connect(({ preload }) =>
 ({
-	pending: preload.pending,
-	immediate: preload.immediate
+	pending   : preload.pending,
+	immediate : preload.immediate
 }))
 export default class Preloading extends Component
 {

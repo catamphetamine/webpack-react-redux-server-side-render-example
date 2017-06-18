@@ -1,0 +1,45 @@
+.users__description
+{
+	margin-top : 0;
+}
+
+.users__refresh
+{
+	margin-left : 2rem;
+}
+
+.users__list
+{
+	margin-top : 1.5rem;
+}
+
+.user__id
+{
+	color      : #9f9f9f;
+	text-align : center;
+}
+
+.user__name
+{
+	padding-left  : 1em;
+	padding-right : 1em;
+}
+
+.add-user
+{
+	padding : 2rem;
+}
+
+.add-user__name,
+.add-user__submit
+{
+	display        : inline-block;
+	vertical-align : top;
+	font-size      : 85%;
+}
+
+.add-user__name
+{
+	width : auto;
+	margin-right : 1rem;
+}

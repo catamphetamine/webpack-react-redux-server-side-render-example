@@ -87,7 +87,6 @@
     "react-redux": "^5.0.2",
     "react-responsive-ui": "^0.8.12",
     "react-router": "^3.0.0",
-    "react-styling": "^1.6.2",
     "react-svg-loader": "^1.1.1",
     "redux": "^3.6.0",
     "sass-loader": "^6.0.0",
