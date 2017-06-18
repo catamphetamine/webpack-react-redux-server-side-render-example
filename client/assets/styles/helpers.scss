@@ -1,0 +1,71 @@
+@mixin xs
+{
+	@media all and (max-width: $screen-xs-max)
+	{
+		@content;
+	}
+}
+
+@mixin s
+{
+	@media all and (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+	{
+		@content;
+	}
+}
+
+@mixin m
+{
+	@media all and (min-width: $screen-md-min) and (max-width: $screen-md-max)
+	{
+		@content;
+	}
+}
+
+@mixin l
+{
+	@media all and (min-width: $screen-lg-min)
+	{
+		@content;
+	}
+}
+
+@mixin xs-s
+{
+	@media all and (max-width: $screen-sm-max)
+	{
+		@content;
+	}
+}
+
+@mixin xs-m
+{
+	@media all and (max-width: $screen-md-max)
+	{
+		@content;
+	}
+}
+
+@mixin s-m
+{
+	@media all and (min-width: $screen-sm-min) and (max-width: $screen-md-max)
+	{
+		@content;
+	}
+}
+
+@mixin m-l
+{
+	@media all and (min-width: $screen-md-min)
+	{
+		@content;
+	}
+}
+
+@mixin s-l
+{
+	@media all and (min-width: $screen-sm-min)
+	{
+		@content;
+	}
+}

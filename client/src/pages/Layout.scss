@@ -1,0 +1,35 @@
+// Stretches the page to 100% height
+.webpage
+{
+	// For z-index ordering (relative to preloading screen)
+	position : relative;
+	z-index  : 0;
+
+	display        : flex;
+	flex-direction : column;
+	min-height     : 100vh;
+}
+
+.webpage--loading
+{
+	// `react-waypoint` wouldn't work correctly with `display: none` -> `display: block`.
+	// https://github.com/brigade/react-waypoint/issues/164#issuecomment-299640438
+	// display: none;
+	visibility: hidden;
+}
+
+// Content takes all free space
+.webpage__content
+{
+	flex-shrink : 0;
+	flex-grow   : 1;
+	flex-basis  : auto;
+}
+
+.webpage__header
+{
+	padding-top    : calc(var(--unit) * 5);
+	padding-bottom : calc(var(--unit) * 5);
+	padding-left   : calc(var(--unit) * 14);
+	padding-right  : calc(var(--unit) * 14);
+}

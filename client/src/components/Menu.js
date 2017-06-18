@@ -10,10 +10,10 @@ export default class Menu extends Component
 
 		const markup =
 		(
-			<ul style={ styles.menu } className="menu">
+			<ul className="menu">
 				{ items.map((item, i) => {
 					return (
-						<li key={ i } style={ styles.menu_item }>
+						<li key={ i } className="menu-list-item">
 							{ this.render_link(item) }
 						</li>
 					)
@@ -31,28 +31,10 @@ export default class Menu extends Component
 		return (
 			<Link_component
 				to={ item.link }
-				style={ styles.menu_item_link }
-				activeClassName="menu-item-selected"
+				activeClassName="menu-item--selected"
 				className="menu-item">
 				{ item.name }
 			</Link_component>
 		)
 	}
 }
-
-const styles = style
-`
-	menu
-		margin-top    : 0
-		margin-bottom : 0
-
-		list-style-type : none
-		padding         : 0
-
-		item
-			display: inline-block
-
-			link
-				display         : inline-block
-				text-decoration : none
-`

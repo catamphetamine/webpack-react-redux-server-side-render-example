@@ -1,0 +1,27 @@
+body, .button, input, textarea, select
+{
+	font-family : Arial, Helvetica, Sans;
+	font-size   : var(--font-size);
+}
+
+body
+{
+	margin     : 0;
+	overflow-y : scroll;
+}
+
+a
+{
+	color: inherit;
+}
+
+a:active
+{
+	color: var(--base-color-darker);
+}
+
+/* Internet Explorer adds borders around all images */
+img
+{
+	border: none;
+}

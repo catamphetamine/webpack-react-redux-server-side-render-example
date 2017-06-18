@@ -1,0 +1,68 @@
+/* `react-responsive-ui` customization CSS goes here */
+
+.rrui__input
+{
+	height : calc(var(--unit) * 9);
+}
+
+.rrui__text-input__input:focus
+{
+	border-color : var(--base-color);
+}
+
+.rrui__text-input__input:focus + .rrui__input-label
+{
+	color : var(--base-color);
+}
+
+.rrui__text-input__input--empty:focus + .rrui__input-label--floating
+{
+	color : var(--gray-color);
+}
+
+.rrui__button
+{
+	color : var(--base-color);
+
+	&:active
+	{
+		color : var(--base-color-lighter);
+	}
+}
+
+.rrui__button--border
+{
+	color         : var(--base-color);
+	border        : 0.15em solid var(--base-color);
+	border-radius : 0.4em;
+
+	&:active
+	{
+		color            : var(--white-color);
+		background-color : var(--base-color);
+	}
+
+	.rrui__button__button
+	{
+		padding-left  : calc(var(--unit) * 4);
+		padding-right : calc(var(--unit) * 4);
+	}
+}
+
+.rrui__text-input__input
+{
+	border-top-width   : 0;
+	border-left-width  : 0;
+	border-right-width : 0;
+	outline            : none;
+}
+
+.rrui__input-error
+{
+	margin-top: calc(var(--unit) * 2);
+}
+
+.rrui__input-label:not(.rrui__text-input__label--placeholder)
+{
+	transform: scale(0.8) translateY(-80%);
+}

@@ -1,0 +1,202 @@
+@import "constants.scss";
+
+// Bootstrap grid
+//
+// Example usage:
+//
+// <div class="container">
+//   <div class="row">
+//     <div class="col-3"/>
+//     <div class="col-9"/>
+//   </div>
+// </div>
+
+.container
+{
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--column-padding);
+	padding-right: var(--column-padding);
+	box-sizing: border-box;
+	// For cases when a container is inside a modal, for example
+	max-width: 100%;
+}
+
+.row
+{
+	// #TODO: Remove this
+	// this can only be done when the row is nested inside a container that has the opposite positive margin
+	// otherwise you have this weird space if you scroll to the right
+	margin-left: calc(-1 * var(--column-padding));
+	margin-right: calc(-1 * var(--column-padding));
+}
+
+.row:before,
+.row:after,
+.container:before,
+.container:after
+{
+	display: table;
+	content: " ";
+}
+
+.row:after,
+.container:after
+{
+	clear: both;
+}
+
+.row--equal-height
+{
+	display: flex;
+}
+
+// https://github.com/twbs/bootstrap/blob/76d8291e3846d95b40dc4509a2e1bf36b0681a28/dist/css/bootstrap-grid.css
+
+@mixin define_columns($infix)
+{
+	// http://getbootstrap.com.vn/examples/equal-height-columns/
+	.col#{$infix}-1,
+	.col#{$infix}-2,
+	.col#{$infix}-3,
+	.col#{$infix}-4,
+	.col#{$infix}-5,
+	.col#{$infix}-6,
+	.col#{$infix}-7,
+	.col#{$infix}-8,
+	.col#{$infix}-9,
+	.col#{$infix}-10,
+	.col#{$infix}-11,
+	.col#{$infix}-12
+	{
+		float: left;
+
+		// Don't know what `position: relative` is for
+		position: relative;
+
+		// Don't know what `min-height: 1px` is for
+		min-height: 1px;
+		box-sizing: border-box;
+		padding-left: var(--column-padding);
+		padding-right: var(--column-padding);
+	}
+
+	.col#{$infix}-0
+	{
+		display: none;
+	}
+
+	.col#{$infix}-1
+	{
+		width: 8.333333%;
+	}
+
+	.col#{$infix}-2
+	{
+		width: 16.666667%;
+	}
+
+	.col#{$infix}-3
+	{
+		width: 25%;
+	}
+
+	.col#{$infix}-4
+	{
+		width: 33.33333%;
+	}
+
+	.col#{$infix}-5
+	{
+		width: 41.666667%;
+	}
+
+	.col#{$infix}-6
+	{
+		width: 50%;
+	}
+
+	.col#{$infix}-7
+	{
+		width: 58.333333%;
+	}
+
+	.col#{$infix}-8
+	{
+		width: 66.66666%;
+	}
+
+	.col#{$infix}-9
+	{
+		width: 75%;
+	}
+
+	.col#{$infix}-10
+	{
+		width: 83.333333%;
+	}
+
+	.col#{$infix}-11
+	{
+		width: 91.666667%;
+	}
+
+	.col#{$infix}-12
+	{
+		width: 100%;
+	}
+
+  // Alternatively, using flexbox:
+  //
+  // .row {
+  //  display: flex;
+  //  flex-wrap: wrap;
+  // }
+  //
+  // .col {
+  //  flex-basis: xx%;
+  //  flex-grow: 0;
+  //  flex-shrink: 0;
+  //  // width: 100%;
+  //  max-width: xx%;
+  // }
+}
+
+@include define_columns("");
+
+// Responsive grid
+
+@media (max-width: $screen-xs-max)
+{
+	@include define_columns("-xs");
+}
+
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+{
+	@include define_columns("-sm");
+
+	.container
+	{
+		width: $screen-sm-min;
+	}
+}
+
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+{
+	@include define_columns("-md");
+
+	.container
+	{
+		width: $screen-md-min;
+	}
+}
+
+@media (min-width: $screen-lg-min)
+{
+	@include define_columns("-lg");
+
+	.container
+	{
+		width: $screen-lg-min;
+	}
+}

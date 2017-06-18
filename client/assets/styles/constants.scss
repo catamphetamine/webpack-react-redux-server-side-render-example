@@ -1,3 +1,15 @@
+// Duplicating the native CSS variable just for SASS
+$unit: 12px;
+
+// https://www.sitepoint.com/managing-responsive-breakpoints-sass/
+// `$screen-sm-min` must be equal to `DESKTOP_SCREEN_MIN_WIDTH` in `Layout.js`
+$screen-sm-min: $unit * 64; // 768px
+$screen-xs-max: $screen-sm-min - 1;
+$screen-md-min: $unit * 82; // 984px
+$screen-sm-max: $screen-md-min - 1;
+$screen-lg-min: $unit * 100; // 1200px
+$screen-md-max: $screen-lg-min - 1;
+
 :root
 {
 	--white-color        : #ffffff;
@@ -5,11 +17,14 @@
 	
 	--gray-color         : #888C91;
 
+	--base-color-lighter : #30CFFF;
 	--base-color         : #00A6ED;
 	--base-color-darker  : #0084BD;
-	--base-color-lighter : #30CFFF;
 
 	--unit : 0.3rem;
+	--column-padding: var(--unit);
 
 	--font-size : 18pt;
+
+	--preloading-screen-z-index: 10;
 }

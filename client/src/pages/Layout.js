@@ -23,25 +23,33 @@ export default class Layout extends Component
 
 		const markup = 
 		(
-			<div className="content">
-				<Title>{ title }</Title>
-				<Meta>
-					<meta charset="utf-8"/>
-					<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-					<meta property="og:title" content={ title }/>
-					<meta property="og:description" content={ description }/>
-					<meta property="og:locale" content="ru-RU"/>
-				</Meta>
-
+			<div>
 				<Preloading/>
 
-				<nav className="main-header">
-					<Menu items={ menu_items }/>
-				</nav>
+				<div className="webpage">
+					<Title>{ title }</Title>
 
-				{ children }
+					<Meta>
+						<meta charset="utf-8"/>
+						<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+						<meta property="og:title" content={ title }/>
+						<meta property="og:description" content={ description }/>
+						<meta property="og:image" content="https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"/>
+						<meta property="og:locale" content="ru_RU"/>
+					</Meta>
 
-				<footer></footer>
+					<nav className="webpage__header">
+						<Menu items={ menu_items }/>
+					</nav>
+
+					<div className="webpage__content">
+						{ children }
+					</div>
+
+					<footer className="webpage__footer">
+						{/* */}
+					</footer>
+				</div>
 			</div>
 		)
 

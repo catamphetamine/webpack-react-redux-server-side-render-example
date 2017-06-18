@@ -85,7 +85,7 @@ export default class Users_page extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
-			<section>
+			<section className="content">
 				<Title>Simple REST API example</Title>
 
 				<div>

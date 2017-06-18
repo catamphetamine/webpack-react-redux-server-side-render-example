@@ -1,15 +1,38 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ActivityIndicator } from 'react-responsive-ui'
+import classNames from 'classnames'
 
-@connect(state => ({ pending: state.preload.pending }))
-export default class Preloading extends Component {
-  render() {
-    const { pending } = this.props;
-    return (
-      <div className={ `preloading ${pending ? 'preloading--shown' : ''}` }>
-        <ActivityIndicator/>
-      </div>
-    )
-  }
+@connect(({ preload }) =>
+({
+	pending: preload.pending,
+	immediate: preload.immediate
+}))
+export default class Preloading extends Component
+{
+	static propTypes =
+	{
+		pending: PropTypes.bool,
+		immediate: PropTypes.bool
+	}
+
+	render()
+	{
+		const { pending, immediate } = this.props
+
+		const markup =
+		(
+			<div
+				className={classNames('rrui__fixed-full-width', 'preloading',
+				{
+					'preloading--shown'     : pending,
+					'preloading--immediate' : immediate
+				})}>
+				<ActivityIndicator/>
+			</div>
+		)
+
+		return markup
+	}
 }
