@@ -7,8 +7,7 @@ export default class Menu extends Component
 	{
 		const { items } = this.props
 
-		const markup =
-		(
+		return (
 			<ul className="menu">
 				{ items.map((item, i) => {
 					return (
@@ -19,8 +18,6 @@ export default class Menu extends Component
 				}) }
 			</ul>
 		)
-
-		return markup
 	}
 
 	render_link(item)

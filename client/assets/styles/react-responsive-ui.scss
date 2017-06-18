@@ -1,8 +1,9 @@
 /* `react-responsive-ui` customization CSS goes here */
 
-.rrui__input
+.rrui__input:not(.rrui__input--multiline),
+.rrui__input-label
 {
-	height : calc(var(--unit) * 9);
+	height : calc(var(--unit) * 8);
 }
 
 .rrui__text-input__input:focus

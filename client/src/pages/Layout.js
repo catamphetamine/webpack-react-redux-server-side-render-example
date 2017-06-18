@@ -21,8 +21,7 @@ export default class Layout extends Component
 		const title = 'WebApp'
 		const description = 'A generic web application boilerplate'
 
-		const markup = 
-		(
+		return (
 			<div>
 				<Preloading/>
 
@@ -52,8 +51,6 @@ export default class Layout extends Component
 				</div>
 			</div>
 		)
-
-		return markup
 	}
 }
 

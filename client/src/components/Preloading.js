@@ -21,8 +21,7 @@ export default class Preloading extends Component
 	{
 		const { pending, immediate } = this.props
 
-		const markup =
-		(
+		return (
 			<div
 				className={classNames('rrui__fixed-full-width', 'preloading',
 				{
@@ -32,7 +31,5 @@ export default class Preloading extends Component
 				<ActivityIndicator/>
 			</div>
 		)
-
-		return markup
 	}
 }

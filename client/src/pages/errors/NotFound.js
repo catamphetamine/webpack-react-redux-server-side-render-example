@@ -5,8 +5,7 @@ export default class Not_found extends Component
 {
 	render()
 	{
-		const markup =
-		(
+		return (
 			<div className="page-content">
 				<Title>Not found</Title>
 
@@ -15,7 +14,5 @@ export default class Not_found extends Component
 				</h1>
 			</div>
 		)
-
-		return markup
 	}
 }

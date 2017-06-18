@@ -5,8 +5,7 @@ export default class Page extends Component
 {
 	render()
 	{
-		const markup =
-		(
+		return (
 			<section className="page-content">
 				<Title>Error</Title>
 
@@ -15,7 +14,5 @@ export default class Page extends Component
 				</h1>
 			</section>
 		)
-
-		return markup
 	}
 }

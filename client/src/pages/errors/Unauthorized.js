@@ -5,8 +5,7 @@ export default class Unauthorized extends Component
 {
 	render()
 	{
-		const markup =
-		(
+		return (
 			<section className="page-content">
 				<Title>Unauthorized</Title>
 
@@ -15,7 +14,5 @@ export default class Unauthorized extends Component
 				</h1>
 			</section>
 		)
-
-		return markup
 	}
 }
