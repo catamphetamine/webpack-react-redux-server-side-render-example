@@ -3,6 +3,7 @@ import path from 'path'
 import webpack            from 'webpack'
 import baseConfiguration  from './webpack.config.client'
 import CleanPlugin        from 'clean-webpack-plugin'
+import BabiliPlugin       from 'babili-webpack-plugin'
 import Visualizer         from 'webpack-visualizer-plugin'
 
 // With `development: false` all CSS will be extracted into a file
@@ -40,7 +41,7 @@ configuration.plugins.push
   }),
 
   // Compresses javascript files
-  new webpack.optimize.UglifyJsPlugin(),
+  new BabiliPlugin(),
 
   // https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/
   new Visualizer
