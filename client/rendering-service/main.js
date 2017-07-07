@@ -14,7 +14,7 @@ export default function(parameters) {
     // E.g. an AJAX request to `/items/5` will be transformed to
     // `http://${host}:${port}/items/5` during server-side rendering.
     // Specify `secure: true` flag to use `https` protocol instead of `http`.
-    application: {
+    http: {
       host: 'localhost',
       port: configuration.web.port
       // secure: true
