@@ -19,7 +19,7 @@ Quick Start
 * interact with the development version of the web application
 * `Ctrl + C`
 * `npm run production`
-* wait a bit for Webpack to finish the build (green stats will appear in the terminal, plus some `node.js` server running commands)
+* wait for Webpack to finish the build (green stats will appear in the terminal, and it will print "Webpage rendering service is listening at port 3002" when the application has started)
 * go to `http://localhost:3000`
 * interact with the production version of the web application
 * check out `./client/build/bundle-stats.html` for detailed info on which modules [take up the most space](https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/) in the output bundle

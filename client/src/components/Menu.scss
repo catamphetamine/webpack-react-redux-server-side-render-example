@@ -7,7 +7,8 @@
 
 .menu-list-item
 {
-	display : inline-block;
+	display : inline-flex;
+	align-items : center;
 
 	margin-left  : calc(var(--unit) * 3);
 	margin-right : calc(var(--unit) * 3);
@@ -25,7 +26,8 @@
 
 .menu-item
 {
-	display : inline-block;
+	display : inline-flex;
+	align-items : center;
 
 	padding-bottom : 0;
 
@@ -49,4 +51,50 @@
 .menu-item--selected
 {
 	border-bottom-color : var(--base-color);
+}
+
+.menu-item__icon
+{
+	width  : calc(var(--unit) * 5);
+	height : calc(var(--unit) * 5);
+
+	margin-bottom : 0.2em;
+	margin-right  : calc(var(--unit)* 2);
+}
+
+.menu-item__icon--home
+{
+	path
+	{
+		stroke : var(--black-color);
+		fill   : var(--black-color);
+	}
+}
+
+.menu-item__icon--users
+{
+	path, circle
+	{
+		stroke : var(--black-color);
+	}
+}
+
+.menu-item--selected
+{
+	.menu-item__icon--home
+	{
+		path
+		{
+			stroke : var(--base-color);
+			fill   : var(--base-color);
+		}
+	}
+
+	.menu-item__icon--users
+	{
+		path, circle
+		{
+			stroke : var(--base-color);
+		}
+	}
 }

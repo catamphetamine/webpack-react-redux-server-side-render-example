@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
 import { Link, IndexLink } from 'react-isomorphic-render'
+import classNames from 'classnames'
+
+import home  from '../../assets/images/home.svg'
+import users from '../../assets/images/users.svg'
+
+const Icons = { home, users }
 
 export default class Menu extends Component
 {
@@ -29,7 +35,11 @@ export default class Menu extends Component
 				to={ item.link }
 				activeClassName="menu-item--selected"
 				className="menu-item">
-				{ item.name }
+				{ React.createElement(Icons[item.name],
+				{
+					className: classNames('menu-item__icon', `menu-item__icon--${item.name}`)
+				}) }
+				{ item.title }
 			</Link_component>
 		)
 	}

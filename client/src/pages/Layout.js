@@ -56,9 +56,11 @@ export default class Layout extends Component
 
 const menu_items =
 [{
-	name: 'Home',
-	link: '/'
+	name  : 'home',
+	title : 'Home',
+	link  : '/'
 }, {
-	name: 'Users',
-	link: '/users'
+	name  : 'users',
+	title : 'Users',
+	link  : '/users'
 }]

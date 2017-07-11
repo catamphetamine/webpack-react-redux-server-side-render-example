@@ -42,6 +42,10 @@ var configuration =
 
 	module:
 	{
+		// Works around Webpack bug when using `Array.from()` in Babel (`core-js`)
+		// https://github.com/webpack/webpack/issues/5135
+		strictThisContextOnImports: true,
+
 		rules:
 		[{
 			test: /\.js$/,
