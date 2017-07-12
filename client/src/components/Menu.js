@@ -1,46 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link, IndexLink } from 'react-isomorphic-render'
 import classNames from 'classnames'
 
-import home  from '../../assets/images/home.svg'
-import users from '../../assets/images/users.svg'
-
-const Icons = { home, users }
-
-export default class Menu extends Component
+export default function Menu({ children })
 {
-	render()
-	{
-		const { items } = this.props
+	return (
+		<ul className="menu">
+			{ children }
+		</ul>
+	)
+}
 
-		return (
-			<ul className="menu">
-				{ items.map((item, i) => {
-					return (
-						<li key={ i } className="menu-list-item">
-							{ this.render_link(item) }
-						</li>
-					)
-				}) }
-			</ul>
-		)
-	}
+export function MenuLink({ to, children })
+{
+	const Link_component = to === '/' ? IndexLink : Link
 
-	render_link(item)
-	{
-		const Link_component = item.link === '/' ? IndexLink : Link
-
-		return (
+	return (
+		<li className="menu-list-item">
 			<Link_component
-				to={ item.link }
+				to={ to }
 				activeClassName="menu-item--selected"
 				className="menu-item">
-				{ React.createElement(Icons[item.name],
-				{
-					className: classNames('menu-item__icon', `menu-item__icon--${item.name}`)
-				}) }
-				{ item.title }
+				{ children }
 			</Link_component>
-		)
-	}
+		</li>
+	)
 }

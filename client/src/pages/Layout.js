@@ -2,8 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Title, Meta } from 'react-isomorphic-render'
 
-import Menu       from '../components/Menu'
+import Menu, { MenuLink } from '../components/Menu'
 import Preloading from '../components/Preloading'
+
+import Home  from '../../assets/images/home.svg'
+import Users from '../../assets/images/users.svg'
 
 export default class Layout extends Component
 {
@@ -16,29 +19,33 @@ export default class Layout extends Component
 	{
 		const { children } = this.props
 
-		// Html document metadata
-
-		const title = 'WebApp'
-		const description = 'A generic web application boilerplate'
-
 		return (
 			<div>
 				<Preloading/>
 
 				<div className="webpage">
-					<Title>{ title }</Title>
+					<Title>WebApp</Title>
 
 					<Meta>
 						<meta charset="utf-8"/>
 						<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
-						<meta property="og:title" content={ title }/>
-						<meta property="og:description" content={ description }/>
+						<meta property="og:title" content="WebApp"/>
+						<meta property="og:description" content="A generic web application boilerplate"/>
 						<meta property="og:image" content="https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"/>
 						<meta property="og:locale" content="ru_RU"/>
 					</Meta>
 
 					<nav className="webpage__header">
-						<Menu items={ menu_items }/>
+						<Menu>
+							<MenuLink to="/">
+								<Home className="menu-item__icon menu-item__icon--home"/>
+								Home
+							</MenuLink>
+							<MenuLink to="/users">
+								<Users className="menu-item__icon menu-item__icon--users"/>
+								Users
+							</MenuLink>
+						</Menu>
 					</nav>
 
 					<div className="webpage__content">
@@ -53,14 +60,3 @@ export default class Layout extends Component
 		)
 	}
 }
-
-const menu_items =
-[{
-	name  : 'home',
-	title : 'Home',
-	link  : '/'
-}, {
-	name  : 'users',
-	title : 'Users',
-	link  : '/users'
-}]
