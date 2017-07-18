@@ -5,9 +5,9 @@
   "description": "an alternative to using webpack-isomorphic-tools",
   "repository": {
     "type": "git",
-    "url": "https://github.com/halt-hammerzeit/webpack-react-redux-isomorphic-render-example.git"
+    "url": "https://github.com/catamphetamine/webpack-react-redux-isomorphic-render-example.git"
   },
-  "homepage": "https://github.com/halt-hammerzeit/webpack-react-redux-isomorphic-render-example",
+  "homepage": "https://github.com/catamphetamine/webpack-react-redux-isomorphic-render-example",
   "scripts": {
     "start": "npm run production",
     "dev": "npm-run-all development:client:rendering-service:build:prepare development",

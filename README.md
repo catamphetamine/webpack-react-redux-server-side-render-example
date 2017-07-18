@@ -42,11 +42,11 @@ In development mode there's one more Node.js process running: it's `webpack-dev-
 Server Side Rendering
 =====================
 
-React Server Side Rendering is quite slow, so I prefer setting `render: false` flag to move all React rendering to the web browser. This approach has virtually no complications, but those who still want to prerender pages on the server may read the [guide on speeding up React Server Side Rendering](https://github.com/halt-hammerzeit/react-isomorphic-render/blob/master/PERFORMANCE.md).
+React Server Side Rendering is quite slow, so I prefer setting `render: false` flag to move all React rendering to the web browser. This approach has virtually no complications, but those who still want to prerender pages on the server may read the [guide on speeding up React Server Side Rendering](https://github.com/catamphetamine/react-isomorphic-render/blob/master/PERFORMANCE.md).
 
 Small Advertisement
 ===================
 
-* 📞 if you're looking for a React phone number component check out [`react-phone-number-input`](http://halt-hammerzeit.github.io/react-phone-number-input/)
+* 📞 if you're looking for a React phone number component check out [`react-phone-number-input`](http://catamphetamine.github.io/react-phone-number-input/)
 
-* Also you might check out [`simpler-redux-form`](https://github.com/halt-hammerzeit/simpler-redux-form) and [`react-responsive-ui`](https://github.com/halt-hammerzeit/react-responsive-ui) and [`react-time-ago`](https://github.com/halt-hammerzeit/react-time-ago)
+* Also you might check out [`simpler-redux-form`](https://github.com/catamphetamine/simpler-redux-form) and [`react-responsive-ui`](https://github.com/catamphetamine/react-responsive-ui) and [`react-time-ago`](https://github.com/catamphetamine/react-time-ago)
