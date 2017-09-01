@@ -6,12 +6,7 @@ require('react-responsive-ui/style.css')
 require('../assets/styles/style.scss')
 
 // renders the webpage on the client side
-render(settings,
-{
-  // enable/disable Redux dev-tools
-  devtools: REDUX_DEVTOOLS ? require('./devtools').default : undefined
-})
-.then(({ store, rerender }) =>
+render(settings).then(({ store, rerender }) =>
 {
   if (module.hot)
   {
@@ -22,3 +17,4 @@ render(settings,
     })
   }
 })
+.catch((error) => console.error(error))
