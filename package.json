@@ -93,7 +93,7 @@
     "simpler-redux-form": "^0.3.25",
     "style-loader": "^0.18.2",
     "svg-react-loader": "^0.4.4",
-    "universal-webpack": "^0.3.11",
+    "universal-webpack": "^0.4.0",
     "url-loader": "^0.5.9",
     "web-service": "^0.4.6",
     "webpack": "^3.1.0",
