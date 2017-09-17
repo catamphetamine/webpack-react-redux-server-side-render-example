@@ -50,7 +50,7 @@
       }
     }
   },
-  "author": "Halt Hammerzeit",
+  "author": "catamphetamine <purecatamphetamine@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "^7.1.2",
