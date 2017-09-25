@@ -28,26 +28,22 @@ export default class Users_page extends Component
 	{
 		super()
 
-		this.refresh            = this.refresh.bind(this)
-		this.show_add_user_form = this.show_add_user_form.bind(this)
-		this.hide_add_user_form = this.hide_add_user_form.bind(this)
-		this.delete_user        = this.delete_user.bind(this)
-		this.user_added         = this.user_added.bind(this)
+		this.delete_user = this.delete_user.bind(this)
 	}
 
-	refresh()
+	refresh = () =>
 	{
 		const { get_users } = this.props
 
 		return get_users()
 	}
 
-	show_add_user_form()
+	show_add_user_form = () =>
 	{
 		this.setState({ show_add_user_form: true })
 	}
 
-	hide_add_user_form()
+	hide_add_user_form = () =>
 	{
 		this.setState({ show_add_user_form: false })
 	}
@@ -62,7 +58,7 @@ export default class Users_page extends Component
 		this.refresh()
 	}
 
-	user_added()
+	user_added = () =>
 	{
 		this.hide_add_user_form()
 		this.refresh()

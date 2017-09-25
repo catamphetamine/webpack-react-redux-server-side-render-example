@@ -13,11 +13,7 @@ export const get_users = action
 		const user_ids = await http.get('/api/example/users')
 		return await Promise.all(user_ids.map(id => http.get(`/api/example/users/${id}`)))
 	},
-	result: (state, result) =>
-	({
-		...state,
-		users: result
-	})
+	result: 'users'
 },
 handler)
 
