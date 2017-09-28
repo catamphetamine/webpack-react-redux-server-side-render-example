@@ -3,17 +3,27 @@ import { connect } from 'react-redux'
 import { bindActionCreators as bind_action_creators } from 'redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
 import Form, { Field, Submit } from 'simpler-redux-form'
-import { Title, preload } from 'react-isomorphic-render'
+import { meta, preload } from 'react-isomorphic-render'
 
-import { connector, get_users, add_user, delete_user } from '../redux/users'
+import
+{
+	properties,
+	get_users,
+	add_user,
+	delete_user
+}
+from '../redux/users'
 
 @preload(({ dispatch, getState }) => dispatch(get_users()))
+@meta(({ state }) =>
+({
+	title       : 'Simple REST API example',
+	description : 'A list of users',
+	image       : 'https://www.famouslogos.us/images/facebook-logo.jpg'
+}))
 @connect
 (
-	({ users }) =>
-	({
-		...connector(users)
-	}),
+	({ users }) => properties(users),
 	{
 		get_users,
 		add_user,
@@ -85,8 +95,6 @@ export default class Users_page extends Component
 
 		return (
 			<section className="page-content">
-				<Title>Simple REST API example</Title>
-
 				<div>
 					<p className="users__description">
 						This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)
