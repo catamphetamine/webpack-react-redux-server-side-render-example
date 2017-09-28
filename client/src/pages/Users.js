@@ -97,7 +97,11 @@ export default class Users_page extends Component
 			<section className="page-content">
 				<div>
 					<p className="users__description">
-						This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page)
+						This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page).
+					</p>
+
+					<p className="users__description">
+						An artificial delay of 1 second is added to all Redux actions to illustrate the "loading" spinners.
 					</p>
 
 					<div>
