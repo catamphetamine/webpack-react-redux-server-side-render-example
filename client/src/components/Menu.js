@@ -13,16 +13,16 @@ export default function Menu({ children })
 
 export function MenuLink({ to, children })
 {
-	const Link_component = to === '/' ? IndexLink : Link
+	const LinkComponent = to === '/' ? IndexLink : Link
 
 	return (
 		<li className="menu-list-item">
-			<Link_component
+			<LinkComponent
 				to={ to }
 				activeClassName="menu-item--selected"
 				className="menu-item">
 				{ children }
-			</Link_component>
+			</LinkComponent>
 		</li>
 	)
 }

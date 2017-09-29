@@ -47,11 +47,11 @@ export const deleteUser = redux.action
 // A little helper for Redux `@connect()`
 export const properties = redux.getProperties
 
-const initial_state = { users: [] }
+const initialState = { users: [] }
 
 // This is the Redux reducer which now
 // handles the asynchronous actions defined above.
-export default redux.reducer(initial_state)
+export default redux.reducer(initialState)
 
 // "Sleep" using `Promise`
 function delay(delay)

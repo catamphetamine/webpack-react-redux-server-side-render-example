@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { meta } from 'react-isomorphic-render'
 
 @meta(({ state }) => ({ title: 'Not found' }))
-export default class Not_found extends Component
+export default class NotFound extends Component
 {
 	render()
 	{
