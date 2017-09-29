@@ -3,21 +3,21 @@ import settings from '../react-isomorphic-render-async'
 
 const redux = reduxModule('USERS', settings);
 
-export const get_users = redux.action
+export const getUsers = redux.action
 (
 	'GET_USERS',
 	async ({ http }) =>
 	{
 		await delay(1000)
-		const user_ids = await http.get('/api/example/users')
-		return await Promise.all(user_ids.map(id => http.get(`/api/example/users/${id}`)))
+		const ids = await http.get('/api/example/users')
+		return await Promise.all(ids.map(id => http.get(`/api/example/users/${id}`)))
 	},
 	{
 		result: 'users'
 	}
 )
 
-export const add_user = redux.action
+export const addUser = redux.action
 (
 	'ADD_USER',
 	async ({ http }, user) =>
@@ -27,7 +27,7 @@ export const add_user = redux.action
 	}
 )
 
-export const delete_user = redux.action
+export const deleteUser = redux.action
 (
 	'DELETE_USER',
 	async ({ http }, id) =>

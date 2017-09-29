@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators as bind_action_creators } from 'redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
 import Form, { Field, Submit } from 'simpler-redux-form'
 import { meta, preload } from 'react-isomorphic-render'
@@ -8,13 +7,13 @@ import { meta, preload } from 'react-isomorphic-render'
 import
 {
 	properties,
-	get_users,
-	add_user,
-	delete_user
+	getUsers,
+	addUser,
+	deleteUser
 }
 from '../redux/users'
 
-@preload(({ dispatch, getState }) => dispatch(get_users()))
+@preload(({ dispatch, getState }) => dispatch(getUsers()))
 @meta(({ state }) =>
 ({
 	title       : 'Simple REST API example',
@@ -25,12 +24,12 @@ from '../redux/users'
 (
 	({ users }) => properties(users),
 	{
-		get_users,
-		add_user,
-		delete_user
+		getUsers,
+		addUser,
+		deleteUser
 	}
 )
-export default class Users_page extends Component
+export default class UsersPage extends Component
 {
 	state = {}
 
@@ -38,40 +37,35 @@ export default class Users_page extends Component
 	{
 		super()
 
-		this.delete_user = this.delete_user.bind(this)
+		this.deleteUser = this.deleteUser.bind(this)
 	}
 
-	refresh = () =>
+	showAddUserForm = () =>
 	{
-		const { get_users } = this.props
-
-		return get_users()
+		this.setState({ showAddUserForm: true })
 	}
 
-	show_add_user_form = () =>
+	hideAddUserForm = () =>
 	{
-		this.setState({ show_add_user_form: true })
+		this.setState({ showAddUserForm: false })
 	}
 
-	hide_add_user_form = () =>
+	async deleteUser(id)
 	{
-		this.setState({ show_add_user_form: false })
-	}
-
-	async delete_user(id)
-	{
-		const { delete_user } = this.props
+		const { getUsers, deleteUser } = this.props
 
 		this.setState({ userBeingDeleted: id })
-		await delete_user(id)
+		await deleteUser(id)
 		this.setState({ userBeingDeleted: undefined })
-		this.refresh()
+		getUsers()
 	}
 
-	user_added = () =>
+	userAdded = () =>
 	{
-		this.hide_add_user_form()
-		this.refresh()
+		const { getUsers } = this.props
+
+		this.hideAddUserForm()
+		getUsers()
 	}
 
 	render()
@@ -79,6 +73,7 @@ export default class Users_page extends Component
 		const
 		{
 			users,
+			getUsers,
 			getUsersPending,
 			addUserPending,
 			deleteUserPending
@@ -87,7 +82,7 @@ export default class Users_page extends Component
 
 		const
 		{
-			show_add_user_form
+			showAddUserForm
 		}
 		= this.state
 
@@ -107,27 +102,27 @@ export default class Users_page extends Component
 					<div>
 						<Button
 							disabled={ disableButtons }
-							action={ this.show_add_user_form }>
+							action={ this.showAddUserForm }>
 							Add user
 						</Button>
 
 						<Button
 							busy={ getUsersPending }
 							disabled={ disableButtons }
-							action={ this.refresh }
+							action={ getUsers }
 							className="users__refresh">
 							Refresh
 						</Button>
 
 						<div className="users__list">
-							{ this.render_users() }
+							{ this.renderUsers() }
 						</div>
 
 						<Modal
-							isOpen={ show_add_user_form }
-							close={ this.hide_add_user_form }
+							isOpen={ showAddUserForm }
+							close={ this.hideAddUserForm }
 							busy={ addUserPending }>
-							<Add_user_form onSubmitted={ this.user_added }/>
+							<AddUserForm onSubmitted={ this.userAdded }/>
 						</Modal>
 					</div>
 				</div>
@@ -135,7 +130,7 @@ export default class Users_page extends Component
 		)
 	}
 
-	render_users()
+	renderUsers()
 	{
 		const
 		{
@@ -184,7 +179,7 @@ export default class Users_page extends Component
 									<Button
 										busy={ userBeingDeleted === user.id }
 										disabled={ disableButtons }
-										action={ () => this.delete_user(user.id) }>
+										action={ () => this.deleteUser(user.id) }>
 										delete
 									</Button>
 								</td>
@@ -198,8 +193,8 @@ export default class Users_page extends Component
 }
 
 @Form
-@connect(state => ({}), { add_user })
-class Add_user_form extends Component
+@connect(state => ({}), { addUser })
+class AddUserForm extends Component
 {
 	constructor()
 	{
@@ -210,13 +205,13 @@ class Add_user_form extends Component
 
 	async submit(values)
 	{
-		const { add_user, onSubmitted } = this.props
+		const { addUser, onSubmitted } = this.props
 
-		await add_user(values)
+		await addUser(values)
 		onSubmitted()
 	}
 
-	validate_name(value)
+	validateName(value)
 	{
 		if (!value)
 		{
@@ -236,7 +231,7 @@ class Add_user_form extends Component
 				<Field
 					name="name"
 					label="Name"
-					validate={ this.validate_name }
+					validate={ this.validateName }
 					component={ TextInput }
 					className="add-user__name"/>
 
