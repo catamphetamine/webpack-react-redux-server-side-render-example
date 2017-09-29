@@ -2,12 +2,13 @@
   "presets":
   [
     "react",
-    ["es2015", { modules: false }],
-    "stage-2"
+    ["env", { modules: false }]
   ],
 
   "plugins":
   [
+    "transform-object-rest-spread",
+    "transform-class-properties",
     "transform-promise-to-bluebird",
     "transform-decorators-legacy",
     "transform-react-display-name",
