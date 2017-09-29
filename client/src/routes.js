@@ -13,14 +13,40 @@ import NotFound        from './pages/errors/NotFound'
 
 export default
 (
-	<Route path="/" component={ Layout }>
-		<IndexRoute component={ Home }/>
-		<Route path="users" component={ Users }/>
+	<Route
+		path="/"
+		component={ Layout }>
 
-		<Route path="unauthenticated" component={ Unauthenticated } status={ 401 }/>
-		<Route path="unauthorized" component={ Unauthorized } status={ 403 }/>
-		<Route path="not-found" component={ NotFound } status={ 404 }/>
-		<Route path="error" component={ GenericError } status={ 500 }/>
-		<Route path="*" component={ NotFound } status={ 404 }/>
+		<IndexRoute
+			component={ Home }/>
+
+		<Route
+			path="users"
+			component={ Users }/>
+
+		<Route
+			path="unauthenticated"
+			component={ Unauthenticated }
+			status={ 401 }/>
+
+		<Route
+			path="unauthorized"
+			component={ Unauthorized }
+			status={ 403 }/>
+
+		<Route
+			path="not-found"
+			component={ NotFound }
+			status={ 404 }/>
+
+		<Route
+			path="error"
+			component={ GenericError }
+			status={ 500 }/>
+
+		<Route
+			path="*"
+			component={ NotFound }
+			status={ 404 }/>
 	</Route>
 )
