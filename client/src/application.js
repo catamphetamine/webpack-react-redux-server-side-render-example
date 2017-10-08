@@ -5,16 +5,21 @@ import settings from './react-isomorphic-render'
 require('react-responsive-ui/style.css')
 require('../assets/styles/style.scss')
 
-// renders the webpage on the client side
-render(settings).then(({ store, rerender }) =>
+async function run()
 {
-  if (module.hot)
-  {
-    module.hot.accept('./react-isomorphic-render', () =>
-    {
-      store.hotReload(settings.reducer)
-      rerender()
-    })
-  }
-})
-.catch((error) => console.error(error))
+	// Renders the webpage on the client side
+	const { store, rerender } = await render(settings)
+
+	// Webpack "Hot Module Replacement"
+	if (module.hot)
+	{
+		module.hot.accept('./react-isomorphic-render', () =>
+		{
+			store.hotReload(settings.reducer)
+			rerender()
+		})
+	}
+}
+
+// Run the application
+run().catch((error) => console.error(error))
