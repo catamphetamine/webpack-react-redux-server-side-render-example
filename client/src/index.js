@@ -1,6 +1,6 @@
-import { render } from 'react-isomorphic-render'
+import { render } from 'react-website'
 
-import settings from './react-isomorphic-render'
+import settings from './react-website'
 
 require('react-responsive-ui/style.css')
 require('../assets/styles/style.scss')
@@ -13,7 +13,7 @@ async function run()
 	// Webpack "Hot Module Replacement"
 	if (module.hot)
 	{
-		module.hot.accept('./react-isomorphic-render', () =>
+		module.hot.accept('./react-website', () =>
 		{
 			store.hotReload(settings.reducer)
 			rerender()

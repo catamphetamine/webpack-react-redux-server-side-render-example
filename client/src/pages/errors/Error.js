@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { meta } from 'react-isomorphic-render'
+import { meta } from 'react-website'
 
 @meta(({ state }) => ({ title: 'Error' }))
 export default class Page extends Component

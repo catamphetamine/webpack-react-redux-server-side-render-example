@@ -2,7 +2,7 @@
 $unit: 12px;
 
 // https://www.sitepoint.com/managing-responsive-breakpoints-sass/
-// `$screen-sm-min` must be equal to `DESKTOP_SCREEN_MIN_WIDTH` in `Layout.js`
+// `$screen-sm-min` must be equal to `DESKTOP_SCREEN_MIN_WIDTH` in `App.js`
 $screen-sm-min: $unit * 64; // 768px
 $screen-xs-max: $screen-sm-min - 1;
 $screen-md-min: $unit * 82; // 984px
@@ -14,7 +14,7 @@ $screen-md-max: $screen-lg-min - 1;
 {
 	--white-color        : #ffffff;
 	--black-color        : #000000;
-	
+
 	--gray-color         : #888C91;
 
 	--base-color-lighter : #30CFFF;

@@ -1,9 +1,9 @@
 import React from 'react'
-import webpageServer from 'react-isomorphic-render/server'
+import webpageServer from 'react-website/server'
 import { devtools } from 'universal-webpack'
 import path from 'path'
 
-import settings, { icon } from '../src/react-isomorphic-render'
+import settings, { icon } from '../src/react-website'
 import configuration from '../../configuration'
 
 export default function(parameters) {
@@ -16,7 +16,7 @@ export default function(parameters) {
     // Specify `secure: true` flag to use `https` protocol instead of `http`.
     proxy: {
       host: 'localhost',
-      port: configuration.web.port
+      port: configuration.webserver.port
       // secure: true
     },
 
@@ -71,13 +71,13 @@ export default function(parameters) {
       }
     },
 
-    // I prefer setting `render` flag to `false`
-    // because Server-Side React Rendering is slow
-    // (takes about 100 milliseconds for a complex page).
+    // I prefer setting `hollow` flag to `true`
+    // because Server-Side React Rendering takes some CPU time
+    // (about 30 milliseconds for a complex React page as of 2017).
     // Modern search engines know how to run javascript
     // so there shouldn't be any issues.
-    // Read `react-isomorphic-render` docs for more info.
-    // render: false
+    // Read `react-website` docs for more info.
+    hollow: true
   })
 
   // Start webpage rendering server

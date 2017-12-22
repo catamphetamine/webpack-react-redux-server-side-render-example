@@ -1,0 +1,9 @@
+.react-website__loading--shown
+{
+	z-index : var(--preloading-screen-z-index);
+}
+
+.react-website__loading-spinner
+{
+	color : var(--white-color);
+}

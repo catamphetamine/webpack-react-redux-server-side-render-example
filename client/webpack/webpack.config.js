@@ -21,7 +21,7 @@ var configuration =
 		main:
 		[
 			'babel-polyfill',
-			'./src/application.entry.js'
+			'./src/index.entry.js'
 		]
 	},
 

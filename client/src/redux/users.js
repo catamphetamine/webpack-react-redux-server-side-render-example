@@ -1,7 +1,6 @@
-import { reduxModule } from 'react-isomorphic-render'
-import settings from '../react-isomorphic-render-async'
+import { reduxModule } from 'react-website'
 
-const redux = reduxModule('USERS', settings);
+const redux = reduxModule('USERS');
 
 export const getUsers = redux.action
 (

@@ -1,7 +1,6 @@
 import routes  from './routes'
 import * as reducer from './redux'
-import wrapper from './wrapper'
-import asyncSettings from './react-isomorphic-render-async'
+import container from './container'
 
 // "Favicon" must be imported on the client side too
 // since no assets are emitted on the server side
@@ -11,7 +10,7 @@ export default
 {
 	reducer,
 	routes,
-	wrapper,
+	container,
 
 	error(error, { path, url, redirect, dispatch, getState, server })
 	{
@@ -49,7 +48,5 @@ export default
 				return redirect(add_redirect('/error', url))
 			}
 		}
-	},
-
-	...asyncSettings
+	}
 }

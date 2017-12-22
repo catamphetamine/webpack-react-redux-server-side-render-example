@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { meta } from 'react-isomorphic-render'
+import { meta, Loading } from 'react-website'
+
+import 'react-website/components/Loading.css'
+// Not importing `LoadingIndicator.css` because
+// it's already loaded as part of `react-responsive-ui`.
+// import 'react-website/components/LoadingIndicator.css'
 
 import Menu, { MenuLink } from '../components/Menu'
-import Preloading from '../components/Preloading'
 
 import Home  from '../../assets/images/home.svg'
 import Users from '../../assets/images/users.svg'
@@ -16,7 +20,7 @@ import Users from '../../assets/images/users.svg'
 	image       : 'https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
 	locale      : 'ru_RU'
 }))
-export default class Layout extends Component
+export default class App extends Component
 {
 	static propTypes =
 	{
@@ -29,7 +33,7 @@ export default class Layout extends Component
 
 		return (
 			<div>
-				<Preloading/>
+				<Loading/>
 
 				<div className="webpage">
 					<nav className="webpage__header">

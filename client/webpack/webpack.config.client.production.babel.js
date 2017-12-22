@@ -1,10 +1,12 @@
-import path from 'path'
-
+import path               from 'path'
 import webpack            from 'webpack'
-import baseConfiguration  from './webpack.config.client'
 import CleanPlugin        from 'clean-webpack-plugin'
-import BabiliPlugin       from 'babili-webpack-plugin'
+// https://github.com/webpack/webpack-sources/issues/28
+// import MinifyPlugin       from 'babel-minify-webpack-plugin'
+import MinifyPlugin       from 'uglifyjs-webpack-plugin'
 import Visualizer         from 'webpack-visualizer-plugin'
+
+import baseConfiguration  from './webpack.config.client'
 
 // With `development: false` all CSS will be extracted into a file
 // named '[name]-[contenthash].css' using `extract-text-webpack-plugin`
@@ -41,7 +43,7 @@ configuration.plugins.push
   }),
 
   // Compresses javascript files
-  new BabiliPlugin(),
+  new MinifyPlugin(),
 
   // https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/
   new Visualizer

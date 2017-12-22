@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, IndexLink } from 'react-isomorphic-render'
+import { Link, IndexLink } from 'react-website'
 import classNames from 'classnames'
 
 export default function Menu({ children })

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
 import Form, { Field, Submit } from 'simpler-redux-form'
-import { meta, preload } from 'react-isomorphic-render'
+import { meta, preload } from 'react-website'
 
 import
 {

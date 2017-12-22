@@ -1,2 +1,2 @@
 require('babel-register')
-require('./webserver')
+require('./index')

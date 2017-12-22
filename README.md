@@ -1,11 +1,10 @@
-This sample project illustrates isomorphic (universal) rendering using React and Webpack.
+This sample project illustrates a React/Redux application with optional server-side rendering bundled with Webpack.
 
 Features
 
 * React
-* React-router
 * Redux
-* Isomorphic (universal) rendering
+* Isomorphic rendering (optional)
 * Webpack 2
 * Development mode: hot reload for React components, hot reload for Redux reducers and actions
 
@@ -29,7 +28,7 @@ Summary
 
 This application consists of the "client side" and the "server side".
 
-The "client side" (`./client`) is the javascript code (`./client/application.js`) which is built by Webpack and is run in a user's web browser, along with the "page rendering service" (`./client/rendering-service`) which does the same thing but in a Node.js process on the server (but is still considered more "client-side" than "server-side").
+The "client side" (`./client`) is the javascript code (`./client/index.js`) which is built by Webpack and is run in a user's web browser, along with the "page rendering service" (`./client/rendering-service`) which does the same thing but in a Node.js process on the server (but is still considered more "client-side" than "server-side").
 
 The "server side" consists of the "API service" (`./api`) and the "proxy service" (`./webserver`) which runs on port `3000` and routes various URL paths to their respective destinations:
 
@@ -37,12 +36,9 @@ The "server side" consists of the "API service" (`./api`) and the "proxy service
 * `/api` is proxied to the "API service" (running on port `3003`)
 * all the other URLs are proxied to the "page rendering service" (which runs on port `3002`).
 
-In development mode there's one more Node.js process running: it's `webpack-dev-server` running on port `3001` which serves the "assets" compiled by Webpack (live) via HTTP protocol. In production there's no `webpack-dev-server` and Webpack just outputs those compiled assets to the `./client/build` folder and the "proxy service" (`./webserver`) serves those "assets" from there. In a real production environment though this "hand made" sample proxy service should be dropped in favour of a proper proxy like NginX or HAProxy. Or a developer could rather use no proxy at all hosting everything completely separately in the cloud (the modern way). So this "proxied" setup is here just for simplicity and illustration purpose.
+In development mode there's one more Node.js process running: it's `webpack-dev-server` running on port `3001` which serves the "assets" compiled by Webpack (live) via HTTP protocol. In production there's no `webpack-dev-server` and Webpack just outputs those compiled assets to the `./client/build` folder and the "proxy service" (`./webserver`) serves those "assets" from there. In a real production environment though this "hand made" sample proxy service would have been dropped in favour of a proper proxy like NginX or HAProxy.
 
-Server Side Rendering
-=====================
-
-React Server Side Rendering is quite slow, so I prefer setting `render: false` flag to move all React rendering to the web browser. This approach has virtually no complications, but those who still want to prerender pages on the server may read the [guide on speeding up React Server Side Rendering](https://github.com/catamphetamine/react-isomorphic-render/blob/master/PERFORMANCE.md).
+The "proxying webserver" approach illustrated in this app is for illustration purposes only. It is considered old-fashioned now as all modern applications are becoming more distributed and decentralized running API somewhere in a cloud (e.g. Amazon Lambda) and serving "statics" from a whole another place (e.g. Amazon S3). In this case the React application queries the API server by an absolute URL and no proxying or "serving statics" is needed, therefore the whole "webserver" thing is moved out of the equation.
 
 Small Advertisement
 ===================

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, IndexRoute } from 'react-router'
 
-import Layout          from './pages/Layout'
+import Application     from './pages/Application'
 
 import Users           from './pages/Users'
 import Home            from './pages/Home'
@@ -15,7 +15,7 @@ export default
 (
 	<Route
 		path="/"
-		component={ Layout }>
+		component={ Application }>
 
 		<IndexRoute
 			component={ Home }/>

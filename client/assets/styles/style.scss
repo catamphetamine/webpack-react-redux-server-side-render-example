@@ -6,10 +6,10 @@
 @import "common.scss";
 
 @import "../../src/components/Menu.scss";
-@import "../../src/components/Preloading.scss";
+@import "../../src/components/Loading.scss";
 
+@import "../../src/pages/Application.scss";
 @import "../../src/pages/Home.scss";
-@import "../../src/pages/Layout.scss";
 @import "../../src/pages/Users.scss";
 
 @import "../../src/pages/errors/Error.scss";

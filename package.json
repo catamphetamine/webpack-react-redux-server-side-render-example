@@ -15,10 +15,10 @@
     "development:client:rendering-service:build:prepare": "universal-webpack --settings ./client/webpack/universal-webpack-settings.json --config ./client/webpack/webpack.config.js prepare",
     "development:client:build": "babel-node ./client/webpack/webpack-dev-server.js",
     "development:client:rendering-service:build": "webpack --config ./client/webpack/webpack.config.server.development.babel.js --watch --colors --display-error-details",
-    "development:api": "nodemon ./api/entry.js --watch ./api",
-    "development:client:rendering-service": "nodemon ./client/rendering-service/entry.js --watch ./client/rendering-service --watch ./client/build/server",
+    "development:api": "nodemon ./api/index.entry.js --watch ./api",
+    "development:client:rendering-service": "nodemon ./client/rendering-service/index.entry.js --watch ./client/rendering-service --watch ./client/build/server",
     "development:client:rendering-service:delayed": "npm-run-all delay development:client:rendering-service",
-    "development:webserver": "nodemon ./webserver/entry.js --watch ./webserver",
+    "development:webserver": "nodemon ./webserver/index.entry.js --watch ./webserver",
     "development:webserver:delayed": "npm-run-all delay delay development:webserver",
     "development:services": "npm-run-all --parallel development:api development:client:rendering-service:delayed development:webserver:delayed",
     "delay": "node ./sleep 500",
@@ -32,19 +32,19 @@
   },
   "betterScripts": {
     "production:client:rendering-service": {
-      "command": "node ./client/rendering-service/entry.js",
+      "command": "node ./client/rendering-service/index.entry.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "production:api": {
-      "command": "node ./api/entry.js",
+      "command": "node ./api/index.entry.js",
       "env": {
         "NODE_ENV": "production"
       }
     },
     "production:webserver": {
-      "command": "node ./webserver/entry.js",
+      "command": "node ./webserver/index.entry.js",
       "env": {
         "NODE_ENV": "production"
       }
@@ -55,6 +55,7 @@
   "dependencies": {
     "autoprefixer": "^7.1.2",
     "babel-loader": "^7.1.1",
+    "babel-minify-webpack-plugin": "^0.2.0",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
@@ -65,7 +66,6 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
-    "babili-webpack-plugin": "^0.1.2",
     "better-npm-run": "0.0.13",
     "bluebird": "^3.4.7",
     "classnames": "^2.2.5",
@@ -84,16 +84,17 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-hot-loader": "^3.0.0-beta.7",
-    "react-isomorphic-render": "^12.0.9",
     "react-redux": "^5.0.2",
-    "react-responsive-ui": "^0.9.29",
+    "react-responsive-ui": "^0.10.11",
     "react-router": "^3.2.0",
+    "react-website": "^1.0.3",
     "redux": "^3.6.0",
     "sass-loader": "^6.0.6",
     "simpler-redux-form": "^0.3.25",
     "style-loader": "^0.18.2",
     "svg-react-loader": "^0.4.4",
-    "universal-webpack": "^0.4.0",
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "universal-webpack": "^0.5.0",
     "url-loader": "^0.5.9",
     "web-service": "^0.4.6",
     "webpack": "^3.1.0",

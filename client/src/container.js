@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 import { AppContainer } from 'react-hot-loader'
 
-export default class Wrapper extends Component
+export default class Container extends Component
 {
   static propTypes =
   {
