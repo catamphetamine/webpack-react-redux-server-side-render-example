@@ -1,4 +1,3 @@
-import React from 'react'
 import webpageServer from 'react-website/server'
 import { devtools } from 'universal-webpack'
 import path from 'path'
@@ -7,75 +6,94 @@ import settings, { icon } from '../src/react-website'
 import configuration from '../../configuration'
 
 export default function(parameters) {
-  // Starts webpage rendering server
+  // Create webpage rendering server
   const server = webpageServer(settings, {
-    // HTTP host and port for performing all AJAX requests
-    // when rendering pages on server-side.
-    // E.g. an AJAX request to `/items/5` will be transformed to
-    // `http://${host}:${port}/items/5` during server-side rendering.
-    // Specify `secure: true` flag to use `https` protocol instead of `http`.
+    // When using a proxy server
+    // all HTTP requests to relative URLs
+    // will be transformed to absolute URLs
+    // using these settings.
+    // Using a proxy server is considered outdated
+    // and it is here for the simplest example purpose only.
     proxy: {
       host: 'localhost',
       port: configuration.webserver.port
+      // For HTTPS
       // secure: true
     },
 
-    // Http Urls to javascripts and (optionally) CSS styles
-    // which will be insterted into the <head/> element of the resulting Html webpage
-    // (as <script src="..."/> and <link rel="style" href="..."/> respectively)
+    // HTTP URLs for javascripts and (optionally) CSS styles
+    // which will be insterted into the `<head/>` element
+    // of the resulting HTML webpage as `<script src="..."/>`
+    // and `<link rel="style" href="..."/>`.
     //
-    // Also a website "favicon".
+    // And also the URL for website "favicon".
     //
-    assets(path) {
-      // Retrieve asset chunk file names
-      // (which are output by client side Webpack build)
-      const result = { ...parameters.chunks() }
+    assets: (path) => ({
+      // Webpack "entry points" to be included
+      // on a page for this URL `path`.
+      // Can be used for "code splitting"
+      // by returning different entries based on the `path`.
+      // Since in this example there's no code splitting
+      // involved then there's only one entry point: "main".
+      // If "common" entry is configured in Webpack
+      // then it's always included on every page.
+      entries: ['main'],
 
-      // Webpack entry point (can be used for code splitting)
-      result.entries = ['main']
-
-      // // Clear Webpack require() cache for hot reload in development mode
-      // // (this is not necessary)
-      // if (process.env.NODE_ENV !== 'production') {
-      //   delete require.cache[require.resolve('../assets/images/icon.png')]
+      // Javascripts and (optionally) styles for the `entries`.
+      // They are output by client-side Webpack build.
+      // E.g.:
+      // {
+      //   javascript: {
+      //     main: '/assets/main.js'
+      //   },
+      //   // (optional)
+      //   styles: {
+      //     main: '/assets/main.css'
+      //   }
       // }
+      ...parameters.chunks(),
 
-      // Add "favicon"
-      result.icon = icon
-
-      // Return assets
-      return result
-    },
+      // Website "favicon"
+      icon
+    }),
 
     html: {
-      // Will be inserted into server rendered webpage <head/>
-      // (this `head()` function is optional and is not required)
-      // (its gonna work with or without this `head()` parameter)
+      // (optional)
+      // Will be inserted into server rendered webpage <head/>.
       head(path) {
         if (process.env.NODE_ENV !== 'production') {
-          // `devtools` just tampers with CSS styles a bit.
+          // `devtools()` just tampers with CSS styles a bit.
           // It's not required for operation and can be omitted.
           // It just removes the "flash of unstyled content" in development mode.
-          return `<script>${devtools({ ...parameters, entry: 'main' })}</script>`
+          return `
+            <script>
+              ${devtools({ ...parameters, entry: 'main' })}
+            </script>
+          `
         }
       },
 
-      // Isomorphic CSS flag
+      // (optional)
+      // Javascriptless web browsers detection
       bodyStart(path) {
         return `
           <script>
             // This line is just for CSS
             document.body.classList.add('javascript-is-enabled');
           </script>
-        `;
+        `
       }
     },
 
-    // I prefer setting `hollow` flag to `true`
-    // because Server-Side React Rendering takes some CPU time
+    // One can set `hollow` flag to `true`
+    // to turn off Server-Side React Rendering.
+    // Server-Side React Rendering takes some CPU time
     // (about 30 milliseconds for a complex React page as of 2017).
     // Modern search engines know how to run javascript
-    // so there shouldn't be any issues.
+    // so there shouldn't be any issues with indexing.
+    // Turning off Server-Side Rendering delays the
+    // "time-to-first-byte" though
+    // (until the javascript bundle is fully downloaded).
     // Read `react-website` docs for more info.
     // hollow: true
   })
@@ -87,6 +105,6 @@ export default function(parameters) {
       throw error
     }
 
-    console.log(`Webpage rendering service is listening at port ${configuration.services.rendering.port}`)
+    console.log(`Webpage rendering service is listening on port ${configuration.services.rendering.port}`)
   })
 }
