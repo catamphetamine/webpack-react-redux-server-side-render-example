@@ -2,7 +2,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import webpack from 'webpack'
 
 import base_configuration from './webpack.config.server'
-import application_configuration from '../../configuration'
+import application_configuration from '../configuration'
 
 const configuration = cloneDeep(base_configuration)
 

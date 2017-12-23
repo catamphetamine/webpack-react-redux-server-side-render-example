@@ -1,6 +1,6 @@
 import webpack from 'webpack'
 import base_configuration from './webpack.config.client'
-import application_configuration from '../../configuration'
+import application_configuration from '../configuration'
 
 const configuration = base_configuration({ development: true, cssBundle: true })
 

@@ -6,7 +6,7 @@ import configuration from '../configuration'
 const webserver = webservice({})
 
 // Serve static files
-webserver.files('/assets', path.join(__dirname, '../client/build/assets'))
+webserver.files('/assets', path.join(__dirname, '../build/assets'))
 
 // if it's not a static file url:
 

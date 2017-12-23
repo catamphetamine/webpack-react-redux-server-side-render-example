@@ -3,7 +3,7 @@ import { devtools } from 'universal-webpack'
 import path from 'path'
 
 import settings, { icon } from '../src/react-website'
-import configuration from '../../configuration'
+import configuration from '../configuration'
 
 export default function(parameters) {
   // Create webpage rendering server

@@ -6,7 +6,7 @@ var webpack = require('webpack')
 // project folder
 var root_folder = path.resolve(__dirname, '..')
 
-var configuration =
+module.exports =
 {
 	// Resolve all relative paths from the project root folder
 	context: root_folder,
@@ -126,5 +126,3 @@ var configuration =
 
 	plugins: []
 }
-
-module.exports = configuration

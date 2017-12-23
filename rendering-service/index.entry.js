@@ -2,6 +2,6 @@
 require('babel-polyfill')
 
 // use `bluebird` for Promises
-require('../../bluebird')
+require('../bluebird')
 
 require('./index')

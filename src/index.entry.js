@@ -1,5 +1,5 @@
 // use `bluebird` for Promises
-require('../../bluebird')
+require('../bluebird')
 
 /**
  * Warning from React Router, caused by react-hot-loader.
