@@ -77,7 +77,7 @@ export default function(parameters) {
     // Modern search engines know how to run javascript
     // so there shouldn't be any issues.
     // Read `react-website` docs for more info.
-    hollow: true
+    // hollow: true
   })
 
   // Start webpage rendering server
