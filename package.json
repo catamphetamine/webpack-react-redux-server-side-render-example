@@ -94,7 +94,7 @@
     "style-loader": "^0.18.2",
     "svg-react-loader": "^0.4.4",
     "uglifyjs-webpack-plugin": "^1.1.4",
-    "universal-webpack": "^0.5.0",
+    "universal-webpack": "^0.5.1",
     "url-loader": "^0.5.9",
     "web-service": "^0.4.6",
     "webpack": "^3.1.0",

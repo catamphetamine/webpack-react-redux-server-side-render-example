@@ -1,6 +1,9 @@
 import express from 'express'
 import webpack from 'webpack'
 
+import webpack_dev_middleware from 'webpack-dev-middleware'
+import webpack_hot_middleware from 'webpack-hot-middleware'
+
 import configuration from './webpack.config.client.development'
 import application_configuration from '../../configuration'
 
@@ -8,7 +11,7 @@ const compiler = webpack(configuration)
 const devserver = new express()
 
 // http://webpack.github.io/docs/webpack-dev-server.html
-devserver.use(require('webpack-dev-middleware')(compiler,
+devserver.use(webpack_dev_middleware(compiler,
 {
 	quiet       : true, // don’t output anything to the console
 	noInfo      : true, // suppress boring information
@@ -27,7 +30,7 @@ devserver.use(require('webpack-dev-middleware')(compiler,
 	stats       : { colors: true }
 }))
 
-devserver.use(require('webpack-hot-middleware')(compiler))
+devserver.use(webpack_hot_middleware(compiler))
 
 devserver.listen(application_configuration.webpack.devserver.port, (error) =>
 {

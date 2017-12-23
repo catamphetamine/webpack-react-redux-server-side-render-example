@@ -3,6 +3,5 @@ require('babel-polyfill')
 
 // use `bluebird` for Promises
 require('../../bluebird')
-require('bluebird').promisifyAll(require('fs-extra'))
 
 require('./index')

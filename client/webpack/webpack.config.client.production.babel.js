@@ -10,8 +10,8 @@ import baseConfiguration  from './webpack.config.client'
 
 // With `development: false` all CSS will be extracted into a file
 // named '[name]-[contenthash].css' using `extract-text-webpack-plugin`
-// (this behaviour can be disabled with `css_bundle: false`)
-// (the filename can be customized with `css_bundle: "filename.css"`)
+// (this behaviour can be disabled with `cssBundle: false`)
+// (the filename can be customized with `cssBundle: "filename.css"`)
 const configuration = baseConfiguration({ development: false })
 
 configuration.devtool = 'source-map'

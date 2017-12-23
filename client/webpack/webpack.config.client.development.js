@@ -2,7 +2,7 @@ import webpack from 'webpack'
 import base_configuration from './webpack.config.client'
 import application_configuration from '../../configuration'
 
-const configuration = base_configuration({ development: true, css_bundle: true })
+const configuration = base_configuration({ development: true, cssBundle: true })
 
 // https://webpack.js.org/guides/development/#source-maps
 // The default `source-map` `devtool` gives better
@@ -11,7 +11,7 @@ const configuration = base_configuration({ development: true, css_bundle: true }
 
 configuration.plugins.push
 (
-	// environment variables
+	// Environment variables
 	new webpack.DefinePlugin
 	({
 		'process.env':
@@ -22,17 +22,17 @@ configuration.plugins.push
 		REDUX_DEVTOOLS : false  // enable/disable redux-devtools
 	}),
 
-	// faster code reload on changes
+	// Webpack Hot Reload
 	new webpack.HotModuleReplacementPlugin(),
 
-	// prints more readable module names in the browser console on HMR updates
+	// Prints more readable module names in the browser console on HMR updates
 	new webpack.NamedModulesPlugin(),
 
-	// // extracts common javascript into a separate file (works)
+	// // Extracts common javascript into a separate file
 	// new webpack.optimize.CommonsChunkPlugin('common', 'common.[hash].js')
 )
 
-// enable webpack development server
+// Enable webpack development server
 
 if (configuration.entry.main.length !== 2 && configuration.entry.main[0] !== 'babel-polyfill')
 {

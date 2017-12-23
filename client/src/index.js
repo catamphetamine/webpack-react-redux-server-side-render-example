@@ -2,8 +2,8 @@ import { render } from 'react-website'
 
 import settings from './react-website'
 
-require('react-responsive-ui/style.css')
-require('../assets/styles/style.scss')
+import 'react-responsive-ui/style.css'
+import '../assets/styles/style.scss'
 
 async function run()
 {
