@@ -32,7 +32,7 @@ The "client side" is the javascript code (`./src/index.js`) which is built by We
 
 The "server side" consists of the "API server" (`./api-server`) and the "proxy server" (`./proxy-server`).
 
-The "proxy server" approach illustrated in this app is for illustration purposes only. It is considered old-fashioned now as all modern applications are becoming more distributed and decentralized running API somewhere in a cloud (e.g. Amazon Lambda) and serving "statics" from a whole another place (e.g. Amazon S3). In this case the React application queries the API server by an absolute URL and no proxying or "serving statics" is needed, therefore the whole "proxy server" is moved out of the equation.
+The "proxy server" approach illustrated in this app is for illustration purposes only. It is considered old-fashioned now as all modern applications are becoming more distributed and decentralized running API somewhere in a cloud (e.g. Amazon Lambda) and serving "statics" from a whole another place (e.g. Amazon S3, configured via `output.publicPath` in `webpack.config.js`). In this case the React application queries the API server by an absolute URL and no proxying or "serving statics" is needed, therefore the whole "proxy server" is moved out of the equation.
 
 In this example though, for simplicity, "proxy server" is used and it runs on port `3000` and routes all relative URL paths to their destinations:
 

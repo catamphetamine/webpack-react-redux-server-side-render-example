@@ -1,15 +1,15 @@
-// This is the base Webpack configuration file
+// Not using ES6 syntax here because this file
+// is not processed with Babel on server side.
 
 var path = require('path')
 var webpack = require('webpack')
 
-// project folder
-var root_folder = path.resolve(__dirname, '..')
+var project_folder = path.resolve(__dirname, '..')
 
 module.exports =
 {
 	// Resolve all relative paths from the project root folder
-	context: root_folder,
+	context: project_folder,
 
 	// Each "entry" can be divided into multiple chunks.
 	// Why multiple "entries" might be used?
@@ -28,7 +28,7 @@ module.exports =
 	output:
 	{
 		// Filesystem path for static files
-		path: path.resolve(root_folder, 'build/assets'),
+		path: path.resolve(project_folder, 'build/assets'),
 
 		// Network path for static files
 		publicPath: '/assets/',
@@ -111,7 +111,9 @@ module.exports =
 				loader : 'url-loader',
 				options:
 				{
-					limit: 10240 // Any png-image or woff-font below or equal to 10K will be converted to inline base64 instead
+					// Any png-image or woff-font below or equal to 10K
+					// will be converted to inline base64 instead.
+					limit: 10240
 				}
 			}]
 		},

@@ -1,12 +1,15 @@
 import cloneDeep from 'lodash/cloneDeep'
-import webpack from 'webpack'
 
-import base_configuration from './webpack.config.server'
-import application_configuration from '../configuration'
+import configuration from './webpack.config.server'
+import settings from '../configuration'
 
-const configuration = cloneDeep(base_configuration)
-
-// Network path for static files: fetch all statics from webpack development server
-configuration.output.publicPath = `http://${application_configuration.webpack.devserver.host}:${application_configuration.webpack.devserver.port}${configuration.output.publicPath}`
-
-export default configuration
+export default
+{
+	...configuration,
+	output:
+	{
+		...configuration.output,
+		// Get all statics from webpack development server
+		publicPath: `http://${settings.webpack.devserver.host}:${settings.webpack.devserver.port}${configuration.output.publicPath}`
+	}
+}

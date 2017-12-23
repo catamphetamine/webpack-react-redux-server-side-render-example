@@ -1,5 +1,1 @@
-import baseConfiguration from './webpack.config.server'
-
-// Nothing special to add here.
-
-export default baseConfiguration
+export { default as default } from './webpack.config.server'
