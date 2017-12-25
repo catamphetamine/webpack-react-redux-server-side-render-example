@@ -13,7 +13,7 @@ import
 }
 from '../redux/users'
 
-@preload(({ dispatch, getState }) => dispatch(getUsers()))
+@preload(async ({ dispatch }) => await dispatch(getUsers()))
 @meta(({ state }) =>
 ({
 	title       : 'Simple REST API example',
