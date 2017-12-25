@@ -92,7 +92,7 @@ export default class UsersPage extends Component
 			<section className="page-content">
 				<div>
 					<p className="users__description">
-						This is an example of isomorphic REST API data querying (try disabling javascript and reloading the page).
+						This is an example of REST API data querying (try disabling javascript and reloading the page).
 					</p>
 
 					<p className="users__description">

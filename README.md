@@ -4,9 +4,11 @@ Features
 
 * React
 * Redux
-* Isomorphic rendering (optional)
+* Universal rendering (optional)
 * Webpack 2
 * Development mode: hot reload for React components, hot reload for Redux reducers and actions
+
+<img src="https://raw.githubusercontent.com/catamphetamine/webpack-react-redux-isomorphic-render-example/master/docs/images/screenshot.png" width="1145" height="428"/>
 
 Quick Start
 ===========
