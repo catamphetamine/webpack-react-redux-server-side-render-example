@@ -8,6 +8,9 @@ Features
 * Webpack 2
 * Development mode: hot reload for React components, hot reload for Redux reducers and actions
 
+<br/>
+<br/>
+
 <img src="https://raw.githubusercontent.com/catamphetamine/webpack-react-redux-isomorphic-render-example/master/docs/images/screenshot.png" width="840" height="330"/>
 
 Quick Start
