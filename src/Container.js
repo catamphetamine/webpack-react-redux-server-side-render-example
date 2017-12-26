@@ -14,8 +14,9 @@ export default class Container extends Component
   {
     const { store, children } = this.props
 
+    // https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md#react-hot-loader-this-component-is-not-accepted-by-hot-loader
     return (
-      <AppContainer>
+      <AppContainer warnings={ false }>
         <Provider store={ store }>
           { children }
         </Provider>
