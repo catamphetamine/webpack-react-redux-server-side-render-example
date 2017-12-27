@@ -11,9 +11,7 @@ export const getUsers = redux.action
 		const ids = await http.get('/api/example/users')
 		return await Promise.all(ids.map(id => http.get(`/api/example/users/${id}`)))
 	},
-	{
-		result: 'users'
-	}
+	'users'
 )
 
 export const addUser = redux.action
@@ -35,13 +33,6 @@ export const deleteUser = redux.action
 		await http.delete(`/api/example/users/${id}`)
 	}
 )
-
-// // A developer can additionally handle any other custom events
-// redux.on('CUSTOM_EVENT', (state, action) =>
-// ({
-//   ...state,
-//   customProperty: action.result
-// }))
 
 // A little helper for Redux `@connect()`
 export const properties = redux.getProperties

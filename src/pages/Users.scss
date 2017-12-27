@@ -8,9 +8,20 @@
 	margin-left : 2rem;
 }
 
-.users__list
+.users__content
 {
 	margin-top : 1.5rem;
+}
+
+.users__list
+{
+	border-collapse : collapse;
+}
+
+.users__list td
+{
+	padding-top    : 0;
+	padding-bottom : 0;
 }
 
 .user__id
@@ -23,6 +34,11 @@
 {
 	padding-left  : 1em;
 	padding-right : 1em;
+}
+
+.user__delete
+{
+	height : auto;
 }
 
 .add-user

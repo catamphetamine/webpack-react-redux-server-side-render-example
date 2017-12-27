@@ -114,7 +114,7 @@ export default class UsersPage extends Component
 							Refresh
 						</Button>
 
-						<div className="users__list">
+						<div className="users__content">
 							{ this.renderUsers() }
 						</div>
 
@@ -164,7 +164,7 @@ export default class UsersPage extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
-			<table>
+			<table className="users__list">
 				<tbody>
 					{ users.map((user) => {
 						return (
@@ -179,7 +179,8 @@ export default class UsersPage extends Component
 									<Button
 										busy={ userBeingDeleted === user.id }
 										disabled={ disableButtons }
-										action={ () => this.deleteUser(user.id) }>
+										action={ () => this.deleteUser(user.id) }
+										className="user__delete">
 										delete
 									</Button>
 								</td>
