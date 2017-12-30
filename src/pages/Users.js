@@ -6,7 +6,7 @@ import { meta, preload } from 'react-website'
 
 import
 {
-	properties,
+	connectUsers,
 	getUsers,
 	addUser,
 	deleteUser
@@ -22,7 +22,7 @@ from '../redux/users'
 }))
 @connect
 (
-	({ users }) => properties(users),
+	({ users }) => connectUsers(users),
 	{
 		getUsers,
 		addUser,

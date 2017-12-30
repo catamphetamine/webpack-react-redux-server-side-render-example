@@ -35,7 +35,7 @@ export const deleteUser = redux.action
 )
 
 // A little helper for Redux `@connect()`
-export const properties = redux.getProperties
+export const connectUsers = redux.getProperties
 
 const initialState = { users: [] }
 
