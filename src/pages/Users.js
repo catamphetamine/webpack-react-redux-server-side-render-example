@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
-import { WithTooltip as TimeAgo } from 'react-time-ago'
+import TimeAgo from 'react-time-ago'
 import Form, { Field, Submit } from 'simpler-redux-form'
 import { meta, preload } from 'react-website'
 
