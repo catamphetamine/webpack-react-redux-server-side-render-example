@@ -2,10 +2,18 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { meta, Loading } from 'react-website'
 
+// Not importing `Tooltip.css` because
+// it's already loaded as part of `react-responsive-ui`.
+// import 'react-time-ago/Tooltip.css'
 import 'react-website/components/Loading.css'
 // Not importing `LoadingIndicator.css` because
 // it's already loaded as part of `react-responsive-ui`.
 // import 'react-website/components/LoadingIndicator.css'
+
+// `react-time-ago` English language.
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+TimeAgo.locale(en)
 
 import Menu, { MenuLink } from '../components/Menu'
 

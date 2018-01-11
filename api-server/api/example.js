@@ -21,8 +21,8 @@ export default function(api)
 		{
 			throw new errors.Not_found(`User ${id} not found`)
 		}
-		
-		return { ...users.get(id), id: id }
+
+		return { ...users.get(id), id }
 	})
 
 	api.post('/example/users', async ({ name }) =>
@@ -35,7 +35,7 @@ export default function(api)
 		id_counter++
 		const id = String(id_counter)
 
-		users.set(id, { name: name })
+		users.set(id, { name, dateAdded: new Date() })
 
 		return id
 	})
@@ -56,7 +56,7 @@ export default function(api)
 		{
 			throw new errors.Not_found(`User ${id} not found`)
 		}
-		
+
 		users.delete(id)
 	})
 

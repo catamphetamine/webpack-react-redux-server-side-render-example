@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Modal, TextInput, Button } from 'react-responsive-ui'
+import { WithTooltip as TimeAgo } from 'react-time-ago'
 import Form, { Field, Submit } from 'simpler-redux-form'
 import { meta, preload } from 'react-website'
 
@@ -174,6 +175,11 @@ export default class UsersPage extends Component
 								</td>
 								<td className="user__name">
 									{ user.name }
+								</td>
+								<td>
+									<TimeAgo>
+										{ user.dateAdded }
+									</TimeAgo>
 								</td>
 								<td>
 									<Button

@@ -22,18 +22,19 @@
 {
 	padding-top    : 0;
 	padding-bottom : 0;
+	padding-left   : 0.5em;
+	padding-right  : 0.5em;
+}
+
+.users__list td:first-child
+{
+	padding-left : 0;
 }
 
 .user__id
 {
 	color      : #9f9f9f;
 	text-align : center;
-}
-
-.user__name
-{
-	padding-left  : 1em;
-	padding-right : 1em;
 }
 
 .user__delete
