@@ -20,8 +20,8 @@
 
 .users__list td
 {
-	padding-top    : 0;
-	padding-bottom : 0;
+	padding-top    : 0.25em;
+	padding-bottom : 0.25em;
 	padding-left   : 0.5em;
 	padding-right  : 0.5em;
 }
@@ -29,6 +29,11 @@
 .users__list td:first-child
 {
 	padding-left : 0;
+}
+
+.users__list tr:first-child td
+{
+	padding-top  : 0;
 }
 
 .user__id
