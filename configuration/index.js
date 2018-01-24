@@ -19,7 +19,7 @@ else
 // For services like Amazon Elastic Compute Cloud and Heroku
 if (process.env.PORT)
 {
-	configuration.web.port = process.env.PORT
+	configuration.webserver.port = process.env.PORT
 }
 
 // For passing custom configuration via an environment variable.
