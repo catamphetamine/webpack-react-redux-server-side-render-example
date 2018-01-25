@@ -218,14 +218,6 @@ class AddUserForm extends Component
 		onSubmitted()
 	}
 
-	validateName(value)
-	{
-		if (!value)
-		{
-			return "Enter a name"
-		}
-	}
-
 	render()
 	{
 		const { submit, submitting } = this.props
@@ -236,9 +228,9 @@ class AddUserForm extends Component
 				className="add-user">
 
 				<Field
+					required
 					name="name"
 					label="Name"
-					validate={ this.validateName }
 					component={ TextInput }
 					className="add-user__name"/>
 
