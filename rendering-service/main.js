@@ -29,16 +29,6 @@ export default function(parameters) {
     // And also the URL for website "favicon".
     //
     assets: (path) => ({
-      // Webpack "entry points" to be included
-      // on a page for this URL `path`.
-      // Can be used for "code splitting"
-      // by returning different entries based on the `path`.
-      // Since in this example there's no code splitting
-      // involved then there's only one entry point: "main".
-      // If "common" entry is configured in Webpack
-      // then it's always included on every page.
-      entries: ['main'],
-
       // Javascripts and (optionally) styles for the `entries`.
       // They are output by client-side Webpack build.
       // E.g.:
