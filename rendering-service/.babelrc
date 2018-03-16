@@ -8,9 +8,9 @@
   "plugins":
   [
     "transform-object-rest-spread",
-    "transform-class-properties",
     "transform-promise-to-bluebird",
     "transform-decorators-legacy",
+    "transform-class-properties",
     "transform-react-display-name"
   ]
 }
