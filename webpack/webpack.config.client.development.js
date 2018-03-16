@@ -43,7 +43,6 @@ configuration.entry.main =
 [
 	`webpack-hot-middleware/client?path=http://${application_configuration.webpack.devserver.host}:${application_configuration.webpack.devserver.port}/__webpack_hmr`,
 	'babel-polyfill',
-	'react-hot-loader/patch',
 	configuration.entry.main[1]
 ]
 
