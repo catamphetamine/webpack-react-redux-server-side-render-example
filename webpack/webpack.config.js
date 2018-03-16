@@ -37,7 +37,7 @@ module.exports =
 		filename: '[name].[hash].js',
 
 		// Specifies the name of each (non-entry) chunk file
-		chunkFilename: '[index].[request].[hash].js'
+		chunkFilename: '[name].[hash].js'
 	},
 
 	module:
