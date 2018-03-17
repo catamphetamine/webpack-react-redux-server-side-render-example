@@ -1,0 +1,8 @@
+{
+	"plugins":
+	{
+		"autoprefixer": {},
+		"postcss-custom-properties": {},
+		"postcss-calc": {}
+	}
+}
