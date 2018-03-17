@@ -1,5 +1,6 @@
 // Not using ES6 syntax here because this file
 // is not processed with Babel on server side.
+// See `./rendering-service/index.js` for more info.
 
 var path = require('path')
 var webpack = require('webpack')

@@ -7,6 +7,8 @@ import webpack_hot_middleware from 'webpack-hot-middleware'
 import configuration from './webpack.config.client.development'
 import application_configuration from '../configuration'
 
+configuration.mode = 'development'
+
 const compiler = webpack(configuration)
 const devserver = new express()
 

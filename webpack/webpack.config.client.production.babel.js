@@ -1,20 +1,22 @@
 import path               from 'path'
 import webpack            from 'webpack'
 import CleanPlugin        from 'clean-webpack-plugin'
-// https://github.com/webpack/webpack-sources/issues/28
-// import MinifyPlugin       from 'babel-minify-webpack-plugin'
-import MinifyPlugin       from 'uglifyjs-webpack-plugin'
 import Visualizer         from 'webpack-visualizer-plugin'
 
 import baseConfiguration  from './webpack.config.client'
 
 // With `development: false` all CSS will be extracted into a file
 // named '[name]-[contenthash].css' using `extract-text-webpack-plugin`
+// or `mini-css-extract-plugin`.
 // (this behaviour can be disabled with `cssBundle: false`)
 // (the filename can be customized with `cssBundle: "filename.css"`)
-const configuration = baseConfiguration({ development: false })
+const configuration = baseConfiguration({ development: false, useMiniCssExtractPlugin: true })
 
 configuration.devtool = 'source-map'
+
+// Hides "Entrypoint size exeeds the recommened limit (250kB)" warnings.
+// https://github.com/webpack/webpack/issues/3486
+configuration.performance = { hints: false }
 
 configuration.plugins.push
 (
@@ -24,12 +26,6 @@ configuration.plugins.push
   // environment variables
   new webpack.DefinePlugin
   ({
-    'process.env':
-    {
-      // Useful to reduce the size of client-side libraries, e.g. react
-      NODE_ENV: JSON.stringify('production') // 'development' to see non-minified React errors
-    },
-
     // Just so that it doesn't throw "_development_tools_ is not defined"
     REDUX_DEVTOOLS: false
   }),
@@ -41,9 +37,6 @@ configuration.plugins.push
     minimize: true,
     debug: false
   }),
-
-  // Compresses javascript files
-  new MinifyPlugin(),
 
   // https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/
   new Visualizer

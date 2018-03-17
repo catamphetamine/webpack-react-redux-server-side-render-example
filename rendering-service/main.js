@@ -1,5 +1,5 @@
 import webpageServer from 'react-website/server'
-import { devtools } from 'universal-webpack'
+import { smokeScreen, hideSmokeScreen } from 'universal-webpack'
 import path from 'path'
 
 import settings, { icon } from '../src/react-website'
@@ -52,12 +52,10 @@ export default function(parameters) {
       // Will be inserted into server rendered webpage <head/>.
       head(path) {
         if (process.env.NODE_ENV !== 'production') {
-          // `devtools()` just tampers with CSS styles a bit.
-          // It's not required for operation and can be omitted.
-          // It just removes the "flash of unstyled content" in development mode.
+          // Removes the "flash of unstyled content" in development mode.
           return `
             <script>
-              ${devtools({ ...parameters, entry: 'main' })}
+              ${hideSmokeScreen}
             </script>
           `
         }
@@ -67,6 +65,7 @@ export default function(parameters) {
       // Javascriptless web browsers detection
       bodyStart(path) {
         return `
+          ${process.env.NODE_ENV === 'production' ? '' : smokeScreen}
           <script>
             // This line is just for CSS
             document.body.classList.add('javascript-is-enabled');

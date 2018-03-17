@@ -2,7 +2,9 @@ import webpack from 'webpack'
 import base_configuration from './webpack.config.client'
 import application_configuration from '../configuration'
 
-const configuration = base_configuration({ development: true, cssBundle: true })
+const configuration = base_configuration({ development: true })
+// Until `mini-css-extract-loader` supports Hot Module Reload.
+// const configuration = base_configuration({ development: true, cssBundle: true, useMiniCssExtractPlugin: true })
 
 // https://webpack.js.org/guides/development/#source-maps
 // The default `source-map` `devtool` gives better
@@ -16,7 +18,6 @@ configuration.plugins.push
 	({
 		'process.env':
 		{
-			NODE_ENV  : JSON.stringify('development'),
 			BABEL_ENV : JSON.stringify('development/client')
 		},
 		REDUX_DEVTOOLS : false  // enable/disable redux-devtools
