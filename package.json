@@ -107,10 +107,5 @@
     "nodemon": "^1.11.0",
     "webpack-dev-middleware": "^2.0.3",
     "webpack-hot-middleware": "^2.15.0"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "iOS >= 7",
-    "Android >= 4"
-  ]
+  }
 }
