@@ -4,7 +4,7 @@ Features
 
 * React
 * Redux
-* Universal rendering (optional)
+* Server-Side Rendering (optional)
 * Webpack 4
 * Development mode: hot reload for React components, hot reload for Redux reducers and actions
 
