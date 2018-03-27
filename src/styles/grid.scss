@@ -1,4 +1,5 @@
 @import "constants.scss";
+@import "grid.mixins.scss";
 
 // Bootstrap grid
 //
@@ -13,13 +14,20 @@
 
 .container
 {
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: var(--column-padding);
-	padding-right: var(--column-padding);
-	box-sizing: border-box;
+	margin-left   : auto;
+	margin-right  : auto;
+	padding-left  : calc(var(--column-padding) * 2);
+	padding-right : calc(var(--column-padding) * 2);
+	box-sizing    : border-box;
 	// For cases when a container is inside a modal, for example
-	max-width: 100%;
+	max-width : 100%;
+}
+
+.container--modal
+{
+	max-width     : calc(var(--unit) * (30 * 2 + 3));
+	padding-left  : 0;
+	padding-right : 0;
 }
 
 .row
@@ -27,8 +35,8 @@
 	// #TODO: Remove this
 	// this can only be done when the row is nested inside a container that has the opposite positive margin
 	// otherwise you have this weird space if you scroll to the right
-	margin-left: calc(-1 * var(--column-padding));
-	margin-right: calc(-1 * var(--column-padding));
+	margin-left  : calc(-1 * var(--column-padding));
+	margin-right : calc(-1 * var(--column-padding));
 }
 
 .row:before,
@@ -36,19 +44,19 @@
 .container:before,
 .container:after
 {
-	display: table;
-	content: " ";
+	display : table;
+	content : " ";
 }
 
 .row:after,
 .container:after
 {
-	clear: both;
+	clear : both;
 }
 
 .row--equal-height
 {
-	display: flex;
+	display : flex;
 }
 
 // https://github.com/twbs/bootstrap/blob/76d8291e3846d95b40dc4509a2e1bf36b0681a28/dist/css/bootstrap-grid.css
@@ -69,16 +77,16 @@
 	.col#{$infix}-11,
 	.col#{$infix}-12
 	{
-		float: left;
+		float : left;
 
 		// Don't know what `position: relative` is for
-		position: relative;
+		position : relative;
 
 		// Don't know what `min-height: 1px` is for
-		min-height: 1px;
-		box-sizing: border-box;
-		padding-left: var(--column-padding);
-		padding-right: var(--column-padding);
+		min-height    : 1px;
+		box-sizing    : border-box;
+		padding-left  : var(--column-padding);
+		padding-right : var(--column-padding);
 	}
 
 	.col#{$infix}-0
@@ -198,5 +206,40 @@
 	.container
 	{
 		width: $screen-lg-min;
+	}
+}
+
+// Responsive mixins.
+
+@mixin xs {
+	.s, .m, .l, .s-m, .s-l, .m-l {
+		display: none !important;
+	}
+}
+
+@mixin s {
+	.xs, .m, .l, .m-l {
+		display: none !important;
+	}
+}
+
+@mixin m {
+	.xs, .s, .l, .xs-s {
+		display: none !important;
+	}
+}
+
+@mixin l {
+	.xs, .xs-s, .xs-m, .s-m {
+		display: none !important;
+	}
+}
+
+@mixin xs {
+	// Not sure why did I add this,
+	// but it reverts the default `.row--equal-height` behaviour
+	// on mobile devices.
+	.row--equal-height {
+		display: block;
 	}
 }

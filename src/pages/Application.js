@@ -20,6 +20,9 @@ import Menu, { MenuLink } from '../components/Menu'
 import Home  from '../../assets/images/home.svg'
 import Users from '../../assets/images/users.svg'
 
+import '../components/Loading.scss'
+import './Application.scss'
+
 @meta(({ state }) =>
 ({
 	site_name   : 'WebApp',

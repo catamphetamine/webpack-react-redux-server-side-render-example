@@ -1,7 +1,7 @@
 import { render } from 'react-website'
 
 import 'react-responsive-ui/style.css'
-import '../assets/styles/style.scss'
+import './styles/style.scss'
 
 import settings from './react-website'
 

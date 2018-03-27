@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { meta } from 'react-website'
 
+import './Error.scss'
+
 @meta(({ state }) => ({ title: 'Not found' }))
 export default class NotFound extends Component
 {

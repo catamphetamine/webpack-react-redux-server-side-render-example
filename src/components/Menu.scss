@@ -1,3 +1,5 @@
+@import "../styles/common.scss";
+
 .menu
 {
 	margin  : 0;
@@ -27,7 +29,7 @@
 .menu-item
 {
 	display : inline-flex;
-	align-items : center;
+	align-items : baseline;
 
 	padding-bottom : 0;
 
@@ -55,10 +57,12 @@
 
 .menu-item__icon
 {
+	position : relative;
+	bottom   : -0.1em;
+
 	width  : calc(var(--unit) * 5);
 	height : calc(var(--unit) * 5);
 
-	margin-bottom : 0.2em;
 	margin-right  : calc(var(--unit)* 2);
 }
 

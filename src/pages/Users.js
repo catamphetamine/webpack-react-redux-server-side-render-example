@@ -14,6 +14,8 @@ import
 }
 from '../redux/users'
 
+import './Users.scss'
+
 @preload(async ({ dispatch }) => await dispatch(getUsers()))
 @meta(({ state }) =>
 ({

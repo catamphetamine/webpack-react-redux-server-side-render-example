@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, IndexLink } from 'react-website'
 import classNames from 'classnames'
 
+import './Menu.scss'
+
 export default function Menu({ children })
 {
 	return (
