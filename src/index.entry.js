@@ -20,4 +20,7 @@ if (module.hot) {
   }
 }
 
+// CSS styles order.
+require('react-responsive-ui/style.css')
+require('./styles/style.scss')
 require('./index')
