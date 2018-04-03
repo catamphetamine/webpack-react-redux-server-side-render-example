@@ -1,8 +1,5 @@
 import { render } from 'react-website'
 
-import 'react-responsive-ui/style.css'
-import './styles/style.scss'
-
 import settings from './react-website'
 
 async function run()
