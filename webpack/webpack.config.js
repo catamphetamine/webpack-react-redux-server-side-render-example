@@ -4,10 +4,10 @@
 // is not processed with Babel on server side.
 // See `./rendering-service/index.js` for more info.
 
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
-var project_folder = path.resolve(__dirname, '..')
+const project_folder = path.resolve(__dirname, '..')
 
 module.exports =
 {
@@ -45,10 +45,6 @@ module.exports =
 
 	module:
 	{
-		// Works around Webpack bug when using `Array.from()` in Babel (`core-js`)
-		// https://github.com/webpack/webpack/issues/5135
-		strictThisContextOnImports: true,
-
 		rules:
 		[{
 			test: /\.js$/,
@@ -68,6 +64,9 @@ module.exports =
 				loader : 'css-loader',
 				options:
 				{
+					// The query parameter `importLoaders` allows to configure how many
+					// loaders before css-loader should be applied to @imported resources.
+					// `2` - `postcss-loader` and `sass-loader`.
 					importLoaders : 2,
 					sourceMap     : true
 				}
@@ -99,7 +98,10 @@ module.exports =
 				loader : 'css-loader',
 				options:
 				{
-					importLoaders : 2,
+					// The query parameter `importLoaders` allows to configure how many
+					// loaders before css-loader should be applied to @imported resources.
+					// `1` - `postcss-loader`.
+					importLoaders : 1,
 					sourceMap     : true
 				}
 			},
@@ -114,9 +116,9 @@ module.exports =
 				loader : 'url-loader',
 				options:
 				{
-					// Any png-image or woff-font below or equal to 10K
+					// Any png-image or woff-font below or equal to 5K
 					// will be converted to inline base64 instead.
-					limit: 10240
+					limit: 5120
 				}
 			}]
 		},
@@ -136,5 +138,6 @@ module.exports =
 		hints: false
 	},
 
+	// Plugins will be added to this array by extending configurations.
 	plugins: []
 }

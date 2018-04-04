@@ -27,10 +27,6 @@ configuration.plugins.push
 	// Environment variables
 	new webpack.DefinePlugin
 	({
-		'process.env':
-		{
-			BABEL_ENV : JSON.stringify('development/client')
-		},
 		REDUX_DEVTOOLS : false  // enable/disable redux-devtools
 	}),
 
@@ -51,6 +47,7 @@ configuration.serve =
 	dev  :
 	{
 		// https://github.com/webpack-contrib/webpack-serve/issues/95
-		publicPath : configuration.output.publicPath
+		publicPath : configuration.output.publicPath,
+		headers : { 'Access-Control-Allow-Origin': '*' }
 	}
 }
