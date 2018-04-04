@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Modal, TextInput, Button } from 'react-responsive-ui'
+// Webpack still can't learn how to tree-shake.
+// import { Modal, TextInput, Button } from 'react-responsive-ui'
+import Modal from 'react-responsive-ui/commonjs/Modal'
+import TextInput from 'react-responsive-ui/commonjs/TextInput'
+import Button from 'react-responsive-ui/commonjs/Button'
 import TimeAgo from 'react-time-ago'
 import Form, { Field, Submit } from 'simpler-redux-form'
 import { meta, preload } from 'react-website'
