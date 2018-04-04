@@ -1,6 +1,4 @@
-import cloneDeep from 'lodash/cloneDeep'
-
-import configuration from './webpack.config.server'
+import configuration from './webpack.config.server.production.babel'
 import settings from '../configuration'
 
 export default

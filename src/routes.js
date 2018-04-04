@@ -6,10 +6,10 @@ import Application     from './pages/Application'
 import Users           from './pages/Users'
 import Home            from './pages/Home'
 
-import GenericError    from './pages/errors/Error'
-import Unauthenticated from './pages/errors/Unauthenticated'
-import Unauthorized    from './pages/errors/Unauthorized'
-import NotFound        from './pages/errors/NotFound'
+import GenericError    from './pages/Error'
+import Unauthenticated from './pages/Unauthenticated'
+import Unauthorized    from './pages/Unauthorized'
+import NotFound        from './pages/NotFound'
 
 export default
 (

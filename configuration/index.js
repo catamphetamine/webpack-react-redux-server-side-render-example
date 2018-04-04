@@ -1,11 +1,14 @@
 import merge from 'lodash/merge'
-import fs from 'fs'
 
 import default_configuration from './configuration.defaults'
 import development_configuration from './configuration.development'
 import production_configuration from './configuration.production'
 
 const configuration = merge({}, default_configuration)
+
+// https://github.com/webpack-contrib/webpack-serve/issues/81#issuecomment-378469110
+// export default const configuration = ...
+module.exports = configuration
 
 if (process.env.NODE_ENV === 'production')
 {
@@ -36,5 +39,3 @@ if (process.env.CONFIGURATION)
 		console.error(error)
 	}
 }
-
-export default configuration

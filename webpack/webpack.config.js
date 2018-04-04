@@ -1,3 +1,5 @@
+// Base Webpack configuration.
+//
 // Not using ES6 syntax here because this file
 // is not processed with Babel on server side.
 // See `./rendering-service/index.js` for more info.
@@ -125,6 +127,13 @@ module.exports =
 				loader: 'svg-react-loader'
 			}]
 		}]
+	},
+
+	// Hides "Entrypoint size exeeds the recommened limit (250kB)" warnings.
+	// https://github.com/webpack/webpack/issues/3486
+	performance:
+	{
+		hints: false
 	},
 
 	plugins: []

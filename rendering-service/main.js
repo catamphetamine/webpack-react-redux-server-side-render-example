@@ -1,5 +1,5 @@
 import webpageServer from 'react-website/server'
-import { smokeScreen, hideSmokeScreen } from 'universal-webpack'
+import { smokeScreen, hideSmokeScreenAfter } from 'universal-webpack'
 import path from 'path'
 
 import settings, { icon } from '../src/react-website'
@@ -55,7 +55,7 @@ export default function(parameters) {
           // Removes the "flash of unstyled content" in development mode.
           return `
             <script>
-              ${hideSmokeScreen}
+              ${hideSmokeScreenAfter(100)}
             </script>
           `
         }

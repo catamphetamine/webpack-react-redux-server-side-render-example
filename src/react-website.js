@@ -45,7 +45,7 @@ export default
 			if (path !== '/error')
 			{
 				// Redirect to a generic error page
-				return redirect(add_redirect('/error', url))
+				return redirect(`/error?url=${encodeURIComponent(url)}`)
 			}
 		}
 	}
