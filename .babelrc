@@ -7,7 +7,6 @@
 	"plugins":
 	[
 		"transform-object-rest-spread",
-		"transform-class-properties",
-		"transform-promise-to-bluebird"
+		"transform-class-properties"
 	]
 }

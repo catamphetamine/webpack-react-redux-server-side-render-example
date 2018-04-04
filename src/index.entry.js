@@ -1,8 +1,5 @@
-// use `bluebird` for Promises
-require('../bluebird')
-
 /**
- * Warning from React Router, caused by react-hot-loader.
+ * Suppress warnings from React Router caused by `react-hot-loader`.
  * The warning can be safely ignored, so filter it from the console.
  * Otherwise you'll see it every time something changes.
  * See https://github.com/gaearon/react-hot-loader/issues/298
