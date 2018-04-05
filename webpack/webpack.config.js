@@ -14,20 +14,6 @@ module.exports =
 	// Resolve all relative paths from the project root folder
 	context: project_folder,
 
-	// Each "entry" can be divided into multiple chunks.
-	// Why multiple "entries" might be used?
-	// For example, for completely different website parts,
-	// like the public user-facing part and the private "admin" part.
-	entry:
-	{
-		// The "main" entry
-		main:
-		[
-			'babel-polyfill',
-			'./src/index.entry.js'
-		]
-	},
-
 	output:
 	{
 		// Filesystem path for static files
