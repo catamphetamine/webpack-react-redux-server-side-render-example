@@ -82,7 +82,7 @@
     "react-responsive-ui": "^0.10.20",
     "react-router": "^3.2.0",
     "react-time-ago": "^2.0.2",
-    "react-website": "^2.0.9",
+    "react-website": "^2.0.10",
     "redux": "^3.6.0",
     "sass-loader": "^6.0.7",
     "simpler-redux-form": "^0.3.60",
@@ -100,6 +100,7 @@
     "babel-cli": "^6.18.0",
     "babel-eslint": "^7.1.1",
     "nodemon": "^1.17.3",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-serve": "^0.3.1"
   }
 }

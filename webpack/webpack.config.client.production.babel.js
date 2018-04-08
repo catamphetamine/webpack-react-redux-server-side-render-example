@@ -2,6 +2,7 @@ import path from 'path'
 import webpack from 'webpack'
 import CleanPlugin from 'clean-webpack-plugin'
 import Visualizer from 'webpack-visualizer-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 import { clientConfiguration } from 'universal-webpack'
 import settings from './universal-webpack-settings'
@@ -30,6 +31,13 @@ configuration.plugins.push
   ({
     // Relative to the output folder
     filename: '../bundle-stats.html'
+  }),
+
+  new BundleAnalyzerPlugin
+  ({
+    analyzerMode: 'static',
+    reportFilename: '../bundle-stats-2.html',
+    openAnalyzer: false
   })
 )
 
