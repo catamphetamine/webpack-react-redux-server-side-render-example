@@ -1,5 +1,11 @@
 @import "constants.scss";
 
+html, body
+{
+	// Removes higlight on tap on mobile devices.
+	-webkit-tap-highlight-color : transparent;
+}
+
 body, .button, input, textarea, select
 {
 	font-family : Arial, Helvetica, Sans;
