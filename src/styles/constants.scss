@@ -12,6 +12,8 @@
 	--unit : 0.7rem;
 	--column-padding: calc(var(--unit) / 2);
 
+	// Mobile font size must be at least 16px
+	// to prevent automatic zoom on input focus.
 	--font-size : 16pt;
 
 	--preloading-screen-z-index: 10;
