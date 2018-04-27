@@ -2,7 +2,6 @@
 require('babel-polyfill')
 
 // Maintain CSS styles order.
-require('react-responsive-ui/style.css')
 require('./styles/style.scss')
 
 // Run the application.

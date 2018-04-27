@@ -12,8 +12,8 @@
 	display : inline-flex;
 	align-items : center;
 
-	margin-left  : calc(var(--unit) * 3);
-	margin-right : calc(var(--unit) * 3);
+	margin-left  : calc(var(--unit) * 2);
+	margin-right : calc(var(--unit) * 2);
 
 	&:first-child
 	{
@@ -60,10 +60,10 @@
 	position : relative;
 	bottom   : -0.1em;
 
-	width  : calc(var(--unit) * 5);
-	height : calc(var(--unit) * 5);
+	width  : calc(var(--unit) * 2.5);
+	height : calc(var(--unit) * 2.5);
 
-	margin-right  : calc(var(--unit)* 2);
+	margin-right : var(--unit);
 }
 
 .menu-item__icon--home

@@ -1,79 +1,16 @@
-/* `react-responsive-ui` customization CSS goes here */
+@import "~react-responsive-ui/style";
 
-.rrui__input,
-.rrui__input-label
+@media (max-width: 720px)
 {
-	height : calc(var(--unit) * 8);
+	@import "~react-responsive-ui/small-screen";
 }
 
-.rrui__input--multiline
+:root
 {
-	height : auto;
-}
-
-.rrui__text-input__input:focus
-{
-	border-color : var(--base-color);
-}
-
-.rrui__text-input__input:focus + .rrui__input-label
-{
-	color : var(--base-color);
-}
-
-.rrui__text-input__input--empty:focus + .rrui__input-label--floating
-{
-	color : var(--gray-color);
-}
-
-.rrui__button
-{
-	color : var(--base-color);
-
-	&:active
-	{
-		color : var(--base-color-lighter);
-	}
-}
-
-.rrui__button--border
-{
-	color         : var(--base-color);
-	border        : 0.15em solid var(--base-color);
-	border-radius : 0.4em;
-
-	&:active
-	{
-		color            : var(--white-color);
-		background-color : var(--base-color);
-	}
-
-	.rrui__button__button
-	{
-		padding-left  : calc(var(--unit) * 4);
-		padding-right : calc(var(--unit) * 4);
-	}
-}
-
-.rrui__text-input__input
-{
-	border-top-width   : 0;
-	border-left-width  : 0;
-	border-right-width : 0;
-	outline            : none;
-}
-
-.rrui__input-error
-{
-	margin-top: calc(var(--unit) * 2);
-}
-
-.rrui__input-label--required:after
-{
-	display: none;
-}
-
-.rrui__tooltip
-{
-	font-size : 1rem;
+	--rrui-unit               : var(--unit);
+	--rrui-white-color        : var(--white-color);
+	--rrui-black-color        : var(--black-color);
+	--rrui-accent-color       : var(--base-color);
+	--rrui-accent-color-light : var(--base-color-lighter);
+	--rrui-gray-color         : var(--gray-color);
 }

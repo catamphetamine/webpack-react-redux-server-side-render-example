@@ -9,10 +9,10 @@
 	--base-color         : #00A6ED;
 	--base-color-darker  : #0084BD;
 
-	--unit : 0.3rem;
-	--column-padding: var(--unit);
+	--unit : 0.7rem;
+	--column-padding: calc(var(--unit) / 2);
 
-	--font-size : 18pt;
+	--font-size : 16pt;
 
 	--preloading-screen-z-index: 10;
 }
