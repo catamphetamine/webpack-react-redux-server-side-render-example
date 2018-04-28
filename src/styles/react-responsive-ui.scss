@@ -2,7 +2,9 @@
 
 @media (max-width: 720px)
 {
-	@import "~react-responsive-ui/small-screen";
+	@import "~react-responsive-ui/small-screen/Modal";
+	@import "~react-responsive-ui/small-screen/Snackbar";
+	@import "~react-responsive-ui/small-screen/DatePicker.InputOverlay";
 }
 
 :root
