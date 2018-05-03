@@ -16,8 +16,8 @@
 {
 	margin-left   : auto;
 	margin-right  : auto;
-	padding-left  : calc(var(--column-padding) * 2);
-	padding-right : calc(var(--column-padding) * 2);
+	padding-left  : var(--page-content-padding);
+	padding-right : var(--page-content-padding);
 	box-sizing    : border-box;
 	// For cases when a container is inside a modal, for example
 	max-width : 100%;
@@ -35,8 +35,8 @@
 	// #TODO: Remove this
 	// this can only be done when the row is nested inside a container that has the opposite positive margin
 	// otherwise you have this weird space if you scroll to the right
-	margin-left  : calc(-1 * var(--column-padding));
-	margin-right : calc(-1 * var(--column-padding));
+	margin-left  : calc(-1 * var(--column-gap));
+	margin-right : calc(-1 * var(--column-gap));
 }
 
 .row:before,
@@ -85,8 +85,8 @@
 		// Don't know what `min-height: 1px` is for
 		min-height    : 1px;
 		box-sizing    : border-box;
-		padding-left  : var(--column-padding);
-		padding-right : var(--column-padding);
+		padding-left  : var(--column-gap);
+		padding-right : var(--column-gap);
 	}
 
 	.col#{$infix}-0

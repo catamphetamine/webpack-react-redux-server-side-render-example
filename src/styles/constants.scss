@@ -10,11 +10,12 @@
 	--base-color-darker  : #0084BD;
 
 	--unit : 0.7rem;
-	--column-padding: calc(var(--unit) / 2);
+	--column-gap : var(--unit);
+	--page-content-padding : calc(var(--column-gap) * 2);
 
 	// Mobile font size must be at least 16px
 	// to prevent automatic zoom on input focus.
 	--font-size : 16pt;
 
-	--preloading-screen-z-index: 10;
+	--preloading-screen-z-index : 10;
 }
