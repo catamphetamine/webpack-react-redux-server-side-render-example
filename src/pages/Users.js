@@ -63,6 +63,7 @@ export default class UsersPage extends Component
 
 		this.setState({ userBeingDeleted: id })
 		await deleteUser(id)
+		// TODO: wrap this `setState()` into `if (this.isStillMounted) {}`.
 		this.setState({ userBeingDeleted: undefined })
 		getUsers()
 	}
