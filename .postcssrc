@@ -1,8 +1,13 @@
 {
+	"parser": "postcss-comment",
 	"plugins":
 	{
 		"autoprefixer": {},
-		"postcss-custom-properties": {},
+		"postcss-import": {},
+		"postcss-mixins": {},
+		"postcss-custom-properties": { preserve: false },
+		"postcss-simple-vars": {},
+		"postcss-nested": {},
 		"postcss-calc": {}
 	}
 }

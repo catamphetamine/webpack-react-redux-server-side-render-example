@@ -1,5 +1,5 @@
-@import "constants.scss";
-@import "grid.mixins.scss";
+// @import "./constants";
+@import "./grid.mixins";
 
 // Bootstrap grid
 //
@@ -61,21 +61,21 @@
 
 // https://github.com/twbs/bootstrap/blob/76d8291e3846d95b40dc4509a2e1bf36b0681a28/dist/css/bootstrap-grid.css
 
-@mixin define_columns($infix)
+@define-mixin define_columns $infix
 {
 	// http://getbootstrap.com.vn/examples/equal-height-columns/
-	.col#{$infix}-1,
-	.col#{$infix}-2,
-	.col#{$infix}-3,
-	.col#{$infix}-4,
-	.col#{$infix}-5,
-	.col#{$infix}-6,
-	.col#{$infix}-7,
-	.col#{$infix}-8,
-	.col#{$infix}-9,
-	.col#{$infix}-10,
-	.col#{$infix}-11,
-	.col#{$infix}-12
+	.col$(infix)-1,
+	.col$(infix)-2,
+	.col$(infix)-3,
+	.col$(infix)-4,
+	.col$(infix)-5,
+	.col$(infix)-6,
+	.col$(infix)-7,
+	.col$(infix)-8,
+	.col$(infix)-9,
+	.col$(infix)-10,
+	.col$(infix)-11,
+	.col$(infix)-12
 	{
 		float : left;
 
@@ -89,67 +89,67 @@
 		padding-right : var(--column-gap);
 	}
 
-	.col#{$infix}-0
+	.col$(infix)-0
 	{
 		display: none;
 	}
 
-	.col#{$infix}-1
+	.col$(infix)-1
 	{
 		width: 8.333333%;
 	}
 
-	.col#{$infix}-2
+	.col$(infix)-2
 	{
 		width: 16.666667%;
 	}
 
-	.col#{$infix}-3
+	.col$(infix)-3
 	{
 		width: 25%;
 	}
 
-	.col#{$infix}-4
+	.col$(infix)-4
 	{
 		width: 33.33333%;
 	}
 
-	.col#{$infix}-5
+	.col$(infix)-5
 	{
 		width: 41.666667%;
 	}
 
-	.col#{$infix}-6
+	.col$(infix)-6
 	{
 		width: 50%;
 	}
 
-	.col#{$infix}-7
+	.col$(infix)-7
 	{
 		width: 58.333333%;
 	}
 
-	.col#{$infix}-8
+	.col$(infix)-8
 	{
 		width: 66.66666%;
 	}
 
-	.col#{$infix}-9
+	.col$(infix)-9
 	{
 		width: 75%;
 	}
 
-	.col#{$infix}-10
+	.col$(infix)-10
 	{
 		width: 83.333333%;
 	}
 
-	.col#{$infix}-11
+	.col$(infix)-11
 	{
 		width: 91.666667%;
 	}
 
-	.col#{$infix}-12
+	.col$(infix)-12
 	{
 		width: 100%;
 	}
@@ -170,18 +170,18 @@
   // }
 }
 
-@include define_columns("");
+@mixin define_columns "";
 
 // Responsive grid
 
 @media (max-width: $screen-xs-max)
 {
-	@include define_columns("-xs");
+	@mixin define_columns "-xs";
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
 {
-	@include define_columns("-sm");
+	@mixin define_columns "-sm";
 
 	.container
 	{
@@ -191,7 +191,7 @@
 
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
 {
-	@include define_columns("-md");
+	@mixin define_columns "-md";
 
 	.container
 	{
@@ -201,7 +201,7 @@
 
 @media (min-width: $screen-lg-min)
 {
-	@include define_columns("-lg");
+	@mixin define_columns "-lg";
 
 	.container
 	{
@@ -209,7 +209,7 @@
 	}
 }
 
-// Responsive mixins.
+// Responsive CSS classes.
 
 @mixin xs {
 	.s, .m, .l, .s-m, .s-l, .m-l {

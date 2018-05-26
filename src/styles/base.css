@@ -1,8 +1,6 @@
-@import "constants.scss";
-
 html, body
 {
-	// Removes higlight on tap on mobile devices.
+	/* Removes higlight on tap on mobile devices. */
 	-webkit-tap-highlight-color : transparent;
 }
 
@@ -13,10 +11,16 @@ body
 	touch-action: manipulation;
 }
 
-body, .button, input, textarea, select
+body, input, textarea, select
 {
 	font-family : Arial, Helvetica, Sans;
 	font-size   : var(--font-size);
+
+	// For XS screens.
+	@mixin xs
+	{
+		font-size : var(--font-size-xs);
+	}
 }
 
 body

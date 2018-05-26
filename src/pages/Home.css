@@ -1,8 +1,9 @@
-@import "../styles/common.scss";
+@import "../styles/common";
 
 .home-page-image
 {
-	display : block;
+	display   : block;
+	max-width : 100%;
 
 	margin-left  : auto;
 	margin-right : auto;

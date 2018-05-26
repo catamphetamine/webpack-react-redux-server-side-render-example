@@ -2,7 +2,7 @@
 require('babel-polyfill')
 
 // Maintain CSS styles order.
-require('./styles/style.scss')
+require('./styles/style.css')
 
 // Run the application.
 require('./render').default().catch((error) => console.error(error))

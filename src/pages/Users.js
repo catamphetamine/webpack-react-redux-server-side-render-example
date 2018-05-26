@@ -18,7 +18,7 @@ import
 }
 from '../redux/users'
 
-import './Users.scss'
+import './Users.css'
 
 @preload(async ({ dispatch }) => await dispatch(getUsers()))
 @meta(({ state }) =>
@@ -97,7 +97,7 @@ export default class UsersPage extends Component
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
-			<section className="page-content">
+			<section className="page-content container">
 				<div>
 					<p className="users__description">
 						This is an example of REST API data querying (try disabling javascript and reloading the page).

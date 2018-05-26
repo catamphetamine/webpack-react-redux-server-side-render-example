@@ -1,4 +1,4 @@
-@import "../styles/common.scss";
+@import "../styles/common";
 
 .menu
 {
@@ -14,6 +14,13 @@
 
 	margin-left  : calc(var(--unit) * 2);
 	margin-right : calc(var(--unit) * 2);
+
+	// For XS screens.
+	@mixin xs
+	{
+		margin-left  : calc(var(--unit) * 1);
+		margin-right : calc(var(--unit) * 1);
+	}
 
 	&:first-child
 	{
@@ -64,6 +71,15 @@
 	height : calc(var(--unit) * 2.5);
 
 	margin-right : var(--unit);
+
+	// For XS screens.
+	@mixin xs
+	{
+		width  : calc(var(--unit) * 1.5);
+		height : calc(var(--unit) * 1.5);
+
+		margin-right : calc(var(--unit) * 0.5);
+	}
 }
 
 .menu-item__icon--home

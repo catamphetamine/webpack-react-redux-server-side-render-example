@@ -1,0 +1,18 @@
+.page-header
+{
+	margin-top : 0;
+	text-align : center;
+}
+
+.page-content
+{
+	margin-top     : calc(var(--unit) * 2);
+	margin-bottom  : calc(var(--unit) * 4);
+
+	// For XS screens.
+	@mixin xs
+	{
+		margin-top     : calc(var(--unit) * 1);
+		margin-bottom  : calc(var(--unit) * 2);
+	}
+}

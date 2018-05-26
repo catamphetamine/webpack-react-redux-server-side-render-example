@@ -20,8 +20,8 @@ import Menu, { MenuLink } from '../components/Menu'
 import Home  from '../../assets/images/home.svg'
 import Users from '../../assets/images/users.svg'
 
-import '../components/Loading.scss'
-import './Application.scss'
+import '../components/Loading.css'
+import './Application.css'
 
 @meta(({ state }) =>
 ({
@@ -48,16 +48,18 @@ export default class App extends Component
 
 				<div className="webpage">
 					<nav className="webpage__header">
-						<Menu>
-							<MenuLink to="/">
-								<Home className="menu-item__icon menu-item__icon--home"/>
-								Home
-							</MenuLink>
-							<MenuLink to="/users">
-								<Users className="menu-item__icon menu-item__icon--users"/>
-								Users
-							</MenuLink>
-						</Menu>
+						<div className="container">
+							<Menu>
+								<MenuLink to="/">
+									<Home className="menu-item__icon menu-item__icon--home"/>
+									Home
+								</MenuLink>
+								<MenuLink to="/users">
+									<Users className="menu-item__icon menu-item__icon--users"/>
+									Users
+								</MenuLink>
+							</Menu>
+						</div>
 					</nav>
 
 					<div className="webpage__content">

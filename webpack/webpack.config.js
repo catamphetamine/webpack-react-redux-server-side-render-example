@@ -41,40 +41,6 @@ module.exports =
 			}]
 		},
 		{
-			test: /\.(scss)$/,
-			use:
-			[{
-				loader: 'style-loader'
-			},
-			{
-				loader : 'css-loader',
-				options:
-				{
-					// The query parameter `importLoaders` allows to configure how many
-					// loaders before css-loader should be applied to @imported resources.
-					// `2` - `postcss-loader` and `sass-loader`.
-					importLoaders : 2,
-					sourceMap     : true
-				}
-			},
-			{
-				loader : 'postcss-loader',
-				options:
-				{
-					sourceMap : true
-				}
-			},
-			{
-				loader : 'sass-loader',
-				options:
-				{
-					outputStyle       : 'expanded',
-					sourceMap         : true,
-					sourceMapContents : true
-				}
-			}]
-		},
-		{
 			test: /\.(css)$/,
 			use:
 			[{

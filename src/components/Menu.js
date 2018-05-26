@@ -2,12 +2,12 @@ import React from 'react'
 import { Link, IndexLink } from 'react-website'
 import classNames from 'classnames'
 
-import './Menu.scss'
+import './Menu.css'
 
-export default function Menu({ children })
+export default function Menu({ className, children })
 {
 	return (
-		<ul className="menu">
+		<ul className={classNames('menu', className)}>
 			{ children }
 		</ul>
 	)

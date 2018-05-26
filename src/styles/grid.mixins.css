@@ -1,0 +1,92 @@
+// https://www.sitepoint.com/managing-responsive-breakpoints-sass/
+
+// `calc()` won't work here because these variables are used inside mixins.
+// https://github.com/postcss/postcss-mixins/issues/86
+//
+// $grid-unit : 12px;
+//
+// $screen-sm-min : calc($grid-unit * 64); // 768px
+// $screen-xs-max : calc($screen-sm-min - 1);
+// $screen-md-min : calc($grid-unit * 82); // 984px
+// $screen-sm-max : calc($screen-md-min - 1);
+// $screen-lg-min : calc($grid-unit * 100); // 1200px
+// $screen-md-max : calc($screen-lg-min - 1);
+//
+$screen-sm-min : 768px;
+$screen-xs-max : 767px;
+$screen-md-min : 984px;
+$screen-sm-max : 983px;
+$screen-lg-min : 1200px;
+$screen-md-max : 1199px;
+
+@define-mixin xs
+{
+  @media all and (max-width: $screen-xs-max)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin s
+{
+  @media all and (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin m
+{
+  @media all and (min-width: $screen-md-min) and (max-width: $screen-md-max)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin l
+{
+  @media all and (min-width: $screen-lg-min)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin xs-s
+{
+  @media all and (max-width: $screen-sm-max)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin xs-m
+{
+  @media all and (max-width: $screen-md-max)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin s-m
+{
+  @media all and (min-width: $screen-sm-min) and (max-width: $screen-md-max)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin m-l
+{
+  @media all and (min-width: $screen-md-min)
+  {
+    @mixin-content;
+  }
+}
+
+@define-mixin s-l
+{
+  @media all and (min-width: $screen-sm-min)
+  {
+    @mixin-content;
+  }
+}

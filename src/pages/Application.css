@@ -1,4 +1,4 @@
-@import "../styles/common.scss";
+@import "../styles/common";
 
 // Stretches the page to 100% height
 .webpage
@@ -14,9 +14,11 @@
 
 .webpage--loading
 {
-	// `react-waypoint` wouldn't work correctly with `display: none` -> `display: block`.
-	// https://github.com/brigade/react-waypoint/issues/164#issuecomment-299640438
-	// display: none;
+	/*
+	`react-waypoint` wouldn't work correctly with `display: none` -> `display: block`.
+	https://github.com/brigade/react-waypoint/issues/164#issuecomment-299640438
+	display: none;
+	*/
 	visibility: hidden;
 }
 
@@ -30,8 +32,13 @@
 
 .webpage__header
 {
-	padding-top    : calc(var(--unit) * 4);
-	padding-bottom : calc(var(--unit) * 4);
-	padding-left   : calc(var(--unit) * 6);
-	padding-right  : calc(var(--unit) * 6);
+	margin-top     : calc(var(--unit) * 2);
+	padding-top    : calc(var(--unit) * 2);
+	padding-bottom : calc(var(--unit) * 2);
+
+	// For XS screens.
+	@mixin xs
+	{
+		margin-top : 0;
+	}
 }
