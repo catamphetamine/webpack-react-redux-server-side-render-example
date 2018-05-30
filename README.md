@@ -4,7 +4,7 @@ Features
 
 * React
 * Redux
-* Server-Side Rendering (optional)
+* Server-Side Rendering in production mode (optional feature)
 * Webpack 4
 * Development mode: hot reload for React components, hot reload for Redux reducers and actions
 
