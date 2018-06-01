@@ -5,9 +5,7 @@ import { clientConfiguration } from 'universal-webpack'
 import settings from './universal-webpack-settings'
 import base_configuration from './webpack.config'
 
-// With `development: false` all CSS will be extracted into a file
-// named '[name]-[contenthash].css' using `mini-css-extract-plugin`.
-const configuration = clientConfiguration(base_configuration, settings, { development: true })
+const configuration = clientConfiguration(base_configuration, settings)
 
 // https://github.com/webpack-contrib/webpack-serve/issues/81#issuecomment-378469110
 // export default const configuration = ...
