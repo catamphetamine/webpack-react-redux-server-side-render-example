@@ -4,7 +4,7 @@ Features
 
 * React
 * Redux
-* Server-Side Rendering in production mode ([optional feature](https://github.com/catamphetamine/webpack-react-redux-server-side-render-example/blob/4629c6470daa343e7523df3995cd44012e4c6569/rendering-service/main.js#L77-L87))
+* Server-Side Rendering in production mode ([optional feature](https://github.com/catamphetamine/webpack-react-redux-server-side-render-example/blob/16dc96b2c14742c007d1e3e740a622a88a18bf2d/rendering-service/main.js#L77-L91))
 * Webpack 4
 * Development mode: hot reload for React components, hot reload for Redux reducers and actions
 
