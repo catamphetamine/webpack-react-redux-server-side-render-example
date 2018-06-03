@@ -76,6 +76,10 @@ export default function(parameters) {
 
     // One can set `hollow` flag to `true`
     // to turn off Server-Side React Rendering.
+    // It only disables page rendering,
+    // i.e. the inside of the `<div id="react"/>` DOM element
+    // while everything around it is still
+    // rendered on server side (e.g. `<head/>`).
     // Server-Side React Rendering takes some CPU time
     // (about 30 milliseconds for a complex React page as of 2017).
     // Modern search engines know how to run javascript
