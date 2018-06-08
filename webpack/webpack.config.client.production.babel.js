@@ -6,38 +6,42 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
 import { clientConfiguration } from 'universal-webpack'
 import settings from './universal-webpack-settings'
-import base_configuration from './webpack.config'
+import baseConfiguration from './webpack.config'
 
-// With `development: false` all CSS will be extracted into a file
-// named '[name]-[contenthash].css' using `mini-css-extract-plugin`.
-const configuration = clientConfiguration(base_configuration, settings, { development: false, useMiniCssExtractPlugin: true })
+const configuration = clientConfiguration(baseConfiguration, settings,
+{
+  // Extract all CSS into a single bundle using `mini-css-extract-plugin`.
+  development : false,
+  useMiniCssExtractPlugin : true
+})
 
 configuration.devtool = 'source-map'
 
 configuration.plugins.push
 (
-  // clears the output folder
-  new CleanPlugin([path.relative(configuration.context, configuration.output.path)], { root: configuration.context }),
-
-  // environment variables
-  new webpack.DefinePlugin
-  ({
-    // Just so that it doesn't throw "_development_tools_ is not defined"
-    REDUX_DEVTOOLS: false
+  // Clears the output folder before building.
+  new CleanPlugin([
+    path.relative(configuration.context, configuration.output.path)
+  ], {
+    root: configuration.context
   }),
 
+  // Shows the resulting bundle size stats.
   // https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/
   new Visualizer
   ({
-    // Relative to the output folder
-    filename: '../bundle-stats.html'
+    // The path is relative to the output folder
+    filename : '../bundle-stats.html'
   }),
 
+  // Shows the resulting bundle size stats (too).
+  // https://github.com/webpack-contrib/webpack-bundle-analyzer
   new BundleAnalyzerPlugin
   ({
-    analyzerMode: 'static',
-    reportFilename: '../bundle-stats-2.html',
-    openAnalyzer: false
+    // The path is relative to the output folder
+    reportFilename : '../bundle-stats-2.html',
+    analyzerMode   : 'static',
+    openAnalyzer   : false
   })
 )
 

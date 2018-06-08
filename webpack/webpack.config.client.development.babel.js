@@ -1,51 +1,32 @@
 import webpack from 'webpack'
-import application_configuration from '../configuration'
 
 import { clientConfiguration } from 'universal-webpack'
 import settings from './universal-webpack-settings'
-import base_configuration from './webpack.config'
+import baseConfiguration from './webpack.config'
 
-const configuration = clientConfiguration(base_configuration, settings)
+import { addDevServerConfiguration, setDevFileServer } from './devserver'
 
-// https://github.com/webpack-contrib/webpack-serve/issues/81#issuecomment-378469110
-// export default const configuration = ...
-module.exports = configuration
+let configuration = clientConfiguration(baseConfiguration, settings)
 
-// https://webpack.js.org/guides/development/#source-maps
-// The default `source-map` `devtool` gives better
-// source maps in Chrome (as per user reports in 2017).
-// configuration.devtool = 'cheap-eval-source-map'
+// Add `webpack-serve` settings.
+configuration = addDevServerConfiguration(configuration)
 
-// `webpack-serve` can't set the correct `mode` by itself.
+// `webpack-serve` can't set the correct `mode` by itself
+// so setting `mode` to `"development"` explicitly.
 // https://github.com/webpack-contrib/webpack-serve/issues/94
 configuration.mode = 'development'
 
+// Network path for static files: fetch all statics from webpack development server.
+configuration = setDevFileServer(configuration)
+
 configuration.plugins.push
 (
-	// Environment variables
-	new webpack.DefinePlugin
-	({
-		REDUX_DEVTOOLS : false  // enable/disable redux-devtools
-	}),
-
-	// // Webpack Hot Reload
-	// new webpack.HotModuleReplacementPlugin(),
-
-	// Prints more readable module names in the browser console on HMR updates
+	// Prints more readable module names in the browser console on HMR updates.
 	new webpack.NamedModulesPlugin()
 )
 
-// network path for static files: fetch all statics from webpack development server
-configuration.output.publicPath = `http://${application_configuration.webpack.devserver.host}:${application_configuration.webpack.devserver.port}${configuration.output.publicPath}`
-
-// `webpack-serve` settings.
-configuration.serve =
-{
-	port : application_configuration.webpack.devserver.port,
-	dev  :
-	{
-		// https://github.com/webpack-contrib/webpack-serve/issues/95
-		publicPath : configuration.output.publicPath,
-		headers : { 'Access-Control-Allow-Origin': '*' }
-	}
-}
+// `webpack-serve` can't import the configuration properly
+// when using `export default` hence using `module.exports` here.
+// https://github.com/webpack-contrib/webpack-serve/issues/81#issuecomment-378469110
+// export default configuration
+module.exports = configuration
