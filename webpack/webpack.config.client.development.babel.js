@@ -16,7 +16,7 @@ configuration = addDevServerConfiguration(configuration)
 // https://github.com/webpack-contrib/webpack-serve/issues/94
 configuration.mode = 'development'
 
-// Network path for static files: fetch all statics from webpack development server.
+// Fetch all files from webpack development server.
 configuration = setDevFileServer(configuration)
 
 configuration.plugins.push
