@@ -36,12 +36,12 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.2",
-    "react-responsive-ui": "^0.12.21",
+    "react-responsive-ui": "^0.13.5",
     "react-router": "^3.2.0",
     "react-time-ago": "^2.0.3",
     "react-website": "^2.0.21",
     "redux": "^4.0.0",
-    "simpler-redux-form": "^0.3.60",
+    "simpler-redux-form": "^0.3.67",
     "web-service": "^0.4.6"
   },
   "devDependencies": {

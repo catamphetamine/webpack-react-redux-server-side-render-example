@@ -2,7 +2,6 @@
 @import "./grid.mixins";
 
 @import "react-responsive-ui/small-screen/Modal.css" (max-width: $screen-sm-min);
-// @import "react-responsive-ui/small-screen/Modal.Fullscreen.css" (max-width: $screen-sm-min);
 @import "react-responsive-ui/small-screen/Snackbar.css" (max-width: $screen-sm-min);
 @import "react-responsive-ui/small-screen/DatePicker.InputOverlay.css" (max-width: $screen-sm-min);
 
