@@ -77,8 +77,6 @@ export default class UsersPage extends Component
 	{
 		const { notify, getUsers } = this.props
 
-		console.log('@ userAdded')
-
 		notify(`User added`)
 		this.hideAddUserForm()
 		getUsers()

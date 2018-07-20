@@ -41,7 +41,7 @@
     "react-time-ago": "^2.0.3",
     "react-website": "^2.0.21",
     "redux": "^4.0.0",
-    "simpler-redux-form": "^0.3.67",
+    "simpler-redux-form": "^0.3.71",
     "web-service": "^0.4.6"
   },
   "devDependencies": {
