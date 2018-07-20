@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { meta, Loading } from 'react-website'
+
+// Webpack still can't learn how to tree-shake.
+// import { Snackbar } from 'react-responsive-ui'
+import Snackbar from 'react-responsive-ui/commonjs/Snackbar'
 
 // Not importing `Tooltip.css` because
 // it's already loaded as part of `react-responsive-ui`.
@@ -15,6 +20,7 @@ import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 TimeAgo.locale(en)
 
+import { notified } from '../redux/notifications'
 import Menu, { MenuLink } from '../components/Menu'
 
 import Home  from '../../assets/images/home.svg'
@@ -23,6 +29,13 @@ import Users from '../../assets/images/users.svg'
 import '../components/Loading.css'
 import './Application.css'
 
+@connect(({ notifications }) =>
+({
+	notification: notifications.notification
+}),
+{
+	notified
+})
 @meta(({ state }) =>
 ({
 	site_name   : 'WebApp',
@@ -40,7 +53,7 @@ export default class App extends Component
 
 	render()
 	{
-		const { children } = this.props
+		const { notification, children } = this.props
 
 		return (
 			<div>
@@ -70,6 +83,10 @@ export default class App extends Component
 						{/* */}
 					</footer>
 				</div>
+
+				<Snackbar
+					value={notification}
+					reset={notified} />
 			</div>
 		)
 	}

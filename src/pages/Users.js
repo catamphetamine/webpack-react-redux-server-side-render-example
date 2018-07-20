@@ -18,6 +18,8 @@ import
 }
 from '../redux/users'
 
+import { notify } from '../redux/notifications'
+
 import './Users.css'
 
 @preload(async ({ dispatch }) => await dispatch(getUsers()))
@@ -33,7 +35,8 @@ import './Users.css'
 	{
 		getUsers,
 		addUser,
-		deleteUser
+		deleteUser,
+		notify
 	}
 )
 export default class UsersPage extends Component
@@ -59,10 +62,12 @@ export default class UsersPage extends Component
 
 	async deleteUser(id)
 	{
-		const { getUsers, deleteUser } = this.props
+		const { getUsers, deleteUser, notify } = this.props
 
 		this.setState({ userBeingDeleted: id })
 		await deleteUser(id)
+
+		notify(`User #${id} deleted`)
 		// TODO: wrap this `setState()` into `if (this.isStillMounted) {}`.
 		this.setState({ userBeingDeleted: undefined })
 		getUsers()
@@ -70,8 +75,11 @@ export default class UsersPage extends Component
 
 	userAdded = () =>
 	{
-		const { getUsers } = this.props
+		const { notify, getUsers } = this.props
 
+		console.log('@ userAdded')
+
+		notify(`User added`)
 		this.hideAddUserForm()
 		getUsers()
 	}
@@ -219,10 +227,9 @@ class AddUserForm extends Component
 
 	async submit(values)
 	{
-		const { addUser, onSubmitted } = this.props
+		const { addUser } = this.props
 
 		await addUser(values)
-		onSubmitted()
 	}
 
 	render()
