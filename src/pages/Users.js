@@ -6,7 +6,7 @@ import Modal from 'react-responsive-ui/commonjs/Modal'
 import TextInput from 'react-responsive-ui/commonjs/TextInput'
 import Button from 'react-responsive-ui/commonjs/Button'
 import TimeAgo from 'react-time-ago'
-import Form, { Field, Submit } from 'simpler-redux-form'
+import { Form, Field, Submit } from 'basic-react-form'
 import { meta, preload } from 'react-website'
 
 import
@@ -46,7 +46,6 @@ export default class UsersPage extends Component
 	constructor()
 	{
 		super()
-
 		this.deleteUser = this.deleteUser.bind(this)
 	}
 
@@ -94,11 +93,7 @@ export default class UsersPage extends Component
 		}
 		= this.props
 
-		const
-		{
-			showAddUserForm
-		}
-		= this.state
+		const { showAddUserForm } = this.state
 
 		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
@@ -136,7 +131,7 @@ export default class UsersPage extends Component
 							isOpen={ showAddUserForm }
 							close={ this.hideAddUserForm }
 							busy={ addUserPending }>
-							<AddUserForm onSubmitted={ this.userAdded }/>
+							<AddUserForm onAfterSubmit={ this.userAdded }/>
 						</Modal>
 					</div>
 				</div>
@@ -212,31 +207,30 @@ export default class UsersPage extends Component
 	}
 }
 
-@Form
 @connect(state => ({}), { addUser })
 class AddUserForm extends Component
 {
 	constructor()
 	{
 		super()
-
 		this.submit = this.submit.bind(this)
 	}
 
 	async submit(values)
 	{
 		const { addUser } = this.props
-
 		await addUser(values)
 	}
 
 	render()
 	{
-		const { submit, submitting } = this.props
+		const { onAfterSubmit } = this.props
 
 		return (
-			<form
-				onSubmit={ submit(this.submit) }
+			<Form
+				autoFocus
+				onSubmit={ this.submit }
+				onAfterSubmit={ onAfterSubmit }
 				className="add-user">
 
 				<Field
@@ -252,7 +246,7 @@ class AddUserForm extends Component
 					className="rrui__button--border add-user__submit">
 					Add
 				</Submit>
-			</form>
+			</Form>
 		)
 	}
 }
