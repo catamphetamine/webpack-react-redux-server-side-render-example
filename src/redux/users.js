@@ -1,6 +1,6 @@
 import { reduxModule } from 'react-website'
 
-const redux = reduxModule('USERS')
+const redux = reduxModule()
 
 // Use the new syntax.
 redux.v3 = true

@@ -40,7 +40,7 @@
     "react-responsive-ui": "^0.14.18",
     "react-router": "^3.2.0",
     "react-time-ago": "^2.0.3",
-    "react-website": "^2.0.29",
+    "react-website": "^2.0.30",
     "redux": "^4.0.0",
     "web-service": "^0.4.6"
   },
