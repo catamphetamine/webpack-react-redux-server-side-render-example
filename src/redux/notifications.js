@@ -2,20 +2,16 @@ import { reduxModule } from 'react-website'
 
 const redux = reduxModule('NOTIFICATIONS')
 
-export const notify = redux.action
+export const notify = redux.simpleAction
 (
-	'NOTIFY',
-	async ({}, content, options) => ({ content, options }),
+	(content, options) => ({ content, options }),
 	'notification'
 )
 
-export const notified = redux.action
+export const notified = redux.simpleAction
 (
-	'NOTIFIED',
-	async () => ({ content: undefined, options: undefined }),
+	() => ({ content: undefined, options: undefined }),
 	'notification'
 )
 
-// This is the Redux reducer which now
-// handles the asynchronous actions defined above.
 export default redux.reducer()

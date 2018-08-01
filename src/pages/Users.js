@@ -11,7 +11,6 @@ import { meta, preload } from 'react-website'
 
 import
 {
-	connectUsers,
 	getUsers,
 	addUser,
 	deleteUser
@@ -31,7 +30,11 @@ import './Users.css'
 }))
 @connect
 (
-	({ users }) => connectUsers(users),
+	({ users }) => ({
+		users: users.users,
+		getUsersPending: users.getUsersPending,
+		addUserPending: users.addUserPending
+	}),
 	{
 		getUsers,
 		addUser,
@@ -49,26 +52,15 @@ export default class UsersPage extends Component
 		this.deleteUser = this.deleteUser.bind(this)
 	}
 
-	showAddUserForm = () =>
-	{
-		this.setState({ showAddUserForm: true })
-	}
-
-	hideAddUserForm = () =>
-	{
-		this.setState({ showAddUserForm: false })
-	}
+	showAddUserForm = () => this.setState({ showAddUserForm: true })
+	hideAddUserForm = () => this.setState({ showAddUserForm: false })
 
 	async deleteUser(id)
 	{
-		const { getUsers, deleteUser, notify } = this.props
+		const { deleteUser, getUsers, notify } = this.props
 
-		this.setState({ userBeingDeleted: id })
 		await deleteUser(id)
-
 		notify(`User #${id} deleted`)
-		// TODO: wrap this `setState()` into `if (this.isStillMounted) {}`.
-		this.setState({ userBeingDeleted: undefined })
 		getUsers()
 	}
 
@@ -87,15 +79,11 @@ export default class UsersPage extends Component
 		{
 			users,
 			getUsers,
-			getUsersPending,
-			addUserPending,
-			deleteUserPending
+			addUserPending
 		}
 		= this.props
 
 		const { showAddUserForm } = this.state
-
-		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
 			<section className="page-content container">
@@ -109,16 +97,12 @@ export default class UsersPage extends Component
 					</p>
 
 					<div>
-						<Button
-							disabled={ disableButtons }
-							action={ this.showAddUserForm }>
+						<Button onClick={ this.showAddUserForm }>
 							Add user
 						</Button>
 
 						<Button
-							busy={ getUsersPending }
-							disabled={ disableButtons }
-							action={ getUsers }
+							onClick={ getUsers }
 							className="users__refresh">
 							Refresh
 						</Button>
@@ -130,7 +114,7 @@ export default class UsersPage extends Component
 						<Modal
 							isOpen={ showAddUserForm }
 							close={ this.hideAddUserForm }
-							busy={ addUserPending }>
+							wait={ addUserPending }>
 							<AddUserForm onAfterSubmit={ this.userAdded }/>
 						</Modal>
 					</div>
@@ -144,33 +128,19 @@ export default class UsersPage extends Component
 		const
 		{
 			users,
-			getUsersPending,
-			getUsersError,
-			addUserPending,
-			addUserError,
-			deleteUserPending,
-			deleteUserError
+			getUsersPending
 		}
 		= this.props
-
-		const { userBeingDeleted } = this.state
 
 		if (getUsersPending)
 		{
 			return 'Loading users...'
 		}
 
-		if (getUsersError)
-		{
-			return 'Failed to load the list of users'
-		}
-
 		if (users.length === 0)
 		{
 			return 'No users'
 		}
-
-		const disableButtons = getUsersPending || addUserPending || deleteUserPending
 
 		return (
 			<table className="users__list">
@@ -191,9 +161,7 @@ export default class UsersPage extends Component
 								</td>
 								<td>
 									<Button
-										busy={ userBeingDeleted === user.id }
-										disabled={ disableButtons }
-										action={ () => this.deleteUser(user.id) }
+										onClick={ () => this.deleteUser(user.id) }
 										className="user__delete">
 										delete
 									</Button>
