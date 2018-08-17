@@ -11,8 +11,7 @@ export const getUsers = redux.action
 	() => async http =>
 	{
 		await delay(1000)
-		const ids = await http.get('/api/example/users')
-		return await Promise.all(ids.map(id => http.get(`/api/example/users/${id}`)))
+		return await http.get('/api/example/users')
 	},
 	'users'
 )

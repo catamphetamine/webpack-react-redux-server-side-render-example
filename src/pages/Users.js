@@ -60,7 +60,7 @@ export default class UsersPage extends Component
 		const { deleteUser, getUsers, notify } = this.props
 
 		await deleteUser(id)
-		notify(`User #${id} deleted`)
+		notify(`User deleted`)
 		getUsers()
 	}
 
@@ -148,9 +148,11 @@ export default class UsersPage extends Component
 					{ users.map((user) => {
 						return (
 							<tr key={ user.id }>
+								{/*
 								<td className="user__id">
 									{ user.id }
 								</td>
+								*/}
 								<td className="user__name">
 									{ user.name }
 								</td>

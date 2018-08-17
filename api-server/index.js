@@ -1,19 +1,8 @@
-import { api } from 'web-service'
+import { run } from 'serverless-functions'
 
-import example_api from './api/example'
 import configuration from '../configuration'
+import serverlessConfig from './serverless'
 
-const apiService = api
-({
-	name : 'Example API service',
-	api  : [example_api]
-})
-
-apiService.listen(configuration.services.api.port).then(() =>
-{
-	console.info(`Api server is listening at http://localhost:${configuration.services.api.port}`)
-},
-(error) =>
-{
-	console.error(error)
+run('dev', configuration.services.api.port, serverlessConfig, { cwd: __dirname }).then(() => {
+	console.info(`API is listening at http://localhost:${configuration.services.api.port}`)
 })

@@ -1,0 +1,5 @@
+{
+	"name": "update-user",
+	"path": "/example/users",
+	"method": "PATCH"
+}

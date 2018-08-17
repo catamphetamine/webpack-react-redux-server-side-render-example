@@ -1,0 +1,7 @@
+{
+	"name": "api",
+	"code": {
+		"initialize": "./custom/initialize.js",
+		"onCall": "./custom/onCall.js"
+	}
+}

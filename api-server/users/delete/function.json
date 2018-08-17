@@ -1,0 +1,5 @@
+{
+	"name": "delete-user",
+	"path": "/example/users/{id}",
+	"method": "DELETE"
+}

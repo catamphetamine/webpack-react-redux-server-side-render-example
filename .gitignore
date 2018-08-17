@@ -30,3 +30,6 @@ gh-pages/
 
 # test coverage folder
 coverage
+
+# database
+database.json
