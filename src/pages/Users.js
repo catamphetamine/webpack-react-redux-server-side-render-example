@@ -9,39 +9,32 @@ import TimeAgo from 'react-time-ago'
 import { Form, Field, Submit } from 'basic-react-form'
 import { meta, preload } from 'react-website'
 
-import
-{
+import {
 	getUsers,
 	addUser,
 	deleteUser
-}
-from '../redux/users'
+} from '../redux/users'
 
 import { notify } from '../redux/notifications'
 
 import './Users.css'
 
 @preload(async ({ dispatch }) => await dispatch(getUsers()))
-@meta(({ state }) =>
-({
+@meta(({ state }) => ({
 	title       : 'Simple REST API example',
 	description : 'A list of users',
 	image       : 'https://www.famouslogos.us/images/facebook-logo.jpg'
 }))
-@connect
-(
-	({ users }) => ({
-		users: users.users,
-		getUsersPending: users.getUsersPending,
-		addUserPending: users.addUserPending
-	}),
-	{
-		getUsers,
-		addUser,
-		deleteUser,
-		notify
-	}
-)
+@connect(({ users }) => ({
+	users: users.users,
+	getUsersPending: users.getUsersPending,
+	addUserPending: users.addUserPending
+}), {
+	getUsers,
+	addUser,
+	deleteUser,
+	notify
+})
 export default class UsersPage extends Component
 {
 	state = {}
@@ -132,13 +125,11 @@ export default class UsersPage extends Component
 		}
 		= this.props
 
-		if (getUsersPending)
-		{
+		if (getUsersPending) {
 			return 'Loading users...'
 		}
 
-		if (users.length === 0)
-		{
+		if (users.length === 0) {
 			return 'No users'
 		}
 

@@ -29,15 +29,12 @@ import Users from '../../assets/images/users.svg'
 import '../components/Loading.css'
 import './Application.css'
 
-@connect(({ notifications }) =>
-({
+@connect(({ notifications }) => ({
 	notification: notifications.notification
-}),
-{
+}), {
 	notified
 })
-@meta(({ state }) =>
-({
+@meta(({ state }) => ({
 	site_name   : 'WebApp',
 	title       : 'WebApp',
 	description : 'A generic web application boilerplate',
