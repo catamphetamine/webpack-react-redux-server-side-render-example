@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, IndexLink } from 'react-website'
+import { Link } from 'react-website'
 import classNames from 'classnames'
 
 import './Menu.css'
@@ -13,26 +13,17 @@ export default function Menu({ className, children })
 	)
 }
 
-export function MenuLink({ to, children })
+export function MenuLink({ to, exact, children })
 {
-	// A `<Link>` can know when the route it links to is "active"
-	// and automatically apply an `activeClassName` and/or `activeStyle`
-	// when given either prop. The `<Link>` will be "active" if
-	// the current route is either the linked route or any
-	// descendant of the linked route. To have the link be "active"
-	// only on the exact linked route, use `<IndexLink>` instead.
-	// (citation from `react-router@3` docs)
-
-	const LinkComponent = to === '/' ? IndexLink : Link
-
 	return (
 		<li className="menu-list-item">
-			<LinkComponent
+			<Link
 				to={ to }
+				exact={ exact }
 				activeClassName="menu-item--selected"
 				className="menu-item">
 				{ children }
-			</LinkComponent>
+			</Link>
 		</li>
 	)
 }

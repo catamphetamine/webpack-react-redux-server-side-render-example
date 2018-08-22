@@ -1,16 +1,10 @@
 import { reduxModule } from 'react-website'
 
-const redux = reduxModule('NOTIFICATIONS')
+const redux = reduxModule()
 
 export const notify = redux.simpleAction
 (
 	(content, options) => ({ content, options }),
-	'notification'
-)
-
-export const notified = redux.simpleAction
-(
-	() => ({ content: undefined, options: undefined }),
 	'notification'
 )
 

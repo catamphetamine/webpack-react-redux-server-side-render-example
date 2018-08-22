@@ -8,10 +8,8 @@ export default async function()
   const { store, rerender } = await render(settings)
 
   // Webpack "Hot Module Replacement"
-  if (module.hot)
-  {
-    module.hot.accept('./react-website', () =>
-    {
+  if (module.hot) {
+    module.hot.accept('./react-website', () => {
       store.hotReload(settings.reducer)
       rerender()
     })

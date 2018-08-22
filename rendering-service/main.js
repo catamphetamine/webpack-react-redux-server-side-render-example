@@ -66,15 +66,11 @@ export default function(parameters) {
       bodyStart(path) {
         return `
           ${process.env.NODE_ENV === 'production' ? '' : smokeScreen}
-          <script>
-            // This line is just for CSS
-            document.body.classList.add('javascript-is-enabled');
-          </script>
         `
       }
     },
 
-    // One can set `hollow` flag to `true`
+    // One can set `renderContent` flag to `false`
     // to turn off Server-Side React Rendering.
     // It only disables page rendering,
     // i.e. the inside of the `<div id="react"/>` DOM element
@@ -88,7 +84,7 @@ export default function(parameters) {
     // "time-to-first-byte" though
     // (until the javascript bundle is fully downloaded).
     // Read `react-website` docs for more info.
-    // hollow: true
+    // renderContent: false
   })
 
   // Start webpage rendering server

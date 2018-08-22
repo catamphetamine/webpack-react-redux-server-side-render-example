@@ -2,9 +2,6 @@ import { reduxModule } from 'react-website'
 
 const redux = reduxModule()
 
-// Use the new syntax.
-redux.v3 = true
-
 export const getUsers = redux.action
 (
 	'GET_USERS',
