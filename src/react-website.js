@@ -12,7 +12,7 @@ export default
 	routes,
 	container,
 
-	error(error, { path, url, redirect, dispatch, getState, server })
+	onError(error, { path, url, redirect, dispatch, getState, server })
 	{
 		console.error(`Error while preloading "${url}"`)
 		console.error(error)
