@@ -1,5 +1,5 @@
 import routes  from './routes'
-import * as reducer from './redux'
+import * as reducers from './redux'
 import container from './Container'
 
 // "Favicon" must be imported on the client side too
@@ -8,7 +8,7 @@ export { default as icon } from '../assets/images/icon.png'
 
 export default
 {
-	reducer,
+	reducers,
 	routes,
 	container,
 

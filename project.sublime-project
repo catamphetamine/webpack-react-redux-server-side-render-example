@@ -10,7 +10,7 @@
 	],
 	"settings":
 	{
-		"tab_size": 3,
+		"tab_size": 2,
 		"translate_tabs_to_spaces": false,
 		"ensure_newline_at_eof_on_save": false,
 		"trim_trailing_white_space_on_save": true
