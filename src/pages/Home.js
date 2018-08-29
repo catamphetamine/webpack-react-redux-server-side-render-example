@@ -5,7 +5,7 @@ import husky from '../../assets/images/husky.jpg'
 
 import './Home.css'
 
-@meta(({ state }) => ({ title: 'Home' }))
+@meta((state) => ({ title: 'Home' }))
 export default class Page extends Component
 {
 	render()
