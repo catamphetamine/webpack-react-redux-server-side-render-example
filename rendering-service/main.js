@@ -1,5 +1,4 @@
 import webpageServer from 'react-website/server'
-import { smokeScreen, hideSmokeScreenAfter } from 'universal-webpack'
 import path from 'path'
 
 import settings, { icon } from '../src/react-website'
@@ -46,29 +45,6 @@ export default function(parameters) {
       // Website "favicon"
       icon
     }),
-
-    html: {
-      // (optional)
-      // Will be inserted into server rendered webpage <head/>.
-      head(path) {
-        if (process.env.NODE_ENV !== 'production') {
-          // Removes the "flash of unstyled content" in development mode.
-          return `
-            <script>
-              ${hideSmokeScreenAfter(100)}
-            </script>
-          `
-        }
-      },
-
-      // (optional)
-      // Javascriptless web browsers detection
-      bodyStart(path) {
-        return `
-          ${process.env.NODE_ENV === 'production' ? '' : smokeScreen}
-        `
-      }
-    },
 
     // One can set `renderContent` flag to `false`
     // to turn off Server-Side React Rendering.

@@ -10,7 +10,9 @@ import baseConfiguration from './webpack.config'
 
 const configuration = clientConfiguration(baseConfiguration, settings,
 {
-  // Extract all CSS into a single bundle using `mini-css-extract-plugin`.
+  // Extract all CSS into separate `*.css` files (one for each chunk)
+  // using `mini-css-extract-plugin`
+  // instead of leaving that CSS embedded directly in `*.js` chunk files.
   development : false,
   useMiniCssExtractPlugin : true
 })

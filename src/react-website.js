@@ -12,6 +12,18 @@ export default
 	routes,
 	container,
 
+	// When the website is open in a web browser
+	// hide website content under a "preloading" screen
+	// until the application has finished loading.
+	// It still "blinks" a bit in development mode
+	// because CSS styles in development mode are included
+	// not as `*.css` files but dynamically via javascript
+	// by adding a `<style/>` DOM element, and that's why
+	// in development mode styles are not applied immediately
+	// in a web browser. In production mode CSS styles are
+	// included as `*.css` files so they are applied immediately.
+	showPreloadInitially: true,
+
 	onError(error, { path, url, redirect, dispatch, getState, server })
 	{
 		console.error(`Error while preloading "${url}"`)

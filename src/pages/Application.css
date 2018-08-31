@@ -1,9 +1,9 @@
 @import "../styles/common";
 
-// Stretches the page to 100% height
+/* Stretches the page to 100% height */
 .webpage
 {
-	// For z-index ordering (relative to preloading screen)
+	/* For z-index ordering (relative to preloading screen) */
 	position : relative;
 	z-index  : 0;
 
@@ -22,7 +22,7 @@
 	visibility: hidden;
 }
 
-// Content takes all free space
+/* Content takes all free space */
 .webpage__content
 {
 	flex-shrink : 0;
@@ -36,9 +36,19 @@
 	padding-top    : calc(var(--unit) * 2);
 	padding-bottom : calc(var(--unit) * 2);
 
-	// For XS screens.
+	/* For XS screens. */
 	@mixin xs
 	{
 		margin-top : 0;
 	}
+}
+
+.react-website__loading--initial
+{
+	background-color : white;
+}
+
+.react-website__loading--initial .react-website__loading-spinner
+{
+	color : rgba(0, 0, 0, 0.25);
 }
