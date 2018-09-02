@@ -10,7 +10,7 @@ export default async function()
   // Webpack "Hot Module Replacement"
   if (module.hot) {
     module.hot.accept('./react-website', () => {
-      store.hotReload(settings.reducer)
+      store.hotReload(settings.reducers)
       rerender()
     })
   }
