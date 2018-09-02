@@ -1,5 +1,5 @@
 // Add ES6 polyfill (for older browsers).
-require('babel-polyfill')
+require('@babel/polyfill')
 
 // Maintain CSS styles order.
 require('./styles/style.css')

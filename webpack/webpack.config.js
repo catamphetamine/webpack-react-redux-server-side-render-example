@@ -35,18 +35,15 @@ module.exports =
 		[{
 			test: /\.js$/,
 			exclude: /node_modules/,
-			use:
-			[{
+			use: [{
 				loader: 'babel-loader'
 			}]
 		},
 		{
 			test: /\.(css)$/,
-			use:
-			[{
+			use: [{
 				loader: 'style-loader'
-			},
-			{
+			}, {
 				loader : 'css-loader',
 				options:
 				{
@@ -56,18 +53,15 @@ module.exports =
 					importLoaders : 1,
 					sourceMap     : true
 				}
-			},
-			{
+			}, {
 				loader : 'postcss-loader'
 			}]
 		},
 		{
 			test: /\.(jpg|png)$/,
-			use:
-			[{
+			use: [{
 				loader : 'url-loader',
-				options:
-				{
+				options: {
 					// Any png-image or woff-font below or equal to 5K
 					// will be converted to inline base64 instead.
 					limit: 5120
@@ -76,8 +70,7 @@ module.exports =
 		},
 		{
 			test: /\.(svg)$/,
-			use:
-			[{
+			use: [{
 				loader: 'svg-react-loader'
 			}]
 		}]
@@ -85,11 +78,14 @@ module.exports =
 
 	// Hides "Entrypoint size exeeds the recommened limit (250kB)" warnings.
 	// https://github.com/webpack/webpack/issues/3486
-	performance:
-	{
+	performance: {
 		hints: false
 	},
 
 	// Plugins will be added to this array by extending configurations.
-	plugins: []
+	plugins: [
+    new webpack.ProvidePlugin({
+      configuration: ['./configuration', 'default']
+    })
+	]
 }

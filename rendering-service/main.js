@@ -7,12 +7,11 @@ import configuration from '../configuration'
 export default function(parameters) {
   // Create webpage rendering server
   const server = webpageServer(settings, {
-    // When using a proxy server
-    // all HTTP requests to relative URLs
-    // will be transformed to absolute URLs
-    // using these settings.
-    // Using a proxy server is considered outdated
-    // and it is here for the simplest example purpose only.
+    // Proxy all HTTP requests for data
+    // through a proxy server to the API server.
+    // Wouldn't do such a thing in a real-world app
+    // and would just query the API server directly
+    // but Chrome won't allow that for `localhost`.
     proxy: {
       host: 'localhost',
       port: configuration.webserver.port

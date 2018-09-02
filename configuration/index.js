@@ -7,8 +7,7 @@ import production_configuration from './configuration.production'
 const configuration = merge({}, default_configuration)
 
 // https://github.com/webpack-contrib/webpack-serve/issues/81#issuecomment-378469110
-// export default const configuration = ...
-module.exports = configuration
+export default configuration
 
 if (process.env.NODE_ENV === 'production')
 {

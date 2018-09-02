@@ -4,12 +4,9 @@ import { clientConfiguration } from 'universal-webpack'
 import settings from './universal-webpack-settings'
 import baseConfiguration from './webpack.config'
 
-import { addDevServerConfiguration, setDevFileServer } from './devserver'
+import { setDevFileServer } from './devserver'
 
 let configuration = clientConfiguration(baseConfiguration, settings)
-
-// Add `webpack-serve` settings.
-configuration = addDevServerConfiguration(configuration)
 
 // `webpack-serve` can't set the correct `mode` by itself
 // so setting `mode` to `"development"` explicitly.
