@@ -12,6 +12,18 @@ export default
 	routes,
 	container,
 
+	// Enable "code splitting" mode.
+	// See `README-CODE-SPLITTING` for more info.
+	// https://github.com/catamphetamine/react-website/blob/master/README-CODE-SPLITTING.md
+	codeSplit: true,
+
+	// When using `codeSplit` with `getComponent`
+	// `<Route/>` components are loaded after the initial page render.
+	// To hide webpage content until all `<Route/>` components
+	// are resolved one may set `showPreloadInitially` to `true`
+	// and use the exported `<Loading/>` component on the website.
+	//
+	// When not using the `codeSplit` feature:
 	// When the website is open in a web browser
 	// hide website content under a "preloading" screen
 	// until the application has finished loading.
@@ -22,6 +34,7 @@ export default
 	// in development mode styles are not applied immediately
 	// in a web browser. In production mode CSS styles are
 	// included as `*.css` files so they are applied immediately.
+	//
 	showPreloadInitially: true,
 
 	onError(error, { path, url, redirect, dispatch, getState, server })

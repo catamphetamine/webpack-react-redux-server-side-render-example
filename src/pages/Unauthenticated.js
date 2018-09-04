@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { meta } from 'react-website'
 
 import './Error.css'
 
-@meta(state => ({ title: 'Unauthenticated' }))
 export default class Unauthenticated extends Component
 {
 	render()

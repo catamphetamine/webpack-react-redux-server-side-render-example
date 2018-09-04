@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import { meta } from 'react-website'
 
 import './Error.css'
 
-@meta(state => ({ title: 'Error' }))
 export default class Page extends Component
 {
 	render()

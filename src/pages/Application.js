@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { meta, Loading } from 'react-website'
+import { Loading } from 'react-website'
 
 // Not importing `Tooltip.css` because
 // it's already loaded as part of `react-responsive-ui`.
@@ -25,19 +25,11 @@ import Users from '../../assets/images/users.svg'
 import '../components/Loading.css'
 import './Application.css'
 
-@meta(state => ({
-	site_name   : 'WebApp',
-	title       : 'WebApp',
-	description : 'A generic web application boilerplate',
-	image       : 'https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-	locale      : 'ru_RU',
-	locales     : ['ru_RU', 'en_US']
-}))
 export default class App extends Component
 {
 	static propTypes =
 	{
-		children : PropTypes.node.isRequired
+		children : PropTypes.node
 	}
 
 	render()
