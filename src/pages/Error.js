@@ -3,7 +3,7 @@ import { meta } from 'react-website'
 
 import './Error.css'
 
-@meta(({ state }) => ({ title: 'Error' }))
+@meta(state => ({ title: 'Error' }))
 export default class Page extends Component
 {
 	render()

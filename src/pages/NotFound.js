@@ -3,7 +3,7 @@ import { meta } from 'react-website'
 
 import './Error.css'
 
-@meta(({ state }) => ({ title: 'Not found' }))
+@meta(state => ({ title: 'Not found' }))
 export default class NotFound extends Component
 {
 	render()
