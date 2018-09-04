@@ -1,6 +1,6 @@
-import { reduxModule } from 'react-website'
+import { ReduxModule } from 'react-website'
 
-const redux = reduxModule()
+const redux = new ReduxModule()
 
 export const notify = redux.simpleAction
 (
