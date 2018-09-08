@@ -7,7 +7,6 @@ import TextInput from 'react-responsive-ui/commonjs/TextInput'
 import Button from 'react-responsive-ui/commonjs/Button'
 import TimeAgo from 'react-time-ago'
 import { Form, Field, Submit } from 'basic-react-form'
-import { meta, preload } from 'react-website'
 
 import {
 	getUsers,
@@ -19,12 +18,6 @@ import { notify } from '../redux/notifications'
 
 import './Users.css'
 
-@preload(async ({ dispatch }) => await dispatch(getUsers()))
-@meta(state => ({
-	title       : 'Simple REST API example',
-	description : 'A list of users',
-	image       : 'https://www.famouslogos.us/images/facebook-logo.jpg'
-}))
 @connect(({ users }) => ({
 	users: users.users,
 	getUsersPending: users.getUsersPending,
