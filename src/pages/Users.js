@@ -6,7 +6,7 @@ import Modal from 'react-responsive-ui/commonjs/Modal'
 import TextInput from 'react-responsive-ui/commonjs/TextInput'
 import Button from 'react-responsive-ui/commonjs/Button'
 import TimeAgo from 'react-time-ago'
-import { Form, Field, Submit } from 'basic-react-form'
+import { Form, Field, Submit } from 'easy-react-form'
 import { meta, preload } from 'react-website'
 
 import {

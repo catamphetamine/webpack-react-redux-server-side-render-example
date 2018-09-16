@@ -30,8 +30,8 @@
   "author": "catamphetamine <purecatamphetamine@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "basic-react-form": "^1.0.3",
     "classnames": "^2.2.5",
+    "easy-react-form": "^1.0.6",
     "lodash": "^4.17.4",
     "lokijs": "^1.5.5",
     "prop-types": "^15.5.6",
