@@ -4,7 +4,7 @@ const redux = new ReduxModule()
 
 export const notify = redux.simpleAction
 (
-	(content, options) => ({ content, options }),
+	(content, options) => ({ content, ...options }),
 	'notification'
 )
 
