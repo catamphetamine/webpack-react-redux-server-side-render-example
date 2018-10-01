@@ -1,6 +1,6 @@
 import { NotFound } from 'serverless-functions/errors'
 
-export default async function({ path: { id }, body: { name } }) {
+export default async function({ params: { id }, body: { name } }) {
 	const users = database.getCollection('users')
 	if (!users || !users.by('id', id)) {
 		throw new NotFound(`User ${id} not found`)
