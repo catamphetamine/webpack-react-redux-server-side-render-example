@@ -13,10 +13,10 @@ export default function(parameters) {
     // and would just query the API server directly
     // but Chrome won't allow that for `localhost`.
     proxy: {
-      host: 'localhost',
-      port: configuration.webserver.port
+      host: configuration.services.api.host || 'localhost',
+      port: configuration.services.api.port,
       // For HTTPS
-      // secure: true
+      secure: configuration.services.api.secure
     },
 
     // HTTP URLs for javascripts and (optionally) CSS styles

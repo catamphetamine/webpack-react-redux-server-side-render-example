@@ -62,24 +62,28 @@ export default
 		}
 	},
 
-	// Would use this setting for a real-world cloud-based API
-	// (e.g. AWS Lambda) but just for demo purposes on `localhost`
-	// Chrome won't allow querying `localhost` from `localhost`
-	// so had to just proxy the `/api` path on the "proxy server".
-	//
-	// The Chrome error is:
-	//
-	// "Failed to load http://localhost:3003/example/users:
-	//  Response to preflight request doesn't pass access control check:
-	//  No 'Access-Control-Allow-Origin' header is present on the requested resource.
-	//  Origin 'http://localhost:3000' is therefore not allowed access."
-	//
-	// http: {
-	// 	transformURL: (path) => {
-	// 		if (path.indexOf('/api/') === 0) {
-	// 			return configuration.api + path.slice('/api'.length)
-	// 		}
-	// 		return path
-	// 	}
-	// }
+	// Pass all `/api` requests to the API server.
+	http: {
+		transformURL: (path) => {
+			if (path.indexOf('/api/') === 0) {
+				//
+				// Chrome won't allow querying `localhost` from `localhost`
+				// so had to just proxy the `/api` path using `webpack-dev-server`.
+				//
+				// The Chrome error was:
+				//
+				// "Failed to load http://localhost:3003/example/users:
+				//  Response to preflight request doesn't pass access control check:
+				//  No 'Access-Control-Allow-Origin' header is present on the requested resource.
+				//  Origin 'http://localhost:3000' is therefore not allowed access."
+				//
+				if (typeof window !== 'undefined') {
+					return path
+				}
+				// Proceed normally on server side.
+				return configuration.api + path.slice('/api'.length)
+			}
+			return path
+		}
+	}
 }

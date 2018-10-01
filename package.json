@@ -13,12 +13,11 @@
     "dev": "npm-run-all development:client:rendering-service:build:prepare development",
     "development": "npm-run-all --parallel development:client:build development:client:rendering-service:build development:services",
     "development:client:rendering-service:build:prepare": "universal-webpack --settings ./webpack/universal-webpack-settings.json prepare",
-    "development:client:build": "webpack-serve --hot-client --require @babel/register --config webpack/webpack.config.client.development.babel.js",
+    "development:client:build": "webpack-dev-server --hot --config webpack/webpack.config.client.development.babel.js",
     "development:client:rendering-service:build": "webpack --mode development --config ./webpack/webpack.config.server.development.babel.js --watch --colors --display-error-details",
     "development:api": "nodemon ./api/index.entry.js --watch ./api --no-update-notifier",
     "development:client:rendering-service": "nodemon ./rendering-service/index.entry.js --watch ./rendering-service --watch ./build/server --no-update-notifier",
-    "development:proxy": "nodemon ./proxy-server/index.entry.js --watch ./proxy-server --no-update-notifier",
-    "development:services": "npm-run-all --parallel development:api development:client:rendering-service development:proxy",
+    "development:services": "npm-run-all --parallel development:api development:client:rendering-service",
     "production": "npm-run-all production:client:build production:client:rendering-service:build production:services",
     "production:client:build": "webpack --mode production --colors --display-error-details --config ./webpack/webpack.config.client.production.babel.js",
     "production:client:rendering-service:build": "webpack --mode production --colors --display-error-details --config ./webpack/webpack.config.server.production.babel.js",
@@ -83,7 +82,7 @@
     "webpack": "^4.4.1",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-cli": "^2.0.13",
-    "webpack-serve": "^2.0.2",
+    "webpack-dev-server": "^3.1.9",
     "webpack-visualizer-plugin": "^0.1.11"
   }
 }

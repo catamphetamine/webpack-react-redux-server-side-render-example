@@ -1,1 +1,13 @@
-{}
+{
+	"services":
+	{
+		"api":
+		{
+			"port": 3003
+		}
+	},
+	"webserver":
+	{
+		"port": 3000
+	}
+}

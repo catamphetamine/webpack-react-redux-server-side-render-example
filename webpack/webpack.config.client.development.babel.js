@@ -4,7 +4,7 @@ import { clientConfiguration } from 'universal-webpack'
 import settings from './universal-webpack-settings'
 import baseConfiguration from './webpack.config'
 
-import { setDevFileServer } from './devserver'
+import { devServerConfig, setDevFileServer } from './devserver'
 
 let configuration = clientConfiguration(baseConfiguration, settings)
 
@@ -16,14 +16,13 @@ configuration.mode = 'development'
 // Fetch all files from webpack development server.
 configuration = setDevFileServer(configuration)
 
+// Run `webpack-dev-server`.
+configuration.devServer = devServerConfig
+
 configuration.plugins.push
 (
 	// Prints more readable module names in the browser console on HMR updates.
 	new webpack.NamedModulesPlugin()
 )
 
-// `webpack-serve` can't import the configuration properly
-// when using `export default` hence using `module.exports` here.
-// https://github.com/webpack-contrib/webpack-serve/issues/81#issuecomment-378469110
-// export default configuration
-module.exports = configuration
+export default configuration
