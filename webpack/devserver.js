@@ -18,6 +18,8 @@ export const devServerConfig =
 	//  No 'Access-Control-Allow-Origin' header is present on the requested resource.
 	//  Origin 'http://localhost:3000' is therefore not allowed access."
 	//
+	// https://stackoverflow.com/a/10892392/970769
+	//
 	proxy: [{
 		context: (path) => {
 			return path !== '/api' && path.indexOf('/api/') !== 0

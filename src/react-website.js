@@ -77,6 +77,8 @@ export default
 				//  No 'Access-Control-Allow-Origin' header is present on the requested resource.
 				//  Origin 'http://localhost:3000' is therefore not allowed access."
 				//
+				// https://stackoverflow.com/a/10892392/970769
+				//
 				if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
 					return path
 				}
