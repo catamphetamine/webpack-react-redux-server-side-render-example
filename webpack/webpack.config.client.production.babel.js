@@ -3,6 +3,8 @@ import webpack from 'webpack'
 import CleanPlugin from 'clean-webpack-plugin'
 import Visualizer from 'webpack-visualizer-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 import { clientConfiguration } from 'universal-webpack'
 import settings from './universal-webpack-settings'
@@ -18,6 +20,19 @@ const configuration = clientConfiguration(baseConfiguration, settings,
 })
 
 configuration.devtool = 'source-map'
+
+// Minimize CSS.
+// https://github.com/webpack-contrib/mini-css-extract-plugin#minimizing-for-production
+configuration.optimization = {
+  minimizer: [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true // set to true if you want JS source maps
+    }),
+    new OptimizeCSSAssetsPlugin({})
+  ]
+};
 
 configuration.plugins.push
 (
