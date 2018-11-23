@@ -1,16 +1,15 @@
-// @import "./constants";
 @import "./grid.mixins";
 
-// Bootstrap grid
-//
-// Example usage:
-//
-// <div class="container">
-//   <div class="row">
-//     <div class="col-3"/>
-//     <div class="col-9"/>
-//   </div>
-// </div>
+/*
+Modular grid.
+Use:
+<div class="container">
+  <div class="row">
+    <div class="col-3"/>
+    <div class="col-9"/>
+  </div>
+</div>
+*/
 
 .container
 {
@@ -19,51 +18,21 @@
 	padding-left  : var(--page-content-padding);
 	padding-right : var(--page-content-padding);
 	box-sizing    : border-box;
-	// For cases when a container is inside a modal, for example
-	max-width : 100%;
-}
-
-.container--modal
-{
-	max-width     : calc(var(--unit) * (30 * 2 + 3));
-	padding-left  : 0;
-	padding-right : 0;
 }
 
 .row
 {
-	// #TODO: Remove this
-	// this can only be done when the row is nested inside a container that has the opposite positive margin
-	// otherwise you have this weird space if you scroll to the right
-	margin-left  : calc(-1 * var(--column-gap));
-	margin-right : calc(-1 * var(--column-gap));
+	display        : flex;
+	flex           : 0 1 auto;
+	flex-direction : row;
+	flex-wrap      : wrap;
+	margin-left    : calc(-1 * var(--column-gap));
+	margin-right   : calc(-1 * var(--column-gap));
+	box-sizing     : border-box;
 }
-
-.row:before,
-.row:after,
-.container:before,
-.container:after
-{
-	display : table;
-	content : " ";
-}
-
-.row:after,
-.container:after
-{
-	clear : both;
-}
-
-.row--equal-height
-{
-	display : flex;
-}
-
-// https://github.com/twbs/bootstrap/blob/76d8291e3846d95b40dc4509a2e1bf36b0681a28/dist/css/bootstrap-grid.css
 
 @define-mixin define_columns $infix
 {
-	// http://getbootstrap.com.vn/examples/equal-height-columns/
 	.col$(infix)-1,
 	.col$(infix)-2,
 	.col$(infix)-3,
@@ -77,13 +46,7 @@
 	.col$(infix)-11,
 	.col$(infix)-12
 	{
-		float : left;
-
-		// Don't know what `position: relative` is for
-		position : relative;
-
-		// Don't know what `min-height: 1px` is for
-		min-height    : 1px;
+		flex          : 0 0 auto;
 		box-sizing    : border-box;
 		padding-left  : var(--column-gap);
 		padding-right : var(--column-gap);
@@ -96,83 +59,78 @@
 
 	.col$(infix)-1
 	{
-		width: 8.333333%;
+		flex-basis: 8.333333%;
+		max-width: 8.333333%;
 	}
 
 	.col$(infix)-2
 	{
-		width: 16.666667%;
+		flex-basis: 16.666667%;
+		max-width: 16.666667%;
 	}
 
 	.col$(infix)-3
 	{
-		width: 25%;
+		flex-basis: 25%;
+		max-width: 25%;
 	}
 
 	.col$(infix)-4
 	{
-		width: 33.33333%;
+		flex-basis: 33.33333%;
+		max-width: 33.33333%;
 	}
 
 	.col$(infix)-5
 	{
-		width: 41.666667%;
+		flex-basis: 41.666667%;
+		max-width: 41.666667%;
 	}
 
 	.col$(infix)-6
 	{
-		width: 50%;
+		flex-basis: 50%;
+		max-width: 50%;
 	}
 
 	.col$(infix)-7
 	{
-		width: 58.333333%;
+		flex-basis: 58.333333%;
+		max-width: 58.333333%;
 	}
 
 	.col$(infix)-8
 	{
-		width: 66.66666%;
+		flex-basis: 66.66666%;
+		max-width: 66.66666%;
 	}
 
 	.col$(infix)-9
 	{
-		width: 75%;
+		flex-basis: 75%;
+		max-width: 75%;
 	}
 
 	.col$(infix)-10
 	{
-		width: 83.333333%;
+		flex-basis: 83.333333%;
+		max-width: 83.333333%;
 	}
 
 	.col$(infix)-11
 	{
-		width: 91.666667%;
+		flex-basis: 91.666667%;
+		max-width: 91.666667%;
 	}
 
 	.col$(infix)-12
 	{
-		width: 100%;
+		flex-basis: 100%;
+		max-width: 100%;
 	}
-
-  // Alternatively, using flexbox:
-  //
-  // .row {
-  //  display: flex;
-  //  flex-wrap: wrap;
-  // }
-  //
-  // .col {
-  //  flex-basis: xx%;
-  //  flex-grow: 0;
-  //  flex-shrink: 0;
-  //  // width: 100%;
-  //  max-width: xx%;
-  // }
 }
 
 @mixin define_columns "";
-
-// Responsive grid
 
 @media (max-width: $screen-xs-max)
 {
@@ -206,40 +164,5 @@
 	.container
 	{
 		width: $screen-lg-min;
-	}
-}
-
-// Responsive CSS classes.
-
-@mixin xs {
-	.s, .m, .l, .s-m, .s-l, .m-l {
-		display: none !important;
-	}
-}
-
-@mixin s {
-	.xs, .m, .l, .m-l {
-		display: none !important;
-	}
-}
-
-@mixin m {
-	.xs, .s, .l, .xs-s {
-		display: none !important;
-	}
-}
-
-@mixin l {
-	.xs, .xs-s, .xs-m, .s-m {
-		display: none !important;
-	}
-}
-
-@mixin xs {
-	// Not sure why did I add this,
-	// but it reverts the default `.row--equal-height` behaviour
-	// on mobile devices.
-	.row--equal-height {
-		display: block;
 	}
 }
