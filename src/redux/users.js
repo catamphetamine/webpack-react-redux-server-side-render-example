@@ -8,7 +8,7 @@ export const getUsers = redux.action
 	() => async http =>
 	{
 		await delay(1000)
-		return await http.get('/api/example/users')
+		return await http.get('api://example/users')
 	},
 	'users'
 )
@@ -19,7 +19,7 @@ export const addUser = redux.action
 	(user) => async http =>
 	{
 		await delay(1500)
-		await http.post(`/api/example/users`, user)
+		await http.post('api://example/users', user)
 	}
 )
 
@@ -31,7 +31,7 @@ export const deleteUser = redux.action
 	(id) => async http =>
 	{
 		await delay(1000)
-		await http.delete(`/api/example/users/${id}`)
+		await http.delete(`api://example/users/${id}`)
 	}
 )
 

@@ -62,10 +62,10 @@ export default
 		}
 	},
 
-	// Pass all `/api` requests to the API server.
 	http: {
-		transformURL: (path) => {
-			if (path.indexOf('/api/') === 0) {
+		transformURL: (url, server) => {
+			// Pass all `api://` requests to the API server.
+			if (url.indexOf('api://') === 0) {
 				//
 				// Chrome won't allow querying `localhost` from `localhost`
 				// so had to just proxy the `/api` path using `webpack-dev-server`.
@@ -79,13 +79,13 @@ export default
 				//
 				// https://stackoverflow.com/a/10892392/970769
 				//
-				if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
-					return path
+				if (!server && window.location.hostname === 'localhost') {
+					return '/api/' + url.slice('api://'.length)
 				}
-				// Proceed normally on server side.
-				return configuration.api + path.slice('/api'.length)
+				// Transform to an absolute URL.
+				return configuration.api + '/' + url.slice('api://'.length)
 			}
-			return path
+			return url
 		}
 	}
 }

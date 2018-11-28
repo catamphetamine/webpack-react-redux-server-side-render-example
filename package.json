@@ -39,7 +39,7 @@
     "react-redux": "^5.0.2",
     "react-responsive-ui": "^0.14.64",
     "react-time-ago": "^3.0.3",
-    "react-website": "^3.0.2",
+    "react-website": "^3.0.3",
     "redux": "^4.0.0",
     "serverless-functions": "^0.3.1",
     "uuid": "^3.3.2",
