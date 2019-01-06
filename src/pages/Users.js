@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Modal from 'react-responsive-ui/commonjs/Modal'
 import TextInput from 'react-responsive-ui/commonjs/TextInput'
 import Button from 'react-responsive-ui/commonjs/Button'
-import TimeAgo from 'react-time-ago'
+import ReactTimeAgo from 'react-time-ago'
 import { Form, Field, Submit } from 'easy-react-form'
 import { meta, preload } from 'react-website'
 
@@ -148,9 +148,7 @@ export default class UsersPage extends Component
 									{ user.name }
 								</td>
 								<td>
-									<TimeAgo>
-										{ user.dateAdded }
-									</TimeAgo>
+									<ReactTimeAgo date={ user.dateAdded }/>
 								</td>
 								<td>
 									<Button

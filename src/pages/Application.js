@@ -3,18 +3,15 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { meta, Loading } from 'react-website'
 
-// Not importing `Tooltip.css` because
-// it's already loaded as part of `react-responsive-ui`.
-// import 'react-time-ago/Tooltip.css'
 import 'react-website/components/Loading.css'
 // Not importing `LoadingIndicator.css` because
 // it's already loaded as part of `react-responsive-ui`.
 // import 'react-website/components/LoadingIndicator.css'
 
 // `react-time-ago` English language.
-import TimeAgo from 'javascript-time-ago'
+import JavascriptTimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
-TimeAgo.locale(en)
+JavascriptTimeAgo.locale(en)
 
 import Menu, { MenuLink } from '../components/Menu'
 import Snackbar from '../components/Snackbar'
@@ -30,7 +27,7 @@ import './Application.css'
 	title       : 'WebApp',
 	description : 'A generic web application boilerplate',
 	image       : 'https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-	locale      : 'ru_RU',
+	locale      : 'en_US',
 	locales     : ['ru_RU', 'en_US']
 }))
 export default class App extends Component
