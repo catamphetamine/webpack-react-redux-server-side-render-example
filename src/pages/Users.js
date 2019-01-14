@@ -19,6 +19,9 @@ import { notify } from '../redux/notifications'
 
 import './Users.css'
 
+// For accessibility (WAI-ARIA stuff) (optional):
+// Modal.setAppElement('#react')
+
 @preload(async ({ dispatch }) => await dispatch(getUsers()))
 @meta(state => ({
 	title       : 'Simple REST API example',
