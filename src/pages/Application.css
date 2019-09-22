@@ -43,12 +43,12 @@
 	}
 }
 
-.react-website__loading--initial
+.react-pages__loading--initial
 {
 	background-color : white;
 }
 
-.react-website__loading--initial .react-website__loading-spinner
+.react-pages__loading--initial .react-pages__loading-spinner
 {
 	color : rgba(0, 0, 0, 0.25);
 }

@@ -1,6 +1,6 @@
-import { render } from 'react-website'
+import { render } from 'react-pages'
 
-import settings from './react-website'
+import settings from './react-pages'
 
 export default async function()
 {
@@ -9,7 +9,7 @@ export default async function()
 
   // Webpack "Hot Module Replacement"
   if (module.hot) {
-    module.hot.accept('./react-website', () => {
+    module.hot.accept('./react-pages', () => {
       store.hotReload(settings.reducers)
       rerender()
     })

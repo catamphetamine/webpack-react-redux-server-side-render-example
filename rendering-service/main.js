@@ -1,7 +1,7 @@
-import webpageServer from 'react-website/server'
+import webpageServer from 'react-pages/server'
 import path from 'path'
 
-import settings, { icon } from '../src/react-website'
+import settings, { icon } from '../src/react-pages'
 import configuration from '../configuration'
 
 export default function(parameters) {
@@ -58,7 +58,7 @@ export default function(parameters) {
     // Turning off Server-Side Rendering delays the
     // "time-to-first-byte" though
     // (until the javascript bundle is fully downloaded).
-    // Read `react-website` docs for more info.
+    // Read `react-pages` docs for more info.
     // renderContent: false
   })
 

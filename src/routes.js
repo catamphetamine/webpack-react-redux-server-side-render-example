@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-website'
+import { Route } from 'react-pages'
 
 import Application from './pages/Application'
 

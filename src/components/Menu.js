@@ -1,28 +1,26 @@
 import React from 'react'
-import { Link } from 'react-website'
+import { Link } from 'react-pages'
 import classNames from 'classnames'
 
 import './Menu.css'
 
-export default function Menu({ className, children })
-{
+export default function Menu({ className, children }) {
 	return (
 		<ul className={classNames('menu', className)}>
-			{ children }
+			{children}
 		</ul>
 	)
 }
 
-export function MenuLink({ to, exact, children })
-{
+export function MenuLink({ to, exact, children }) {
 	return (
 		<li className="menu-list-item">
 			<Link
-				to={ to }
-				exact={ exact }
+				to={to}
+				exact={exact}
 				activeClassName="menu-item--selected"
 				className="menu-item">
-				{ children }
+				{children}
 			</Link>
 		</li>
 	)
