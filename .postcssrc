@@ -5,7 +5,6 @@
 		"autoprefixer": {},
 		"postcss-import": {},
 		"postcss-mixins": {},
-		"postcss-custom-properties": { preserve: false },
 		"postcss-simple-vars": {},
 		"postcss-nested": {},
 		"postcss-calc": {}
