@@ -1,17 +1,1 @@
-{
-	"services":
-	{
-		"api":
-		{
-			"port": 3003
-		}
-	},
-	"webpack":
-	{
-		"devserver":
-		{
-			"host": "localhost",
-			"port": 3000
-		}
-	}
-}
+{}

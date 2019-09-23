@@ -1,9 +1,0 @@
-{
-	"services":
-	{
-		"rendering":
-		{
-			"port": 3002
-		}
-	}
-}

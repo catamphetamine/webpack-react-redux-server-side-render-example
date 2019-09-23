@@ -1,7 +1,7 @@
 import path from 'path'
 import webservice from 'web-service'
 
-import configuration from '../configuration'
+import configuration from '../configuration/server'
 
 const webserver = webservice({})
 
@@ -14,10 +14,10 @@ webserver.files('/assets', path.join(__dirname, '../build/assets'))
 // Wouldn't do it in a real-world app
 // and would just query the API directly
 // but Chrome won't allow that for `localhost`.
-webserver.proxy('/api', `http://localhost:${configuration.services.api.port}`, { name: 'API service' })
+webserver.proxy('/api', `http://localhost:${configuration.api.port}`, { name: 'API service' })
 
 // Proxy all the rest requests to Webpage rendering server.
-webserver.proxy(`http://localhost:${configuration.services.rendering.port}`, { name: 'Page rendering service' })
+webserver.proxy(`http://localhost:${configuration.pageServer.port}`, { name: 'Page rendering service' })
 
 // Start web server
 webserver.listen(configuration.webserver.port).then(() =>

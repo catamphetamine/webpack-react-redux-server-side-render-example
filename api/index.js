@@ -1,8 +1,8 @@
 import { run } from 'serverless-functions'
 
-import configuration from '../configuration'
+import configuration from '../configuration/server'
 import serverlessConfig from './serverless'
 
-run('dev', configuration.services.api.port, serverlessConfig, { cwd: __dirname }).then(() => {
-	console.info(`API is listening at http://localhost:${configuration.services.api.port}`)
+run('dev', configuration.api.port, serverlessConfig, { cwd: __dirname }).then(() => {
+	console.info(`API is listening at http://localhost:${configuration.api.port}`)
 })

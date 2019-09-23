@@ -7,17 +7,15 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const project_folder = path.resolve(__dirname, '..')
+const ROOT_DIRECTORY = path.resolve(__dirname, '..')
 
-module.exports =
-{
+module.exports = {
 	// Resolve all relative paths from the project root folder
-	context: project_folder,
+	context: ROOT_DIRECTORY,
 
-	output:
-	{
+	output: {
 		// Filesystem path for static files
-		path: path.resolve(project_folder, 'build/assets'),
+		path: path.resolve(ROOT_DIRECTORY, 'build/assets'),
 
 		// Network path for static files
 		publicPath: '/assets/',
@@ -29,8 +27,7 @@ module.exports =
 		chunkFilename: '[name].[hash].js'
 	},
 
-	module:
-	{
+	module: {
 		rules:
 		[{
 			test: /\.js$/,
@@ -85,7 +82,9 @@ module.exports =
 	// Plugins will be added to this array by extending configurations.
 	plugins: [
     new webpack.ProvidePlugin({
-      configuration: [path.resolve(project_folder, 'src/configuration'), 'default']
+      configuration: path.resolve(ROOT_DIRECTORY, 'configuration'),
+      // For ES6:
+      // configuration: [path.resolve(ROOT_DIRECTORY, 'configuration'), 'default']
     })
 	]
 }

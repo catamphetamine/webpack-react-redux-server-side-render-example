@@ -1,40 +1,30 @@
-import merge from 'lodash/merge'
+const serverConfiguration = require('./server')
 
-import default_configuration from './configuration.defaults'
-import development_configuration from './configuration.development'
-import production_configuration from './configuration.production'
+const configuration = getConfiguration(process.env.NODE_ENV)
 
-const configuration = merge({}, default_configuration)
+// API service absolute URL.
+//
+// Chrome won't allow querying `localhost` from `localhost`
+// so had to just proxy the `/api` path using `webpack-dev-server`.
+//
+// The Chrome error was:
+//
+// "Failed to load http://localhost:3003/example/users:
+//  Response to preflight request doesn't pass access control check:
+//  No 'Access-Control-Allow-Origin' header is present on the requested resource.
+//  Origin 'http://localhost:3000' is therefore not allowed access."
+//
+// https://stackoverflow.com/a/10892392/970769
+//
+configuration.api = `${serverConfiguration.api.secure ? 'https' : 'http'}://${serverConfiguration.api.host || 'localhost'}:${serverConfiguration.api.port}`
 
-// https://github.com/webpack-contrib/webpack-serve/issues/81#issuecomment-378469110
-export default configuration
+module.exports = configuration
 
-if (process.env.NODE_ENV === 'production')
-{
-	merge(configuration, production_configuration)
-}
-else
-{
-	merge(configuration, development_configuration)
-}
-
-// For services like Amazon Elastic Compute Cloud and Heroku
-if (process.env.PORT)
-{
-	configuration.webserver.port = process.env.PORT
-}
-
-// For passing custom configuration via an environment variable.
-// For frameworks like Docker.
-// E.g. `CONFIGURATION="{ \"key\": \"value\" }" npm start`.
-if (process.env.CONFIGURATION)
-{
-	try
-	{
-		merge(configuration, JSON.parse(process.env.CONFIGURATION))
-	}
-	catch (error)
-	{
-		console.error(error)
+function getConfiguration(env) {
+	switch (env) {
+		case 'production':
+			return require('./configuration.production')
+		default:
+			return require('./configuration.development')
 	}
 }
