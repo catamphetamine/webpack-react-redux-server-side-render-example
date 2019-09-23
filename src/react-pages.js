@@ -22,7 +22,7 @@ export default
 	// in development mode styles are not applied immediately
 	// in a web browser. In production mode CSS styles are
 	// included as `*.css` files so they are applied immediately.
-	showPreloadInitially: true,
+	showLoadingInitially: true,
 
 	// Default `<meta/>`.
 	meta: {
@@ -37,7 +37,7 @@ export default
 	onError,
 
 	http: {
-		transformURL: (url, server) => {
+		transformUrl: (url, { server }) => {
 			// Pass all `api://` requests to the API server.
 			if (url.indexOf('api://') === 0) {
 				//
