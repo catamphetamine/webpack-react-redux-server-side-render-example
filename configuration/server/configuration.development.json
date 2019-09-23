@@ -1,7 +1,4 @@
 {
-	"api": {
-		"port": 3003
-	},
 	"webpackDevServer": {
 		"port": 3000
 	}
