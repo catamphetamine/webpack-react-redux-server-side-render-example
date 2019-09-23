@@ -36,7 +36,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "react-pages": "^0.2.3",
+    "react-pages": "^0.2.4",
     "react-redux": "^7.1.1",
     "react-responsive-ui": "^0.14.176",
     "react-time-ago": "^5.0.0",
