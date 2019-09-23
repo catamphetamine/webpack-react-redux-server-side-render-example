@@ -1,12 +1,11 @@
 import applicationConfiguration from '../configuration/server'
 
-const devserver = applicationConfiguration.webpackDevServer
+const PORT = applicationConfiguration.webpackDevServer.port
 
 // `webpack-dev-server` settings.
-export const devServerConfig =
-{
+export const devServerConfig = {
 	// The port to serve assets on.
-	port : devserver.port,
+	port: PORT,
 
 	// Chrome won't allow querying `localhost` from `localhost`
 	// so had to just proxy the `/api` path using `webpack-dev-server`.
@@ -37,19 +36,21 @@ export const devServerConfig =
 
 	// Uncomment if using `index.html` instead of Server-Side Rendering.
 	// https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback
-	// historyApiFallback : true
+	// historyApiFallback: true,
+
+  headers: {
+    'Access-Control-Allow-Origin': '*'
+  }
 }
 
 // Modifies webpack configuration to get all files
 // from webpack development server.
-export function setDevFileServer(configuration)
-{
+export function setDevFileServer(configuration) {
 	return {
 		...configuration,
-		output:
-		{
+		output: {
 			...configuration.output,
-			publicPath: `http://localhost:${devserver.port}${configuration.output.publicPath}`
+			publicPath: `http://localhost:${PORT}${configuration.output.publicPath}`
 		}
 	}
 }
