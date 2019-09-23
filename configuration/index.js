@@ -1,4 +1,4 @@
-const serverConfiguration = require('./server')
+const setupConfiguration = require('./setup')
 
 const configuration = getConfiguration(process.env.NODE_ENV)
 
@@ -16,7 +16,7 @@ const configuration = getConfiguration(process.env.NODE_ENV)
 //
 // https://stackoverflow.com/a/10892392/970769
 //
-configuration.api = `${serverConfiguration.api.secure ? 'https' : 'http'}://${serverConfiguration.api.host || 'localhost'}:${serverConfiguration.api.port}`
+configuration.api = `${setupConfiguration.api.secure ? 'https' : 'http'}://${setupConfiguration.api.host || 'localhost'}:${setupConfiguration.api.port}`
 
 module.exports = configuration
 

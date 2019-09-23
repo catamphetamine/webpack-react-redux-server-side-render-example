@@ -2,7 +2,7 @@ import webpageServer from 'react-pages/server'
 import path from 'path'
 
 import settings, { icon } from '../src/react-pages'
-import configuration from '../configuration/server'
+import setupConfig from '../configuration/setup'
 
 export default function(parameters) {
   // Create webpage rendering server
@@ -13,10 +13,10 @@ export default function(parameters) {
     // and would just query the API server directly
     // but Chrome won't allow that for `localhost`.
     proxy: {
-      host: configuration.api.host || 'localhost',
-      port: configuration.api.port,
+      host: setupConfig.api.host || 'localhost',
+      port: setupConfig.api.port,
       // For HTTPS
-      secure: configuration.api.secure
+      secure: setupConfig.api.secure
     },
 
     // HTTP URLs for javascripts and (optionally) CSS styles
@@ -63,11 +63,11 @@ export default function(parameters) {
   })
 
   // Start webpage rendering server
-  server.listen(configuration.pageServer.port, function(error) {
+  server.listen(setupConfig.pageServer.port, function(error) {
     if (error) {
       console.error('Webpage rendering service was shut down due to an error')
       throw error
     }
-    console.log(`Webpage rendering service is listening on port ${configuration.pageServer.port}`)
+    console.log(`Webpage rendering service is listening on port ${setupConfig.pageServer.port}`)
   })
 }

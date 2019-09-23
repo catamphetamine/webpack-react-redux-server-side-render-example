@@ -1,6 +1,6 @@
-import applicationConfiguration from '../configuration/server'
+import setupConfig from '../configuration/setup'
 
-const PORT = applicationConfiguration.webpackDevServer.port
+const PORT = setupConfig.webpackDevServer.port
 
 // `webpack-dev-server` settings.
 export const devServerConfig = {
@@ -23,10 +23,10 @@ export const devServerConfig = {
 		context: (path) => {
 			return path !== '/api' && path.indexOf('/api/') !== 0
 		},
-		target: `http://localhost:${applicationConfiguration.pageServer.port}`
+		target: `http://localhost:${setupConfig.pageServer.port}`
 	}, {
 		context: '/api',
-		target: `${applicationConfiguration.api.secure ? 'https' : 'http'}://${applicationConfiguration.api.host || 'localhost'}:${applicationConfiguration.api.port}`,
+		target: `${setupConfig.api.secure ? 'https' : 'http'}://${setupConfig.api.host || 'localhost'}:${setupConfig.api.port}`,
 		pathRewrite: { '^/api' : '' }
   }],
 
