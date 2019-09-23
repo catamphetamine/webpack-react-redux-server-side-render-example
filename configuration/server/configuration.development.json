@@ -3,7 +3,6 @@
 		"port": 3003
 	},
 	"webpackDevServer": {
-		"host": "localhost",
 		"port": 3000
 	}
 }

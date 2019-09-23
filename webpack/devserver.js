@@ -49,7 +49,7 @@ export function setDevFileServer(configuration)
 		output:
 		{
 			...configuration.output,
-			publicPath: `http://${devserver.host}:${devserver.port}${configuration.output.publicPath}`
+			publicPath: `http://localhost:${devserver.port}${configuration.output.publicPath}`
 		}
 	}
 }
