@@ -42,13 +42,3 @@
 		margin-top : 0;
 	}
 }
-
-.react-pages__loading--initial
-{
-	background-color : white;
-}
-
-.react-pages__loading--initial .react-pages__loading-spinner
-{
-	color : rgba(0, 0, 0, 0.25);
-}

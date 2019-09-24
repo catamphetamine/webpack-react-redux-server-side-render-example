@@ -1,3 +1,6 @@
+// This is the "public" configuration of the app.
+// It's embedded in the bundle so don't put any secret keys here.
+
 const setupConfiguration = require('./setup')
 
 const configuration = getConfiguration(process.env.NODE_ENV)

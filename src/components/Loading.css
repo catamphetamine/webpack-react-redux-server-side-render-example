@@ -1,11 +1,5 @@
 @import "../styles/common";
 
-.react-pages__loading--shown
-{
+.react-pages__loading--shown {
 	z-index : var(--preloading-screen-z-index);
-}
-
-.react-pages__loading-spinner
-{
-	color : var(--white-color);
 }
