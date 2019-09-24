@@ -15,6 +15,7 @@ module.exports = {
 		],
 		plugins: [
 			["babel-plugin-transform-react-remove-prop-types", { removeImport: true }],
+			"@babel/plugin-syntax-dynamic-import",
 			"react-hot-loader/babel"
 		]
 	}, {
