@@ -2,6 +2,8 @@
 // to avoid `require()`ing `@babel/register`
 // which would parse the whole server-side bundle by default.
 
-// Babel ES6 polyfill
-require('@babel/polyfill')
+// ES6 polyfill.
+require('core-js/stable');
+// `async/await` support.
+require('regenerator-runtime/runtime');
 require('./index')

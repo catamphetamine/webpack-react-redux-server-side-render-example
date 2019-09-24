@@ -1,5 +1,7 @@
-// Add ES6 polyfill (for older browsers).
-require('@babel/polyfill')
+// ES6 polyfill.
+require('core-js/stable');
+// `async/await` support.
+require('regenerator-runtime/runtime');
 
 // Maintain CSS styles order.
 require('./styles/style.css')
