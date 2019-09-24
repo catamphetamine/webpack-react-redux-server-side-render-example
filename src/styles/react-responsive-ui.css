@@ -5,12 +5,15 @@
 @import "react-responsive-ui/small-screen/Snackbar.css" (max-width: $screen-sm-min);
 @import "react-responsive-ui/small-screen/DatePicker.InputOverlay.css" (max-width: $screen-sm-min);
 
-:root
-{
+:root {
 	--rrui-unit               : var(--unit);
 	--rrui-white-color        : var(--white-color);
 	--rrui-black-color        : var(--black-color);
 	--rrui-accent-color       : var(--base-color);
 	--rrui-accent-color-light : var(--base-color-lighter);
 	--rrui-gray-color         : var(--gray-color);
+}
+
+.rrui__snackbar--error {
+	background-color: #cc0000;
 }

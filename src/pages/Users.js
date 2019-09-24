@@ -2,11 +2,11 @@ import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 
-// Webpack still can't learn how to tree-shake.
-// import { Modal, TextInput, Button } from 'react-responsive-ui'
-import Modal from 'react-responsive-ui/commonjs/Modal'
-import TextInput from 'react-responsive-ui/commonjs/TextInput'
-import Button from 'react-responsive-ui/commonjs/Button'
+import { Modal, TextInput, Button } from 'react-responsive-ui'
+// Webpack still can't learn how to "tree-shake" ES6 imports.
+// import Modal from 'react-responsive-ui/commonjs/Modal'
+// import TextInput from 'react-responsive-ui/commonjs/TextInput'
+// import Button from 'react-responsive-ui/commonjs/Button'
 
 import ReactTimeAgo from 'react-time-ago'
 import { Form, Field, Submit } from 'easy-react-form'
@@ -140,8 +140,12 @@ function Users({
 function AddUserForm({ onAfterSubmit }) {
 	const dispatch = useDispatch()
 	const onSubmit = useCallback(async (values) => {
-		await dispatch(addUser(values))
-		onAfterSubmit()
+		try {
+			await dispatch(addUser(values))
+			onAfterSubmit()
+		} catch (error) {
+			dispatch(notify(error.message, { type: 'error' }))
+		}
 	}, [dispatch])
 	return (
 		<Form
