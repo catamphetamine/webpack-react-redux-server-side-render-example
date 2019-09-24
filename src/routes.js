@@ -3,7 +3,6 @@ import { Route } from 'react-pages'
 
 import Application from './pages/Application'
 
-import Users from './pages/Users'
 import Home from './pages/Home'
 
 import GenericError from './pages/Error'
@@ -22,7 +21,9 @@ export default
 
 		<Route
 			path="users"
-			Component={Users}/>
+			getComponent={() => import('./pages/Users').then(_ => _.default)}
+			load={require('./pages/Users.load').default}
+			meta={require('./pages/Users.meta').default}/>
 
 		<Route
 			path="unauthenticated"
