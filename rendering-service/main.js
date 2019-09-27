@@ -1,5 +1,4 @@
 import webpageServer from 'react-pages/server'
-import path from 'path'
 
 import settings, { icon } from '../src/react-pages'
 import setupConfig from '../configuration/setup'
@@ -26,7 +25,7 @@ export default function(parameters) {
     //
     // And also the URL for website "favicon".
     //
-    assets: (path) => ({
+    assets: () => ({
       // Javascripts and (optionally) styles for the `entries`.
       // They are output by client-side Webpack build.
       // E.g.:
