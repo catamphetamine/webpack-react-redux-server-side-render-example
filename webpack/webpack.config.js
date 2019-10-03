@@ -84,10 +84,16 @@ module.exports = {
 
 	// Plugins will be added to this array by extending configurations.
 	plugins: [
-    new webpack.ProvidePlugin({
-      configuration: path.resolve(ROOT_DIRECTORY, 'configuration'),
-      // For ES6:
-      // configuration: [path.resolve(ROOT_DIRECTORY, 'configuration'), 'default']
-    })
+		// There have been cases when `ProvidePlugin` didn't see
+		// `process.env` variables for some reason.
+		// Using `DefinePlugin` instead to work around that.
+		// new webpack.ProvidePlugin({
+		//   configuration: path.resolve(ROOT_DIRECTORY, 'configuration'),
+		//   // For ES6:
+		//   // configuration: [path.resolve(ROOT_DIRECTORY, 'configuration'), 'default']
+		// })
+		new webpack.DefinePlugin({
+			configuration: JSON.stringify(require('../configuration'))
+		})
 	]
 }
