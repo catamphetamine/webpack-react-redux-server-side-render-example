@@ -31,6 +31,9 @@ Use:
 	box-sizing     : border-box;
 }
 
+/* `postcss-simple-vars` doesn't works with mixins: */
+/* https://github.com/postcss/postcss-mixins/issues/111 */
+/*
 @define-mixin define_columns $infix
 {
 	.col$(infix)-1,
@@ -129,17 +132,24 @@ Use:
 		max-width: 100%;
 	}
 }
+*/
 
-@mixin define_columns "";
+/* `postcss-simple-vars` doesn't works with mixins: */
+/* https://github.com/postcss/postcss-mixins/issues/111 */
+/*@mixin define_columns "";*/
 
 @media (max-width: $screen-xs-max)
 {
-	@mixin define_columns "-xs";
+	/* `postcss-simple-vars` doesn't works with mixins: */
+	/* https://github.com/postcss/postcss-mixins/issues/111 */
+	/*@mixin define_columns "-xs";*/
 }
 
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
 {
-	@mixin define_columns "-sm";
+	/* `postcss-simple-vars` doesn't works with mixins: */
+	/* https://github.com/postcss/postcss-mixins/issues/111 */
+	/*@mixin define_columns "-sm";*/
 
 	.container
 	{
@@ -149,7 +159,9 @@ Use:
 
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
 {
-	@mixin define_columns "-md";
+	/* `postcss-simple-vars` doesn't works with mixins: */
+	/* https://github.com/postcss/postcss-mixins/issues/111 */
+	/*@mixin define_columns "-md";*/
 
 	.container
 	{
@@ -159,7 +171,9 @@ Use:
 
 @media (min-width: $screen-lg-min)
 {
-	@mixin define_columns "-lg";
+	/* `postcss-simple-vars` doesn't works with mixins: */
+	/* https://github.com/postcss/postcss-mixins/issues/111 */
+	/*@mixin define_columns "-lg";*/
 
 	.container
 	{

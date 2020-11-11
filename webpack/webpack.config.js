@@ -7,6 +7,9 @@
 const path = require('path')
 const webpack = require('webpack')
 
+const configuration = require('../configuration')
+const setupConfiguration = require('../configuration/setup')
+
 const ROOT_DIRECTORY = path.resolve(__dirname, '..')
 
 module.exports = {
@@ -18,13 +21,13 @@ module.exports = {
 		path: path.resolve(ROOT_DIRECTORY, 'build/assets'),
 
 		// Network path for static files
-		publicPath: '/assets/',
+		publicPath: setupConfiguration.publicPath + '/',
 
 		// Specifies the name of each output entry file
-		filename: '[name].[hash].js',
+		filename: '[name].[fullhash].js',
 
 		// Specifies the name of each (non-entry) chunk file
-		chunkFilename: '[name].[hash].js'
+		chunkFilename: '[name].[fullhash].js'
 	},
 
 	module: {
@@ -93,7 +96,7 @@ module.exports = {
 		//   // configuration: [path.resolve(ROOT_DIRECTORY, 'configuration'), 'default']
 		// })
 		new webpack.DefinePlugin({
-			configuration: JSON.stringify(require('../configuration'))
+			configuration: JSON.stringify(configuration)
 		})
 	]
 }

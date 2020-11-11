@@ -9,7 +9,6 @@
 	margin-top     : calc(var(--unit) * 2);
 	margin-bottom  : calc(var(--unit) * 4);
 
-	// For XS screens.
 	@mixin xs
 	{
 		margin-top     : calc(var(--unit) * 1);

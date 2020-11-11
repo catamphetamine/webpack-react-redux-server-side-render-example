@@ -4,5 +4,6 @@
 	},
 	"api": {
 		"port": 3002
-	}
+	},
+	"publicPath": "/assets"
 }

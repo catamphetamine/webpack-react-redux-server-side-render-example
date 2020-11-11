@@ -1,8 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
-import CleanPlugin from 'clean-webpack-plugin'
-import Visualizer from 'webpack-visualizer-plugin'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+// import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin'
 
@@ -25,9 +24,7 @@ configuration.devtool = 'source-map'
 configuration.optimization = {
   minimizer: [
     new TerserPlugin({
-      cache: true,
-      parallel: true,
-      sourceMap: true
+      parallel: true
     }),
     new OptimizeCSSAssetsPlugin({})
   ]
@@ -35,27 +32,17 @@ configuration.optimization = {
 
 configuration.plugins.push(
   // Clears the output folder before building.
-  new CleanPlugin([
-    path.relative(configuration.context, configuration.output.path)
-  ], {
-    root: configuration.context
-  }),
+  new CleanWebpackPlugin(),
 
-  // Shows the resulting bundle size stats.
-  // https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/
-  new Visualizer({
-    // The path is relative to the output folder
-    filename : '../bundle-stats.html'
-  }),
-
-  // Shows the resulting bundle size stats (too).
-  // https://github.com/webpack-contrib/webpack-bundle-analyzer
-  new BundleAnalyzerPlugin({
-    // The path is relative to the output folder
-    reportFilename : '../bundle-stats-2.html',
-    analyzerMode   : 'static',
-    openAnalyzer   : false
-  })
+  // Use `--analyze` CLI option of webpack instead.
+  // // Shows the resulting bundle size stats (too).
+  // // https://github.com/webpack-contrib/webpack-bundle-analyzer
+  // new BundleAnalyzerPlugin({
+  //   // The path is relative to the output folder
+  //   reportFilename : '../bundle-stats-2.html',
+  //   analyzerMode   : 'static',
+  //   openAnalyzer   : false
+  // })
 )
 
 export default configuration

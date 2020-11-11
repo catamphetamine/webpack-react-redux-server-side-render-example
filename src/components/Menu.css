@@ -15,7 +15,6 @@
 	margin-left  : calc(var(--unit) * 2);
 	margin-right : calc(var(--unit) * 2);
 
-	// For XS screens.
 	@mixin xs
 	{
 		margin-left  : calc(var(--unit) * 1);
@@ -72,7 +71,6 @@
 
 	margin-right : var(--unit);
 
-	// For XS screens.
 	@mixin xs
 	{
 		width  : calc(var(--unit) * 1.5);

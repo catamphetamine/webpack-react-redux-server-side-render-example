@@ -8,7 +8,7 @@ const configuration = getConfiguration(process.env.NODE_ENV)
 // API service absolute URL.
 //
 // Chrome won't allow querying `localhost` from `localhost`
-// so had to just proxy the `/api` path using `webpack-dev-server`.
+// so had to just proxy the `/api` path using `webpack-serve`.
 //
 // The Chrome error was:
 //

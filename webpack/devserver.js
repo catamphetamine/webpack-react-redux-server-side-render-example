@@ -2,13 +2,15 @@ import setupConfig from '../configuration/setup'
 
 const PORT = setupConfig.webpackDevServer.port
 
-// `webpack-dev-server` settings.
+// `webpack serve` settings.
 export const devServerConfig = {
 	// The port to serve assets on.
 	port: PORT,
 
+	publicPath: setupConfig.publicPath + '/',
+
 	// Chrome won't allow querying `localhost` from `localhost`
-	// so had to just proxy the `/api` path using `webpack-dev-server`.
+	// so had to just proxy the `/api` path using `webpack serve`.
 	//
 	// The Chrome error was:
 	//
@@ -30,7 +32,7 @@ export const devServerConfig = {
 		pathRewrite: { '^/api' : '' }
   }],
 
- 	// This is just for forcing `webpack-dev-server`
+ 	// This is just for forcing `webpack serve`
  	// to not disable proxying for root path (`/`).
   index: '',
 

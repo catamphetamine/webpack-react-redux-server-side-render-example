@@ -16,13 +16,13 @@ configuration.mode = 'development'
 // Fetch all files from webpack development server.
 configuration = setDevFileServer(configuration)
 
-// Run `webpack-dev-server`.
+// Run `webpack serve`.
 configuration.devServer = devServerConfig
 
-configuration.plugins.push
-(
-	// Prints more readable module names in the browser console on HMR updates.
-	new webpack.NamedModulesPlugin()
-)
+// Prints more readable module names in the browser console on HMR updates.
+configuration.optimization = {
+	...configuration.optimization,
+	moduleIds: 'named'
+}
 
 export default configuration

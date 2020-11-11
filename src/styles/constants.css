@@ -1,5 +1,4 @@
-:root
-{
+:root {
 	--white-color        : #ffffff;
 	--black-color        : #000000;
 
@@ -13,8 +12,8 @@
 	--column-gap : var(--unit);
 	--page-content-padding : calc(var(--column-gap) * 2);
 
-	// Mobile font size must be at least 16px
-	// to prevent automatic zoom on input focus.
+	/* Mobile font size must be at least 16px
+	   to prevent automatic zoom on input focus. */
 	--font-size : 20px;
 	--font-size-xs : 16px;
 

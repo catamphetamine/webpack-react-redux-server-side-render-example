@@ -1,5 +1,4 @@
 {
-	"parser": "postcss-comment",
 	"plugins":
 	{
 		"autoprefixer": {},

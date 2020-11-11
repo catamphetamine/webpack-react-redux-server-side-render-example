@@ -42,7 +42,7 @@ export default
 			if (url.indexOf('api://') === 0) {
 				//
 				// Chrome won't allow querying `localhost` from `localhost`
-				// so had to just proxy the `/api` path using `webpack-dev-server`.
+				// so had to just proxy the `/api` path using `webpack serve`.
 				//
 				// The Chrome error was:
 				//

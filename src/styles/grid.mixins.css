@@ -1,5 +1,6 @@
-// https://www.sitepoint.com/managing-responsive-breakpoints-sass/
+/* https://www.sitepoint.com/managing-responsive-breakpoints-sass/ */
 
+/*
 // `calc()` won't work here because these variables are used inside mixins.
 // https://github.com/postcss/postcss-mixins/issues/86
 //
@@ -12,6 +13,7 @@
 // $screen-lg-min : calc($grid-unit * 100); // 1200px
 // $screen-md-max : calc($screen-lg-min - 1);
 //
+*/
 $screen-sm-min : 768px;
 $screen-xs-max : 767px;
 $screen-md-min : 984px;
