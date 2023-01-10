@@ -46,7 +46,7 @@
     "react-time-ago": "^7.2.1",
     "redux": "^4.2.0",
     "regenerator-runtime": "^0.13.11",
-    "serverless-functions": "^0.5.3",
+    "serverless-functions": "^0.5.4",
     "uuid": "^9.0.0",
     "web-service": "^0.5.7"
   },
