@@ -1,14 +1,20 @@
-// ES6 polyfill.
-require('core-js/stable')
-// `async/await` support.
-require('regenerator-runtime/runtime')
+// `core-js` and `regenerator-runtime` would've been imported here
+// in case of using `useBuiltIns: 'entry'` option of `@babel/preset-env`
+// https://stackoverflow.com/questions/52625979/confused-about-usebuiltins-option-of-babel-preset-env-using-browserslist-integ
+// https://babeljs.io/docs/en/babel-preset-env
+//
+// When using `useBuiltIns: 'auto'`, importing `core-js` and `regenerator-runtime`
+// explicitly is not required, and Babel adds those automatically.
+//
+// // ES6 polyfill.
+// import 'core-js/stable'
+// // `async/await` support.
+// import 'regenerator-runtime/runtime'
 
 // Maintain CSS styles order.
-require('./styles/style.css')
-
-// https://github.com/gaearon/react-hot-loader
-// "Make sure `react-hot-loader` is required before `react` and `react-dom`".
-require('react-hot-loader')
+import './styles/style.css'
 
 // Run the application.
-require('./render').default().catch((error) => console.error(error))
+import render from './render.js'
+
+render().catch((error) => console.error(error))

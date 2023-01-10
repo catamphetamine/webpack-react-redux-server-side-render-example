@@ -1,4 +1,4 @@
-import setupConfig from '../configuration/setup'
+import setupConfig from '../configuration/setup/index.js'
 
 const PORT = setupConfig.webpackDevServer.port
 
@@ -7,7 +7,9 @@ export const devServerConfig = {
 	// The port to serve assets on.
 	port: PORT,
 
-	publicPath: setupConfig.publicPath + '/',
+	static: {
+		directory: setupConfig.publicPath + '/'
+	},
 
 	// Chrome won't allow querying `localhost` from `localhost`
 	// so had to just proxy the `/api` path using `webpack serve`.
@@ -32,9 +34,9 @@ export const devServerConfig = {
 		pathRewrite: { '^/api' : '' }
   }],
 
- 	// This is just for forcing `webpack serve`
- 	// to not disable proxying for root path (`/`).
-  index: '',
+ 	// // This is just for forcing `webpack serve`
+ 	// // to not disable proxying for root path (`/`).
+  // index: '',
 
 	// Uncomment if using `index.html` instead of Server-Side Rendering.
 	// https://webpack.js.org/configuration/dev-server/#devserver-historyapifallback

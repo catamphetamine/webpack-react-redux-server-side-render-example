@@ -1,15 +1,15 @@
 import React from 'react'
 import { Route } from 'react-pages'
 
-import Application from './pages/Application'
+import Application from './pages/Application.js'
 
-import Users from './pages/Users'
-import Home from './pages/Home'
+import Users from './pages/Users.js'
+import Home from './pages/Home.js'
 
-import GenericError from './pages/Error'
-import Unauthenticated from './pages/Unauthenticated'
-import Unauthorized from './pages/Unauthorized'
-import NotFound from './pages/NotFound'
+import GenericError from './pages/Error.js'
+import Unauthenticated from './pages/Unauthenticated.js'
+import Unauthorized from './pages/Unauthorized.js'
+import NotFound from './pages/NotFound.js'
 
 export default
 (

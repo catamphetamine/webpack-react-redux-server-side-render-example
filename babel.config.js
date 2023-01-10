@@ -1,12 +1,20 @@
-module.exports = {
+const REACT_FAST_REFRESH_PLUGINS = []
+
+// Works around `react-refresh-webpack-plugin` bug:
+// "$RefreshReg$ is not defined".
+// Another wokraround:
+// https://github.com/pmmmwh/react-refresh-webpack-plugin/issues/176#issuecomment-782770175
+if (process.env.NODE_ENV === 'development') {
+  REACT_FAST_REFRESH_PLUGINS.push('react-refresh/babel')
+}
+
+export default {
 	presets: [
 		"@babel/preset-env"
 	],
 	plugins: [
-		"@babel/plugin-transform-destructuring",
-		["@babel/plugin-proposal-object-rest-spread", { useBuiltIns: true }],
 		["@babel/plugin-proposal-decorators", { "legacy": true }],
-		["@babel/plugin-proposal-class-properties", { "loose" : true }]
+    "@babel/plugin-syntax-import-assertions"
 	],
 	overrides: [{
 		include: "./src",
@@ -15,7 +23,7 @@ module.exports = {
 		],
 		plugins: [
 			["babel-plugin-transform-react-remove-prop-types", { removeImport: true }],
-			"react-hot-loader/babel"
+			...REACT_FAST_REFRESH_PLUGINS
 		]
 	}, {
 		include: "./rendering-service",

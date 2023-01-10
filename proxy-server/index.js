@@ -1,7 +1,13 @@
 import path from 'path'
 import webservice from 'web-service'
 
-import setupConfig from '../configuration/setup'
+import setupConfig from '../configuration/setup/index.js'
+
+// https://ru.stackoverflow.com/questions/1281148/referenceerror-dirname-is-not-defined
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const webserver = webservice({})
 

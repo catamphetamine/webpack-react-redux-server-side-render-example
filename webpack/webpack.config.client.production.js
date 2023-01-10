@@ -2,12 +2,12 @@ import path from 'path'
 import webpack from 'webpack'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 // import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin'
 
 import { clientConfiguration } from 'universal-webpack'
-import settings from './universal-webpack-settings'
-import baseConfiguration from './webpack.config'
+import settings from './universal-webpack-settings.json' assert { type: 'json' }
+import baseConfiguration from './webpack.config.js'
 
 const configuration = clientConfiguration(baseConfiguration, settings, {
   // Extract all CSS into separate `*.css` files (one for each chunk)
@@ -26,7 +26,7 @@ configuration.optimization = {
     new TerserPlugin({
       parallel: true
     }),
-    new OptimizeCSSAssetsPlugin({})
+    new CssMinimizerPlugin()
   ]
 };
 

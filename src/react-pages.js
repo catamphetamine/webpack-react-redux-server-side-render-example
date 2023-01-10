@@ -1,6 +1,6 @@
-import routes  from './routes'
-import * as reducers from './redux'
-import container from './Container'
+import routes  from './routes.js'
+import * as reducers from './redux/reducers.js'
+import container from './Container.js'
 
 // "Favicon" must be imported on the client side too
 // since no assets are emitted on the server side

@@ -1,9 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
-import { hot } from 'react-hot-loader'
 
-function Container({ store, children }) {
+export default function Container({ store, children }) {
 	return (
 		<Provider store={store}>
 			{children}
@@ -14,5 +13,3 @@ function Container({ store, children }) {
 Container.propTypes = {
 	store: PropTypes.object.isRequired
 }
-
-export default hot(module)(Container)

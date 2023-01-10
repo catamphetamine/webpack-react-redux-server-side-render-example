@@ -4,15 +4,21 @@
 // is not processed with Babel on server side.
 // See `./rendering-service/index.js` for more info.
 
-const path = require('path')
-const webpack = require('webpack')
+import path from 'path'
+import webpack from 'webpack'
 
-const configuration = require('../configuration')
-const setupConfiguration = require('../configuration/setup')
+import configuration from '../configuration/index.js'
+import setupConfiguration from '../configuration/setup/index.js'
+
+// https://ru.stackoverflow.com/questions/1281148/referenceerror-dirname-is-not-defined
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const ROOT_DIRECTORY = path.resolve(__dirname, '..')
 
-module.exports = {
+export default {
 	// Resolve all relative paths from the project root folder
 	context: ROOT_DIRECTORY,
 

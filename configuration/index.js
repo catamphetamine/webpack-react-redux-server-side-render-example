@@ -1,7 +1,10 @@
 // This is the "public" configuration of the app.
 // It's embedded in the bundle so don't put any secret keys here.
 
-const setupConfiguration = require('./setup')
+import setupConfiguration from './setup/index.js'
+
+import productionConfiguration from './configuration.production.json' assert { type: 'json' }
+import developmentConfiguration from './configuration.development.json' assert { type: 'json' }
 
 const configuration = getConfiguration(process.env.NODE_ENV)
 
@@ -21,13 +24,13 @@ const configuration = getConfiguration(process.env.NODE_ENV)
 //
 configuration.api = `${setupConfiguration.api.secure ? 'https' : 'http'}://${setupConfiguration.api.host || 'localhost'}:${setupConfiguration.api.port}`
 
-module.exports = configuration
+export default configuration
 
 function getConfiguration(env) {
 	switch (env) {
 		case 'production':
-			return require('./configuration.production')
+			return productionConfiguration
 		default:
-			return require('./configuration.development')
+			return developmentConfiguration
 	}
 }

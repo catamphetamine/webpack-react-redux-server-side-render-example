@@ -12,4 +12,4 @@ export default function NotFound() {
 	)
 }
 
-NotFound.meta = { title: 'Not found' }
+NotFound.meta = () => ({ title: 'Not found' })

@@ -15,9 +15,9 @@ import {
 	getUsers,
 	addUser,
 	deleteUser
-} from '../redux/users'
+} from '../redux/users.js'
 
-import { notify } from '../redux/notifications'
+import { notify } from '../redux/notifications.js'
 
 import './Users.css'
 

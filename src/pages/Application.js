@@ -13,8 +13,8 @@ import JavascriptTimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 JavascriptTimeAgo.addLocale(en)
 
-import Menu, { MenuLink } from '../components/Menu'
-import Snackbar from '../components/Snackbar'
+import Menu, { MenuLink } from '../components/Menu.js'
+import Snackbar from '../components/Snackbar.js'
 
 import Home  from '../../assets/images/home.svg'
 import Users from '../../assets/images/users.svg'

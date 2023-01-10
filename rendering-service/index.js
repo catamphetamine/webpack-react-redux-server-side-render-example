@@ -1,11 +1,5 @@
-// Not using ES6 `import` syntax here
-// to avoid `require()`ing `@babel/register`
-// which would parse the whole server-side bundle by default.
-
-require('source-map-support/register')
-
-var startServer = require('universal-webpack/server')
-var settings = require('../webpack/universal-webpack-settings')
-var configuration = require('../webpack/webpack.config')
+import startServer from 'universal-webpack/server'
+import settings from '../webpack/universal-webpack-settings.json' assert { type: 'json' }
+import configuration from '../webpack/webpack.config.js'
 
 startServer(configuration, settings)

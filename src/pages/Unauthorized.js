@@ -12,4 +12,4 @@ export default function Unauthorized() {
 	)
 }
 
-Unauthorized.meta = { title: 'Unauthorized' }
+Unauthorized.meta = () => ({ title: 'Unauthorized' })

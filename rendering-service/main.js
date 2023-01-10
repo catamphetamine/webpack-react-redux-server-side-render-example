@@ -1,7 +1,7 @@
 import webpageServer from 'react-pages/server'
 
-import settings, { icon } from '../src/react-pages'
-import setupConfig from '../configuration/setup'
+import settings, { icon } from '../src/react-pages.js'
+import setupConfig from '../configuration/setup/index.js'
 
 export default function(parameters) {
   // Create webpage rendering server

@@ -1,10 +1,13 @@
-const merge = require('lodash/merge')
+// import { merge } from 'lodash-es'
+import merge from 'lodash/merge.js'
 
-const defaultConfiguration = require('./configuration.default')
+import defaultConfiguration from './configuration.default.json' assert { type: 'json' }
+import productionConfiguration from './configuration.production.json' assert { type: 'json' }
+import developmentConfiguration from './configuration.development.json' assert { type: 'json' }
 
 const configuration = merge({}, defaultConfiguration)
 
-module.exports = configuration
+export default configuration
 
 merge(configuration, getConfiguration(process.env.NODE_ENV))
 
@@ -27,8 +30,8 @@ if (process.env.CONFIGURATION) {
 function getConfiguration(env) {
 	switch (env) {
 		case 'production':
-			return require('./configuration.production')
+			return productionConfiguration
 		default:
-			return require('./configuration.development')
+			return developmentConfiguration
 	}
 }

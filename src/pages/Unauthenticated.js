@@ -12,4 +12,4 @@ export default function Unauthenticated() {
 	)
 }
 
-Unauthenticated.meta = { title: 'Unauthenticated' }
+Unauthenticated.meta = () => ({ title: 'Unauthenticated' })
