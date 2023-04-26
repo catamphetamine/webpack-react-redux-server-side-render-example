@@ -1,0 +1,32 @@
+.PageLoading {
+	position: fixed;
+
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	z-index: -1;
+	opacity: 0;
+
+	transition: background-color 0ms linear var(--PageLoading-hideAnimationDuration), opacity var(--PageLoading-hideAnimationDuration) ease-out, z-index var(--PageLoading-hideAnimationDuration) step-end;
+}
+
+.PageLoading--show {
+	opacity: 1;
+	cursor: wait;
+	z-index: var(--PageLoading-zIndex);
+	transition: opacity var(--PageLoading-showAnimationDuration) ease-out var(--PageLoading-showAnimationDelay), z-index 0ms step-start;
+}
+
+.PageLoading--showImmediately {
+	transition-delay: 0ms;
+}
+
+.PageLoading--show.PageLoading--initial {
+	background-color: var(--PageLoading-backgroundColor--initial);
+}
+
+.PageLoading--show:not(.PageLoading--initial) {
+	background-color: var(--PageLoading-backgroundColor);
+}

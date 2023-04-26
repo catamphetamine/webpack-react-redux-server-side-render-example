@@ -1,0 +1,62 @@
+/* Copy-pasted from `material-ui/LinearProgress`. */
+/* https://github.com/mui-org/material-ui/blob/next/packages/material-ui/src/LinearProgress/LinearProgress.js */
+/* https://material-ui.com/components/progress/ */
+
+.LinearProgress {
+	position: relative;
+	height: var(--LinearProgress-height);
+	overflow: hidden;
+	background-color: var(--LinearProgress-backgroundColor)
+}
+
+.LinearProgress-bar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	transition: transform 0.2s linear;
+	transform-origin: left;
+	background-color: var(--LinearProgress-color);
+}
+
+.LinearProgress-bar--1 {
+	animation: MuiLinearProgress-keyframes-indeterminate1 var(--LinearProgress-animationDuration) cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+
+.LinearProgress-bar--2 {
+	animation: MuiLinearProgress-keyframes-indeterminate2 var(--LinearProgress-animationDuration) cubic-bezier(0.165, 0.84, 0.44, 1) var(--LinearProgress-animationInterval) infinite;
+}
+
+@keyframes MuiLinearProgress-keyframes-indeterminate1 {
+  /*  |-----|---x-||-----||-----| */
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  /*  |-----|-----||-----||xxxx-| */
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes MuiLinearProgress-keyframes-indeterminate2 {
+  /*  |xxxxx|xxxxx||-----||-----| */
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  /*  |-----|-----||-----||-x----| */
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}

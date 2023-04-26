@@ -2,6 +2,8 @@ import routes  from './routes.js'
 import * as reducers from './redux/reducers.js'
 import container from './Container.js'
 
+import PageLoading from './components/PageLoading.js'
+
 // "Favicon" must be imported on the client side too
 // since no assets are emitted on the server side
 export { default as icon } from '../assets/images/icon.png'
@@ -12,7 +14,7 @@ export default
 	routes,
 	container,
 
-	// When the website is open in a web browser
+	// When the website is open in a web browser,
 	// hide website content under a "preloading" screen
 	// until the application has finished loading.
 	// It still "blinks" a bit in development mode
@@ -22,7 +24,9 @@ export default
 	// in development mode styles are not applied immediately
 	// in a web browser. In production mode CSS styles are
 	// included as `*.css` files so they are applied immediately.
-	showLoadingInitially: true,
+	initialLoadHideAnimationDuration: 160,
+	initialLoadShowDelay: 0,
+	InitialLoadComponent: PageLoading,
 
 	// Default `<meta/>`.
 	meta: {

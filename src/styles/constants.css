@@ -14,8 +14,22 @@
 
 	/* Mobile font size must be at least 16px
 	   to prevent automatic zoom on input focus. */
-	--font-size : 20px;
+	--font-size : 18px;
 	--font-size-xs : 16px;
 
-	--preloading-screen-z-index : 10;
+	/* PageLoading. */
+	--PageLoading-hideAnimationDuration: 160ms;
+	--PageLoading-showAnimationDuration: 600ms;
+	--PageLoading-showAnimationDelay: 500ms;
+	--PageLoading-zIndex: 10;
+	--PageLoading-backgroundColor: rgba(0,0,0,0.08);
+	--PageLoading-backgroundColor--initial: #ffffff;
+
+	/* LinearProgress. */
+	--LinearProgress-backgroundColor: rgb(167, 202, 237);
+	--LinearProgress-color: #1976d2;
+	--LinearProgress-height: 4px;
+	--LinearProgress-animationTimingFactor: 1;
+	--LinearProgress-animationDuration: calc(2.1s * var(--LinearProgress-animationTimingFactor));
+	--LinearProgress-animationInterval: calc(1.18s * var(--LinearProgress-animationTimingFactor));
 }

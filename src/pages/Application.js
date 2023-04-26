@@ -19,7 +19,6 @@ import Snackbar from '../components/Snackbar.js'
 import Home  from '../../assets/images/home.svg'
 import Users from '../../assets/images/users.svg'
 
-import '../components/Loading.css'
 import './Application.css'
 
 export default function App({ children }) {

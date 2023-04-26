@@ -15,16 +15,43 @@ Quick Start
 ===========
 
 * `npm install`
+
+### Development
+
+Note: _The development script currently doesn't seem to work on my Windows machine._ It stalls for a long time and then throws an [error](https://stackoverflow.com/questions/61936085/error-from-chokidar-c-error-ebusy-resource-busy-or-locked-lstat-c-dump):
+
+```
+[Error: EBUSY: resource busy or locked, lstat 'c:\DumpStack.log.tmp'] {
+  errno: -4082,
+  code: 'EBUSY',
+  syscall: 'lstat',
+  path: 'c:\\DumpStack.log.tmp'
+}
+ERROR: "development:client:build" exited with 1.
+ERROR: "development" exited with 1.
+```
+
 * `npm run dev`
 * wait for it to finish (it will say "Now go to http://127.0.0.1:3000" in the end)
 * go to `http://localhost:3000`
 * interact with the development version of the web application
 * `Ctrl + C`
+
+### Production
+
 * `npm run production`
 * wait for Webpack to finish the build (green stats will appear in the terminal, and it will print "Webpage rendering service is listening at port 3001" when the application has started)
 * go to `http://localhost:3000`
 * interact with the production version of the web application
 * check out `./build/bundle-stats.html` and `./build/bundle-stats-2.html` for detailed info on which modules [take up the most space](https://blog.etleap.com/2017/02/02/inspecting-your-webpack-bundle/) in the output bundle
+
+<details>
+<summary>How to see non-minified React errors during <code>npm run production</code></summary>
+
+#####
+
+Replace `--mode production` with `--mode development` in `package.json` in `production:client:build` script.
+</details>
 
 Summary
 =======
