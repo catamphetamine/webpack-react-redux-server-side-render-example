@@ -40,7 +40,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-pages": "^0.6.52",
+    "react-pages": "^0.6.53",
     "react-redux": "^8.0.5",
     "react-responsive-ui": "^0.15.41",
     "react-time-ago": "^7.2.1",
@@ -85,7 +85,7 @@
     "terser-webpack-plugin": "^5.3.7",
     "universal-webpack": "^0.8.5",
     "url-loader": "^4.1.1",
-    "webpack": "^5.80.0",
+    "webpack": "^5.81.0",
     "webpack-cli": "^5.0.2",
     "webpack-dev-server": "^4.13.3"
   }
