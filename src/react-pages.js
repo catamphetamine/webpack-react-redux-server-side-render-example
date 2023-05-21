@@ -58,7 +58,7 @@ export default
 	}
 }
 
-export function onError(error, { path, url, redirect, dispatch, getState, server }) {
+export function onError(error, { path, url, redirect, dispatch, useSelector, server }) {
 	console.error(`Error while preloading "${url}"`)
 	console.error(error)
 	const redirectToErrorPage = (errorPagePath) => {
