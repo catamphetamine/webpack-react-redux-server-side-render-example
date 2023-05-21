@@ -88,11 +88,13 @@ export default function UsersPage() {
 	)
 }
 
-UsersPage.meta = (state) => ({
-	title: 'Simple REST API example',
-	description: 'A list of users',
-	image: 'https://www.famouslogos.us/images/facebook-logo.jpg'
-})
+UsersPage.meta = () => {
+	return {
+		title: 'Simple REST API example',
+		description: 'A list of users',
+		image: 'https://www.famouslogos.us/images/facebook-logo.jpg'
+	}
+}
 
 UsersPage.load = async ({ dispatch }) => await dispatch(getUsers())
 

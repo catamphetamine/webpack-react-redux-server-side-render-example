@@ -18,4 +18,8 @@ export default function HomePage() {
 	)
 }
 
-HomePage.meta = (state) => ({ title: 'Home' })
+HomePage.meta = () => {
+	return {
+		title: 'Home'
+	}
+}

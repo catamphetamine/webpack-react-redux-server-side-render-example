@@ -12,4 +12,4 @@ export default function ErrorPage() {
 	)
 }
 
-ErrorPage.meta = state => ({ title: 'Error' })
+ErrorPage.meta = () => ({ title: 'Error' })

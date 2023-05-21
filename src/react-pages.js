@@ -1,5 +1,5 @@
 import routes  from './routes.js'
-import * as reducers from './redux/reducers.js'
+import * as reducers from './redux/reducers.with-hot-reload.js'
 import container from './Container.js'
 
 import PageLoading from './components/PageLoading.js'
@@ -27,16 +27,6 @@ export default
 	// initialLoadHideAnimationDuration: 160,
 	// initialLoadShowDelay: 0,
 	// InitialLoadComponent: PageLoading,
-
-	// Default `<meta/>`.
-	meta: {
-		site_name   : 'WebApp',
-		title       : 'WebApp',
-		description : 'A generic web application boilerplate',
-		image       : 'https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-		locale      : 'en_US',
-		locales     : ['ru_RU', 'en_US']
-	},
 
 	onError,
 

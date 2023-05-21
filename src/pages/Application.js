@@ -1,12 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Loading } from 'react-pages'
-
-import 'react-pages/components/Loading.css'
-// Not importing `LoadingIndicator.css` because
-// it's already loaded as part of `react-responsive-ui`.
-// import 'react-pages/components/LoadingIndicator.css'
 
 // `react-time-ago` English language.
 import JavascriptTimeAgo from 'javascript-time-ago'
@@ -15,6 +9,7 @@ JavascriptTimeAgo.addLocale(en)
 
 import Menu, { MenuLink } from '../components/Menu.js'
 import Snackbar from '../components/Snackbar.js'
+import PageLoadingIndicator from '../components/PageLoadingIndicator.js'
 
 import Home  from '../../assets/images/home.svg'
 import Users from '../../assets/images/users.svg'
@@ -25,7 +20,7 @@ export default function App({ children }) {
 	return (
 		<div>
 			{/* Page loading indicator */}
-			<Loading/>
+			<PageLoadingIndicator/>
 
 			{/* Pop-up messages */}
 			<Snackbar/>
@@ -60,4 +55,16 @@ export default function App({ children }) {
 
 App.propTypes = {
 	children: PropTypes.node.isRequired
+}
+
+// Default `<meta/>`.
+App.meta = () => {
+	return {
+		site_name   : 'WebApp',
+		title       : 'WebApp',
+		description : 'A generic web application boilerplate',
+		image       : 'https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+		locale      : 'en_US',
+		locales     : ['ru_RU', 'en_US']
+	}
 }

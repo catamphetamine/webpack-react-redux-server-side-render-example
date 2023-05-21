@@ -1,5 +1,4 @@
 import React from 'react'
-import { Route } from 'react-pages'
 
 import Application from './pages/Application.js'
 
@@ -11,42 +10,17 @@ import Unauthenticated from './pages/Unauthenticated.js'
 import Unauthorized from './pages/Unauthorized.js'
 import NotFound from './pages/NotFound.js'
 
-export default
-(
-	<Route
-		path="/"
-		Component={Application}>
-
-		<Route
-			Component={Home}/>
-
-		<Route
-			path="users"
-			Component={Users}/>
-
-		<Route
-			path="unauthenticated"
-			Component={Unauthenticated}
-			status={401}/>
-
-		<Route
-			path="unauthorized"
-			Component={Unauthorized}
-			status={403}/>
-
-		<Route
-			path="not-found"
-			Component={NotFound}
-			status={404}/>
-
-		<Route
-			path="error"
-			Component={GenericError}
-			status={500}/>
-
-		<Route
-			path="*"
-			Component={NotFound}
-			status={404}/>
-	</Route>
-)
+export default [{
+	path: '/',
+	Component: Application,
+	children: [
+		{ Component: Home },
+		{ Component: Users, path: 'users' },
+		{ Component: Unauthenticated, path: 'unauthenticated', status: 401 },
+		{ Component: Unauthenticated, path: 'unauthenticated', status: 401 },
+		{ Component: Unauthorized, path: 'unauthorized', status: 403 },
+		{ Component: NotFound, path: 'not-found', status: 404 },
+		{ Component: GenericError, path: 'error', status: 500 },
+		{ Component: NotFound, path: '*', status: 404 }
+	]
+}]
