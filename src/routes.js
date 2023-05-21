@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Application from './pages/Application.js'
 
 import Users from './pages/Users.js'
