@@ -40,7 +40,7 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-pages": "^0.7.1",
+    "react-pages": "^0.7.3",
     "react-redux": "^8.0.5",
     "react-responsive-ui": "^0.15.41",
     "react-time-ago": "^7.2.1",

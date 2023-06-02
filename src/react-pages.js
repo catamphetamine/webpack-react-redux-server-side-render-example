@@ -1,6 +1,6 @@
 import routes  from './routes.js'
 import * as reducers from './redux/reducers.with-hot-reload.js'
-import container from './Container.js'
+import rootComponent from './RootComponent.js'
 
 import PageLoading from './components/PageLoading.js'
 
@@ -8,11 +8,10 @@ import PageLoading from './components/PageLoading.js'
 // since no assets are emitted on the server side
 export { default as icon } from '../assets/images/icon.png'
 
-export default
-{
+export default {
 	reducers,
 	routes,
-	container,
+	rootComponent,
 
 	// // When the website is open in a web browser,
 	// // hide website content under a "preloading" screen
@@ -28,7 +27,7 @@ export default
 	// initialLoadShowDelay: 0,
 	// InitialLoadComponent: PageLoading,
 
-	onError,
+	onLoadError,
 
 	http: {
 		transformUrl: (url, { server }) => {
@@ -58,8 +57,8 @@ export default
 	}
 }
 
-export function onError(error, { path, url, redirect, dispatch, useSelector, server }) {
-	console.error(`Error while preloading "${url}"`)
+export function onLoadError(error, { location, url, redirect, dispatch, useSelector, server }) {
+	console.error(`Error while loading "${url}"`)
 	console.error(error)
 	const redirectToErrorPage = (errorPagePath) => {
 		// Prevents infinite redirection loop or double redirection.
@@ -68,7 +67,7 @@ export function onError(error, { path, url, redirect, dispatch, useSelector, ser
 		//  and both get Status 401 HTTP Response).
 		// Or, for example, an infinite redirection loop in case of `/error`
 		// when there're overall page rendering bugs, etc.
-		if (path !== errorPagePath) {
+		if (location.pathname !== errorPagePath) {
 			redirect(`${errorPagePath}?url=${encodeURIComponent(url)}`)
 		}
 	}

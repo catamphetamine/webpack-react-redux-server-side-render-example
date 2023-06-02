@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Provider } from 'react-redux'
 
-export default function Container({ store, children }) {
+export default function RootComponent({ store, children }) {
 	return (
 		<Provider store={store}>
 			{children}
@@ -10,6 +10,6 @@ export default function Container({ store, children }) {
 	)
 }
 
-Container.propTypes = {
+RootComponent.propTypes = {
 	store: PropTypes.object.isRequired
 }
